@@ -129,8 +129,6 @@ export const spacing = {
 
 export type SpacingEnum = keyof typeof spacing;
 
-export type AvailableThemes = 'default';
-
 // Get the augmented type from ./styled-components.d.ts
 export type AppTheme = DefaultTheme;
 
@@ -138,7 +136,6 @@ export type AppTheme = DefaultTheme;
 // If you need to add properties to the theme, don't forget to add the types in ./styled-components.d.ts
 // ------ !!!!!
 const defaultTheme: AppTheme = {
-  name: 'default',
   spacing,
   screens,
   colors: {}

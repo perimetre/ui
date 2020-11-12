@@ -8,11 +8,12 @@ export type LetterSpacingProps = {
 };
 
 export const systemLetterSpacing = system({
-  letterSpacing: true
+  letterSpacing: {
+    property: 'letterSpacing',
+    scale: 'letterSpacings'
+  }
 });
 
 export const letterSpacingCss = css<LetterSpacingProps>`
   ${systemLetterSpacing}
 `;
-
-// TODO: Add theme spacings

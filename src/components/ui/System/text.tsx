@@ -2,6 +2,7 @@ import { css } from 'styled-components';
 import { compose } from 'styled-system';
 import { BackgroundColorProps, systemBackgroundColor } from './backgroundColor';
 import { ColorProps, systemColor } from './color';
+import { FontFamilyProps, systemFontFamily } from './fontFamily';
 import { FontSizeProps, systemFontSize } from './fontSize';
 import { FontStyleProps, systemFontStyle } from './fontStyle';
 import { FontWeightProps, systemFontWeight } from './fontWeight';
@@ -30,7 +31,8 @@ export type TextCssProps = FontSizeProps &
   SizingProps &
   UserSelectProps &
   BackgroundColorProps &
-  SpacingProps;
+  SpacingProps &
+  FontFamilyProps;
 
 export const textSystem = compose(
   systemFontSize,
@@ -47,7 +49,8 @@ export const textSystem = compose(
   systemSizing,
   systemUserSelect,
   systemBackgroundColor,
-  systemSpacing
+  systemSpacing,
+  systemFontFamily
 );
 
 export const textCss = css<TextCssProps>`

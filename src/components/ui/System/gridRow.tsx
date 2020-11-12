@@ -20,5 +20,3 @@ export const systemGridRow = system({
 export const gridRowCss = css<GridRowProps>`
   ${systemGridRow}
 `;
-
-// TODO: test transform

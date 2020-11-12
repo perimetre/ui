@@ -16,5 +16,3 @@ export const systemGridTemplateColumns = system({
 export const gridTemplateColumnsCss = css<GridTemplateColumnsProps>`
   ${systemGridTemplateColumns}
 `;
-
-// TODO: test transform

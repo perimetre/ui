@@ -26,5 +26,3 @@ export const systemGridColumn = compose(
 export const gridColumnCss = css<GridColumnProps>`
   ${systemGridColumn}
 `;
-
-// TODO: test transform

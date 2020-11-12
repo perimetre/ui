@@ -8,7 +8,10 @@ export type FontWeightProps = {
 };
 
 export const systemFontWeight = system({
-  fontWeight: true
+  fontWeight: {
+    property: 'fontWeight',
+    scale: 'fontWeights'
+  }
 });
 
 export const fontWeightCss = css<FontWeightProps>`

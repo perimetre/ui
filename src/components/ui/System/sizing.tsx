@@ -1,55 +1,53 @@
 import { Property } from 'csstype';
 import { css } from 'styled-components';
 import { system } from 'styled-system';
+import { defaultTheme, ThemeSpacesEnum } from '../Theme/theme';
 import ValueType from './valueType';
 
-const getSizing = (value: string) => {
-  switch (value) {
-    case 'full':
-      return '100%';
-    default:
-      return value;
-  }
-};
+type ScaleType = ValueType<'fit-content' | Property.Width<ThemeSpacesEnum>>;
 
 export type SizingProps = {
-  height?: ValueType</* SpacingEnum | */ 'full' | 'fit-content' | Property.Width>;
-  maxHeight?: ValueType</* SpacingEnum | */ 'full' | 'fit-content' | Property.Width>;
-  minHeight?: ValueType</* SpacingEnum | */ 'full' | 'fit-content' | Property.Width>;
-  width?: ValueType</* SpacingEnum | */ 'full' | 'fit-content' | Property.Width>;
-  maxWidth?: ValueType</* SpacingEnum | */ 'full' | 'fit-content' | Property.Width>;
-  minWidth?: ValueType</* SpacingEnum | */ 'full' | 'fit-content' | Property.Width>;
+  height?: ScaleType;
+  maxHeight?: ScaleType;
+  minHeight?: ScaleType;
+  width?: ScaleType;
+  maxWidth?: ScaleType;
+  minWidth?: ScaleType;
 };
 
 export const systemSizing = system({
   height: {
     property: 'height',
-    transform: getSizing
+    scale: 'space',
+    defaultScale: defaultTheme.space
   },
   maxHeight: {
     property: 'maxHeight',
-    transform: getSizing
+    scale: 'space',
+    defaultScale: defaultTheme.space
   },
   minHeight: {
     property: 'minHeight',
-    transform: getSizing
+    scale: 'space',
+    defaultScale: defaultTheme.space
   },
   width: {
     property: 'width',
-    transform: getSizing
+    scale: 'space',
+    defaultScale: defaultTheme.space
   },
   maxWidth: {
     property: 'maxWidth',
-    transform: getSizing
+    scale: 'space',
+    defaultScale: defaultTheme.space
   },
   minWidth: {
     property: 'minWidth',
-    transform: getSizing
+    scale: 'space',
+    defaultScale: defaultTheme.space
   }
 });
 
 export const sizingCss = css<SizingProps>`
   ${systemSizing}
 `;
-
-// TODO: test transform

@@ -1,14 +1,17 @@
-import { Property } from 'csstype';
 import { css } from 'styled-components';
 import { system } from 'styled-system';
+import { ThemeColorsEnum } from '../Theme/theme';
 import ValueType from './valueType';
 
 export type ColorProps = {
-  color?: ValueType<Property.Color>;
+  color?: ValueType<ThemeColorsEnum>;
 };
 
 export const systemColor = system({
-  color: true
+  color: {
+    property: 'color',
+    scale: 'colors'
+  }
 });
 
 export const colorCss = css<ColorProps>`
@@ -16,4 +19,3 @@ export const colorCss = css<ColorProps>`
 `;
 
 // TODO: Add hover variant
-// TODO: Add theme colors

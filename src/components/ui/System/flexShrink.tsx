@@ -1,10 +1,9 @@
-import { Property } from 'csstype';
 import { css } from 'styled-components';
 import { system } from 'styled-system';
 import ValueType from './valueType';
 
 export type FlexShrinkProps = {
-  flexShrink?: ValueType<Property.FlexShrink>;
+  flexShrink?: ValueType<boolean>;
 };
 
 export const systemFlexShrink = system({
@@ -17,5 +16,3 @@ export const systemFlexShrink = system({
 export const flexShrinkCss = css<FlexShrinkProps>`
   ${systemFlexShrink}
 `;
-
-// TODO: test transform

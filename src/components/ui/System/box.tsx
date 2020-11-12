@@ -20,6 +20,7 @@ import { JustifyContentProps, systemJustifyContent } from './justifyContent';
 import { OrderProps, systemOrder } from './order';
 import { SizingProps, systemSizing } from './sizing';
 import { SpacingProps, systemSpacing } from './spacing';
+import { BorderRadiusProps, systemBorderRadius } from './borderRadius';
 
 export type BoxProps = SizingProps &
   FlexCssProps &
@@ -40,7 +41,8 @@ export type BoxProps = SizingProps &
   GridFlowProps &
   CursorProps &
   SpacingProps &
-  DisplayProps;
+  DisplayProps &
+  BorderRadiusProps;
 
 const systemBox = compose(
   systemFlex,
@@ -62,7 +64,8 @@ const systemBox = compose(
   systemGridFlow,
   systemCursor,
   systemSizing,
-  systemDisplay
+  systemDisplay,
+  systemBorderRadius
 );
 
 export const boxCss = css<BoxProps>`

@@ -72,7 +72,7 @@ const NewTable: React.FC<NewTableProps> = ({ rows }) => {
                     {row.column2}
                   </Text.TD>
                   <td>
-                    <Spacing marginVertical="8px">
+                    <Spacing marginVertical="px8">
                       {Object.entries(row.column3).map((x, index) => (
                         <Text.Div key={`${x[1] || index}`} fontSize="text-base" color="paragraph">
                           {x[1] as string}

@@ -16,4 +16,3 @@ export const textDecorationCss = css<TextDecorationProps>`
 `;
 
 // TODO: Add hover variant
-// TODO: Add theme colors

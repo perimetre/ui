@@ -26,5 +26,3 @@ export const systemGridFlow = system({
 export const gridFlowCss = css<GridFlowProps>`
   ${systemGridFlow}
 `;
-
-// TODO: test transform

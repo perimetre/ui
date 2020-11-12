@@ -1,5 +1,6 @@
 import { css } from 'styled-components';
 import { compose, ConfigStyle, get, Scale, system } from 'styled-system';
+import { defaultTheme, ThemeSpacesEnum } from '../Theme/theme';
 import ValueType from './valueType';
 
 const isNumber = (n: unknown) => typeof n === 'number' && !isNaN(n);
@@ -24,82 +25,84 @@ const getMargin = (n: any, scale?: Scale) => {
   return value * (isNegative ? -1 : 1);
 };
 
+type ScaleType = ValueType<true | 'auto' | ThemeSpacesEnum>;
+
 export type SpacingProps = {
-  margin?: ValueType</* SpacingEnum | */ true | 'auto' | string>;
-  marginTop?: ValueType</* SpacingEnum | */ true | 'auto' | string>;
-  marginBottom?: ValueType</* SpacingEnum | */ true | 'auto' | string>;
-  marginLeft?: ValueType</* SpacingEnum | */ true | 'auto' | string>;
-  marginRight?: ValueType</* SpacingEnum | */ true | 'auto' | string>;
-  marginVertical?: ValueType</* SpacingEnum | */ true | 'auto' | string>;
-  marginHorizontal?: ValueType</* SpacingEnum | */ true | 'auto' | string>;
+  margin?: ScaleType;
+  marginTop?: ScaleType;
+  marginBottom?: ScaleType;
+  marginLeft?: ScaleType;
+  marginRight?: ScaleType;
+  marginVertical?: ScaleType;
+  marginHorizontal?: ScaleType;
 
-  m?: ValueType</* SpacingEnum | */ true | 'auto' | string>;
-  mt?: ValueType</* SpacingEnum | */ true | 'auto' | string>;
-  mr?: ValueType</* SpacingEnum | */ true | 'auto' | string>;
-  mb?: ValueType</* SpacingEnum | */ true | 'auto' | string>;
-  ml?: ValueType</* SpacingEnum | */ true | 'auto' | string>;
-  mx?: ValueType</* SpacingEnum | */ true | 'auto' | string>;
-  my?: ValueType</* SpacingEnum | */ true | 'auto' | string>;
+  m?: ScaleType;
+  mt?: ScaleType;
+  mr?: ScaleType;
+  mb?: ScaleType;
+  ml?: ScaleType;
+  mx?: ScaleType;
+  my?: ScaleType;
 
-  padding?: ValueType</* SpacingEnum | */ true | 'auto' | string>;
-  paddingTop?: ValueType</* SpacingEnum | */ true | 'auto' | string>;
-  paddingBottom?: ValueType</* SpacingEnum | */ true | 'auto' | string>;
-  paddingLeft?: ValueType</* SpacingEnum | */ true | 'auto' | string>;
-  paddingRight?: ValueType</* SpacingEnum | */ true | 'auto' | string>;
-  paddingVertical?: ValueType</* SpacingEnum | */ true | 'auto' | string>;
-  paddingHorizontal?: ValueType</* SpacingEnum | */ true | 'auto' | string>;
+  padding?: ScaleType;
+  paddingTop?: ScaleType;
+  paddingBottom?: ScaleType;
+  paddingLeft?: ScaleType;
+  paddingRight?: ScaleType;
+  paddingVertical?: ScaleType;
+  paddingHorizontal?: ScaleType;
 
-  p?: ValueType</* SpacingEnum | */ true | 'auto' | string>;
-  pt?: ValueType</* SpacingEnum | */ true | 'auto' | string>;
-  pr?: ValueType</* SpacingEnum | */ true | 'auto' | string>;
-  pb?: ValueType</* SpacingEnum | */ true | 'auto' | string>;
-  pl?: ValueType</* SpacingEnum | */ true | 'auto' | string>;
-  px?: ValueType</* SpacingEnum | */ true | 'auto' | string>;
-  py?: ValueType</* SpacingEnum | */ true | 'auto' | string>;
+  p?: ScaleType;
+  pt?: ScaleType;
+  pr?: ScaleType;
+  pb?: ScaleType;
+  pl?: ScaleType;
+  px?: ScaleType;
+  py?: ScaleType;
 };
 
 const marginConfig: Record<string, ConfigStyle> = {
   margin: {
     property: 'margin',
     scale: 'space',
-    transform: getMargin
-    // defaultScale: defaults.space
+    transform: getMargin,
+    defaultScale: defaultTheme.space
   },
   marginTop: {
     property: 'marginTop',
     scale: 'space',
-    transform: getMargin
-    // defaultScale: defaults.space
+    transform: getMargin,
+    defaultScale: defaultTheme.space
   },
   marginRight: {
     property: 'marginRight',
     scale: 'space',
-    transform: getMargin
-    // defaultScale: defaults.space
+    transform: getMargin,
+    defaultScale: defaultTheme.space
   },
   marginBottom: {
     property: 'marginBottom',
     scale: 'space',
-    transform: getMargin
-    // defaultScale: defaults.space
+    transform: getMargin,
+    defaultScale: defaultTheme.space
   },
   marginLeft: {
     property: 'marginLeft',
     scale: 'space',
-    transform: getMargin
-    // defaultScale: defaults.space
+    transform: getMargin,
+    defaultScale: defaultTheme.space
   },
   marginHorizontal: {
     properties: ['marginLeft', 'marginRight'],
     scale: 'space',
-    transform: getMargin
-    // defaultScale: defaults.space
+    transform: getMargin,
+    defaultScale: defaultTheme.space
   },
   marginVertical: {
     properties: ['marginTop', 'marginBottom'],
     scale: 'space',
-    transform: getMargin
-    // defaultScale: defaults.space
+    transform: getMargin,
+    defaultScale: defaultTheme.space
   }
 };
 
@@ -117,38 +120,38 @@ const systemMargin = system(marginConfig);
 const paddingConfig: Record<string, ConfigStyle> = {
   padding: {
     property: 'padding',
-    scale: 'space'
-    // defaultScale: defaults.space,
+    scale: 'space',
+    defaultScale: defaultTheme.space
   },
   paddingTop: {
     property: 'paddingTop',
-    scale: 'space'
-    // defaultScale: defaults.space,
+    scale: 'space',
+    defaultScale: defaultTheme.space
   },
   paddingRight: {
     property: 'paddingRight',
-    scale: 'space'
-    // defaultScale: defaults.space,
+    scale: 'space',
+    defaultScale: defaultTheme.space
   },
   paddingBottom: {
     property: 'paddingBottom',
-    scale: 'space'
-    // defaultScale: defaults.space,
+    scale: 'space',
+    defaultScale: defaultTheme.space
   },
   paddingLeft: {
     property: 'paddingLeft',
-    scale: 'space'
-    // defaultScale: defaults.space,
+    scale: 'space',
+    defaultScale: defaultTheme.space
   },
   paddingHorizontal: {
     properties: ['paddingLeft', 'paddingRight'],
-    scale: 'space'
-    // defaultScale: defaults.space,
+    scale: 'space',
+    defaultScale: defaultTheme.space
   },
   paddingVertical: {
     properties: ['paddingTop', 'paddingBottom'],
-    scale: 'space'
-    // defaultScale: defaults.space,
+    scale: 'space',
+    defaultScale: defaultTheme.space
   }
 };
 
@@ -167,5 +170,3 @@ export const systemSpacing = compose(systemMargin, systemPadding);
 export const spacingCss = css<SpacingProps>`
   ${systemSpacing}
 `;
-
-// TODO: Add theme spacings

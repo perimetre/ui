@@ -16,5 +16,3 @@ export const systemFlexGrow = system({
 export const flexGrowCss = css<FlexGrowProps>`
   ${systemFlexGrow}
 `;
-
-// TODO: test transform

@@ -30,5 +30,3 @@ export const systemFlex = system({
 export const flexCss = css<FlexProps>`
   ${systemFlex}
 `;
-
-// TODO: test transform

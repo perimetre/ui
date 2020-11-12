@@ -1,11 +1,13 @@
-import { Property } from 'csstype';
 import { css } from 'styled-components';
-import { system, ConfigStyle } from 'styled-system';
+import { ConfigStyle, system } from 'styled-system';
+import { ThemeColorsEnum } from '../Theme/theme';
 import ValueType from './valueType';
 
+type ScaleType = ValueType<ThemeColorsEnum>;
+
 export type BackgroundColorProps = {
-  backgroundColor?: ValueType<Property.BackgroundColor>;
-  bg?: ValueType<Property.BackgroundColor>;
+  backgroundColor?: ScaleType;
+  bg?: ScaleType;
 };
 
 const config: Record<string, ConfigStyle> = {
@@ -25,4 +27,3 @@ export const backgroundColorCss = css<BackgroundColorProps>`
 `;
 
 // TODO: Add hover variant
-// TODO: Add theme colors

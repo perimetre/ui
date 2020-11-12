@@ -27,5 +27,3 @@ export const systemOrder = system({
 export const orderCss = css<OrderProps>`
   ${systemOrder}
 `;
-
-// TODO: test transform

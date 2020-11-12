@@ -8,11 +8,12 @@ export type LineHeightProps = {
 };
 
 export const systemLineHeight = system({
-  lineHeight: true
+  lineHeight: {
+    property: 'lineHeight',
+    scale: 'lineHeights'
+  }
 });
 
 export const lineHeightCss = css<LineHeightProps>`
   ${systemLineHeight}
 `;
-
-// TODO: Add theme spacings
