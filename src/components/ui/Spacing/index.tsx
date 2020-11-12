@@ -1,13 +1,7 @@
-import styled, { css } from 'styled-components';
-import { SpacingProps as SpacingHelperProps, systemSpacing } from '../System/spacing';
+import styled from 'styled-components';
+import { spacingCss } from '../System/spacing';
 
-export type SpacingProps = SpacingHelperProps;
-
-export const spacingCss = css<SpacingProps>`
-  ${systemSpacing}
-`;
-
-const Spacing = styled.div<SpacingProps>`
+const Spacing = styled.div`
   ${spacingCss}
 `;
 

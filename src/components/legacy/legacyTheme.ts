@@ -137,3 +137,11 @@ export type AppTheme = DefaultTheme;
 // ------ !!!!!
 // If you need to add properties to the theme, don't forget to add the types in ./styled-components.d.ts
 // ------ !!!!!
+const defaultTheme: AppTheme = {
+  name: 'default',
+  spacing,
+  screens,
+  colors: {}
+};
+
+export default defaultTheme;

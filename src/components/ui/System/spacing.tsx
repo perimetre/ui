@@ -25,37 +25,37 @@ const getMargin = (n: any, scale?: Scale) => {
 };
 
 export type SpacingProps = {
-  margin?: ValueType</* SpacingEnum | */ true | 'auto'>;
-  marginTop?: ValueType</* SpacingEnum | */ true | 'auto'>;
-  marginBottom?: ValueType</* SpacingEnum | */ true | 'auto'>;
-  marginLeft?: ValueType</* SpacingEnum | */ true | 'auto'>;
-  marginRight?: ValueType</* SpacingEnum | */ true | 'auto'>;
-  marginVertical?: ValueType</* SpacingEnum | */ true | 'auto'>;
-  marginHorizontal?: ValueType</* SpacingEnum | */ true | 'auto'>;
+  margin?: ValueType</* SpacingEnum | */ true | 'auto' | string>;
+  marginTop?: ValueType</* SpacingEnum | */ true | 'auto' | string>;
+  marginBottom?: ValueType</* SpacingEnum | */ true | 'auto' | string>;
+  marginLeft?: ValueType</* SpacingEnum | */ true | 'auto' | string>;
+  marginRight?: ValueType</* SpacingEnum | */ true | 'auto' | string>;
+  marginVertical?: ValueType</* SpacingEnum | */ true | 'auto' | string>;
+  marginHorizontal?: ValueType</* SpacingEnum | */ true | 'auto' | string>;
 
-  m?: ValueType</* SpacingEnum | */ true | 'auto'>;
-  mt?: ValueType</* SpacingEnum | */ true | 'auto'>;
-  mr?: ValueType</* SpacingEnum | */ true | 'auto'>;
-  mb?: ValueType</* SpacingEnum | */ true | 'auto'>;
-  ml?: ValueType</* SpacingEnum | */ true | 'auto'>;
-  mx?: ValueType</* SpacingEnum | */ true | 'auto'>;
-  my?: ValueType</* SpacingEnum | */ true | 'auto'>;
+  m?: ValueType</* SpacingEnum | */ true | 'auto' | string>;
+  mt?: ValueType</* SpacingEnum | */ true | 'auto' | string>;
+  mr?: ValueType</* SpacingEnum | */ true | 'auto' | string>;
+  mb?: ValueType</* SpacingEnum | */ true | 'auto' | string>;
+  ml?: ValueType</* SpacingEnum | */ true | 'auto' | string>;
+  mx?: ValueType</* SpacingEnum | */ true | 'auto' | string>;
+  my?: ValueType</* SpacingEnum | */ true | 'auto' | string>;
 
-  padding?: ValueType</* SpacingEnum | */ true | 'auto'>;
-  paddingTop?: ValueType</* SpacingEnum | */ true | 'auto'>;
-  paddingBottom?: ValueType</* SpacingEnum | */ true | 'auto'>;
-  paddingLeft?: ValueType</* SpacingEnum | */ true | 'auto'>;
-  paddingRight?: ValueType</* SpacingEnum | */ true | 'auto'>;
-  paddingVertical?: ValueType</* SpacingEnum | */ true | 'auto'>;
-  paddingHorizontal?: ValueType</* SpacingEnum | */ true | 'auto'>;
+  padding?: ValueType</* SpacingEnum | */ true | 'auto' | string>;
+  paddingTop?: ValueType</* SpacingEnum | */ true | 'auto' | string>;
+  paddingBottom?: ValueType</* SpacingEnum | */ true | 'auto' | string>;
+  paddingLeft?: ValueType</* SpacingEnum | */ true | 'auto' | string>;
+  paddingRight?: ValueType</* SpacingEnum | */ true | 'auto' | string>;
+  paddingVertical?: ValueType</* SpacingEnum | */ true | 'auto' | string>;
+  paddingHorizontal?: ValueType</* SpacingEnum | */ true | 'auto' | string>;
 
-  p?: ValueType</* SpacingEnum | */ true | 'auto'>;
-  pt?: ValueType</* SpacingEnum | */ true | 'auto'>;
-  pr?: ValueType</* SpacingEnum | */ true | 'auto'>;
-  pb?: ValueType</* SpacingEnum | */ true | 'auto'>;
-  pl?: ValueType</* SpacingEnum | */ true | 'auto'>;
-  px?: ValueType</* SpacingEnum | */ true | 'auto'>;
-  py?: ValueType</* SpacingEnum | */ true | 'auto'>;
+  p?: ValueType</* SpacingEnum | */ true | 'auto' | string>;
+  pt?: ValueType</* SpacingEnum | */ true | 'auto' | string>;
+  pr?: ValueType</* SpacingEnum | */ true | 'auto' | string>;
+  pb?: ValueType</* SpacingEnum | */ true | 'auto' | string>;
+  pl?: ValueType</* SpacingEnum | */ true | 'auto' | string>;
+  px?: ValueType</* SpacingEnum | */ true | 'auto' | string>;
+  py?: ValueType</* SpacingEnum | */ true | 'auto' | string>;
 };
 
 const marginConfig: Record<string, ConfigStyle> = {
