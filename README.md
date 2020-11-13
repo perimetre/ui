@@ -1,46 +1,47 @@
-# Getting Started with Create React App
+# @perimetre/ui
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Our Design System/Component Library inspired by:
 
-## Available Scripts
+- [Tailwindcss.com](https://tailwindcss.com/)
+- [Chakra-ui](https://chakra-ui.com/)
+- [Rebass](https://rebassjs.org/)
+<!-- - [Bulma css](https://bulma.io/)
+- [Ant design](https://ant.design/components/overview/) -->
 
-In the project directory, you can run:
+## Installation
 
-### `yarn start`
+To install, just run
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```bash
+npm i @perimetre/ui
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## How to use
 
-### `yarn test`
+```tsx
+import { Paragraph } from '@perimetre/ui';
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<Paragraph textAlign="center" fontSize="text-base" />;
+```
 
-### `yarn build`
+<!-- TODO: Add theme augmentation, extending the theme -->
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Developing & Contributions
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Make sure you install the local dependencies with:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+npm i
+```
 
-### `yarn eject`
+With that you'll have the available commands:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- `build`: Bundle the package and creates the built version in the `build` folder
+- `start`: Starts the storybook page which you can use to look at and develop new components
+- `test`: Run test suite
+- `upload`: Pushes the package to npm
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## References
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- [Styled System](https://styled-system.com/)
+- [Styled Components](https://styled-components.com/)
