@@ -4,11 +4,11 @@ import { ThemeColorsEnum } from '../Theme/theme';
 import ValueType from './valueType';
 
 export type ColorProps = {
-  color?: ValueType<ThemeColorsEnum>;
+  textColor?: ValueType<ThemeColorsEnum>;
 };
 
 export const systemColor = system({
-  color: {
+  textColor: {
     property: 'color',
     scale: 'colors'
   }

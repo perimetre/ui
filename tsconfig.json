@@ -20,6 +20,7 @@
     "declaration": true,
     "declarationDir": "build",
     "sourceMap": true,
+    "strictBindCallApply": true,
 
     /* Basic Options */
     /* Strict Type-Checking Options */
@@ -41,7 +42,6 @@
   "exclude": [
     "node_modules",
     "dist",
-    "src/**/*.stories.tsx",
     "src/**/*.test.tsx"
   ]
 }

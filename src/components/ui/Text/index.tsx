@@ -1,47 +1,47 @@
 import styled from 'styled-components';
-import { textCss } from '../System/text';
+import { textCss, TextCssProps } from '../System/text';
 
-export default {
-  H1: styled.h1`
-    ${textCss}
-  `,
-  H2: styled.h2`
-    ${textCss}
-  `,
-  H3: styled.h3`
-    ${textCss}
-  `,
-  H4: styled.h4`
-    ${textCss}
-  `,
-  H5: styled.h5`
-    ${textCss}
-  `,
-  H6: styled.h6`
-    ${textCss}
-  `,
-  Paragraph: styled.p`
-    ${textCss}
-  `,
-  Span: styled.span`
-    ${textCss}
-  `,
-  Div: styled.div`
-    ${textCss}
-  `,
-  Link: styled.a`
-    ${textCss}
-  `,
-  List: styled.li`
-    ${textCss}
-  `,
-  Label: styled.label`
-    ${textCss}
-  `,
-  TH: styled.th`
-    ${textCss}
-  `,
-  TD: styled.td`
-    ${textCss}
-  `
-};
+export type TextProps = TextCssProps;
+
+export const H1 = styled.h1<TextProps>`
+  ${textCss}
+`;
+export const H2 = styled.h2<TextProps>`
+  ${textCss}
+`;
+export const H3 = styled.h3<TextProps>`
+  ${textCss}
+`;
+export const H4 = styled.h4<TextProps>`
+  ${textCss}
+`;
+export const H5 = styled.h5<TextProps>`
+  ${textCss}
+`;
+export const H6 = styled.h6<TextProps>`
+  ${textCss}
+`;
+export const Paragraph = styled.p<TextProps>`
+  ${textCss}
+`;
+export const Span = styled.span<TextProps>`
+  ${textCss}
+`;
+export const Div = styled.div<TextProps>`
+  ${textCss}
+`;
+export const Link = styled.a<TextProps>`
+  ${textCss}
+`;
+export const List = styled.li<TextProps>`
+  ${textCss}
+`;
+export const Label = styled.label<TextProps>`
+  ${textCss}
+`;
+export const TH = styled.th<TextProps>`
+  ${textCss}
+`;
+export const TD = styled.td<TextProps>`
+  ${textCss}
+`;

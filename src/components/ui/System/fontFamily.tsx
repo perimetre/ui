@@ -1,10 +1,11 @@
 import { Property } from 'csstype';
 import { css } from 'styled-components';
 import { system } from 'styled-system';
+import { ThemeFontFamiliesEnum } from '../Theme/theme';
 import ValueType from './valueType';
 
 export type FontFamilyProps = {
-  fontFamily?: ValueType<Property.FontFamily>;
+  fontFamily?: ValueType<ThemeFontFamiliesEnum | Property.FontFamily>;
 };
 
 export const systemFontFamily = system({

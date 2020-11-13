@@ -186,6 +186,7 @@ export interface UITheme {
 export type ThemeColorsEnum = keyof NonNullable<UITheme['colors']> | (string & {});
 export type ThemeSpacesEnum = keyof Space | (number & {}) | (string & {});
 export type ThemeFontSizesEnum = keyof FontSizes | (number & {});
+export type ThemeFontFamiliesEnum = string & {};
 
 // ***********
 // ** Values declaration

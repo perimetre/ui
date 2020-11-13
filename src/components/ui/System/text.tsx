@@ -1,7 +1,7 @@
 import { css } from 'styled-components';
 import { compose } from 'styled-system';
 import { BackgroundColorProps, systemBackgroundColor } from './backgroundColor';
-import { ColorProps, systemColor } from './color';
+import { ColorProps, systemColor } from './textColor';
 import { FontFamilyProps, systemFontFamily } from './fontFamily';
 import { FontSizeProps, systemFontSize } from './fontSize';
 import { FontStyleProps, systemFontStyle } from './fontStyle';
