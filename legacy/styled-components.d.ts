@@ -1,6 +1,6 @@
 // import original module declarations
 import 'styled-components';
-import { screens, spacing } from './theme';
+import { screens, spacing } from './legacyTheme';
 
 declare module 'styled-components' {
   // Ref: https://styled-components.com/docs/api#create-a-declarations-file

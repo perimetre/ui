@@ -2,6 +2,12 @@
   "name": "@perimetre/ui",
   "description": "A component library made by @perimetre",
   "version": "0.1.0",
+  "main": "build/index.js",
+  "module": "build/index.es.js",
+  "files": [
+    "build",
+    "README.md"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/perimetre/ui.git"
@@ -10,33 +16,6 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/perimetre/ui/issues"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "prettier": "prettier --write \"{**/*.js,**/*.ts,**/*.tsx}\"",
-    "lint": "eslint . --ext js --ext jsx --ext ts --ext tsx",
-    "lint:fix": "npm run lint -- --fix",
-    "type-check": "tsc --noEmit",
-    "check-commit": "npm run type-check && npm run prettier && npm run lint:fix"
-  },
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
-    "@types/jest": "^26.0.15",
-    "@types/node": "^12.0.0",
-    "@types/react": "^16.9.53",
-    "@types/react-dom": "^16.9.8",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-scripts": "4.0.0",
-    "styled-components": "^5.2.1",
-    "styled-system": "^5.1.5",
-    "typescript": "^4.0.3",
-    "web-vitals": "^0.2.4"
   },
   "eslintConfig": {
     "extends": [
@@ -56,11 +35,41 @@
       "last 1 safari version"
     ]
   },
+  "scripts": {
+    "prebuild": "rm -rf build && npm run check-commit",
+    "build": "rollup -c",
+    "start": "react-scripts start",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "prettier": "prettier --write \"{**/*.js,**/*.ts,**/*.tsx}\"",
+    "lint": "eslint . --ext js --ext jsx --ext ts --ext tsx",
+    "lint:fix": "npm run lint -- --fix",
+    "type-check": "tsc --noEmit",
+    "check-commit": "npm run type-check && npm run prettier && npm run lint:fix",
+    "prepare": "npm run build",
+    "upload": "npm publish --access public"
+  },
+  "dependencies": {},
+  "peerDependencies": {
+    "react": ">=17.0.1",
+    "react-dom": ">=17.0.1",
+    "styled-system": "^5.1.5",
+    "styled-components": "^5.2.1"
+  },
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^11.0.0",
+    "@rollup/plugin-commonjs": "^16.0.0",
+    "@rollup/plugin-node-resolve": "^10.0.0",
+    "@testing-library/jest-dom": "^5.11.5",
+    "@testing-library/react": "^11.1.2",
+    "@testing-library/user-event": "^12.2.2",
     "@types/faker": "^5.1.4",
+    "@types/jest": "^26.0.15",
     "@types/lodash": "^4.14.165",
+    "@types/node": "^14.14.7",
+    "@types/react": "^16.9.56",
+    "@types/react-dom": "^16.9.9",
     "@types/styled-components": "^5.1.4",
     "@types/styled-system": "^5.1.10",
     "@typescript-eslint/eslint-plugin": "^4.7.0",
@@ -73,6 +82,16 @@
     "faker": "^5.1.0",
     "husky": "^4.3.0",
     "lodash": "^4.17.20",
-    "prettier": "^2.1.2"
+    "prettier": "^2.1.2",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-scripts": "^4.0.0",
+    "rollup": "^2.33.1",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-typescript2": "^0.29.0",
+    "styled-components": "^5.2.1",
+    "styled-system": "^5.1.5",
+    "typescript": "^4.0.5",
+    "web-vitals": "^0.2.4"
   }
 }

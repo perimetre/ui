@@ -1,7 +1,7 @@
 import React from 'react';
-import Display from '../../components/ui/Display';
-import Text from '../../components/ui/Text';
-import Spacing from '../../components/ui/Spacing';
+import Display from '../../src/components/ui/Display';
+import Text from '../../src/components/ui/Text';
+import Spacing from '../../src/components/ui/Spacing';
 
 type NewTableProps = {
   rows: {
