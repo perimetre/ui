@@ -27,11 +27,12 @@
     "lint:fix": "npm run lint -- --fix",
     "lint:css": "stylelint \"./src/**/*.+(js|jsx|ts|tsx|css|scss)\"",
     "type-check": "tsc --noEmit",
-    "check-commit": "npm run type-check && npm run prettier && npm run lint:css && npm run lint:fix",
+    "check-commit": "npm run type-check && npm run prettier && npm run lint:css && npm run lint:fix && npm run rollup:build",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "rollup:build": "rollup -c",
-    "rollup:watch": "rollup -c -w"
+    "rollup:watch": "rollup -c -w",
+    "prepare": "npm run rollup:build"
   },
   "peerDependencies": {
     "react": "17.0.1",
