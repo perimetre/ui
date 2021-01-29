@@ -34,7 +34,7 @@ export default [
       postcss({ modules: true }),
       // Copy the original postcss files so the user can choose to use those if wanted
       copy({
-        targets: [{ src: 'src/styles/components*', dest: 'build/postcss' }]
+        targets: [{ src: 'src/styles/components*', dest: 'dist/postcss' }]
       })
     ]
   },
@@ -43,7 +43,7 @@ export default [
     input: 'src/index.css',
     output: [
       {
-        file: 'build/index.css',
+        file: 'dist/index.css',
         format: 'es'
       }
     ],
@@ -66,7 +66,7 @@ export default [
     input: 'src/index.css',
     output: [
       {
-        file: 'build/index.min.css',
+        file: 'dist/index.min.css',
         format: 'es'
       }
     ],

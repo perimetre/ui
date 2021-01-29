@@ -3,7 +3,7 @@
   "compilerOptions": {
     "strict": true,
     "jsx": "react",
-    "outDir": "./build",
+    "outDir": "./dist",
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "declaration": true

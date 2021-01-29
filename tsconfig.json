@@ -20,10 +20,10 @@
     /* ------ Our additional configuration ------ */
 
     /* Basic Options */
-    "removeComments": true /* Do not emit comments to output. */,
-    "outDir": "build" /* Redirect output structure to the directory. */,
+    "removeComments": false /* Do not emit comments to output. Must be false so jsdocs works */,
+    "outDir": "dist" /* Redirect output structure to the directory. */,
     "declaration": true,
-    "declarationDir": "build",
+    "declarationDir": "dist",
 
     /* Strict Type-Checking Options */
     "noImplicitReturns": true,

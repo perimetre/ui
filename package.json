@@ -11,10 +11,10 @@
   "bugs": {
     "url": "https://github.com/perimetre/ui/issues"
   },
-  "main": "build/index.js",
-  "module": "build/index.es.js",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
   "files": [
-    "build"
+    "dist"
   ],
   "scripts": {
     "prestart": "npm run check-commit",

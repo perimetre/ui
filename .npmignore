@@ -13,7 +13,6 @@ stylelint.config.js
 tests
 public
 node_modules
-legacy
 .vscode
 .babelrc
 src
