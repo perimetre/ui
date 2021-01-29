@@ -48,6 +48,12 @@ export default function Home() {
             <p>Instantly deploy your Next.js site to a public URL with Vercel.</p>
           </a>
         </div>
+        <a
+          href="https://tailwindcss.com/docs"
+          className="py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-green-500 hover:bg-green-700"
+        >
+          Check out tailwind css
+        </a>
       </main>
 
       <footer className={styles.footer}>
