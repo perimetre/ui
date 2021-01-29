@@ -21,7 +21,7 @@
 
     /* Basic Options */
     "removeComments": true /* Do not emit comments to output. */,
-    "outDir": "dist" /* Redirect output structure to the directory. */,
+    "outDir": "build" /* Redirect output structure to the directory. */,
     "declaration": true,
     "declarationDir": "build",
 

@@ -1,6 +1,9 @@
 tsconfig.json
+tsconfig.build.json
+postcss.config.js
 rollup.config.js
 commitlint.config.js
+stylelint.config.js
 .prettierrc.js
 .prettierignore
 .huskyrc
@@ -11,5 +14,9 @@ tests
 public
 node_modules
 legacy
-build
 .vscode
+.babelrc
+src
+public
+.storybook
+.next
