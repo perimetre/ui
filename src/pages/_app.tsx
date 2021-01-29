@@ -1,6 +1,6 @@
 import { AppProps } from 'next/dist/next-server/lib/router/router';
 import React from 'react';
-import 'tailwindcss/tailwind.css';
+import '../styles/globals.css';
 
 /**
  * The next app wrapper

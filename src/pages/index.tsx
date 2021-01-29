@@ -3,9 +3,7 @@ import Head from 'next/head';
 import styled from 'styled-components';
 import styles from '../styles/Home.module.css';
 
-const Link = styled.a`
-  line-height: 1;
-`;
+const Link = styled.a``;
 
 /**
  * Index page container
@@ -53,10 +51,7 @@ export default function Home() {
             <p>Instantly deploy your Next.js site to a public URL with Vercel.</p>
           </a>
         </div>
-        <Link
-          href="https://tailwindcss.com/docs"
-          className="py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-green-500 hover:bg-green-700"
-        >
+        <Link href="https://tailwindcss.com/docs" className="btn">
           Check out tailwind css
         </Link>
       </main>
