@@ -11,34 +11,14 @@
   "bugs": {
     "url": "https://github.com/perimetre/ui/issues"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
   "scripts": {
-    
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
   },
   "dependencies": {
-    
-  },
-  "peerDependencies": {
-    
-  },
-  "devDependencies": {
-    
+    "next": "10.0.5",
+    "react": "17.0.1",
+    "react-dom": "17.0.1"
   }
 }
