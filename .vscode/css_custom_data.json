@@ -40,6 +40,16 @@
           "url": "https://tailwindcss.com/docs/functions-and-directives#variants"
         }
       ]
+    },
+    {
+      "name": "@layer",
+      "description": "Use the @layer directive to tell Tailwind which \"bucket\" a set of custom styles belong to. Valid layers are a base, components, and utilities.\nTailwind will automatically move any CSS within a @layer directive to the same place as the corresponding @tailwind rule, so you don't have to worry as much about authoring your CSS in a specific order to avoid specificity issues.\nWrapping any custom CSS in a @layer directive also tells Tailwind to consider those styles for purging when purging that layer.",
+      "references": [
+        {
+          "name": "Tailwind Documentation",
+          "url": "https://tailwindcss.com/docs/functions-and-directives#layer"
+        }
+      ]
     }
   ]
 }
