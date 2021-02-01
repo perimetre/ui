@@ -1,9 +1,11 @@
 module.exports = {
   plugins: {
-    'postcss-import': {},
+    'postcss-import': {}, // Import must come before tailwind
     tailwindcss: {},
-    autoprefixer: {},
+    // Other plugins come between tailwind and autoprefixer
+    'postcss-nested': {},
     'postcss-combine-media-query': {},
-    'postcss-combine-duplicated-selectors': {}
+    'postcss-combine-duplicated-selectors': {},
+    autoprefixer: {}
   }
 };
