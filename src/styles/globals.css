@@ -1,7 +1,10 @@
+@import './font.css';
+
 /* https://tailwindcss.com/docs/using-with-preprocessors#build-time-imports */
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
 @import '../index.css';
 
 /* Next.js default css */

@@ -48,6 +48,7 @@ module.exports = {
     ],
     'jsdoc/require-description': 'warn',
     'jsdoc/require-returns-type': 'off',
+    'jsdoc/require-returns': 'off',
     'jsdoc/require-param-type': 'off',
     'import/no-default-export': ['error'] // DO NOT REMOVE - Storybook docgen requires all components to be named. Or else its properties won't show up. It's also a good practice
   },
