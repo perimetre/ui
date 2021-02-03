@@ -9,5 +9,5 @@
     "declaration": true
   },
   "include": ["src/**/*"],
-  "exclude": ["dist", "node_modules", ".next", "src/stories/**/*", "src/pages/**/*"]
+  "exclude": ["dist", "node_modules", ".next", "src/stories/**/*", "src/pages/**/*", "**/*stories*"]
 }

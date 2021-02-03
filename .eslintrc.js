@@ -34,7 +34,7 @@ module.exports = {
       }
     ],
     'jsdoc/require-jsdoc': [
-      2,
+      'warn',
       {
         require: {
           ArrowFunctionExpression: true,
@@ -46,11 +46,25 @@ module.exports = {
         }
       }
     ],
-    'jsdoc/require-description': [2],
+    'jsdoc/require-description': 'warn',
     'jsdoc/require-returns-type': 'off',
     'jsdoc/require-param-type': 'off',
     'import/no-default-export': ['error'] // DO NOT REMOVE - Storybook docgen requires all components to be named. Or else its properties won't show up. It's also a good practice
   },
+  overrides: [
+    {
+      files: ['*.stories.*'],
+      rules: {
+        'import/no-default-export': 'off' // Override setting because next.js REQUIRES pages to be default exported
+      }
+    },
+    {
+      files: ['*.js'],
+      rules: {
+        '@typescript-eslint/no-var-requires': 'off' // Disable "no requires" for js files
+      }
+    }
+  ],
   settings: {
     react: {
       version: 'detect' // Tells eslint-plugin-react to automatically detect the version of React to use

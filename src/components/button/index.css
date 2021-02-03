@@ -1,0 +1,87 @@
+@layer components {
+  /* Base btn styles */
+  .pui-btn {
+    /* Add padding 6 */
+    /* Allows for colors to transition(this also adds a default transition duration that is used in the button variants) */
+    /* Allows for transformation(will be used on click) */
+    @apply px-6 transition-colors transform-gpu;
+
+    /* Default border radios */
+    border-radius: 0.25rem;
+
+    &:focus {
+      /* Removes the outline, bad for acessibility but if we add it it might look weird
+      we need to think on adding it back after everything is using the new ui */
+      outline: 0;
+    }
+
+    /* If clicking */
+    &:active {
+      /* Remove transition effect if there's any transition transform(only on active) */
+      @apply transition-none;
+      /* Moves the button down a little bit to give feedback */
+      --tw-translate-y: 0.125rem;
+    }
+  }
+
+  /* The default variant */
+  .pui-btn-default {
+    /* The text color */
+    /* Adds a border(even though the border is the same color as the background, we need it so the buttons are better aligned against the bordered variant) */
+    @apply text-paragraph-0 border-2;
+
+    /* Sets the colors */
+    border-color: var(--pui-placeholder-color, var(--pui-primary));
+    background-color: var(--pui-placeholder-color, var(--pui-primary));
+
+    /* On hover */
+    &:hover {
+      /* Add a transition for the filter property only on hover, and adds a color filter */
+      transition-property: filter;
+      filter: brightness(0.85);
+    }
+  }
+
+  /* The bordered variant */
+  .pui-btn-bordered {
+    /* Adds a border */
+    @apply border-2;
+
+    /* Remove the background since this is an outline button */
+    background-color: transparent;
+
+    /* Sets the colors */
+    border-color: var(--pui-placeholder-color, var(--pui-primary));
+    color: var(--pui-placeholder-color, var(--pui-primary));
+
+    /* On hover */
+    &:hover {
+      /* Sets the text color */
+      @apply text-paragraph-0;
+
+      /* Display the background */
+      background-color: var(--pui-placeholder-color, var(--pui-primary));
+    }
+  }
+
+  .pui-btn-small {
+    /* Height = 12*2 = 24px = 1.5rem */
+    @apply pui-btn h-6;
+  }
+
+  .pui-btn-medium {
+    /* Height = 12*3 = 36px = 2.25rem */
+    @apply pui-btn h-9;
+  }
+
+  .pui-btn-large {
+    /* Height = 12*4 = 48px = 3rem */
+    @apply pui-btn h-12;
+  }
+
+  .pui-btn-xlarge {
+    @apply pui-btn;
+    /* Height = 12*5 = 60px = 3.75rem */
+    height: 3.75rem;
+  }
+}

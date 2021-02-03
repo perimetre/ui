@@ -51,7 +51,7 @@ export default function Home() {
             <p>Instantly deploy your Next.js site to a public URL with Vercel.</p>
           </a>
         </div>
-        <Link href="https://tailwindcss.com/docs" className="btn">
+        <Link href="https://tailwindcss.com/docs" className="pui-btn pui-btn-default pui-btn-secondary border-solid">
           Check out tailwind css
         </Link>
       </main>

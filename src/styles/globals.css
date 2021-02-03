@@ -1,19 +1,10 @@
 /* https://tailwindcss.com/docs/using-with-preprocessors#build-time-imports */
 @import 'tailwindcss/base';
-
 @import 'tailwindcss/components';
-@import './components.css';
-
 @import 'tailwindcss/utilities';
+@import '../index.css';
 
 /* Next.js default css */
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
-    Helvetica Neue, sans-serif;
-}
 
 a {
   color: inherit;

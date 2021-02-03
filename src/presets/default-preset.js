@@ -4,6 +4,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        initial: 'initial', // Add a reset color
         primary: 'var(--pui-primary, #00BF6F)',
         secondary: 'var(--pui-secondary, #2A3C47)',
         paragraph: {
@@ -15,5 +16,5 @@ module.exports = {
       }
     }
   },
-  plugins: [require('@tailwindcss/line-clamp')]
+  plugins: [require('@tailwindcss/line-clamp'), require('../plugins/varPlaceholderColorPlugin')]
 };

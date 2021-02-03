@@ -25,17 +25,16 @@ export default [
       }
     ],
     plugins: [
+      // Copy the original postcss files so the user can choose to use those if wanted
+      copy({
+        targets: [{ src: ['src/index.css', 'src/components*', '!**/*.{tsx, ts, jsx, js}'], dest: 'dist/postcss' }]
+      }),
       peerDepsExternal(),
       resolve(),
       commonjs(),
       // Utilize a specific tsconfig only for building
       typescript({ clean: true, useTsconfigDeclarationDir: true, tsconfig: 'tsconfig.build.json' }),
-      // Modules are turned on so if a component imports the css. It wil have a unique ID so it doesn't conflict with the general css
-      postcss({ modules: true }),
-      // Copy the original postcss files so the user can choose to use those if wanted
-      copy({
-        targets: [{ src: 'src/styles/components*', dest: 'dist/postcss' }]
-      })
+      postcss()
     ]
   },
   // Output a general non minified index.css
