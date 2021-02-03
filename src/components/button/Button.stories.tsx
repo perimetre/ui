@@ -32,18 +32,28 @@ export default {
         type: 'select',
         options: colorOptions
       }
-    }
+    },
+    content: {
+      defaultValue: 'Button',
+      control: {
+        type: 'text'
+      }
+    },
+    onClick: { action: 'onClick' }
   }
 } as Meta;
 
 /**
- * @param root0
- * @param root0.size
- * @param root0.variant
- * @param root0.border
- * @param root0.color
+ * A story that displays a button example
+ *
+ * @param props the story props
+ * @param props.size the size property set on controls
+ * @param props.variant  the variant property set on controls
+ * @param props.border  the border property set on controls
+ * @param props.color  the color property set on controls
+ * @param props.content  the content property set on controls
  */
-const Template: Story = ({ size, variant, border, color, ...props }) => (
+const Template: Story = ({ size, variant, border, color, content, ...props }) => (
   <button
     type="button"
     {...props}
@@ -55,50 +65,35 @@ const Template: Story = ({ size, variant, border, color, ...props }) => (
       ...(border && border.length > 0 ? [`border-${border}`] : [])
     ].join(' ')}
   >
-    Button
+    {content}
   </button>
 );
 
 export const Primary = Template.bind({});
-// Primary.args = {
-//   // variant: 'default',
-//   // className: 'pui-btn-primary'
-// };
 
-// export const Secondary = Template.bind({});
-// Secondary.args = {
-//   variant: 'default',
-//   className: 'pui-btn-primary border-solid'
-// };
+export const Secondary = Template.bind({});
+Secondary.args = {
+  color: 'secondary'
+};
 
-// export const OutlinePrimary = Template.bind({});
-// OutlinePrimary.args = {
-//   variant: 'bordered',
-//   className: 'pui-btn-primary border-solid'
-// };
+export const BorderedPrimary = Template.bind({});
+BorderedPrimary.args = {
+  variant: 'bordered'
+};
 
-// export const OutlineSecondary = Template.bind({});
-// OutlineSecondary.args = {
-//   variant: 'bordered',
-//   className: 'pui-btn-secondary border-solid'
-// };
+export const BorderedSecondary = Template.bind({});
+BorderedSecondary.args = {
+  variant: 'bordered',
+  color: 'secondary'
+};
 
-// export const DashedPrimary = Template.bind({});
-// DashedPrimary.args = {
-//   variant: 'bordered',
-//   className: 'pui-btn-primary border-dashed'
-// };
+export const Dashed = Template.bind({});
+Dashed.args = {
+  variant: 'bordered',
+  border: 'dashed'
+};
 
-// export const Large = Template.bind({});
-// Large.args = {
-//   size: 'large',
-//   variant: 'default',
-//   className: 'pui-button-primary'
-// };
-
-// export const Small = Template.bind({});
-// Small.args = {
-//   size: 'small',
-//   variant: 'default',
-//   className: 'pui-button-primary'
-// };
+export const Large = Template.bind({});
+Large.args = {
+  size: 'large'
+};
