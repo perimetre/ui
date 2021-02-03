@@ -4,26 +4,13 @@ import { Story, Meta } from '@storybook/react/types-6-0';
 import { colorOptions } from '../../prebuiltTailwindTheme';
 
 export default {
-  title: 'Components/Button',
+  title: 'Components/Chip',
   argTypes: {
-    size: {
-      defaultValue: 'medium',
-      control: {
-        type: 'radio',
-        options: ['small', 'medium', 'large', 'xlarge']
-      }
-    },
     variant: {
       defaultValue: 'default',
       control: {
         type: 'radio',
         options: ['default', 'bordered']
-      }
-    },
-    border: {
-      control: {
-        type: 'check',
-        options: ['dashed', 'dotted', 'double', 'none']
       }
     },
     color: {
@@ -33,14 +20,14 @@ export default {
         options: colorOptions
       }
     },
-    chip: {
-      defaultValue: false,
+    text: {
       control: {
-        type: 'boolean'
+        type: 'select',
+        options: colorOptions
       }
     },
     content: {
-      defaultValue: 'Button',
+      defaultValue: 'Chip content',
       control: {
         type: 'text'
       }
@@ -49,8 +36,7 @@ export default {
       control: {
         type: 'text'
       }
-    },
-    onClick: { action: 'onClick' }
+    }
   }
 } as Meta;
 
@@ -58,32 +44,26 @@ export default {
  * A story that displays a button example
  *
  * @param props the story props
- * @param props.size the size property set on controls
  * @param props.variant the variant property set on controls
  * @param props.border the border property set on controls
  * @param props.color the color property set on controls
  * @param props.content the content property set on controls
- * @param props.chip the chip property set on controls
+ * @param props.text the text property set on controls
  * @param props.className the component classes
  */
-const Template: Story = ({ size, variant, border, color, content, chip, className, ...props }) => (
-  <button
-    type="button"
+const Template: Story = ({ variant, border, color, content, text, className, ...props }) => (
+  <span
     {...props}
     className={[
-      `pui-btn-${size}`,
-      `pui-btn-${variant}`,
+      `pui-chip-${variant}`,
       `pui-color-${color}`,
-      // If any of the border propery is set, add the tailwind border class
       ...(border && border.length > 0 ? [`border-${border}`] : []),
-      // If this btn is also a chip, add the chip clas
-      ...(chip ? ['pui-chip-btn'] : []),
-      // Add remaining classes
+      ...(text && text.length > 0 ? [`text-${text}`] : []),
       ...(className && className.length > 0 ? [className] : [])
     ].join(' ')}
   >
     {content}
-  </button>
+  </span>
 );
 
 export const Primary = Template.bind({});
@@ -98,24 +78,14 @@ BorderedPrimary.args = {
   variant: 'bordered'
 };
 
-export const BorderedSecondary = Template.bind({});
-BorderedSecondary.args = {
-  variant: 'bordered',
-  color: 'secondary'
-};
-
 export const Dashed = Template.bind({});
 Dashed.args = {
   variant: 'bordered',
   border: 'dashed'
 };
 
-export const Large = Template.bind({});
-Large.args = {
-  size: 'large'
-};
-
-export const Chip = Template.bind({});
-Chip.args = {
-  chip: true
+export const ColoredText = Template.bind({});
+ColoredText.args = {
+  color: 'gray-200',
+  text: 'paragraph-500'
 };

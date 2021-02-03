@@ -1,13 +1,14 @@
 @layer components {
   /* Base btn styles */
   .pui-btn {
+    /* Adds a border(even though the border is the same color as the background, we need it so the buttons are better aligned against the bordered variant) */
     /* Add padding 6 */
     /* Allows for colors to transition(this also adds a default transition duration that is used in the button variants) */
     /* Allows for transformation(will be used on click) */
-    @apply px-6 transition-colors transform-gpu;
+    @apply border-2 px-6 transition-colors transform-gpu;
 
     /* Default border radios */
-    border-radius: 0.25rem;
+    border-radius: var(--pui-default-radius, 0.25rem);
 
     &:focus {
       /* Removes the outline, bad for acessibility but if we add it it might look weird
@@ -27,26 +28,32 @@
   /* The default variant */
   .pui-btn-default {
     /* The text color */
-    /* Adds a border(even though the border is the same color as the background, we need it so the buttons are better aligned against the bordered variant) */
-    @apply text-paragraph-0 border-2;
+    @apply text-paragraph-0;
 
     /* Sets the colors */
     border-color: var(--pui-placeholder-color, var(--pui-primary));
     background-color: var(--pui-placeholder-color, var(--pui-primary));
 
-    /* On hover */
-    &:hover {
-      /* Add a transition for the filter property only on hover, and adds a color filter */
-      transition-property: filter;
-      filter: brightness(0.85);
+    &:not(.pui-chip-btn) {
+      /* On hover */
+      &:hover {
+        /* Add a transition for the filter property only on hover, and adds a color filter */
+        transition-property: filter;
+        filter: brightness(0.85);
+      }
+    }
+
+    &.pui-chip-btn {
+      /* On hover */
+      &:hover {
+        background-color: var(--pui-paragraph-0, #fff);
+        color: var(--pui-placeholder-color, var(--pui-primary));
+      }
     }
   }
 
   /* The bordered variant */
   .pui-btn-bordered {
-    /* Adds a border */
-    @apply border-2;
-
     /* Remove the background since this is an outline button */
     background-color: transparent;
 
