@@ -14,3 +14,19 @@ module.exports = Object.assign(fullConfig, { flattenedColors: flattenColorPalett
 `;
 
 export const colorOptions = Object.entries(prebuildTailwindTheme.flattenedColors).map((x) => x[0]);
+
+// Ref: https://tailwindcss.com/docs/font-weight
+export const weightOptions = [
+  'thin',
+  'extralight',
+  'light',
+  'normal',
+  'medium',
+  'semibold',
+  'bold',
+  'extrabold',
+  'black'
+];
+
+// Ref: https://tailwindcss.com/docs/border-style
+export const borderStyleOptions = ['dashed', 'dotted', 'double', 'none'];

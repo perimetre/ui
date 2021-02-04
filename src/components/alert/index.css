@@ -1,0 +1,8 @@
+@layer components {
+  .pui-alert {
+    /* Alert has some padding */
+    /* Adds default perimetre border radius */
+    @apply p-6 pui-border-radius text-paragraph-0;
+    background-color: var(--pui-placeholder-color, var(--pui-primary));
+  }
+}

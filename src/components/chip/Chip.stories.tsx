@@ -1,7 +1,7 @@
 import React from 'react';
 // also exported from '@storybook/react' if you can deal with breaking changes in 6.1
 import { Story, Meta } from '@storybook/react/types-6-0';
-import { colorOptions } from '../../prebuiltTailwindTheme';
+import { borderStyleOptions, colorOptions } from '../../prebuiltTailwindTheme';
 
 export default {
   title: 'Components/Chip',
@@ -11,6 +11,12 @@ export default {
       control: {
         type: 'radio',
         options: ['default', 'bordered']
+      }
+    },
+    border: {
+      control: {
+        type: 'check',
+        options: borderStyleOptions
       }
     },
     color: {
@@ -41,7 +47,7 @@ export default {
 } as Meta;
 
 /**
- * A story that displays a button example
+ * A story that displays a chip example
  *
  * @param props the story props
  * @param props.variant the variant property set on controls
@@ -57,8 +63,11 @@ const Template: Story = ({ variant, border, color, content, text, className, ...
     className={[
       `pui-chip-${variant}`,
       `pui-color-${color}`,
+      // If any of the border propery is set, add the tailwind border class
       ...(border && border.length > 0 ? [`border-${border}`] : []),
+      // If the text property is set, change the text color
       ...(text && text.length > 0 ? [`text-${text}`] : []),
+      // Add remaining classes
       ...(className && className.length > 0 ? [className] : [])
     ].join(' ')}
   >
@@ -89,3 +98,5 @@ ColoredText.args = {
   color: 'gray-200',
   text: 'paragraph-500'
 };
+
+// TODO: Add "With icon"

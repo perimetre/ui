@@ -5,10 +5,8 @@
     /* Add padding 6 */
     /* Allows for colors to transition(this also adds a default transition duration that is used in the button variants) */
     /* Allows for transformation(will be used on click) */
-    @apply border-2 px-6 transition-colors transform-gpu;
-
-    /* Default border radios */
-    border-radius: var(--pui-default-radius, 0.25rem);
+    /* Adds default perimetre border radius */
+    @apply border-2 px-6 transition-colors transform-gpu pui-border-radius;
 
     &:focus {
       /* Removes the outline, bad for acessibility but if we add it it might look weird

@@ -1,7 +1,7 @@
 import React from 'react';
 // also exported from '@storybook/react' if you can deal with breaking changes in 6.1
 import { Story, Meta } from '@storybook/react/types-6-0';
-import { colorOptions } from '../../prebuiltTailwindTheme';
+import { borderStyleOptions, colorOptions } from '../../prebuiltTailwindTheme';
 
 export default {
   title: 'Components/Button',
@@ -23,7 +23,7 @@ export default {
     border: {
       control: {
         type: 'check',
-        options: ['dashed', 'dotted', 'double', 'none']
+        options: borderStyleOptions
       }
     },
     color: {
@@ -119,3 +119,5 @@ export const Chip = Template.bind({});
 Chip.args = {
   chip: true
 };
+
+// TODO: Add "With icon"
