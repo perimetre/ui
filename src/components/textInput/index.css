@@ -9,8 +9,8 @@
     /* Uses a light font weight */
     @apply w-full pui-font-family p-3 text-pui-paragraph-900 transition-colors font-light;
 
-    /* Reset tailwind's preflight height */
-    line-height: normal;
+    /* The current font-family is not ideal for web so its line heights needs to be higher or else the "g" gets cut */
+    line-height: 1.25;
 
     &:focus {
       /* Removes the outline, bad for acessibility but if we add it it might look weird,
