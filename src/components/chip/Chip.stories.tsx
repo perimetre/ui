@@ -79,7 +79,7 @@ export const Primary = Template.bind({});
 
 export const Secondary = Template.bind({});
 Secondary.args = {
-  color: 'secondary'
+  color: 'pui-secondary'
 };
 
 export const BorderedPrimary = Template.bind({});
@@ -96,7 +96,7 @@ Dashed.args = {
 export const ColoredText = Template.bind({});
 ColoredText.args = {
   color: 'gray-200',
-  text: 'paragraph-500'
+  text: 'pui-paragraph-500'
 };
 
 // TODO: Add "With icon"

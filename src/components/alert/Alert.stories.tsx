@@ -22,7 +22,7 @@ export default {
     weight: {
       control: {
         defaultValue: 'normal',
-        type: 'radio',
+        type: 'select',
         options: weightOptions
       }
     },
@@ -73,12 +73,12 @@ export const Colored = Template.bind({});
 // "Error" is a javascript keyword :(
 export const Errored = Template.bind({});
 Errored.args = {
-  color: 'red-500'
+  color: 'pui-error'
 };
 
 export const Success = Template.bind({});
 Success.args = {
-  color: 'green-400'
+  color: 'pui-success'
 };
 
 // TODO: Add "With icon", with "close"

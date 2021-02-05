@@ -46,5 +46,5 @@
     "sourceMap": true /* Generates corresponding '.map' file. */
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["dist", "node_modules", ".next"]
+  "exclude": ["dist", "node_modules", ".next", "storybook-static"]
 }

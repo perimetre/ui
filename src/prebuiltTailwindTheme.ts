@@ -30,3 +30,21 @@ export const weightOptions = [
 
 // Ref: https://tailwindcss.com/docs/border-style
 export const borderStyleOptions = ['dashed', 'dotted', 'double', 'none'];
+
+// Ref: https://tailwindcss.com/docs/font-size
+export const fontSizeOptions = [
+  'xs',
+  'sm',
+  'base',
+  'none',
+  'lg',
+  'xl',
+  '2xl',
+  '3xl',
+  '4xl',
+  '5xl',
+  '6xl',
+  '7xl',
+  '8xl',
+  '9xl'
+];

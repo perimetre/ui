@@ -21,3 +21,4 @@ public
 .next
 .git
 next-env.d.ts
+storybook-static

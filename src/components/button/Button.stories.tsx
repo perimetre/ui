@@ -90,7 +90,7 @@ export const Primary = Template.bind({});
 
 export const Secondary = Template.bind({});
 Secondary.args = {
-  color: 'secondary'
+  color: 'pui-secondary'
 };
 
 export const BorderedPrimary = Template.bind({});
@@ -101,7 +101,7 @@ BorderedPrimary.args = {
 export const BorderedSecondary = Template.bind({});
 BorderedSecondary.args = {
   variant: 'bordered',
-  color: 'secondary'
+  color: 'pui-secondary'
 };
 
 export const Dashed = Template.bind({});

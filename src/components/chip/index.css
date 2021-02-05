@@ -2,9 +2,10 @@
   .pui-chip {
     /* Make it rounded */
     /* Adds a border(even though the border is the same color as the background, we need it so the buttons are better aligned against the bordered variant) */
+    /* Adds the default border style */
     /* Add the chip padding */
     /* !!! If changing this style, make sure to test it with the pui-btn too !!! */
-    @apply rounded-3xl border-2 px-4 py-1;
+    @apply rounded-3xl border-2 border-solid px-4 py-1;
     text-align: center;
   }
 
@@ -21,23 +22,16 @@
   /* The default variant */
   .pui-chip-default {
     /* The text color */
-    @apply pui-chip text-paragraph-0;
-
-    /* Sets the colors */
-    border-color: var(--pui-placeholder-color, var(--pui-primary));
-    background-color: var(--pui-placeholder-color, var(--pui-primary));
+    /* The background expects a placeholder color */
+    /* The border expects a placeholder color */
+    @apply pui-chip text-pui-paragraph-0 bg-pui-placeholder-color border-pui-placeholder-color;
   }
 
   /* The bordered variant */
   .pui-chip-bordered {
-    /* Adds a border */
-    @apply pui-chip border-solid;
-
     /* Remove the background since this is an outline button */
-    background-color: transparent;
-
-    /* Sets the colors */
-    border-color: var(--pui-placeholder-color, var(--pui-primary));
-    color: var(--pui-placeholder-color, var(--pui-primary));
+    /* The border expects a placeholder color */
+    /* The text expects a placeholder color */
+    @apply pui-chip bg-transparent border-pui-placeholder-color text-pui-placeholder-color;
   }
 }

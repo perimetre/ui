@@ -2,7 +2,8 @@
   .pui-alert {
     /* Alert has some padding */
     /* Adds default perimetre border radius */
-    @apply p-6 pui-border-radius text-paragraph-0;
-    background-color: var(--pui-placeholder-color, var(--pui-primary));
+    /* Adds default text color in uneven backgrounds */
+    /* Adds the expected placeholder color for the bg */
+    @apply p-6 pui-border-radius text-pui-paragraph-0 bg-pui-placeholder-color;
   }
 }

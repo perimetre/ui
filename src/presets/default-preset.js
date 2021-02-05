@@ -4,15 +4,24 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        initial: 'initial', // Add a reset color
-        primary: 'var(--pui-primary, #00BF6F)',
-        secondary: 'var(--pui-secondary, #2A3C47)',
-        paragraph: {
+        // Theme colors:
+        'pui-primary': 'var(--pui-primary, #00BF6F)',
+        'pui-secondary': 'var(--pui-secondary, #2A3C47)',
+        'pui-paragraph': {
           0: 'var(--pui-paragraph-0, #fff)',
           300: 'var(--pui-paragraph-300, #ABABAB)',
           500: 'var(--pui-paragraph-500, #666666)',
           900: 'var(--pui-paragraph-900, #333333)'
-        }
+        },
+        // --------------- Colors under this are not theme related, and only here so tailwind can generate helpers for them
+        // Add a reset color
+        'pui-initial': 'initial',
+        // Adds a "placeholder" color option so it can be replaced
+        'pui-placeholder-color': 'var(--pui-placeholder-color, var(--pui-primary, #00BF6F))',
+        // #EF4444 = Tailwind's red-500
+        'pui-error': 'var(--pui-error-color, #EF4444)',
+        // #EF4444 = Tailwind's green-400
+        'pui-success': 'var(--pui-success-color, #34D399)'
       }
     }
   },
