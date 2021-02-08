@@ -38,7 +38,7 @@ const Template: Story = ({ variant, content, className, ...props }) => (
   <div
     {...props}
     className={[
-      `pui-animation-${variant}`,
+      `pui-animate-${variant}`,
       // Add remaining classes
       ...(className && className.length > 0 ? [className] : [])
     ].join(' ')}
