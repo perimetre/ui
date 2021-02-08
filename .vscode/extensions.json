@@ -4,7 +4,11 @@
 
   // List of extensions which should be recommended for users of this workspace.
   "recommendations": [
+    // Tailwind autocomplete
     "bradlc.vscode-tailwindcss",
+    // Normal css autocomplete
+    "zignd.html-css-class-completion",
+    // Linters
     "stylelint.vscode-stylelint",
     "esbenp.prettier-vscode",
     "dbaeumer.vscode-eslint"
