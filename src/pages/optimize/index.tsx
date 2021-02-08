@@ -36,7 +36,7 @@ const CssIconDisplay = styled.div<{ height?: string; width: string; uri?: string
     width: ${(props) => props.width};
 
     background-color: black;
-    /* If updating the icon, refer to wiki: SVGs, to learn now to generate these */
+    /* If updating the icon, use the optimize page to generate a new string */
     mask-image: ${(props) => props.uri};
   }
 `;

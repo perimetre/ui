@@ -1,0 +1,168 @@
+@layer components {
+  /* Base styling for both checkbox and radio */
+  .pui-check-radio-base {
+    /* Part of this css is inherited from tailwindcss forms plugin
+       Ref: https://github.com/tailwindlabs/tailwindcss-custom-forms/blob/master/src/defaultOptions.js#L118 */
+
+    /* Remove any platform-specific styling */
+    /* Makes it inline */
+    /* Aligns it on middle */
+    /* Don't allow selection */
+    /* Adds pointer cursor */
+    /* Don't allow it to shrink */
+    /* Adds a white background */
+    /* Adds a gray border */
+    /* Allow for color transition */
+    @apply appearance-none inline-block align-middle select-none cursor-pointer flex-shrink-0 bg-white border-gray-400 transition-colors;
+
+    /* Don't allow the browser to do any color adjustments */
+    color-adjust: exact;
+
+    /* The background origin should consider the entire box */
+    background-origin: border-box;
+
+    /* On focus */
+    &:focus {
+      /* Removes the outline, bad for acessibility but if we add it it might look weird,
+      we need to think on adding it back after everything is using the new ui */
+      outline: 0;
+    }
+
+    /* On hover */
+    &:hover {
+      /* Adds a small hover background effect */
+      @apply bg-gray-100;
+    }
+
+    &:disabled {
+      /* When disabled, add a lighter border */
+      /* When disabled, add a small background effect */
+      @apply border-gray-300 bg-gray-100;
+    }
+
+    /* On checked */
+    &:checked,
+    /* If checkbox, on indeterminate */
+    &[type='checkbox']:indeterminate {
+      /* The border follows the placeholder color */
+      @apply border-pui-placeholder-color;
+
+      /* Adds a container inside the element */
+      &::after {
+        /* By setting the bg color, the color of the icon itself is set */
+        @apply bg-pui-placeholder-color;
+
+        /* Displays the after pseudoelement */
+        content: '';
+
+        /* It should take the parent's size */
+        width: 100%;
+        height: 100%;
+        display: block;
+
+        /* Position the mask */
+        mask-repeat: no-repeat;
+        mask-position: center;
+      }
+    }
+  }
+
+  /* On a checkbox */
+  .pui-checkbox {
+    /* Apply the base styling */
+    /* Apply the checkbox radius */
+    @apply pui-check-radio-base pui-border-radius;
+
+    /* On checked */
+    &:checked {
+      /* Adds a container inside the element */
+      &::after {
+        /* The icon should have 75% of the overall size */
+        mask-size: 75% 75%;
+        /* Adds the icon */
+        /* If updating the icon, use the optimize page to generate a new string */
+        mask-image: url('data:image/svg+xml,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20fill%3D%22%23fff%22%20d%3D%22M5.852%2011.601L1.625%208.22.375%209.781l5.773%204.618%209.626-11.766-1.548-1.266z%22%20fill-rule%3D%22evenodd%22%2F%3E%3C%2Fsvg%3E');
+      }
+    }
+
+    /* On indeterminate */
+    &:indeterminate {
+      /* Adds a container inside the element */
+      &::after {
+        /* The icon should have 100% of the overall size */
+        mask-size: 100% 100%;
+        /* Adds the icon */
+        /* If updating the icon, use the optimize page to generate a new string */
+        mask-image: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20fill%3D%22none%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20stroke%3D%22%23fff%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-width%3D%222%22%20d%3D%22M4%208h8%22%20fill%3D%22%23fff%22%2F%3E%3C%2Fsvg%3E');
+      }
+    }
+  }
+
+  .pui-radio {
+    /* Apply the base styling */
+    @apply pui-check-radio-base;
+
+    /* Apply the radio radius */
+    border-radius: 100%;
+
+    /* On checked */
+    &:checked {
+      /* Adds a container inside the element */
+      &::after {
+        /* The icon should have 100% of the overall size */
+        mask-size: 100% 100%;
+        /* Adds the icon */
+        /* If updating the icon, use the optimize page to generate a new string */
+        mask-image: url('data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2016%2016%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Ccircle%20cx%3D%228%22%20cy%3D%228%22%20r%3D%223%22%2F%3E%3C%2Fsvg%3E');
+      }
+    }
+  }
+
+  /* Define a small styling */
+  .pui-check-radio-small {
+    @apply h-4 w-4 border;
+  }
+
+  /* Define a medium styling */
+  .pui-check-radio-medium {
+    @apply h-5 w-5 border-2;
+  }
+
+  /* Define a large styling */
+  .pui-check-radio-large {
+    @apply h-6 w-6 border-2;
+  }
+
+  /* Style the checkbox label */
+  .pui-checkbox-label,
+  .pui-radio-label {
+    /* Adds pointer cursor */
+    /* Don't allow selection */
+    /* Make it flex */
+    /* Align everything vertically */
+    @apply cursor-pointer select-none flex items-center;
+
+    /* The input inside the label */
+    input {
+      /* If the input is a checkbox */
+      &[type='checkbox'] {
+        /* Apply the base checkbox styling */
+        @apply pui-checkbox;
+      }
+
+      /* If the input is a radio */
+      &[type='radio'] {
+        /* Apply the base radio styling */
+        @apply pui-radio;
+      }
+    }
+
+    /* The label text wraper */
+    span {
+      /* Adds a margin left */
+      /* Its color should use the 900 shade */
+      /* Adds a little bit of letter spacing(just like text input label) */
+      @apply ml-2 text-pui-paragraph-900 tracking-wide;
+    }
+  }
+}
