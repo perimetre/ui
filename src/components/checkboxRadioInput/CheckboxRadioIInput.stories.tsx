@@ -45,7 +45,10 @@ export default {
       control: {
         type: 'text'
       }
-    }
+    },
+    onChange: { action: 'onChange' },
+    onBlur: { action: 'onBlur' },
+    onFocus: { action: 'onFocus' }
   }
 } as Meta;
 

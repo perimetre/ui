@@ -3,6 +3,19 @@ module.exports = {
   // Default theme: https://github.com/tailwindlabs/tailwindcss/blob/master/stubs/defaultConfig.stub.js#L7
   theme: {
     extend: {
+      keyframes: {
+        fadeInto: {
+          to: {
+            transform: 'translateY(0)',
+            opacity: '1'
+          }
+        },
+        fadeIn: {
+          to: {
+            opacity: '1'
+          }
+        }
+      },
       colors: {
         // Theme colors:
         'pui-primary': 'var(--pui-primary, #00BF6F)',
