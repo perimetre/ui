@@ -14,7 +14,7 @@ export default {
       }
     },
     color: {
-      defaultValue: 'primary',
+      defaultValue: 'pui-primary',
       control: {
         type: 'select',
         options: colorOptions
@@ -40,7 +40,7 @@ const SpinnerTemplate: Story = ({ size, color, className }) => (
   <span
     className={[
       'pui-spinner',
-      ...(color && color.length > 0 && !color.includes('primary') ? [`pui-color-${color}`] : []),
+      ...(color && color.length > 0 && !color.includes('pui-primary') ? [`pui-color-${color}`] : []),
       // If the scale property is set
       ...(size && size.length > 0 && !size.includes('4') ? [`w-${size}`, `h-${size}`] : []),
       // Add remaining classes

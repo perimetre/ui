@@ -8,7 +8,7 @@ export default {
   title: 'Components/Link',
   argTypes: {
     color: {
-      defaultValue: 'primary',
+      defaultValue: 'pui-primary',
       control: {
         type: 'select',
         options: colorOptions
@@ -36,7 +36,7 @@ const LinkTemplate: Story = ({ color, className }) => (
       href="#"
       className={[
         'pui-link',
-        ...(color && color.length > 0 && !color.includes('primary') ? [`pui-color-${color}`] : []),
+        ...(color && color.length > 0 && !color.includes('pui-primary') ? [`pui-color-${color}`] : []),
         // Add remaining classes
         ...(className && className.length > 0 ? [className] : [])
       ].join(' ')}
@@ -63,7 +63,7 @@ const VisitedLinkTemplate: Story = ({ color, className }) => (
       href=""
       className={[
         'pui-link',
-        ...(color && color.length > 0 && !color.includes('primary') ? [`pui-color-${color}`] : []),
+        ...(color && color.length > 0 && !color.includes('pui-primary') ? [`pui-color-${color}`] : []),
         // Add remaining classes
         ...(className && className.length > 0 ? [className] : [])
       ].join(' ')}

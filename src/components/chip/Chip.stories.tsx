@@ -20,7 +20,7 @@ export default {
       }
     },
     color: {
-      defaultValue: 'primary',
+      defaultValue: 'pui-primary',
       control: {
         type: 'select',
         options: colorOptions

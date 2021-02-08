@@ -19,6 +19,8 @@ export const getSvgo = ({
 }: Record<string, unknown>) =>
   new SVGOptimizer({
     plugins: [
+      { removeDimensions: false },
+      { removeViewBox: false },
       ...(prefixIds ? [{ prefixIds: true }] : []),
       ...(removeOffCanvasPaths ? [{ removeOffCanvasPaths: true }] : []),
       ...(removeRasterImages ? [{ removeRasterImages: true }] : []),
