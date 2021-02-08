@@ -14,6 +14,14 @@ module.exports = {
           to: {
             opacity: '1'
           }
+        },
+        skeletonBackground: {
+          from: {
+            backgroundPosition: '100%'
+          },
+          to: {
+            backgroundPosition: '0%'
+          }
         }
       },
       colors: {
