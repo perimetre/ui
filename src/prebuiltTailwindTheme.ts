@@ -152,3 +152,5 @@ export const twScaleOptions = [
   'y-125',
   'y-150'
 ];
+
+export const clampOptions = ['none', '1', '2', '3', '4', '5', '6'];
