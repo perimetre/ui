@@ -1,0 +1,10 @@
+@layer components {
+  .pui-link {
+    @apply text-pui-placeholder-color underline;
+
+    &:hover,
+    &:visited {
+      @apply text-pui-secondary;
+    }
+  }
+}
