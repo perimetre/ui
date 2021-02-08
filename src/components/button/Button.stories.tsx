@@ -33,6 +33,12 @@ export default {
         options: colorOptions
       }
     },
+    disabled: {
+      defaultValue: false,
+      control: {
+        type: 'boolean'
+      }
+    },
     chip: {
       defaultValue: false,
       control: {
@@ -119,5 +125,41 @@ export const Chip = Template.bind({});
 Chip.args = {
   chip: true
 };
+
+/**
+ * A story that displays a button example
+ *
+ * @param props the story props
+ * @param props.size the size property set on controls
+ * @param props.variant the variant property set on controls
+ * @param props.border the border property set on controls
+ * @param props.color the color property set on controls
+ * @param props.content the content property set on controls
+ * @param props.chip the chip property set on controls
+ * @param props.className the component classes
+ */
+const SpinnerTemplate: Story = ({ size, variant, border, color, content, chip, className, ...props }) => (
+  <button
+    type="button"
+    {...props}
+    className={[
+      `flex items-center`,
+      `pui-btn-${size}`,
+      `pui-btn-${variant}`,
+      `pui-color-${color}`,
+      // If any of the border propery is set, add the tailwind border class
+      ...(border && border.length > 0 ? [`border-${border}`] : []),
+      // If this btn is also a chip, add the chip clas
+      ...(chip ? ['pui-chip-btn'] : []),
+      // Add remaining classes
+      ...(className && className.length > 0 ? [className] : [])
+    ].join(' ')}
+  >
+    {content}
+    <span className="pui-spinner pui-color-pui-paragraph-0 ml-2" />
+  </button>
+);
+
+export const WithSpinner = SpinnerTemplate.bind({});
 
 // TODO: Add "With icon"

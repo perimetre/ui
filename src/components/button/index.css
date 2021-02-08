@@ -32,22 +32,32 @@
 
     /* If the button is not a chip button */
     &:not(.pui-chip-btn) {
-      /* On hover */
-      &:hover {
-        /* Add a transition for the filter property only on hover, and adds a color filter */
-        transition-property: filter;
-        filter: brightness(0.85);
+      /* Only have hover effect if NOT disabled */
+      &:not(:disabled) {
+        /* On hover */
+        &:hover {
+          /* Add a transition for the filter property only on hover, and adds a color filter */
+          transition-property: filter;
+          filter: brightness(0.85);
+        }
       }
     }
 
     /* If it IS a chip button */
     &.pui-chip-btn {
-      /* On hover */
-      &:hover {
-        /* The text now uses the placeholder color */
-        /* The bg goes to white */
-        @apply text-pui-placeholder-color bg-pui-paragraph-0;
+      /* Only have hover effect if NOT disabled */
+      &:not(:disabled) {
+        /* On hover */
+        &:hover {
+          /* The text now uses the placeholder color */
+          /* The bg goes to white */
+          @apply text-pui-placeholder-color bg-pui-paragraph-0;
+        }
       }
+    }
+
+    &:disabled {
+      opacity: 0.6;
     }
   }
 
@@ -58,11 +68,18 @@
     /* The text expects a placeholder color */
     @apply pui-btn bg-transparent border-pui-placeholder-color text-pui-placeholder-color;
 
-    /* On hover */
-    &:hover {
-      /* Sets the text color */
-      /* Display the background */
-      @apply text-pui-paragraph-0 bg-pui-placeholder-color;
+    /* Only have hover effect if NOT disabled */
+    &:not(:disabled) {
+      /* On hover */
+      &:hover {
+        /* Sets the text color */
+        /* Display the background */
+        @apply text-pui-paragraph-0 bg-pui-placeholder-color;
+      }
+    }
+
+    &:disabled {
+      opacity: 0.4;
     }
   }
 

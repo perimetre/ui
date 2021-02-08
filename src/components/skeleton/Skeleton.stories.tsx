@@ -29,7 +29,7 @@ export default {
 } as Meta;
 
 /**
- * A story that displays a WithLabel example
+ * A story that displays a Skeleton example
  *
  * @param props the story props
  * @param props.width the width property set on controls
@@ -52,7 +52,7 @@ const SkeletonTemplate: Story = ({ width, height, className }) => (
 export const Skeleton = SkeletonTemplate.bind({});
 
 /**
- * A story that displays a WithLabel example
+ * A story that displays a MultiSkeleton example
  *
  * @param props the story props
  */
