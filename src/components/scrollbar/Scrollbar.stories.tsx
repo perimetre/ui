@@ -28,7 +28,7 @@ export default {
  * @param props.color the color property set on controls
  * @param props.className the component classes
  */
-const SpinnerTemplate: Story = ({ color, className }) => (
+const ScrollbarTemplate: Story = ({ color, className }) => (
   <div
     className={[
       'pui-scrollbar',
@@ -63,4 +63,4 @@ const SpinnerTemplate: Story = ({ color, className }) => (
   </div>
 );
 
-export const Spinner = SpinnerTemplate.bind({});
+export const Scrollbar = ScrollbarTemplate.bind({});
