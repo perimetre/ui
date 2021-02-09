@@ -92,6 +92,26 @@ The architecture is how we setup the repository structure:
 - [`.src/stories`](./src/stories) = Storybook stories files
 - [`.src/pages`](./src/pages) = Container components and routes for Next.js
 
+## Adding more icons
+
+- Run the command `npm run next:dev`
+- Go to [http://localhost:3000/optimize](http://localhost:3000/optimize)
+- Paste your SVG in the first input (Make sure to not include any React `{}` tags, you have to convert those to html tags, it must be a plain html svg)
+- In your svg string, change any `fill` attributes that sets a color, to `fill="currentColor"`. (Only change ones that sets a color. Other fill attributes like `fill="none"` can remain intact)
+- Preview your svg in the top section, if it's broken, uncheck "Remove color attributes"(recommended to uncheck if only if it's broken)
+- Your svg should be visible and working in all modes: Original, Optimized and CSS
+- There shouldn't have any red text under the preview icons. If there is, follow the instructions of the text to fix the issue before continuing
+- Copy an existing icon file in [./src/components/icons](./src/components/icons)
+- Update the icon name (Replace tool recommended for that, `CTRL/CMD + H` on vscode)
+- Update the svg icon in the file you just copied, replacing it with what's in "Optimized SVG" in [http://localhost:3000/optimize](http://localhost:3000/optimize)
+- **Add a `{...props}` statement before the end of the first svg tag (look at how it's done in other icons)**
+- Update the URI icon in the file you just copied, replacing it with what's in "uri() version" in [http://localhost:3000/optimize](http://localhost:3000/optimize)
+- Insert a new import in [./src/components/icons/index.tsx](./src/components/icons/index.tsx) that references your new icon
+- Run the command `npm run dev`
+- Go to the icons story
+- Select your icon
+- **Make sure your icon works with any color and any size by changing the controls and looking at the output**
+
 ## Troubleshooting
 
 - Components look weird or broken and are potentially missing styles:

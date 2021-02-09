@@ -1,8 +1,8 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import Head from 'next/head';
-import styles from './Optimize.module.css';
 import debounce from 'lodash/debounce';
+import Head from 'next/head';
+import React, { useCallback, useMemo, useState } from 'react';
 import styled from 'styled-components';
+import styles from './Optimize.module.css';
 
 const CssIconDisplay = styled.div<{ height?: string; width: string; uri?: string }>`
   /* Set up positioning by setting it to relative, so other elements can be absolute */
@@ -57,6 +57,7 @@ export default function Home() {
       debounce((svgString: string) => {
         if (svgString) {
           setOriginalSvg(svgString);
+
           fetch('/api/optimize', {
             method: 'POST',
             headers: {
@@ -67,8 +68,8 @@ export default function Home() {
               prefixIds: (document?.getElementById('prefixIds') as HTMLInputElement)?.checked,
               removeOffCanvasPaths: (document?.getElementById('removeOffCanvasPaths') as HTMLInputElement)?.checked,
               removeRasterImages: (document?.getElementById('removeRasterImages') as HTMLInputElement)?.checked,
-              removeXMLNS: (document?.getElementById('removeXMLNS') as HTMLInputElement)?.checked,
-              removeColors: (document?.getElementById('removeColors') as HTMLInputElement)?.checked
+              removeColors: (document?.getElementById('removeColors') as HTMLInputElement)?.checked,
+              removeXMLNS: (document?.getElementById('removeXMLNS') as HTMLInputElement)?.checked
             })
           })
             .then((response) => response.json())
@@ -77,6 +78,36 @@ export default function Home() {
               console.error(err);
               setOptimizedSvg({});
               setOriginalSvg('');
+            });
+
+          // A separate call to grab the datauri version
+          fetch('/api/optimize', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              svgString,
+              prefixIds: (document?.getElementById('prefixIds') as HTMLInputElement)?.checked,
+              removeOffCanvasPaths: (document?.getElementById('removeOffCanvasPaths') as HTMLInputElement)?.checked,
+              removeRasterImages: (document?.getElementById('removeRasterImages') as HTMLInputElement)?.checked,
+              removeColors: (document?.getElementById('removeColors') as HTMLInputElement)?.checked,
+              // DO NOT ADD removeXMLNS
+              // Tells it needs to be a dataUri result
+              datauri: (document?.getElementById('base64') as HTMLInputElement)?.checked
+                ? 'base64'
+                : (document?.getElementById('encUri') as HTMLInputElement)?.checked
+                ? 'enc'
+                : 'unenc'
+            })
+          })
+            .then((response) => response.json())
+            .then((result) => {
+              if (result?.data) setUriSvg(`url('${result?.data}')`);
+              else setUriSvg('');
+            })
+            .catch((err) => {
+              console.error(err);
               setUriSvg('');
             });
         } else {
@@ -96,14 +127,6 @@ export default function Home() {
     optimize
   ]);
 
-  useEffect(
-    () =>
-      setUriSvg(
-        optimizedSvg && optimizedSvg.data ? `url('data:image/svg+xml,${encodeURIComponent(optimizedSvg.data)}')` : ''
-      ),
-    [optimizedSvg]
-  );
-
   return (
     <div className={styles.container}>
       <Head>
@@ -113,24 +136,48 @@ export default function Home() {
 
       <div className="w-full py-8">
         {optimizedSvg && optimizedSvg.data && (
-          <div className="mb-4 flex flex-wrap items-center justify-center">
-            <div className="mx-4">
-              <p className="mb-4">Original</p>
-              <div dangerouslySetInnerHTML={{ __html: originalSvg.trim() }} />
+          <>
+            <div className="mb-4 flex flex-wrap items-center justify-center">
+              <div className="mx-4">
+                <p className="mb-4">Original</p>
+                <div dangerouslySetInnerHTML={{ __html: originalSvg.trim() }} />
+              </div>
+              <div className="mx-4">
+                <p className="mb-4">Optimized</p>
+                <div dangerouslySetInnerHTML={{ __html: optimizedSvg.data }} />
+              </div>
+              <div className="mx-4">
+                <p className="mb-4">CSS</p>
+                <CssIconDisplay
+                  height={`${optimizedSvg.info.height}px`}
+                  width={`${optimizedSvg.info.width}px`}
+                  uri={uriSvg}
+                />
+              </div>
             </div>
-            <div className="mx-4">
-              <p className="mb-4">Optimized</p>
-              <div dangerouslySetInnerHTML={{ __html: optimizedSvg.data }} />
+            <div className="my-4 flex 1 items-center justify-center">
+              {(!optimizedSvg.data.includes('width=') || !optimizedSvg.data.includes('height=')) && (
+                <p className="text-pui-error">
+                  <strong>!!</strong> Optimized SVG does not have either width or height attribute
+                </p>
+              )}
+              {!optimizedSvg.data.includes('viewBox=') && (
+                <p className="text-pui-error">
+                  <strong>!!</strong> Optimized SVG does not have viewBox attribute
+                </p>
+              )}
+              {optimizedSvg.data.includes('xmlns=') && (
+                <p className="text-pui-error">
+                  <strong>!!</strong> Optimized SVG have XMLNS attribute
+                </p>
+              )}
+              {!uriSvg.includes('xmlns') && (
+                <p className="text-pui-error">
+                  <strong>!!</strong> uri() svg MUST INCLUDE XMLNS attribute
+                </p>
+              )}
             </div>
-            <div className="mx-4">
-              <p className="mb-4">CSS</p>
-              <CssIconDisplay
-                height={`${optimizedSvg.info.height}px`}
-                width={`${optimizedSvg.info.width}px`}
-                uri={uriSvg}
-              />
-            </div>
-          </div>
+          </>
         )}
         <div className="mb-4">
           <div>
@@ -146,12 +193,20 @@ export default function Home() {
             <label htmlFor="removeColors"> Remove color attributes (to make sure it works with all colors)</label>
           </div>
           <div>
-            <input type="checkbox" id="removeOffCanvasPaths" onChange={onCheck} />
+            <input defaultChecked={true} type="checkbox" id="removeOffCanvasPaths" onChange={onCheck} />
             <label htmlFor="removeOffCanvasPaths"> Removes elements that are drawn outside of the viewbox</label>
           </div>
           <div>
-            <input type="checkbox" id="removeXMLNS" onChange={onCheck} />
-            <label htmlFor="removeXMLNS"> Removes xmlns attribute (for inline svg)</label>
+            <input defaultChecked={true} type="checkbox" id="removeXMLNS" onChange={onCheck} />
+            <label htmlFor="removeXMLNS"> Removes xmlns attribute (for inline svg, does not work for CSS svgs)</label>
+          </div>
+          <div>
+            <input defaultChecked={true} type="checkbox" id="encUri" onChange={onCheck} />
+            <label htmlFor="encUri"> Encoded URI</label>
+          </div>
+          <div>
+            <input type="checkbox" id="base64" onChange={onCheck} />
+            <label htmlFor="base64"> Base64 URI</label>
           </div>
           <p className="italic mt-2">
             Look at all the settings enabled by default{' '}
