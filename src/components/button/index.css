@@ -84,7 +84,7 @@
   }
 
   .pui-btn-icon {
-    @apply p-4 pui-border-radius text-pui-placeholder-color focus:outline-none;
+    @apply p-2 pui-border-radius text-pui-placeholder-color focus:outline-none;
 
     &:disabled {
       /* Remove pointer */

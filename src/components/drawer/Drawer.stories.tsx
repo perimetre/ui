@@ -43,7 +43,7 @@ const Template: Story = ({ content, onOpenCallback, isOpen: isOpenProps, ...prop
 
   return (
     <div>
-      <button className="pui-btn-icon text-pui-primary" onClick={() => onOpen(!isOpen)}>
+      <button className="pui-btn-icon text-pui-primary p-4" onClick={() => onOpen(!isOpen)}>
         {/* Adds a close icon */}
         <MenuIcon className="pui-animate-scaleHover-target fill-current" />
       </button>

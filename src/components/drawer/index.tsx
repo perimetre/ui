@@ -165,12 +165,12 @@ export const Drawer: React.FC<DrawerProps> = ({
       <div className={`flex items-center${onBack ? ' justify-between' : ' justify-end'}`}>
         {/* If there's the back button, display it */}
         {onBack && (
-          <button className="pui-btn-icon text-pui-paragraph-900" onClick={onBack}>
-            {/* Adds a close icon */}
+          <button className="pui-btn-icon text-pui-paragraph-900 p-4" onClick={onBack}>
+            {/* Adds a back icon */}
             <BackIcon className="pui-animate-scaleHover-target fill-current" />
           </button>
         )}
-        <button className="pui-btn-icon text-pui-paragraph-900" onClick={() => onOpen(false)}>
+        <button className="pui-btn-icon text-pui-paragraph-900 p-4" onClick={() => onOpen(false)}>
           {/* Adds a close icon */}
           <CrossIcon className="pui-animate-scaleHover-target fill-current" />
         </button>
