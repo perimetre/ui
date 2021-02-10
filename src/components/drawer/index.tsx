@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import Hammer from 'hammerjs';
-import { CrossIcon } from '../icons';
+import { BackIcon, CrossIcon } from '../icons';
 
 // The variants for the drawer itself
 const variants = {
@@ -136,6 +136,10 @@ export type DrawerProps = DrawerWrapperProps & {
    * @default 350
    */
   width?: number;
+  /**
+   * Callback when pressed the back button. If set, a "back" button will appear
+   */
+  onBack?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 };
 
 /**
@@ -143,23 +147,32 @@ export type DrawerProps = DrawerWrapperProps & {
  *
  * @param props The provided props
  * @param props.width Sets the default width
+ * @param props.onBack Callback when pressed the back button
  * @param props.onOpen Callback to update the open state
  * @param props.children The children provided to this component
  */
 export const Drawer: React.FC<DrawerProps> = ({
   width = 350,
+  onBack,
   onOpen = (isOpen?: boolean) => console.log('onOpen: ', isOpen),
   children,
   ...props
 }) => (
   <DrawerWrapper onOpen={onOpen} {...props}>
     {/* Adds a "card-like" look to the drawer */}
-    <div style={{ width }} className="bg-white border border-gray-300 p-4 h-full select-text">
+    <div style={{ width }} className="bg-white border border-gray-300 h-full select-text">
       {/* Aligns the close button to the end */}
-      <div className="flex items-center justify-end">
+      <div className={`flex items-center${onBack ? ' justify-between' : ' justify-end'}`}>
+        {/* If there's the back button, display it */}
+        {onBack && (
+          <button onClick={onBack} className="p-4 text-pui-paragraph-900 focus:outline-none pui-animate-scaleHover">
+            {/* Adds a close icon */}
+            <BackIcon className="pui-animate-scaleHover-target" />
+          </button>
+        )}
         <button
           onClick={() => onOpen(false)}
-          className="p-1 text-pui-paragraph-900 focus:outline-none pui-animate-scaleHover"
+          className="p-4 text-pui-paragraph-900 focus:outline-none pui-animate-scaleHover"
         >
           {/* Adds a close icon */}
           <CrossIcon className="pui-animate-scaleHover-target" />

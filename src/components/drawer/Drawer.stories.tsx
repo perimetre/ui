@@ -14,7 +14,8 @@ export default {
         type: 'text'
       }
     },
-    onOpenCallback: { action: 'onOpen' }
+    onOpenCallback: { action: 'onOpen' },
+    onBack: { action: 'onBack' }
   }
 } as Meta;
 
@@ -45,10 +46,15 @@ const Template: Story = ({ content, onOpenCallback, isOpen: isOpenProps, ...prop
         Open
       </button>
       <Drawer {...props} isOpen={isOpen} onOpen={onOpen}>
-        {content}
+        <div className="p-4 pt-0">{content}</div>
       </Drawer>
     </div>
   );
 };
 
-export const DrawerMenu = Template.bind({});
+export const Default = Template.bind({});
+Default.args = {
+  onBack: undefined
+};
+
+export const WithBack = Template.bind({});
