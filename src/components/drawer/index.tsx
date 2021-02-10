@@ -1,6 +1,5 @@
-import React, { useCallback, useEffect, useRef } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import Hammer from 'hammerjs';
 import { BackIcon, CrossIcon } from '../icons';
 
 // The variants for the drawer itself
@@ -42,6 +41,9 @@ export const DrawerWrapper: React.FC<DrawerWrapperProps> = ({
   onOpen = (isOpen?: boolean) => console.log('onOpen: ', isOpen),
   children
 }) => {
+  // Stores whether or not hammer was loaded
+  const [hammerLoaded, setHammerLoaded] = useState(false);
+
   /**
    * Toggles the isOpenState
    */
@@ -52,47 +54,74 @@ export const DrawerWrapper: React.FC<DrawerWrapperProps> = ({
   // A reference for the panner element
   const pannerRef = useRef<null | HTMLDivElement>(null);
 
-  // Unfortunately we don't have access to the HammerManager type and have to use "any"
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const hammertimeDrawer = useRef<any>();
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const hammertimePanner = useRef<any>();
+  const hammertimeDrawer = useRef<HammerManager>();
+  const hammertimePanner = useRef<HammerManager>();
+
+  // An instance of hammer class
+  const hammerInstance = useRef<HammerStatic>();
 
   // On load
   useEffect(() => {
-    // If there's a drawer element
-    if (drawerRef?.current) {
-      if (!hammertimeDrawer?.current) {
-        // Creates an instance of Hammer
-        hammertimeDrawer.current = new Hammer(drawerRef.current, {
-          touchAction: 'pan-y'
-        });
-      }
+    /**
+     * Asynchronously loads hammer js on client side(it doesn't work with SSR)
+     */
+    const loadHammer = async () => {
+      hammerInstance.current = (await import('hammerjs')).default;
 
-      // On swipe left, toggle the drawer
-      hammertimeDrawer?.current?.on('swipeleft', toggle);
-    }
-
-    // If there's a "panner" element
-    if (pannerRef?.current) {
-      if (!hammertimePanner?.current) {
-        // Creates an instance of Hammer
-        hammertimePanner.current = new Hammer(pannerRef.current, {
-          touchAction: 'pan-y'
-        });
-      }
-
-      // On swipe right, toggle the drawer
-      hammertimePanner?.current?.on('swiperight', toggle);
-    }
-
-    // On unmount
-    return () => {
-      // Unsubscribe
-      hammertimeDrawer?.current?.off('swipeleft', toggle);
-      hammertimePanner?.current?.off('swiperight', toggle);
+      // Signals that hammer got loaded
+      setHammerLoaded(true);
     };
-  }, [toggle]);
+
+    loadHammer();
+  }, []);
+
+  // On hammer load
+  useEffect(() => {
+    // If hammer got loaded
+    if (hammerLoaded) {
+      // Gets the class constructor
+      const Hammer = hammerInstance.current;
+      // If there's a drawer element
+      if (drawerRef?.current) {
+        if (!hammertimeDrawer?.current) {
+          if (Hammer) {
+            // Creates an instance of Hammer
+            hammertimeDrawer.current = new Hammer(drawerRef.current, {
+              touchAction: 'pan-y'
+            });
+          }
+        }
+
+        // On swipe left, toggle the drawer
+        hammertimeDrawer?.current?.on('swipeleft', toggle);
+      }
+
+      // If there's a "panner" element
+      if (pannerRef?.current) {
+        if (!hammertimePanner?.current) {
+          if (Hammer) {
+            // Creates an instance of Hammer
+            hammertimePanner.current = new Hammer(pannerRef.current, {
+              touchAction: 'pan-y'
+            });
+          }
+        }
+
+        // On swipe right, toggle the drawer
+        hammertimePanner?.current?.on('swiperight', toggle);
+      }
+
+      // On unmount
+      return () => {
+        // Unsubscribe
+        hammertimeDrawer?.current?.off('swipeleft', toggle);
+        hammertimePanner?.current?.off('swiperight', toggle);
+      };
+    }
+
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    return () => {};
+  }, [toggle, hammerLoaded]);
 
   return (
     <>
