@@ -2,6 +2,7 @@ import React from 'react';
 // also exported from '@storybook/react' if you can deal with breaking changes in 6.1
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { borderStyleOptions, colorOptions } from '../../prebuiltTailwindTheme';
+import { MenuIcon } from '../icons';
 
 export default {
   title: 'Components/Button',
@@ -161,5 +162,29 @@ const SpinnerTemplate: Story = ({ size, variant, border, color, content, chip, c
 );
 
 export const WithSpinner = SpinnerTemplate.bind({});
+
+/**
+ * A story that displays an icon button example
+ *
+ * @param props the story props
+ * @param props.color the color property set on controls
+ * @param props.className the component classes
+ */
+const IconTemplate: Story = ({ color, className, ...props }) => (
+  <button
+    type="button"
+    {...props}
+    className={[
+      `pui-btn-icon`,
+      `pui-color-${color}`,
+      // Add remaining classes
+      ...(className && className.length > 0 ? [className] : [])
+    ].join(' ')}
+  >
+    <MenuIcon className="pui-animate-scaleHover-target fill-current" />
+  </button>
+);
+
+export const Icon = IconTemplate.bind({});
 
 // TODO: Add "With icon"

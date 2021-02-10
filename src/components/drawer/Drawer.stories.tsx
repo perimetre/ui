@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 // also exported from '@storybook/react' if you can deal with breaking changes in 6.1
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { Drawer } from '.';
+import { MenuIcon } from '../icons';
 
 export default {
   title: 'Components/Drawer',
@@ -42,8 +43,9 @@ const Template: Story = ({ content, onOpenCallback, isOpen: isOpenProps, ...prop
 
   return (
     <div>
-      <button type="button" className="pui-btn-default m-4" onClick={() => onOpen(!isOpen)}>
-        Open
+      <button className="pui-btn-icon text-pui-primary" onClick={() => onOpen(!isOpen)}>
+        {/* Adds a close icon */}
+        <MenuIcon className="pui-animate-scaleHover-target fill-current" />
       </button>
       <Drawer {...props} isOpen={isOpen} onOpen={onOpen}>
         <div className="p-4 pt-0">{content}</div>

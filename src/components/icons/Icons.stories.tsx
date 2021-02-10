@@ -73,3 +73,34 @@ const Template: Story = ({ icon, size, type, color, className, ...props }) => {
 };
 
 export const Icons = Template.bind({});
+
+/**
+ * A story that displays an buttonicon example
+ *
+ * @param props the story props
+ * @param props.icon the icon property set on controls
+ * @param props.size the size property set on controls
+ * @param props.type the type property set on controls
+ * @param props.color the color property set on controls
+ * @param props.className the component classes
+ */
+const ButtonTemplate: Story = ({ icon, size, type, color, className, ...props }) => {
+  const CurrentIcon = IconComponents[icon];
+  return (
+    <button type="button" className="pui-btn-icon">
+      <CurrentIcon
+        {...props}
+        className={[
+          'pui-animate-scaleHover-target',
+          ...(type && type.length > 0 ? (type.includes('stroke') ? ['stroke-current'] : ['fill-current']) : []),
+          ...(color && color.length > 0 ? [`text-${color}`] : []),
+          // If the scale property is set
+          ...(size && size.length > 0 ? [`w-${size}`, `h-${size}`] : []),
+          ...(className && className.length > 0 ? [className] : [])
+        ].join(' ')}
+      />
+    </button>
+  );
+};
+
+export const Button = ButtonTemplate.bind({});

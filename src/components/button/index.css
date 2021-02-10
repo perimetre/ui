@@ -83,6 +83,21 @@
     }
   }
 
+  .pui-btn-icon {
+    @apply p-4 pui-border-radius text-pui-placeholder-color focus:outline-none;
+
+    &:disabled {
+      /* Remove pointer */
+      /* The disabled should use the 300 shading */
+      /* When disabled, add a lighter background */
+      @apply cursor-default pui-color-pui-paragraph-300 border-gray-300 bg-gray-100;
+    }
+
+    &:not(:disabled) {
+      @apply pui-animate-scaleHover;
+    }
+  }
+
   .pui-btn-small {
     /* Height = 12*2 = 24px = 1.5rem */
     @apply h-6;
