@@ -1,0 +1,15 @@
+@layer components {
+  .pui-skeleton {
+    @apply pui-border-radius;
+
+    animation: skeletonBackground 2s ease infinite, pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+
+    background: linear-gradient(
+      to right,
+      rgba(230, 230, 230, 1) 40%,
+      rgba(212, 212, 212, 1) 50%,
+      rgba(230, 230, 230, 1) 60%
+    );
+    background-size: 400% 400%;
+  }
+}

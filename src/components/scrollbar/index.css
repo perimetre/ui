@@ -1,0 +1,26 @@
+@layer components {
+  .pui-scrollbar {
+    /* width */
+    ::-webkit-scrollbar {
+      @apply h-1 w-2 ml-3;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+      @apply bg-gray-200 pui-border-radius;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+      @apply bg-pui-placeholder-color pui-border-radius transition-colors;
+
+      &:hover {
+        @apply bg-pui-secondary;
+      }
+
+      &:active {
+        @apply bg-pui-paragraph-900;
+      }
+    }
+  }
+}

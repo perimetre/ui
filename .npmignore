@@ -1,6 +1,10 @@
 tsconfig.json
+tsconfig.build.json
+postcss.config.js
+tailwind.config.js
 rollup.config.js
 commitlint.config.js
+stylelint.config.js
 .prettierrc.js
 .prettierignore
 .huskyrc
@@ -10,6 +14,11 @@ commitlint.config.js
 tests
 public
 node_modules
-legacy
-build
 .vscode
+.babelrc
+public
+.storybook
+.next
+.git
+next-env.d.ts
+storybook-static

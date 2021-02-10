@@ -1,0 +1,7 @@
+@import './components/base';
+@import './components';
+
+html,
+body {
+  @apply pui-font-family text-pui-paragraph-500;
+}

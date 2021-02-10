@@ -1,0 +1,9 @@
+@layer components {
+  .pui-alert {
+    /* Alert has some padding */
+    /* Adds default perimetre border radius */
+    /* Adds default text color in uneven backgrounds */
+    /* Adds the expected placeholder color for the bg */
+    @apply p-6 pui-border-radius text-pui-paragraph-0 bg-pui-placeholder-color;
+  }
+}

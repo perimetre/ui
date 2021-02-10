@@ -1,0 +1,12 @@
+@layer components {
+  .pui-spinner {
+    @apply animate-spin inline-block box-border border-2 border-solid border-pui-placeholder-color w-4 h-4 m-auto;
+    animation-duration: 0.6s;
+    border-radius: 50%;
+    content: '';
+    border-top-color: transparent !important;
+    border-right-color: transparent !important;
+
+    transform: rotation(0deg) scaleX(var(--tw-scale-x, 1)) scaleY(var(--tw-scale-y, 1));
+  }
+}

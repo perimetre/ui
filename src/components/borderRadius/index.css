@@ -1,0 +1,6 @@
+@layer base {
+  .pui-border-radius {
+    /* Default border radius */
+    border-radius: var(--pui-default-radius, 0.25rem);
+  }
+}

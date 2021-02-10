@@ -1,0 +1,162 @@
+@layer components {
+  /* A class that contains all base input css */
+  .pui-text-input-base {
+    /* Makes it full width */
+    /* Adds the font family */
+    /* Adds the paddong */
+    /* The text should use the 900 shading */
+    /* Its colors can transition */
+    /* Uses a light font weight */
+    @apply w-full pui-font-family p-3 text-pui-paragraph-900 transition-colors font-light;
+
+    /* The current font-family is not ideal for web so its line heights needs to be higher or else the "g" gets cut */
+    line-height: 1.25;
+
+    &:focus {
+      /* Removes the outline, bad for acessibility but if we add it it might look weird,
+      we need to think on adding it back after everything is using the new ui */
+      outline: 0;
+    }
+
+    &::placeholder {
+      /* The placeholder should use the 300 shading */
+      /* If it overflows, adds an allipsis */
+      /* If it overflows, don't wrap */
+      /* If it overflows, don't add a scrollbar */
+      @apply text-pui-paragraph-300 overflow-ellipsis whitespace-nowrap overflow-hidden;
+      overflow-wrap: normal;
+    }
+
+    &:disabled {
+      /* The disabled should use the 300 shading */
+      /* When disabled, add a lighter background */
+      @apply text-pui-paragraph-300 bg-gray-100;
+    }
+  }
+
+  /* This adds the border for the inputs, some kinds of inputs might not need a border, so that's why this is split */
+  .pui-text-input-border {
+    /* Adds the default border radius */
+    /* Solid border styling */
+    /* Border color */
+    /* On focus, follow the placeholder color */
+    @apply pui-border-radius border border-solid border-gray-400 focus:border-pui-placeholder-color;
+
+    &:disabled {
+      /* When disabled, add a lighter border */
+      @apply border-gray-300;
+    }
+  }
+
+  /* The class that should be used by all default inputs(different looking inputs can use either pui-text-input-base or pui-text-input-border */
+  .pui-text-input {
+    @apply pui-text-input-base pui-text-input-border;
+  }
+
+  /* Creates an input label */
+  .pui-label-input {
+    /* The input label must be a block element to push siblings to the next line */
+    /* Smaller size */
+    /* Use the bolder shading */
+    /* A bigger letter spacing */
+    /* With a bit of margin bottom */
+    @apply block text-sm text-pui-paragraph-900 tracking-wide mb-2;
+  }
+
+  /* The base class for all input statuses */
+  /* Unfortunately, <input> cannot have ::after, so this(and all input statuses) must be used in a wrapper */
+  .pui-text-input-status {
+    /* Set up positioning by setting it to relative, so other elements can be absolute */
+    @apply block relative;
+
+    &::after {
+      /* Sets the box sizing */
+      /* It should have absolute position */
+      /* Do not allow for mouse interaction */
+      /* Try to align it on center */
+      /* Top 0 + Bottom 0 makes it have full height */
+      /* Adds 1rem right offset */
+      /* Margin auto to help it with center alignment */
+      @apply box-border absolute pointer-events-none pui-flex-center top-0 bottom-0 right-4 m-auto;
+    }
+  }
+
+  /* The error status */
+  .pui-text-input-error {
+    @apply pui-text-input-status;
+
+    /* The next input element */
+    > * {
+      /* Error border */
+      @apply border-pui-error;
+
+      /* &:focus {
+      } */
+    }
+
+    &::after {
+      /* By setting the bg color, the color of the icon itself is set */
+      @apply bg-pui-error;
+
+      /* Displays the after pseudoelement */
+      content: '';
+
+      /* The size to correctly mask the icon */
+      height: 22px;
+      width: 22px;
+
+      /* If updating the icon, use the optimize page to generate a new string */
+      mask-image: url('data:image/svg+xml,%3Csvg%20width%3D%2222%22%20height%3D%2222%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M11%200c6.075%200%2011%204.925%2011%2011s-4.925%2011-11%2011S0%2017.075%200%2011%204.925%200%2011%200zm0%202a9%209%200%20100%2018%209%209%200%20000-18zm0%2012c.513%200%20.936.383.993.883L12%2015a.997.997%200%2001-.883.993L11%2016c-.552%200-1-.444-1-1%200-.513.383-.936.883-.993L11%2014zm0-8c.552%200%201%20.438%201%201.003v4.994a1%201%200%2001-.883.996L11%2013c-.552%200-1-.438-1-1.003V7.003a1%201%200%2001.883-.996L11%206z%22%2F%3E%3C%2Fsvg%3E');
+    }
+  }
+
+  /* The success status */
+  .pui-text-input-success {
+    @apply pui-text-input-status;
+
+    /* The next input element */
+    > * {
+      /* Erro = error border */
+      @apply border-pui-success;
+
+      /* &:focus {
+      } */
+    }
+
+    &::after {
+      /* By setting the bg color, the color of the icon itself is set */
+      @apply bg-pui-success;
+
+      /* Displays the after pseudoelement */
+      content: '';
+
+      /* The size to correctly mask the icon */
+      height: 16px;
+      width: 16px;
+
+      /* If updating the icon, use the optimize page to generate a new string */
+      mask-image: url('data:image/svg+xml,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M5.852%2011.601L1.625%208.22.375%209.781l5.773%204.618%209.626-11.766-1.548-1.266z%22%20fill-rule%3D%22evenodd%22%2F%3E%3C%2Fsvg%3E');
+    }
+  }
+
+  /* The loading status */
+  .pui-text-input-loading {
+    @apply pui-text-input-status;
+
+    &::after {
+      @apply animate-spin border-solid border-2 border-pui-paragraph-300;
+      animation-duration: 0.6s;
+
+      /* Displays the after pseudoelement */
+      content: '';
+
+      height: 1em;
+      width: 1em;
+
+      border-radius: 100%;
+      border-top-color: transparent;
+      border-right-color: transparent;
+      line-height: 1;
+    }
+  }
+}

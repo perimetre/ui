@@ -1,0 +1,120 @@
+@layer components {
+  /* Base btn styles */
+  .pui-btn {
+    /* Adds a border(even though the border is the same color as the background, we need it so the buttons are better aligned against the bordered variant) */
+    /* Add padding 6 */
+    /* Allows for colors to transition(this also adds a default transition duration that is used in the button variants) */
+    /* Allows for transformation(will be used on click) */
+    /* Adds default perimetre border radius */
+    @apply border-2 px-6 transition-colors transform-gpu pui-border-radius;
+
+    &:focus {
+      /* Removes the outline, bad for acessibility but if we add it it might look weird,
+      we need to think on adding it back after everything is using the new ui */
+      outline: 0;
+    }
+
+    /* If clicking */
+    &:active {
+      /* Remove transition effect if there's any transition transform(only on active) */
+      @apply transition-none;
+      /* Moves the button down a little bit to give feedback */
+      --tw-translate-y: 0.125rem;
+    }
+  }
+
+  /* The default variant */
+  .pui-btn-default {
+    /* Adds a text color */
+    /* Makes the border expect the placeholder color */
+    /* Makes the background expect the placeholder color */
+    @apply pui-btn text-pui-paragraph-0 border-pui-placeholder-color bg-pui-placeholder-color;
+
+    /* If the button is not a chip button */
+    &:not(.pui-chip-btn) {
+      /* Only have hover effect if NOT disabled */
+      &:not(:disabled) {
+        /* On hover */
+        &:hover {
+          /* Add a transition for the filter property only on hover, and adds a color filter */
+          transition-property: filter;
+          filter: brightness(0.85);
+        }
+      }
+    }
+
+    /* If it IS a chip button */
+    &.pui-chip-btn {
+      /* Only have hover effect if NOT disabled */
+      &:not(:disabled) {
+        /* On hover */
+        &:hover {
+          /* The text now uses the placeholder color */
+          /* The bg goes to white */
+          @apply text-pui-placeholder-color bg-pui-paragraph-0;
+        }
+      }
+    }
+
+    &:disabled {
+      opacity: 0.6;
+    }
+  }
+
+  /* The bordered variant */
+  .pui-btn-bordered {
+    /* Remove the background since this is an outline button */
+    /* The border expects a placeholder color */
+    /* The text expects a placeholder color */
+    @apply pui-btn bg-transparent border-pui-placeholder-color text-pui-placeholder-color;
+
+    /* Only have hover effect if NOT disabled */
+    &:not(:disabled) {
+      /* On hover */
+      &:hover {
+        /* Sets the text color */
+        /* Display the background */
+        @apply text-pui-paragraph-0 bg-pui-placeholder-color;
+      }
+    }
+
+    &:disabled {
+      opacity: 0.4;
+    }
+  }
+
+  .pui-btn-icon {
+    @apply p-2 pui-border-radius text-pui-placeholder-color focus:outline-none;
+
+    &:disabled {
+      /* Remove pointer */
+      /* The disabled should use the 300 shading */
+      /* When disabled, add a lighter background */
+      @apply cursor-default pui-color-pui-paragraph-300 border-gray-300 bg-gray-100;
+    }
+
+    &:not(:disabled) {
+      @apply pui-animate-scaleHover;
+    }
+  }
+
+  .pui-btn-small {
+    /* Height = 12*2 = 24px = 1.5rem */
+    @apply h-6;
+  }
+
+  .pui-btn-medium {
+    /* Height = 12*3 = 36px = 2.25rem */
+    @apply h-9;
+  }
+
+  .pui-btn-large {
+    /* Height = 12*4 = 48px = 3rem */
+    @apply h-12;
+  }
+
+  .pui-btn-xlarge {
+    /* Height = 12*5 = 60px = 3.75rem */
+    height: 3.75rem;
+  }
+}
