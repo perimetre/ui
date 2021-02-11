@@ -52,6 +52,15 @@ const Template: Story = ({ label, open, ...props }) => (
         </ul>
       )}
     </div>
+    <ul className="pui-dropdown-input-selected-options">
+      {Array(10)
+        .fill(null)
+        .map((_, i) => (
+          <li key={i} className="pui-dropdown-input-selected-item">
+            Selected {i + 1}
+          </li>
+        ))}
+    </ul>
   </div>
 );
 
