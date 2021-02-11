@@ -41,15 +41,15 @@ const Template: Story = ({ label, open, ...props }) => (
     <div className={`pui-dropdown-input-container${open ? ' open' : ''}`}>
       <input {...props} id="input" className="pui-text-input" readOnly />
       {open && (
-        <div className="pui-dropdown-input-options">
+        <ul className="pui-dropdown-input-options">
           {Array(10)
             .fill(null)
             .map((_, i) => (
-              <div key={i} className="pui-dropdown-input-item">
+              <li key={i} className="pui-dropdown-input-item">
                 Option {i + 1}
-              </div>
+              </li>
             ))}
-        </div>
+        </ul>
       )}
     </div>
   </div>

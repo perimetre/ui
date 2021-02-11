@@ -43,6 +43,7 @@
   }
 
   .pui-dropdown-input-options {
+    /* Remove list styling */
     /* Have its position absolute relative to the container */
     /* Don't add any vertical margin */
     /* Auto margin horizontal to help with centering */
@@ -56,7 +57,7 @@
     /* Removes the rounded corner top since it's right up the input */
     /* Puts it in front of the page but inder the input */
     /* Animate it down on display */
-    @apply absolute my-0 mx-auto pui-text-input-border shadow-lg overflow-y-auto overflow-x-hidden py-2 border-t-0 rounded-t-none z-10 pui-animate-fadeDown w-full;
+    @apply list-none absolute my-0 mx-auto pui-text-input-border shadow-lg overflow-y-auto overflow-x-hidden py-2 px-0 border-t-0 rounded-t-none z-10 pui-animate-fadeDown w-full;
 
     animation-duration: 200ms;
 
