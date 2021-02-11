@@ -1,3 +1,5 @@
 @import './fontFamily';
 @import './borderRadius';
 @import './flex';
+@import './absoluteIcon'; /* Make sure absolute icon is before icons */
+@import './icons'; /* If you have issues with icons make sure it's in the correct order and before anything that uses icons */

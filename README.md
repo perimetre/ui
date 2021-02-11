@@ -105,8 +105,12 @@ The architecture is how we setup the repository structure:
 - Update the icon name (Replace tool recommended for that, `CTRL/CMD + H` on vscode)
 - Update the svg icon in the file you just copied, replacing it with what's in "Optimized SVG" in [http://localhost:3000/optimize](http://localhost:3000/optimize)
 - **Add a `{...props}` statement before the end of the first svg tag (look at how it's done in other icons)**
-- Update the URI icon in the file you just copied, replacing it with what's in "uri() version" in [http://localhost:3000/optimize](http://localhost:3000/optimize)
+- Update the URL icon in the file you just copied, replacing it with what's in "uri() version" in [http://localhost:3000/optimize](http://localhost:3000/optimize)
 - Insert a new import in [./src/components/icons/index.tsx](./src/components/icons/index.tsx) that references your new icon
+- Go to [./src/components/icons/index.css](./src/components/icons/index.css), and copy the latest icon class, at the bottom
+- Paste your copied icon class, rename the last part, which contains the icon name, to your icon name, following the other classes pattern
+- Update the `url('` replacing it with what's in "uri() version".
+- Make sure `--pui-absolute-icon-size`, `width` and `height` has the correct icon size. You can look at the svg tag width/height/viewbox attribute to get the correct size
 - Run the command `npm run dev`
 - Go to the icons story
 - Select your icon
