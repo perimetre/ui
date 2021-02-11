@@ -39,9 +39,11 @@
     @apply pui-absolute-icon-right;
 
     > * {
-      /* Adds padding right
-      1rem for each side(left and right) + the size of the icon */
-      padding-right: calc((1rem * 2) + var(--pui-absolute-icon-size, 1rem));
+      &:first-child {
+        /* Adds padding right
+        1rem for each side(left and right) + the size of the icon */
+        padding-right: calc((1rem * 2) + var(--pui-absolute-icon-size, 1rem));
+      }
     }
   }
 
@@ -49,9 +51,11 @@
     @apply pui-absolute-icon-left;
 
     > * {
-      /* Adds padding left
-      1rem for each side(left and right) + the size of the icon */
-      padding-left: calc((1rem * 2) + var(--pui-absolute-icon-size, 1rem));
+      &:first-child {
+        /* Adds padding left
+        1rem for each side(left and right) + the size of the icon */
+        padding-left: calc((1rem * 2) + var(--pui-absolute-icon-size, 1rem));
+      }
     }
   }
 }

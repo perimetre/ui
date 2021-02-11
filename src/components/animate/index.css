@@ -18,21 +18,33 @@
     transform: translateY(-1rem);
   }
 
+  .pui-animate-scaleHover-target-base {
+    transition: transform 100ms ease-out;
+  }
+
+  .pui-animate-scaleHover-target-base-hover {
+    transform: scale(1.2);
+  }
+
+  .pui-animate-scaleHover-target-base-active {
+    transition: transform 20ms ease-in;
+    transform: scale(1);
+  }
+
   .pui-animate-scaleHover {
     .pui-animate-scaleHover-target {
-      transition: transform 100ms ease-out;
+      @apply pui-animate-scaleHover-target-base;
     }
 
     &:hover {
       .pui-animate-scaleHover-target {
-        transform: scale(1.2);
+        @apply pui-animate-scaleHover-target-base-hover;
       }
     }
 
     &:active {
       .pui-animate-scaleHover-target {
-        transition: transform 20ms ease-in;
-        transform: scale(1);
+        @apply pui-animate-scaleHover-target-base-active;
       }
     }
   }
