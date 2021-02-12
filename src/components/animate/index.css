@@ -31,6 +31,18 @@
     transform: scale(1);
   }
 
+  .pui-animate-scaleHover-single {
+    @apply pui-animate-scaleHover-target-base;
+
+    &:hover {
+      @apply pui-animate-scaleHover-target-base-hover;
+    }
+
+    &:active {
+      @apply pui-animate-scaleHover-target-base-active;
+    }
+  }
+
   .pui-animate-scaleHover {
     .pui-animate-scaleHover-target {
       @apply pui-animate-scaleHover-target-base;

@@ -1,0 +1,78 @@
+@layer components {
+  .pui-select-input-container {
+    /* Adds the scrollbar */
+    @apply pui-scrollbar;
+
+    /* First child = select */
+    > * {
+      /* Remove the icon */
+      /* Make it look like the text input */
+      @apply appearance-none pui-text-input;
+
+      /* The option inside the select */
+      option,
+      optgroup {
+        /* Its text should have 500 shade and normal font */
+        @apply text-pui-paragraph-500 font-normal;
+
+        /* If disabled */
+        &:disabled {
+          /* Use the disabled text */
+          /* Adds the background color */
+          @apply text-pui-paragraph-300 bg-gray-100;
+        }
+      }
+
+      /* If it's not the multiple version */
+      &:not([multiple]) {
+        /* The option inside the select */
+        option,
+        optgroup {
+          /* Add the padding for the option */
+          @apply px-2 py-4;
+        }
+      }
+
+      &[multiple] {
+        /* Remove the padding if it's multiple */
+        @apply p-0;
+
+        /* The option inside the select */
+        option {
+          /* Add the padding for the option */
+          @apply px-2 py-2;
+        }
+
+        optgroup {
+          /* Add the padding for the option */
+          @apply py-2;
+        }
+      }
+    }
+  }
+
+  /* We need to separated the icon so the multiple variant doesn't have it */
+  .pui-select-input-icon {
+    @apply pui-absolute-icon-right-padded pui-icon-angle-down pui-animate-scaleHover;
+
+    /* &:after here is the icon */
+    &:after {
+      /* Apply the base scale hover css */
+      @apply pui-animate-scaleHover-target-base;
+    }
+
+    &:hover {
+      &:after {
+        /* Apply the base scale hover css */
+        @apply pui-animate-scaleHover-target-base-hover;
+      }
+    }
+
+    &:active {
+      &:after {
+        /* Apply the base scale hover css */
+        @apply pui-animate-scaleHover-target-base-active;
+      }
+    }
+  }
+}

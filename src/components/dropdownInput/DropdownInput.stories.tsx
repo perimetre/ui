@@ -30,7 +30,6 @@ export default {
  *
  * @param props the story props
  * @param props.label the label property set on controls
- * @param props.error the error property set on controls
  * @param props.open the open property set on controls
  */
 const Template: Story = ({ label, open, ...props }) => (
@@ -38,7 +37,7 @@ const Template: Story = ({ label, open, ...props }) => (
     <label className="pui-label-input" htmlFor="input">
       {label}
     </label>
-    <div className={`pui-dropdown-input-container${open ? ' open' : ''}`}>
+    <div className={`pui-dropdown-input-container ${open ? 'open' : ''}`}>
       <input {...props} id="input" className="pui-text-input" readOnly />
       {open && (
         <ul className="pui-dropdown-input-options">

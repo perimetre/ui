@@ -1,47 +1,61 @@
 @layer components {
   /* These are base stylings to create a dropdown for an INPUT
-     It's for input only and shouldn't be use for other types of dropdown */
+     It's for input only and shouldn't be used for other types of dropdown */
 
+  /* It's also base styling ONLY, with no logic. The logic is either in the autocomplete input or select input */
+
+  /* The container for the input and the options */
   .pui-dropdown-input-container {
     /* Allows for the icon to be placed in the right side, and adds a padding */
     /* Adds the "angle down" icon */
-    /* Animate on hover */
     /* Turn on relative positioning so the options can be absolute */
     /* Cursor pointer */
-    @apply pui-absolute-icon-right-padded pui-icon-angle-down pui-animate-scaleHover relative cursor-pointer pui-scrollbar;
+    /* Styles the scrollbar */
+    @apply pui-absolute-icon-right-padded pui-icon-angle-down relative cursor-pointer pui-scrollbar;
 
-    &.open {
-      :first-child {
-        @apply border-b-0 rounded-b-none;
-      }
-    }
-
+    /* First child = input */
     :first-child {
       /* Puts the input in front of the dropdown */
       @apply z-20;
     }
 
-    /* &:after here is the icon */
-    &:after {
-      /* Apply the base scale hover css */
-      @apply pui-animate-scaleHover-target-base;
-    }
-
-    &:hover {
-      &:after {
-        /* Apply the base scale hover css */
-        @apply pui-animate-scaleHover-target-base-hover;
+    /* On open */
+    &.open {
+      /* First child = input */
+      :first-child {
+        /* Remove border bottom */
+        @apply border-b-0 rounded-b-none;
       }
     }
 
-    &:active {
+    /* If not open */
+    &:not(.open) {
+      /* Animate on hover */
+      @apply pui-animate-scaleHover;
+
+      /* &:after here is the icon */
       &:after {
         /* Apply the base scale hover css */
-        @apply pui-animate-scaleHover-target-base-active;
+        @apply pui-animate-scaleHover-target-base;
+      }
+
+      &:hover {
+        &:after {
+          /* Apply the base scale hover css */
+          @apply pui-animate-scaleHover-target-base-hover;
+        }
+      }
+
+      &:active {
+        &:after {
+          /* Apply the base scale hover css */
+          @apply pui-animate-scaleHover-target-base-active;
+        }
       }
     }
   }
 
+  /* The floating options dropdown */
   .pui-dropdown-input-options {
     /* Remove list styling */
     /* Have its position absolute relative to the container */
@@ -57,21 +71,23 @@
     /* Removes the rounded corner top since it's right up the input */
     /* Puts it in front of the page but inder the input */
     /* Animate it down on display */
+    /* Make it full width */
+    /* Add a background */
     @apply list-none absolute my-0 mx-auto pui-text-input-border shadow-lg overflow-y-auto overflow-x-hidden py-2 px-0 border-t-0 rounded-t-none z-10 pui-animate-fadeDown w-full bg-white;
-
     animation-duration: 200ms;
-
-    min-height: 180px;
     max-height: 225px;
   }
 
+  /* A single item inside the dropdown */
   .pui-dropdown-input-item {
     /* Allow for colors to transition */
     /* Adds a minor padding */
+    /* Cuts the text */
     @apply transition-colors px-2 py-4 pui-text-ellipsis;
 
     /* On hover */
-    &:hover {
+    &:hover,
+    &.highlighted {
       /* Changes the text color */
       /* Changes the font */
       /* Highlights the background */
@@ -79,13 +95,28 @@
     }
   }
 
+  /* The display of selected options */
   .pui-dropdown-input-selected-options {
+    /* Remove list styling */
+    /* Align items centered */
+    /* Wrap items to next line */
+    /* Puts a margin on top */
     @apply list-none flex items-center flex-wrap mt-2;
   }
 
-  .pui-dropdown-input-selected-item {
-    @apply pui-chip-default mb-2 mr-2 pui-text-ellipsis;
+  /* The base styling for a single selected option, if used with another tag(like the button in autocomplete) */
+  .pui-dropdown-input-selected-item-base {
+    /* Margin bottom and right adds a padding between them */
+    /* Cuts the text */
+    @apply mb-2 mr-2 pui-text-ellipsis;
 
     max-width: 220px;
+  }
+
+  /* The styling for a single selected option */
+  .pui-dropdown-input-selected-item {
+    /* A selected option looks like a chip */
+    /* Plus the base styling */
+    @apply pui-chip-default pui-dropdown-input-selected-item-base;
   }
 }
