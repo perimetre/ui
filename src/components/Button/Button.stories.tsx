@@ -142,7 +142,7 @@ export const WithSpinner = SpinnerTemplate.bind({});
  * @param props.color the color property set on controls
  * @param props.className the component classes
  */
-const IconTemplate: Story = ({ color, className, ...props }) => (
+const IconButtonTemplate: Story = ({ color, className, ...props }) => (
   <Button
     {...props}
     className={classNameTrim(`${color !== 'pui-primary' ? `pui-color-${color}` : ''} ${className || ''}`) || undefined}
@@ -151,6 +151,9 @@ const IconTemplate: Story = ({ color, className, ...props }) => (
   </Button>
 );
 
-export const Icon = IconTemplate.bind({});
+export const IconButton = IconButtonTemplate.bind({});
+IconButton.args = {
+  variant: 'icon'
+};
 
 // TODO: Add "With icon"

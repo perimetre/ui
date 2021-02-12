@@ -66,7 +66,7 @@ export const SelectInput: React.FC<SelectInputProps> = ({
     </label>
     <div
       className={classNameTrim(
-        `${containerClassName || ''} ${!multiple ? 'pui-select-input-icon' : ''} ${
+        `pui-select-input-container ${containerClassName || ''} ${!multiple ? 'pui-select-input-icon' : ''} ${
           error ? 'pui-text-input-error' : ''
         } ${success ? 'pui-text-input-success' : ''} ${loading ? 'pui-text-input-loading' : ''}`
       )}
