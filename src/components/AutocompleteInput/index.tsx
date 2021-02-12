@@ -378,7 +378,7 @@ export const AutocompleteInput = <T extends ItemType>({
                       <li
                         key={`result-${item.id}`}
                         // Remove the default padding
-                        className={`${className as string} p-0`}
+                        className={`${(className as string) || ''} p-0`}
                         onMouseMove={onMouseMove as any}
                       >
                         {/* Add back the padding only in this element, and allow it to grow */}

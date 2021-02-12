@@ -2,25 +2,14 @@ import React from 'react';
 // also exported from '@storybook/react' if you can deal with breaking changes in 6.1
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { borderStyleOptions, colorOptions } from '../../prebuiltTailwindTheme';
+import { Button, ButtonProps } from '.';
+import { classNameTrim } from '../../utils';
 import { MenuIcon } from '../Icons';
 
 export default {
   title: 'Components/Button',
+  component: Button,
   argTypes: {
-    size: {
-      defaultValue: 'medium',
-      control: {
-        type: 'radio',
-        options: ['small', 'medium', 'large', 'xlarge']
-      }
-    },
-    variant: {
-      defaultValue: 'default',
-      control: {
-        type: 'radio',
-        options: ['default', 'bordered']
-      }
-    },
     border: {
       control: {
         type: 'check',
@@ -35,12 +24,6 @@ export default {
       }
     },
     disabled: {
-      defaultValue: false,
-      control: {
-        type: 'boolean'
-      }
-    },
-    chip: {
       defaultValue: false,
       control: {
         type: 'boolean'
@@ -65,32 +48,30 @@ export default {
  * A story that displays a button example
  *
  * @param props the story props
- * @param props.size the size property set on controls
- * @param props.variant the variant property set on controls
  * @param props.border the border property set on controls
  * @param props.color the color property set on controls
  * @param props.content the content property set on controls
- * @param props.chip the chip property set on controls
  * @param props.className the component classes
  */
-const Template: Story = ({ size, variant, border, color, content, chip, className, ...props }) => (
-  <button
-    type="button"
+const Template: Story<ButtonProps & { border?: string; content?: string }> = ({
+  border,
+  color,
+  content,
+  className,
+  ...props
+}) => (
+  <Button
     {...props}
-    className={[
-      `pui-btn-${size}`,
-      `pui-btn-${variant}`,
-      `pui-color-${color}`,
-      // If any of the border propery is set, add the tailwind border class
-      ...(border && border.length > 0 ? [`border-${border}`] : []),
-      // If this btn is also a chip, add the chip clas
-      ...(chip ? ['pui-chip-btn'] : []),
-      // Add remaining classes
-      ...(className && className.length > 0 ? [className] : [])
-    ].join(' ')}
+    className={
+      classNameTrim(
+        `${color !== 'pui-primary' ? `pui-color-${color}` : ''} ${
+          border && border.length > 0 ? `border-${border}` : ''
+        } ${className || ''}`
+      ) || undefined
+    }
   >
     {content}
-  </button>
+  </Button>
 );
 
 export const Primary = Template.bind({});
@@ -124,41 +105,32 @@ Large.args = {
 
 export const Chip = Template.bind({});
 Chip.args = {
-  chip: true
+  isChip: true
 };
 
 /**
  * A story that displays a button example
  *
  * @param props the story props
- * @param props.size the size property set on controls
- * @param props.variant the variant property set on controls
  * @param props.border the border property set on controls
  * @param props.color the color property set on controls
  * @param props.content the content property set on controls
- * @param props.chip the chip property set on controls
  * @param props.className the component classes
  */
-const SpinnerTemplate: Story = ({ size, variant, border, color, content, chip, className, ...props }) => (
-  <button
-    type="button"
+const SpinnerTemplate: Story = ({ border, color, content, className, ...props }) => (
+  <Button
     {...props}
-    className={[
-      `flex items-center`,
-      `pui-btn-${size}`,
-      `pui-btn-${variant}`,
-      `pui-color-${color}`,
-      // If any of the border propery is set, add the tailwind border class
-      ...(border && border.length > 0 ? [`border-${border}`] : []),
-      // If this btn is also a chip, add the chip clas
-      ...(chip ? ['pui-chip-btn'] : []),
-      // Add remaining classes
-      ...(className && className.length > 0 ? [className] : [])
-    ].join(' ')}
+    className={
+      classNameTrim(
+        `flex items-center ${color !== 'pui-primary' ? `pui-color-${color}` : ''} ${
+          border && border.length > 0 ? `border-${border}` : ''
+        } ${className || ''}`
+      ) || undefined
+    }
   >
     {content}
     <span className="pui-spinner pui-color-pui-paragraph-0 ml-2" />
-  </button>
+  </Button>
 );
 
 export const WithSpinner = SpinnerTemplate.bind({});
@@ -171,18 +143,12 @@ export const WithSpinner = SpinnerTemplate.bind({});
  * @param props.className the component classes
  */
 const IconTemplate: Story = ({ color, className, ...props }) => (
-  <button
-    type="button"
+  <Button
     {...props}
-    className={[
-      `pui-btn-icon`,
-      `pui-color-${color}`,
-      // Add remaining classes
-      ...(className && className.length > 0 ? [className] : [])
-    ].join(' ')}
+    className={classNameTrim(`${color !== 'pui-primary' ? `pui-color-${color}` : ''} ${className || ''}`) || undefined}
   >
     <MenuIcon className="pui-animate-scaleHover-target fill-current" />
-  </button>
+  </Button>
 );
 
 export const Icon = IconTemplate.bind({});

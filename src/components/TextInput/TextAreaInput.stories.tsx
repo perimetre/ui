@@ -1,11 +1,11 @@
 // also exported from '@storybook/react' if you can deal with breaking changes in 6.1
 import { Meta, Story } from '@storybook/react/types-6-0';
 import React from 'react';
-import { TextInput, TextInputProps } from './TextInput';
+import { TextAreaInput, TextAreaInputProps } from './TextAreaInput';
 
 export default {
-  title: 'Components/Inputs/Text',
-  component: TextInput,
+  title: 'Components/Inputs/Text Area',
+  component: TextAreaInput,
   argTypes: {
     id: { defaultValue: 'input-id' },
     label: { defaultValue: 'Input' },
@@ -13,6 +13,12 @@ export default {
       defaultValue: 'Type here...',
       control: {
         type: 'text'
+      }
+    },
+    rows: {
+      defaultValue: 4,
+      control: {
+        type: 'number'
       }
     },
     defaultValue: {
@@ -42,13 +48,13 @@ export default {
 } as Meta;
 
 /**
- * A story that displays a TextInput example
+ * A story that displays a TextAreaInput example
  *
  * @param props the story props
  */
-const Template: Story<TextInputProps> = (props) => <TextInput {...props} />;
+const Template: Story<TextAreaInputProps> = (props) => <TextAreaInput {...props} />;
 
-export const Text = Template.bind({});
+export const TextArea = Template.bind({});
 
 export const WithHelp = Template.bind({});
 WithHelp.args = {
@@ -59,26 +65,3 @@ export const WithError = Template.bind({});
 WithError.args = {
   error: 'Input is required'
 };
-
-/**
- * A story that displays a TextInput example with datalist
- *
- * @param props the story props
- */
-const DataListTemplate: Story<TextInputProps> = (props) => (
-  <TextInput {...props} list="listOptions">
-    <datalist id="listOptions">
-      {Array(10)
-        .fill(null)
-        .map((_, i) => (
-          <option key={i} value={`Option ${i + 1}`}>
-            Option {i + 1}
-          </option>
-        ))}
-    </datalist>
-  </TextInput>
-);
-
-export const DataList = DataListTemplate.bind({});
-
-// TODO: Add "With icon"

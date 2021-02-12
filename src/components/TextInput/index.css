@@ -63,6 +63,14 @@
     @apply block text-sm text-pui-paragraph-900 tracking-wide mb-2;
   }
 
+  .pui-help-text-input {
+    /* Smaller size */
+    /* Use the placeholder shading */
+    /* With a bit of margin top */
+    @apply text-sm text-pui-paragraph-300 mt-1;
+    animation-duration: 0.2s;
+  }
+
   /* Unfortunately, <input> cannot have ::after, so this(and all input statuses) must be used in a wrapper */
   /* The error status */
   .pui-text-input-error {

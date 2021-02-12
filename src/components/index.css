@@ -1,11 +1,11 @@
 @import './Button';
 @import './Chip';
 @import './Alert';
+@import './Animate';
 @import './DropdownInput';
 @import './SelectInput';
 @import './CheckboxRadioInput';
 @import './TextInput';
-@import './Animate';
 @import './Skeleton';
 @import './Spinner';
 @import './Scrollbar';
