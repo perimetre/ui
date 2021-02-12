@@ -60,6 +60,16 @@ WithError.args = {
   error: 'Input is required'
 };
 
+export const WithIconRight = Template.bind({});
+WithIconRight.args = {
+  containerClassName: 'pui-absolute-icon-right-padded pui-icon-question after:pui-color-pui-paragraph-500'
+};
+
+export const WithIconLeft = Template.bind({});
+WithIconLeft.args = {
+  containerClassName: 'pui-absolute-icon-left-padded pui-icon-bell after:pui-color-pui-paragraph-500'
+};
+
 /**
  * A story that displays a TextInput example with datalist
  *
@@ -80,5 +90,3 @@ const DataListTemplate: Story<TextInputProps> = (props) => (
 );
 
 export const DataList = DataListTemplate.bind({});
-
-// TODO: Add "With icon"

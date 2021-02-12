@@ -4,7 +4,7 @@ import { Story, Meta } from '@storybook/react/types-6-0';
 import { borderStyleOptions, colorOptions } from '../../prebuiltTailwindTheme';
 import { Button, ButtonProps } from '.';
 import { classNameTrim } from '../../utils';
-import { MenuIcon } from '../Icons';
+import { BellIcon, MenuIcon } from '../Icons';
 
 export default {
   title: 'Components/Button',
@@ -136,6 +136,33 @@ const SpinnerTemplate: Story = ({ border, color, content, className, ...props })
 export const WithSpinner = SpinnerTemplate.bind({});
 
 /**
+ * A story that displays a button example
+ *
+ * @param props the story props
+ * @param props.border the border property set on controls
+ * @param props.color the color property set on controls
+ * @param props.content the content property set on controls
+ * @param props.className the component classes
+ */
+const WithIconTemplate: Story = ({ border, color, content, className, ...props }) => (
+  <Button
+    {...props}
+    className={
+      classNameTrim(
+        `flex items-center ${color !== 'pui-primary' ? `pui-color-${color}` : ''} ${
+          border && border.length > 0 ? `border-${border}` : ''
+        } ${className || ''}`
+      ) || undefined
+    }
+  >
+    {content}
+    <BellIcon className="fill-current pui-color-pui-paragraph-0 ml-2 h-4 w-4" />
+  </Button>
+);
+
+export const WithIcon = WithIconTemplate.bind({});
+
+/**
  * A story that displays an icon button example
  *
  * @param props the story props
@@ -155,5 +182,3 @@ export const IconButton = IconButtonTemplate.bind({});
 IconButton.args = {
   variant: 'icon'
 };
-
-// TODO: Add "With icon"

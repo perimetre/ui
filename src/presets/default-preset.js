@@ -1,5 +1,12 @@
 // Ref: https://tailwindcss.com/docs/presets#creating-a-preset
 module.exports = {
+  // Ref: https://tailwindcss.com/docs/hover-focus-and-other-states#default-variants-reference
+  variants: {
+    'pui-placeholder-color': ['after'],
+    extend: {
+      backgroundColor: ['after']
+    }
+  },
   // Default theme: https://github.com/tailwindlabs/tailwindcss/blob/master/stubs/defaultConfig.stub.js#L7
   theme: {
     extend: {
@@ -46,5 +53,9 @@ module.exports = {
       }
     }
   },
-  plugins: [require('@tailwindcss/line-clamp'), require('../plugins/varPlaceholderColorPlugin')]
+  plugins: [
+    require('../plugins/afterVariant'),
+    require('@tailwindcss/line-clamp'),
+    require('../plugins/varPlaceholderColorPlugin')
+  ]
 };
