@@ -2,7 +2,7 @@
 import { Meta, Story } from '@storybook/react/types-6-0';
 import React from 'react';
 import { AutocompleteInput } from '.';
-import { MenuIcon } from '../icons';
+import { MenuIcon } from '../Icons';
 
 export default {
   title: 'Components/Inputs/Autocomplete',

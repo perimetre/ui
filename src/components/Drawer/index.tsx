@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import { BackIcon, CrossIcon } from '../icons';
+import { BackIcon, CrossIcon } from '../Icons';
 
 // The variants for the drawer itself
 const variants = {

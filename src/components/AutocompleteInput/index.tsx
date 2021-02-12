@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useCallback, useState } from 'react';
 import { useCombobox, useMultipleSelection } from 'downshift';
-import { AttentionIcon, CrossIcon } from '../icons';
+import { AttentionIcon, CrossIcon } from '../Icons';
 
 type ItemType = {
   id: string | number;

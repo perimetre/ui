@@ -1,6 +1,6 @@
-@import './fontFamily';
-@import './borderRadius';
-@import './flex';
-@import './absoluteIcon'; /* Make sure absolute icon is before icons */
-@import './icons'; /* If you have issues with icons make sure it's in the correct order and before anything that uses icons */
-@import './textEllipsis';
+@import './FontFamily';
+@import './BorderRadius';
+@import './Flex';
+@import './AbsoluteIcon'; /* Make sure absolute icon is before icons */
+@import './Icons'; /* If you have issues with icons make sure it's in the correct order and before anything that uses icons */
+@import './TextEllipsis';
