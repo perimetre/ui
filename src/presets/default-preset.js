@@ -88,8 +88,9 @@ module.exports = {
     }
   },
   plugins: [
-    require('../plugins/afterVariant'),
     require('@tailwindcss/line-clamp'),
-    require('../plugins/varPlaceholderColorPlugin')
+    require('../plugins/afterVariantPlugin'),
+    require('../plugins/varPlaceholderColorPlugin'),
+    require('../plugins/gapPlugin')
   ]
 };
