@@ -2,6 +2,8 @@ import React from 'react';
 // also exported from '@storybook/react' if you can deal with breaking changes in 6.1
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { colorOptions, weightOptions } from '../../prebuiltTailwindTheme';
+import { AttentionIcon } from '../Icons';
+import { classNameTrim } from '../../utils';
 
 export default {
   title: 'Components/Alert',
@@ -53,16 +55,13 @@ export default {
 const Template: Story = ({ color, content, text, weight, className, ...props }) => (
   <div
     {...props}
-    className={[
-      'pui-alert',
-      `pui-color-${color}`,
-      // If the text property is set, change the text color
-      ...(text && text.length > 0 ? [`text-${text}`] : []),
-      // If the weight property is set, change the weight
-      ...(weight && weight.length > 0 ? [`font-${weight}`] : []),
-      // Add remaining classes
-      ...(className && className.length > 0 ? [className] : [])
-    ].join(' ')}
+    className={
+      classNameTrim(
+        `pui-alert ${color !== 'pui-primary' ? `pui-color-${color}` : ''} ${
+          text && text.length > 0 ? `text-${text}` : ''
+        } ${weight && weight.length > 0 ? `font-${weight}` : ''} ${className || ''}`
+      ) || undefined
+    }
   >
     {content}
   </div>
@@ -81,4 +80,35 @@ Success.args = {
   color: 'pui-success'
 };
 
-// TODO: Add "With icon", with "close"
+/**
+ * A story that displays an alert example
+ *
+ * @param props the story props
+ * @param props.color the color property set on controls
+ * @param props.text the text property set on controls
+ * @param props.content the content property set on controls
+ * @param props.className the component classes
+ * @param props.weight the weight property set on controls
+ */
+const WithIconTemplate: Story = ({ color, content, text, weight, className, ...props }) => (
+  <div
+    {...props}
+    className={
+      classNameTrim(
+        `pui-alert ${color !== 'pui-primary' ? `pui-color-${color}` : ''} ${
+          text && text.length > 0 ? `text-${text}` : ''
+        } ${weight && weight.length > 0 ? `font-${weight}` : ''} flex items-center space-x-4 ${className || ''}`
+      ) || undefined
+    }
+  >
+    <div>
+      <AttentionIcon className="fill-current" />
+    </div>
+    <div>{content}</div>
+  </div>
+);
+
+export const WithIcon = WithIconTemplate.bind({});
+WithIcon.args = {
+  color: 'pui-error'
+};

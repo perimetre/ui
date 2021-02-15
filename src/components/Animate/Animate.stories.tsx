@@ -1,6 +1,8 @@
 // also exported from '@storybook/react' if you can deal with breaking changes in 6.1
 import { Meta, Story } from '@storybook/react/types-6-0';
 import React from 'react';
+import { classNameTrim } from '../../utils';
+import { CrossIcon } from '../Icons';
 
 export default {
   title: 'Components/Animate',
@@ -35,14 +37,7 @@ export default {
  * @param props.className the component classes
  */
 const Template: Story = ({ variant, content, className, ...props }) => (
-  <div
-    {...props}
-    className={[
-      `pui-animate-${variant}`,
-      // Add remaining classes
-      ...(className && className.length > 0 ? [className] : [])
-    ].join(' ')}
-  >
+  <div {...props} className={classNameTrim(`pui-animate-${variant} ${className || ''}`) || undefined}>
     {content}
   </div>
 );
@@ -63,18 +58,24 @@ FadeUp.args = {
 const ScaleHoverTemplate: Story = ({ className, ...props }) => (
   <div
     {...props}
-    className={[
-      `select-none`,
-      `cursor-pointer`,
-      `pui-animate-scaleHover`,
-      // Add remaining classes
-      ...(className && className.length > 0 ? [className] : [])
-    ].join(' ')}
+    className={classNameTrim(`select-none cursor-pointer pui-animate-scaleHover ${className || ''}`) || undefined}
   >
     Please click <span className="inline-block pui-animate-scaleHover-target">here</span>.
   </div>
 );
 
-// TODO: update scaleHover with icon
-
 export const ScaleHover = ScaleHoverTemplate.bind({});
+
+/**
+ * A story that displays a ScaleHover example
+ *
+ * @param props the story props
+ * @param props.className the component classes
+ */
+const ScaleHoverIconTemplate: Story = ({ className, ...props }) => (
+  <div {...props} className={classNameTrim(`cursor-pointer pui-animate-scaleHover ${className || ''}`) || undefined}>
+    <CrossIcon className="fill-current pui-animate-scaleHover-target" />
+  </div>
+);
+
+export const ScaleHoverIcon = ScaleHoverIconTemplate.bind({});

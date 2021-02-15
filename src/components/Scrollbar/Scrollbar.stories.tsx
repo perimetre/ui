@@ -2,6 +2,7 @@
 import { Meta, Story } from '@storybook/react/types-6-0';
 import React from 'react';
 import { colorOptions } from '../../prebuiltTailwindTheme';
+import { classNameTrim } from '../../utils';
 
 export default {
   title: 'Components/Scrollbar',
@@ -30,12 +31,10 @@ export default {
  */
 const ScrollbarTemplate: Story = ({ color, className }) => (
   <div
-    className={[
-      'pui-scrollbar',
-      ...(color && color.length > 0 && !color.includes('pui-primary') ? [`pui-color-${color}`] : []),
-      // Add remaining classes
-      ...(className && className.length > 0 ? [className] : [])
-    ].join(' ')}
+    className={
+      classNameTrim(`pui-scrollbar ${color !== 'pui-primary' ? `pui-color-${color}` : ''} ${className || ''}`) ||
+      undefined
+    }
   >
     <div className="overflow-y-scroll max-h-56">
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus veritatis animi voluptatem dicta similique aperiam

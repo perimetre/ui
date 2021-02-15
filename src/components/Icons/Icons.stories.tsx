@@ -3,6 +3,7 @@ import { Meta, Story } from '@storybook/react/types-6-0';
 import React from 'react';
 import { colorOptions, widthHeightOptions } from '../../prebuiltTailwindTheme';
 import * as IconComponents from '.';
+import { classNameTrim } from '../../utils';
 
 const iconOptions = Object.entries(IconComponents)
   .map((x) => x[0])
@@ -61,13 +62,13 @@ const Template: Story = ({ icon, size, type, color, className, ...props }) => {
   return (
     <CurrentIcon
       {...props}
-      className={[
-        ...(type && type.length > 0 ? (type.includes('stroke') ? ['stroke-current'] : ['fill-current']) : []),
-        ...(color && color.length > 0 ? [`text-${color}`] : []),
-        // If the scale property is set
-        ...(size && size.length > 0 ? [`w-${size}`, `h-${size}`] : []),
-        ...(className && className.length > 0 ? [className] : [])
-      ].join(' ')}
+      className={
+        classNameTrim(
+          `${type && type.length > 0 ? (type.includes('stroke') ? 'stroke-current' : 'fill-current') : ''} ${
+            color && color.length > 0 ? `text-${color}` : ''
+          } ${size && size.length > 0 ? `w-${size} h-${size}` : ''} ${className || ''}`
+        ) || undefined
+      }
     />
   );
 };
@@ -90,14 +91,15 @@ const ButtonTemplate: Story = ({ icon, size, type, color, className, ...props })
     <button type="button" className="pui-btn-icon">
       <CurrentIcon
         {...props}
-        className={[
-          'pui-animate-scaleHover-target',
-          ...(type && type.length > 0 ? (type.includes('stroke') ? ['stroke-current'] : ['fill-current']) : []),
-          ...(color && color.length > 0 ? [`text-${color}`] : []),
-          // If the scale property is set
-          ...(size && size.length > 0 ? [`w-${size}`, `h-${size}`] : []),
-          ...(className && className.length > 0 ? [className] : [])
-        ].join(' ')}
+        className={
+          classNameTrim(
+            `pui-animate-scaleHover-target ${
+              type && type.length > 0 ? (type.includes('stroke') ? 'stroke-current' : 'fill-current') : ''
+            } ${color && color.length > 0 ? `text-${color}` : ''} ${
+              size && size.length > 0 ? `w-${size} h-${size}` : ''
+            } ${className || ''}`
+          ) || undefined
+        }
       />
     </button>
   );

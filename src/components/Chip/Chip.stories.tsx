@@ -2,6 +2,8 @@ import React from 'react';
 // also exported from '@storybook/react' if you can deal with breaking changes in 6.1
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { borderStyleOptions, colorOptions } from '../../prebuiltTailwindTheme';
+import { classNameTrim } from '../../utils';
+import { CrossIcon } from '../Icons';
 
 export default {
   title: 'Components/Chip',
@@ -60,16 +62,13 @@ export default {
 const Template: Story = ({ variant, border, color, content, text, className, ...props }) => (
   <span
     {...props}
-    className={[
-      `pui-chip-${variant}`,
-      `pui-color-${color}`,
-      // If any of the border propery is set, add the tailwind border class
-      ...(border && border.length > 0 ? [`border-${border}`] : []),
-      // If the text property is set, change the text color
-      ...(text && text.length > 0 ? [`text-${text}`] : []),
-      // Add remaining classes
-      ...(className && className.length > 0 ? [className] : [])
-    ].join(' ')}
+    className={
+      classNameTrim(
+        `pui-chip-${variant} ${color !== 'pui-primary' ? `pui-color-${color}` : ''} ${
+          border && border.length > 0 ? `border-${border}` : ''
+        } ${text && text.length > 0 ? `text-${text}` : ''} ${className || ''}`
+      ) || undefined
+    }
   >
     {content}
   </span>
@@ -99,4 +98,31 @@ ColoredText.args = {
   text: 'pui-paragraph-500'
 };
 
-// TODO: Add "With icon"
+/**
+ * A story that displays a chip example
+ *
+ * @param props the story props
+ * @param props.variant the variant property set on controls
+ * @param props.border the border property set on controls
+ * @param props.color the color property set on controls
+ * @param props.content the content property set on controls
+ * @param props.text the text property set on controls
+ * @param props.className the component classes
+ */
+const WithIconTemplate: Story = ({ variant, border, color, content, text, className, ...props }) => (
+  <span
+    {...props}
+    className={
+      classNameTrim(
+        `inline-flex items-center pui-chip-${variant} ${color !== 'pui-primary' ? `pui-color-${color}` : ''} ${
+          border && border.length > 0 ? `border-${border}` : ''
+        } ${text && text.length > 0 ? `text-${text}` : ''} ${className || ''}`
+      ) || undefined
+    }
+  >
+    {content}
+    <CrossIcon className="fill-current h-4 w-4 ml-2 mt-1 pui-animate-scaleHover-single cursor-pointer" />
+  </span>
+);
+
+export const WithIcon = WithIconTemplate.bind({});

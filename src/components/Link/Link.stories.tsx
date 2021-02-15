@@ -3,6 +3,7 @@
 import { Meta, Story } from '@storybook/react/types-6-0';
 import React from 'react';
 import { colorOptions } from '../../prebuiltTailwindTheme';
+import { classNameTrim } from '../../utils';
 
 export default {
   title: 'Components/Link',
@@ -34,12 +35,9 @@ const LinkTemplate: Story = ({ color, className }) => (
     Please click{' '}
     <a
       href="#"
-      className={[
-        'pui-link',
-        ...(color && color.length > 0 && !color.includes('pui-primary') ? [`pui-color-${color}`] : []),
-        // Add remaining classes
-        ...(className && className.length > 0 ? [className] : [])
-      ].join(' ')}
+      className={
+        classNameTrim(`pui-link ${color !== 'pui-primary' ? `pui-color-${color}` : ''} ${className || ''}`) || undefined
+      }
     >
       here
     </a>{' '}
@@ -61,12 +59,9 @@ const VisitedLinkTemplate: Story = ({ color, className }) => (
     Please click{' '}
     <a
       href=""
-      className={[
-        'pui-link',
-        ...(color && color.length > 0 && !color.includes('pui-primary') ? [`pui-color-${color}`] : []),
-        // Add remaining classes
-        ...(className && className.length > 0 ? [className] : [])
-      ].join(' ')}
+      className={
+        classNameTrim(`pui-link ${color !== 'pui-primary' ? `pui-color-${color}` : ''} ${className || ''}`) || undefined
+      }
     >
       here
     </a>{' '}

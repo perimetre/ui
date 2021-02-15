@@ -2,6 +2,7 @@
 import { Meta, Story } from '@storybook/react/types-6-0';
 import React from 'react';
 import { widthHeightOptions } from '../../prebuiltTailwindTheme';
+import { classNameTrim } from '../../utils';
 
 export default {
   title: 'Components/Skeleton',
@@ -38,14 +39,11 @@ export default {
  */
 const SkeletonTemplate: Story = ({ width, height, className }) => (
   <div
-    className={[
-      'pui-skeleton',
-      // If any of the sizes propery are set, add the tailwind size class
-      ...(height && height.length > 0 ? [`h-${height}`] : []),
-      ...(width && width.length > 0 ? [`w-${width}`] : []),
-      // Add remaining classes
-      ...(className && className.length > 0 ? [className] : [])
-    ].join(' ')}
+    className={classNameTrim(
+      `pui-skeleton ${height && height.length > 0 ? `h-${height}` : ''} ${
+        width && width.length > 0 ? `w-${width}` : ''
+      } ${className || ''}`
+    )}
   ></div>
 );
 
