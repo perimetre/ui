@@ -74,4 +74,16 @@
     /* Add a small padding inside the card */
     @apply p-4;
   }
+
+  /* The "actions footer" */
+  .pui-modal-actions {
+    /* Make it flex */
+    /* Align center */
+    /* But justify in the end to push it to right side */
+    /* Add a 1 px border top */
+    /* With a light gray color */
+    /* Adds spacing between the buttons */
+    /* Adds padding */
+    @apply flex items-center justify-end border-t border-gray-200 space-x-4 p-2;
+  }
 }

@@ -86,6 +86,72 @@ const Template: Story<ModalProps & { content?: string; onToggleCallback: () => v
 
 export const Default = Template.bind({});
 
+/**
+ * A story that displays a modal example
+ *
+ * @param props the story props
+ * @param props.content The content property set on controls
+ * @param props.onToggle Callback to update the open state
+ * @param props.isOpen Whether or not the drawer should be open
+ * @param props.onToggleCallback to update the open state
+ * @param props.size The size property set on controls
+ */
+const WithActionsTemplate: Story<ModalProps & { content?: string; onToggleCallback: () => void; size?: string }> = ({
+  content,
+  isOpen: isOpenProps,
+  onToggleCallback,
+  size,
+  ...props
+}) => {
+  // If the viewmode is "docs", don't start it opened
+  const [isOpen, setIsOpen] = useState(window?.location?.search.indexOf('viewMode=docs') !== -1 ? false : isOpenProps);
+
+  useEffect(() => setIsOpen(isOpenProps), [isOpenProps]);
+
+  useEffect(() => {
+    // If the storybook viewmode is "docs" and it is open
+    if (isOpen && window?.location?.search.indexOf('viewMode=docs') !== -1) {
+      // Closes
+      setIsOpen(false);
+    }
+    // This is a "fix" that will help hide the modal if the viewMode=docs in storybook.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [Date.now()]);
+
+  const onToggle = useCallback(() => {
+    onToggleCallback();
+    setIsOpen(!isOpen);
+  }, [onToggleCallback, isOpen]);
+
+  return (
+    <div>
+      <button className="pui-btn-icon text-pui-primary p-4" onClick={onToggle}>
+        {/* Adds a close icon */}
+        <MenuIcon className="pui-animate-scaleHover-target fill-current" />
+      </button>
+      <Modal
+        {...props}
+        isOpen={isOpen}
+        onToggle={onToggle}
+        actions={() => (
+          <>
+            <button className="pui-btn-default pui-color-pui-error" onClick={onToggle}>
+              Cancel
+            </button>
+            <button className="pui-btn-default" onClick={onToggle}>
+              Ok
+            </button>
+          </>
+        )}
+      >
+        <div className={classNameTrim(`${size ? `min-w-${size}` : ''}`)}>{content}</div>
+      </Modal>
+    </div>
+  );
+};
+
+export const WithActions = WithActionsTemplate.bind({});
+
 export const Small = Template.bind({});
 Small.args = {
   size: '1/6vw'

@@ -23,6 +23,10 @@ export type ModalProps = {
    * A title string
    */
   title?: string;
+  /**
+   * A component that if provided will add a "actions" footer
+   */
+  actions?: () => React.ReactNode;
 };
 
 /**
@@ -33,9 +37,17 @@ export type ModalProps = {
  * @param props.onToggle Callback to update the isOpen state
  * @param props.isHeaderAbsolute Whether or not the top section with the close button should be absolute or not.
  * @param props.title A title string
+ * @param props.actions A component that if provided will add a "actions" footer
  * @param props.children The provided children content
  */
-export const Modal: React.FC<ModalProps> = ({ onToggle, isOpen: isOpenProps, isHeaderAbsolute, title, children }) => {
+export const Modal: React.FC<ModalProps> = ({
+  onToggle,
+  isOpen: isOpenProps,
+  isHeaderAbsolute,
+  title,
+  actions,
+  children
+}) => {
   const [isOpen, setIsOpen] = useState(!!isOpenProps);
 
   useEffect(() => {
@@ -84,6 +96,7 @@ export const Modal: React.FC<ModalProps> = ({ onToggle, isOpen: isOpenProps, isH
             </button>
           </div>
           <div className="pui-modal-content">{children}</div>
+          {actions && <div className="pui-modal-actions">{actions()}</div>}
         </div>
       </div>
     </ReactPortal>
