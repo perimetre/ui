@@ -154,3 +154,39 @@ export const twScaleOptions = [
 ];
 
 export const clampOptions = ['none', '1', '2', '3', '4', '5', '6'];
+
+export const minWidthOptions = [
+  '0',
+  'full',
+  'min',
+  'max',
+  '1/2vw',
+  '1/3vw',
+  '2/3vw',
+  '1/4vw',
+  '2/4vw',
+  '3/4vw',
+  '1/5vw',
+  '2/5vw',
+  '3/5vw',
+  '4/5vw',
+  '1/6vw',
+  '2/6vw',
+  '3/6vw',
+  '4/6vw',
+  '5/6vw',
+  '1/12vw',
+  '2/12vw',
+  '3/12vw',
+  '4/12vw',
+  '5/12vw',
+  '6/12vw',
+  '7/12vw',
+  '8/12vw',
+  '9/12vw',
+  '10/12vw',
+  '11/12vw',
+  '90vw',
+  '100vw',
+  'initial'
+];
