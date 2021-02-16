@@ -1,0 +1,128 @@
+@layer components {
+  /* The main tooltip container */
+  .pui-tooltip {
+    /* Adds the border radius */
+    /* It has a white bg */
+    /* It has a faint border */
+    /* Remove the outline */
+    /* Adds a small shadow */
+    @apply pui-border-radius bg-white border border-gray-100 outline-none shadow-md;
+
+    /* Define the variables that will be used by the arrow */
+    /* The arrow size */
+    --pui-arrow-size: 1rem;
+    /* The arrow container size, due to the overflow and the drop shadow, it should be twice as big as the arrow */
+    --pui-arrow-container-size: calc(var(--pui-arrow-size) * 2);
+    /* Invert the container size by multiplying it to -1 */
+    --pui-arrow-container-size-inverted: calc((var(--pui-arrow-container-size)) * -1);
+    /* The arrow rotation */
+    --pui-arrow-rotate-x: 0;
+    --pui-arrow-rotate-z: 0;
+
+    /* If the tooltip is the top one */
+    &[data-placement^='top'] {
+      /* Adds the animation */
+      @apply pui-animate-fadeUp;
+      animation-duration: 200ms;
+
+      /* The arrow right inside the container */
+      [data-popper-arrow] {
+        bottom: var(--pui-arrow-container-size-inverted);
+      }
+    }
+
+    /* If the tooltip is the bottom one */
+    &[data-placement^='bottom'] {
+      /* Adds the animation */
+      @apply pui-animate-fadeDown;
+      animation-duration: 200ms;
+
+      /* The arrow right inside the container */
+      [data-popper-arrow] {
+        top: var(--pui-arrow-container-size-inverted);
+
+        .pui-tooltip-arrow {
+          --pui-arrow-rotate-x: 180deg;
+        }
+      }
+    }
+
+    /* If the tooltip is the left one */
+    &[data-placement^='left'] {
+      /* Adds the animation */
+      @apply pui-animate-fadeLeft;
+      animation-duration: 200ms;
+
+      /* The arrow right inside the container */
+      [data-popper-arrow] {
+        right: var(--pui-arrow-container-size-inverted);
+
+        .pui-tooltip-arrow {
+          --pui-arrow-rotate-z: -90deg;
+        }
+      }
+    }
+
+    /* If the tooltip is the right one */
+    &[data-placement^='right'] {
+      /* Adds the animation */
+      @apply pui-animate-fadeRight;
+      animation-duration: 200ms;
+
+      /* The arrow right inside the container */
+      [data-popper-arrow] {
+        left: var(--pui-arrow-container-size-inverted);
+
+        .pui-tooltip-arrow {
+          --pui-arrow-rotate-z: 90deg;
+        }
+      }
+    }
+  }
+
+  /* The actual content inside the floating tooltip */
+  .pui-tooltip-content {
+    /* It should be relative */
+    /* Add a small padding */
+    /* Make sure it stays on top */
+    @apply relative py-1 px-4 z-10;
+  }
+
+  /* TODO: add tooltip content with default font sizes */
+
+  /* The arrow container */
+  .pui-tooltip-arrow {
+    /* Make it relative so the after can be absolute */
+    /* Hide the overfloe content, so only half of the square shows up */
+    /* Align everything on center */
+    /* Remove any pointer events */
+    @apply relative overflow-hidden flex items-center justify-center pointer-events-none;
+
+    /* The size of the container */
+    width: calc(var(--pui-arrow-container-size));
+    height: calc(var(--pui-arrow-container-size));
+
+    /* Set up the rotation transform */
+    transform: rotateX(var(--pui-arrow-rotate-x)) rotateZ(var(--pui-arrow-rotate-z));
+
+    /* The inner content, which will become the arrow */
+    &:after {
+      /* It should be absolute positioned */
+      /* The arrow has the same shadow as the floating tooltip */
+      /* The arrow has the same border as the floating tooltip */
+      /* The arrow has the same background as the floating tooltip */
+      @apply absolute shadow-md border border-solid border-gray-100 bg-white;
+
+      /* Renders the pseudoelement */
+      content: '';
+
+      /* The arrow itself is half its size due to the skew */
+      width: calc(var(--pui-arrow-size) / 2);
+      height: calc(var(--pui-arrow-size) / 2);
+
+      /* Apply the transformation to make a triangle */
+      transform: skew(45deg, -45deg)
+        translate3d(calc(var(--pui-arrow-size) / 2), calc((var(--pui-arrow-size) / 2) * -1), 0);
+    }
+  }
+}

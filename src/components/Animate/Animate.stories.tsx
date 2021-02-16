@@ -11,7 +11,7 @@ export default {
       defaultValue: 'fadeIn',
       control: {
         type: 'radio',
-        options: ['fadeIn', 'fadeUp', 'fadeDown']
+        options: ['fadeIn', 'fadeUp', 'fadeDown', 'fadeRight', 'fadeLeft']
       }
     },
     content: {

@@ -18,6 +18,18 @@
     transform: translateY(-1rem);
   }
 
+  .pui-animate-fadeRight {
+    animation: fadeInto 0.5s ease-out 0s both;
+    opacity: 0;
+    transform: translateX(-1rem);
+  }
+
+  .pui-animate-fadeLeft {
+    animation: fadeInto 0.5s ease-out 0s both;
+    opacity: 0;
+    transform: translateX(1rem);
+  }
+
   .pui-animate-scaleHover-target-base {
     transition: transform 100ms ease-out;
   }

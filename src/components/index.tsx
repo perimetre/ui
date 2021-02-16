@@ -5,3 +5,4 @@ export * from './CheckboxRadioInput';
 export * from './Button';
 export * from './ReactPortal';
 export * from './Modal';
+export * from './Tooltip';
