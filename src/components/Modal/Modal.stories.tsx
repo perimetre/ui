@@ -43,22 +43,20 @@ export default {
  * @param props.isOpen Whether or not the drawer should be open
  * @param props.onToggleCallback to update the open state
  * @param props.size The size property set on controls
+ * @param props.content.viewMode
  */
-const Template: Story<ModalProps & { content?: string; onToggleCallback: () => void; size?: string }> = ({
-  content,
-  isOpen: isOpenProps,
-  onToggleCallback,
-  size,
-  ...props
-}) => {
+const Template: Story<ModalProps & { content?: string; onToggleCallback: () => void; size?: string }> = (
+  { content, isOpen: isOpenProps, onToggleCallback, size, ...props },
+  { viewMode }
+) => {
   // If the viewmode is "docs", don't start it opened
-  const [isOpen, setIsOpen] = useState(window?.location?.search.indexOf('viewMode=docs') !== -1 ? false : isOpenProps);
+  const [isOpen, setIsOpen] = useState(viewMode === 'docs' ? false : isOpenProps);
 
   useEffect(() => setIsOpen(isOpenProps), [isOpenProps]);
 
   useEffect(() => {
     // If the storybook viewmode is "docs" and it is open
-    if (isOpen && window?.location?.search.indexOf('viewMode=docs') !== -1) {
+    if (isOpen && viewMode === 'docs') {
       // Closes
       setIsOpen(false);
     }
@@ -95,22 +93,20 @@ export const Default = Template.bind({});
  * @param props.isOpen Whether or not the drawer should be open
  * @param props.onToggleCallback to update the open state
  * @param props.size The size property set on controls
+ * @param props.content.viewMode
  */
-const WithActionsTemplate: Story<ModalProps & { content?: string; onToggleCallback: () => void; size?: string }> = ({
-  content,
-  isOpen: isOpenProps,
-  onToggleCallback,
-  size,
-  ...props
-}) => {
+const WithActionsTemplate: Story<ModalProps & { content?: string; onToggleCallback: () => void; size?: string }> = (
+  { content, isOpen: isOpenProps, onToggleCallback, size, ...props },
+  { viewMode }
+) => {
   // If the viewmode is "docs", don't start it opened
-  const [isOpen, setIsOpen] = useState(window?.location?.search.indexOf('viewMode=docs') !== -1 ? false : isOpenProps);
+  const [isOpen, setIsOpen] = useState(viewMode === 'docs' ? false : isOpenProps);
 
   useEffect(() => setIsOpen(isOpenProps), [isOpenProps]);
 
   useEffect(() => {
     // If the storybook viewmode is "docs" and it is open
-    if (isOpen && window?.location?.search.indexOf('viewMode=docs') !== -1) {
+    if (isOpen && viewMode === 'docs') {
       // Closes
       setIsOpen(false);
     }

@@ -1,0 +1,39 @@
+@layer components {
+  .pui-dropdown-menu-header,
+  .pui-dropdown-menu-content,
+  .pui-dropdown-menu-footer {
+    min-width: 180px;
+    max-width: 300px;
+
+    ul {
+      @apply list-none m-0 p-0;
+
+      li {
+        > * {
+          @apply w-full block py-1 px-4 outline-none;
+
+          &:not(:disabled) {
+            &:hover {
+              @apply text-pui-secondary font-semibold bg-gray-100;
+            }
+          }
+
+          /* If disabled */
+          &:disabled {
+            /* Use the disabled text */
+            /* Adds the background color */
+            @apply text-pui-paragraph-300 bg-gray-100 cursor-default;
+          }
+        }
+      }
+    }
+  }
+
+  .pui-dropdown-menu-header {
+    @apply border-b border-gray-200;
+  }
+
+  .pui-dropdown-menu-footer {
+    @apply border-t border-gray-200;
+  }
+}

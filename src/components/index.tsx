@@ -6,3 +6,4 @@ export * from './Button';
 export * from './ReactPortal';
 export * from './Modal';
 export * from './Tooltip';
+export * from './Dropdown';

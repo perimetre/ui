@@ -41,7 +41,7 @@
     /* md and up reset the minimum width */
     /* Adds the default border radius */
     /* Animate the fadeUp effect */
-    @apply relative shadow-xl my-0 mx-auto md:mt-14 bg-white max-w-full min-w-90vw md:min-w-initial pui-border-radius pui-animate-fadeUp;
+    @apply relative shadow-xl my-0 mx-auto md:mt-14 bg-white max-w-full min-w-screen-90 md:min-w-initial pui-border-radius pui-animate-fadeUp;
   }
 
   .pui-modal-header {

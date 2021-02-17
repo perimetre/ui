@@ -81,9 +81,12 @@ module.exports = {
         '9/12vw': '75vw',
         '10/12vw': '83.333333vw',
         '11/12vw': '91.666667vw',
-        '90vw': '90vw',
-        '100vw': '100vw',
+        'screen-90': '90vw',
+        screen: '100vw',
         initial: 'initial'
+      },
+      height: {
+        '5/12vh': '41.666667vh'
       }
     }
   },

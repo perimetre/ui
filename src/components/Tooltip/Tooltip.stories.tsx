@@ -2,6 +2,7 @@
 import { Meta, Story } from '@storybook/react/types-6-0';
 import React from 'react';
 import { Tooltip, TooltipProps } from '.';
+import { classNameTrim } from '../../utils';
 import { AngleDownIcon } from '../Icons';
 
 export default {
@@ -69,9 +70,13 @@ export default {
  * @param props the story props
  * @param props.text the text property set on controls
  * @param props.content the content property set on controls
+ * @param props.text.viewMode The storybook's viewmode
  */
-const Template: Story<TooltipProps & { text?: string; content?: string }> = ({ text, content, ...props }) => (
-  <div className="flex items-center justify-center w-full h-screen">
+const Template: Story<TooltipProps & { text?: string; content?: string }> = (
+  { text, content, ...props },
+  { viewMode }
+) => (
+  <div className={classNameTrim(`flex items-center justify-center w-full ${viewMode !== 'docs' ? 'h-5/12vh' : ''}`)}>
     <Tooltip {...props} content={<div className="max-w-sm">{content}</div>}>
       <>
         <span>{text}</span>
