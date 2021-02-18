@@ -56,7 +56,7 @@ const WithOptionsTemplate: Story = (props) => (
         className="pui-btn-icon pui-color-pui-primary"
         onClick={() => alert(`Clicked on ${item.label}`)}
       >
-        <MenuIcon className="pui-animate-scaleHover-target fill-current" />
+        <MenuIcon className="pui-animate-scaleHover-target" />
       </button>
     )}
   />

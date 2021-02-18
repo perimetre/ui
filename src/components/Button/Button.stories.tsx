@@ -156,7 +156,7 @@ const WithIconTemplate: Story = ({ border, color, content, className, ...props }
     }
   >
     {content}
-    <BellIcon className="fill-current pui-color-pui-paragraph-0 ml-2 h-4 w-4" />
+    <BellIcon className="pui-color-pui-paragraph-0 ml-2 h-4 w-4" />
   </Button>
 );
 
@@ -174,7 +174,7 @@ const IconButtonTemplate: Story = ({ color, className, ...props }) => (
     {...props}
     className={classNameTrim(`${color !== 'pui-primary' ? `pui-color-${color}` : ''} ${className || ''}`) || undefined}
   >
-    <MenuIcon className="pui-animate-scaleHover-target fill-current" />
+    <MenuIcon className="pui-animate-scaleHover-target" />
   </Button>
 );
 

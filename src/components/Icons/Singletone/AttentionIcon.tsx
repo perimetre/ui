@@ -1,12 +1,20 @@
 import React from 'react';
+import { classNameTrim } from '../../../utils';
 
 /**
  * AttentionIcon icon to use with JSX
  *
  * @param props the icon props
+ * @param props.className the icon classname value
  */
-export const AttentionIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
-  <svg width="22" height="22" viewBox="0 0 22 22" {...props}>
+export const AttentionIcon: React.FC<React.SVGProps<SVGSVGElement>> = ({ className, ...props }) => (
+  <svg
+    width="22"
+    height="22"
+    viewBox="0 0 22 22"
+    {...props}
+    className={classNameTrim(`fill-current ${className || ''}`)}
+  >
     <g fill="none">
       <path d="M-1-1h24v24H-1z" />
       <path

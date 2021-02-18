@@ -102,7 +102,7 @@ const WithIconTemplate: Story = ({ color, content, text, weight, className, ...p
     }
   >
     <div>
-      <AttentionIcon className="fill-current" />
+      <AttentionIcon />
     </div>
     <div>{content}</div>
   </div>

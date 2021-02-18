@@ -25,13 +25,6 @@ export default {
         options: widthHeightOptions
       }
     },
-    type: {
-      defaultValue: 'fill',
-      control: {
-        type: 'radio',
-        options: ['stroke', 'fill']
-      }
-    },
     color: {
       defaultValue: 'pui-primary',
       control: {
@@ -53,20 +46,19 @@ export default {
  * @param props the story props
  * @param props.icon the icon property set on controls
  * @param props.size the size property set on controls
- * @param props.type the type property set on controls
  * @param props.color the color property set on controls
  * @param props.className the component classes
  */
-const Template: Story = ({ icon, size, type, color, className, ...props }) => {
+const Template: Story = ({ icon, size, color, className, ...props }) => {
   const CurrentIcon = IconComponents[icon];
   return (
     <CurrentIcon
       {...props}
       className={
         classNameTrim(
-          `${type && type.length > 0 ? (type.includes('stroke') ? 'stroke-current' : 'fill-current') : ''} ${
-            color && color.length > 0 ? `text-${color}` : ''
-          } ${size && size.length > 0 ? `w-${size} h-${size}` : ''} ${className || ''}`
+          `${color && color.length > 0 ? `text-${color}` : ''} ${
+            size && size.length > 0 ? `w-${size} h-${size}` : ''
+          } ${className || ''}`
         ) || undefined
       }
     />
@@ -81,11 +73,10 @@ export const Icons = Template.bind({});
  * @param props the story props
  * @param props.icon the icon property set on controls
  * @param props.size the size property set on controls
- * @param props.type the type property set on controls
  * @param props.color the color property set on controls
  * @param props.className the component classes
  */
-const ButtonTemplate: Story = ({ icon, size, type, color, className, ...props }) => {
+const ButtonTemplate: Story = ({ icon, size, color, className, ...props }) => {
   const CurrentIcon = IconComponents[icon];
   return (
     <button type="button" className="pui-btn-icon">
@@ -93,9 +84,7 @@ const ButtonTemplate: Story = ({ icon, size, type, color, className, ...props })
         {...props}
         className={
           classNameTrim(
-            `pui-animate-scaleHover-target ${
-              type && type.length > 0 ? (type.includes('stroke') ? 'stroke-current' : 'fill-current') : ''
-            } ${color && color.length > 0 ? `text-${color}` : ''} ${
+            `pui-animate-scaleHover-target ${color && color.length > 0 ? `text-${color}` : ''} ${
               size && size.length > 0 ? `w-${size} h-${size}` : ''
             } ${className || ''}`
           ) || undefined

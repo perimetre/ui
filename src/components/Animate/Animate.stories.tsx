@@ -74,7 +74,7 @@ export const ScaleHover = ScaleHoverTemplate.bind({});
  */
 const ScaleHoverIconTemplate: Story = ({ className, ...props }) => (
   <div {...props} className={classNameTrim(`cursor-pointer pui-animate-scaleHover ${className || ''}`) || undefined}>
-    <CrossIcon className="fill-current pui-animate-scaleHover-target" />
+    <CrossIcon className="pui-animate-scaleHover-target" />
   </div>
 );
 

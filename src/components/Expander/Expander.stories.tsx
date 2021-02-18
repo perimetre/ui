@@ -42,9 +42,7 @@ const Template: Story<ExpanderProps> = ({ isExpanded: isExpandedProps, ...props 
         Open{' '}
         <AngleDownIcon
           className={classNameTrim(
-            `fill-current pui-animate-scaleHover-target ml-2 transition-transform transform-gpu ${
-              isExpanded ? 'rotate-180' : ''
-            }`
+            `pui-animate-scaleHover-target ml-2 transition-transform transform-gpu ${isExpanded ? 'rotate-180' : ''}`
           )}
         />
       </button>

@@ -1,12 +1,20 @@
 import React from 'react';
+import { classNameTrim } from '../../../utils';
 
 /**
  * CrossIcon icon to use with JSX
  *
  * @param props the icon props
+ * @param props.className the icon classname value
  */
-export const CrossIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
-  <svg width="24" height="24" viewBox="0 0 24 24" {...props}>
+export const CrossIcon: React.FC<React.SVGProps<SVGSVGElement>> = ({ className, ...props }) => (
+  <svg
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    {...props}
+    className={classNameTrim(`fill-current ${className || ''}`)}
+  >
     <g fill="none">
       <path d="M0 0h24v24H0z" />
       <path

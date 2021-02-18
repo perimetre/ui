@@ -1,12 +1,20 @@
 import React from 'react';
+import { classNameTrim } from '../../../utils';
 
 /**
  * MenuIcon icon to use with JSX
  *
  * @param props the icon props
+ * @param props.className the icon classname value
  */
-export const MenuIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
-  <svg width="24" height="24" viewBox="0 0 24 24" {...props}>
+export const MenuIcon: React.FC<React.SVGProps<SVGSVGElement>> = ({ className, ...props }) => (
+  <svg
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    {...props}
+    className={classNameTrim(`fill-current ${className || ''}`)}
+  >
     <defs>
       <filter x="-15.3%" y="-223.9%" width="130.6%" height="547.8%" filterUnits="objectBoundingBox" id="prefix_12Uc4_a">
         <feOffset dy="2" in="SourceAlpha" result="shadowOffsetOuter1" />

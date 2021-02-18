@@ -401,7 +401,7 @@ export const AutocompleteInput = <T extends ItemType>({
                   })
                 ) : (
                   <li className="pui-flex-center flex-col text-pui-paragraph-300">
-                    <AttentionIcon className="fill-current my-2" />
+                    <AttentionIcon className="my-2" />
                     {translations?.blankState || 'No results to show'}
                   </li>
                 )
@@ -429,7 +429,7 @@ export const AutocompleteInput = <T extends ItemType>({
                   onClick={() => toggleSelectedItem(selectedItem)}
                 >
                   {selectedItem.label}
-                  <CrossIcon className="pui-animate-scaleHover-target fill-current h-4 w-4 ml-2 mt-1" />
+                  <CrossIcon className="pui-animate-scaleHover-target h-4 w-4 ml-2 mt-1" />
                 </button>
               </li>
             ))}

@@ -66,7 +66,7 @@ const Template: Story<DropdownProps & { text?: string; content?: string }> = ({ 
       <Dropdown {...props} content={dropdownContent}>
         <>
           <span>{content}</span>
-          <AngleDownIcon className="fill-current pui-animate-scaleHover-target ml-2" />
+          <AngleDownIcon className="pui-animate-scaleHover-target ml-2" />
         </>
       </Dropdown>
     </div>
@@ -130,7 +130,7 @@ const RichContentTemplate: Story<DropdownProps & { text?: string; content?: stri
       <Dropdown {...props} header={dropdownHeader} content={dropdownContent} footer={dropdownFooter}>
         <>
           <span>{content}</span>
-          <AngleDownIcon className="fill-current pui-animate-scaleHover-target ml-2" />
+          <AngleDownIcon className="pui-animate-scaleHover-target ml-2" />
         </>
       </Dropdown>
     </div>
@@ -191,7 +191,7 @@ const RicherContentTemplate: Story<DropdownProps & { text?: string; content?: st
       <Dropdown {...props} header={dropdownHeader} content={dropdownContent} footer={dropdownFooter}>
         <>
           <span>{content}</span>
-          <AngleDownIcon className="fill-current pui-animate-scaleHover-target ml-2" />
+          <AngleDownIcon className="pui-animate-scaleHover-target ml-2" />
         </>
       </Dropdown>
     </div>

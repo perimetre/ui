@@ -50,7 +50,7 @@ const Template: Story<DrawerProps & { content?: string; onOpenCallback: (isOpen:
     <div>
       <button className="pui-btn-icon text-pui-primary p-4" onClick={() => onOpen(!isOpen)}>
         {/* Adds a close icon */}
-        <MenuIcon className="pui-animate-scaleHover-target fill-current" />
+        <MenuIcon className="pui-animate-scaleHover-target" />
       </button>
       <Drawer {...props} isOpen={isOpen} onOpen={onOpen}>
         <div className="p-4 pt-0">{content}</div>

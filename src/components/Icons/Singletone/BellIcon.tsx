@@ -1,12 +1,20 @@
 import React from 'react';
+import { classNameTrim } from '../../../utils';
 
 /**
  * BellIcon icon to use with JSX
  *
  * @param props the icon props
+ * @param props.className the icon classname value
  */
-export const BellIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
-  <svg width="16" height="16" viewBox="0 0 16 16" {...props}>
+export const BellIcon: React.FC<React.SVGProps<SVGSVGElement>> = ({ className, ...props }) => (
+  <svg
+    width="16"
+    height="16"
+    viewBox="0 0 16 16"
+    {...props}
+    className={classNameTrim(`fill-current ${className || ''}`)}
+  >
     <g fill="none">
       <path d="M0 0h16v16H0z" />
       <path

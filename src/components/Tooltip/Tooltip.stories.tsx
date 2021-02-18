@@ -80,7 +80,7 @@ const Template: Story<TooltipProps & { text?: string; content?: string }> = (
     <Tooltip {...props} content={<div className="max-w-sm">{content}</div>}>
       <>
         <span>{text}</span>
-        <AngleDownIcon className="fill-current pui-animate-scaleHover-target ml-2" />
+        <AngleDownIcon className="pui-animate-scaleHover-target ml-2" />
       </>
     </Tooltip>
   </div>

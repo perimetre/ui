@@ -92,7 +92,7 @@ export const Modal: React.FC<ModalProps> = ({
             <h3>{title}</h3>
             <button className="pui-btn-icon text-pui-paragraph-900 p-4" onClick={onToggle}>
               {/* Adds a close icon */}
-              <CrossIcon className="pui-animate-scaleHover-target fill-current" />
+              <CrossIcon className="pui-animate-scaleHover-target" />
             </button>
           </div>
           <div className="pui-modal-content">{children}</div>

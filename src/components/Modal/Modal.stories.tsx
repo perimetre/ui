@@ -73,7 +73,7 @@ const Template: Story<ModalProps & { content?: string; onToggleCallback: () => v
     <div>
       <button className="pui-btn-icon text-pui-primary p-4" onClick={onToggle}>
         {/* Adds a close icon */}
-        <MenuIcon className="pui-animate-scaleHover-target fill-current" />
+        <MenuIcon className="pui-animate-scaleHover-target" />
       </button>
       <Modal {...props} isOpen={isOpen} onToggle={onToggle}>
         <div className={classNameTrim(`${size ? `min-w-${size}` : ''}`)}>{content}</div>
@@ -123,7 +123,7 @@ const WithActionsTemplate: Story<ModalProps & { content?: string; onToggleCallba
     <div>
       <button className="pui-btn-icon text-pui-primary p-4" onClick={onToggle}>
         {/* Adds a close icon */}
-        <MenuIcon className="pui-animate-scaleHover-target fill-current" />
+        <MenuIcon className="pui-animate-scaleHover-target" />
       </button>
       <Modal
         {...props}

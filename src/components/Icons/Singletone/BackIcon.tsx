@@ -1,12 +1,20 @@
 import React from 'react';
+import { classNameTrim } from '../../../utils';
 
 /**
  * BackIcon icon to use with JSX
  *
  * @param props the icon props
+ * @param props.className the icon classname value
  */
-export const BackIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
-  <svg width="24" height="24" viewBox="0 0 24 24" {...props}>
+export const BackIcon: React.FC<React.SVGProps<SVGSVGElement>> = ({ className, ...props }) => (
+  <svg
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    {...props}
+    className={classNameTrim(`fill-current ${className || ''}`)}
+  >
     <path d="M10.414 5l1.414 1.414-5 5H22v2H6.828l5 5-1.414 1.414L3 12.414 4.414 11l6-6z" />
   </svg>
 );

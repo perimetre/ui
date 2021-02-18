@@ -121,7 +121,7 @@ const WithIconTemplate: Story = ({ variant, border, color, content, text, classN
     }
   >
     {content}
-    <CrossIcon className="fill-current h-4 w-4 ml-2 mt-1 pui-animate-scaleHover-single cursor-pointer" />
+    <CrossIcon className="h-4 w-4 ml-2 mt-1 pui-animate-scaleHover-single cursor-pointer" />
   </span>
 );
 

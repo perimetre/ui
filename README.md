@@ -105,6 +105,7 @@ The architecture is how we setup the repository structure:
 - Update the icon name (Replace tool recommended for that, `CTRL/CMD + H` on vscode)
 - Update the svg icon in the file you just copied, replacing it with what's in "Optimized SVG" in [http://localhost:3000/optimize](http://localhost:3000/optimize)
 - **Add a `{...props}` statement before the end of the first svg tag (look at how it's done in other icons)**
+- **Make sure to add a class name according to the icon type. `fill-current` or `stroke-current` (look at how it's done in other icons)**
 - Update the URL icon in the file you just copied, replacing it with what's in "uri() version" in [http://localhost:3000/optimize](http://localhost:3000/optimize)
 - Insert a new import in [./src/components/icons/index.tsx](./src/components/icons/index.tsx) that references your new icon
 - Go to [./src/components/icons/index.css](./src/components/icons/index.css), and copy the latest icon class, at the bottom

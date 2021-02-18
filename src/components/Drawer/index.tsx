@@ -196,12 +196,12 @@ export const Drawer: React.FC<DrawerProps> = ({
         {onBack && (
           <button className="pui-btn-icon text-pui-paragraph-900 p-4" onClick={onBack}>
             {/* Adds a back icon */}
-            <BackIcon className="pui-animate-scaleHover-target fill-current" />
+            <BackIcon className="pui-animate-scaleHover-target" />
           </button>
         )}
         <button className="pui-btn-icon text-pui-paragraph-900 p-4" onClick={() => onOpen(false)}>
           {/* Adds a close icon */}
-          <CrossIcon className="pui-animate-scaleHover-target fill-current" />
+          <CrossIcon className="pui-animate-scaleHover-target" />
         </button>
       </div>
       {/* Drawer content */}
