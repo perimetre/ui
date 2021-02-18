@@ -7,3 +7,5 @@ export * from './ReactPortal';
 export * from './Modal';
 export * from './Tooltip';
 export * from './Dropdown';
+export * from './Expander';
+export * from './Badge';

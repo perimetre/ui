@@ -51,7 +51,14 @@ module.exports = {
           }
         }
       },
-      minWidth: {
+      /**
+       * Returns the minWidth values
+       *
+       * @param theme the provided tailwind theme
+       */
+      minWidth: (theme) => ({
+        auto: 'auto',
+        ...theme('spacing'),
         // Adds defaults with related percentages of screen width.
         // The percentage values are the same default percentage values of tailwind's width values. But with vw(view width) instead of %
         // Ref: https://github.com/tailwindlabs/tailwindcss/blob/e2fcb92b1be0bf2429c90f223aa98aff741660d7/stubs/defaultConfig.stub.js#L675
@@ -81,10 +88,13 @@ module.exports = {
         '9/12vw': '75vw',
         '10/12vw': '83.333333vw',
         '11/12vw': '91.666667vw',
+        full: '100%',
         'screen-90': '90vw',
         screen: '100vw',
+        min: 'min-content',
+        max: 'max-content',
         initial: 'initial'
-      },
+      }),
       height: {
         '5/12vh': '41.666667vh'
       }
