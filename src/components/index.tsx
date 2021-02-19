@@ -9,3 +9,4 @@ export * from './Tooltip';
 export * from './Dropdown';
 export * from './Expander';
 export * from './Badge';
+export * from './WYSIWYGInput';

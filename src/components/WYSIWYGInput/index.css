@@ -1,0 +1,74 @@
+@import 'draft-js/dist/Draft.css';
+
+@layer components {
+  .pui-wysiwyg-root {
+    /* Makes it full width */
+    /* Adds the font family */
+    /* The text should use the 900 shading */
+    /* Its colors can transition */
+    /* Uses a light font weight */
+    /* Adds the default border radius */
+    /* Solid border styling */
+    /* Border color */
+    @apply relative w-full pui-font-family text-pui-paragraph-900 transition-colors font-light pui-border-radius border border-solid border-gray-400;
+
+    &:focus-within {
+      @apply border-pui-placeholder-color;
+    }
+
+    /* TODO: placeholder */
+    /* TODO: disabled */
+  }
+
+  .pui-wysiwyg-editor {
+    /* Adds the padding */
+    @apply p-3 cursor-text text-base prose max-w-full pui-border-radius bg-white outline-none;
+
+    .public-DraftEditor-content {
+      min-height: 100px;
+    }
+  }
+
+  .pui-wysiwyg-hidePlaceholder {
+    .public-DraftEditorPlaceholder-root {
+      display: none;
+    }
+  }
+
+  .pui-wysiwyg-toolbar {
+    @apply sticky top-0 bg-white z-10 pui-border-radius border-b border-solid border-gray-400 rounded-b-none select-none flex flex-wrap;
+
+    /* font-family: 'Helvetica', sans-serif;
+    font-size: 14px; */
+  }
+
+  .pui-wysiwyg-toolbar-section {
+    @apply flex p-2 space-x-2;
+
+    &:not(:first-child) {
+      @apply border-l border-gray-200;
+    }
+  }
+
+  .pui-wysiwyg-base {
+    > div {
+      display: contents;
+    }
+  }
+
+  .pui-wysiwyg-left {
+    @apply pui-wysiwyg-base text-left;
+  }
+
+  .pui-wysiwyg-center {
+    @apply pui-wysiwyg-base text-center;
+  }
+
+  .pui-wysiwyg-right {
+    @apply pui-wysiwyg-base text-right;
+  }
+
+  .pui-wysiwyg-justify {
+    @apply pui-wysiwyg-base text-justify;
+  }
+}
