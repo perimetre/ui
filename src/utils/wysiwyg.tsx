@@ -1,4 +1,5 @@
 import { EditorState } from 'draft-js';
+import { setBlockData } from 'draftjs-utils';
 
 /**
  * A helper method to check whether this inline style should be active or not, from its type property
@@ -34,4 +35,33 @@ export const isBlockActiveByData = (editorState: EditorState, dataKey: string, e
   return (
     expectedValue === editorState.getCurrentContent().getBlockForKey(selection.getStartKey()).getData().get(dataKey)
   );
+};
+
+/**
+ * A method which will remove an object data if already exists, and add if it doesn't
+ *
+ * @param editorState The current editor state
+ * @param data The provided block metadata
+ */
+export const toggleBlockData = (editorState: EditorState, data: Record<string, unknown>): EditorState => {
+  // Get the current data for this block
+  const selection = editorState.getSelection();
+  const currentData = editorState.getCurrentContent().getBlockForKey(selection.getStartKey()).getData();
+
+  // Create a new data object
+  const newData = {};
+
+  // For each entry in the provided data object
+  Object.entries(data || {}).forEach(([key, value]) => {
+    // If the current data DOES NOT have the key
+    if (!currentData.has(key)) {
+      // Add the key to the new data, because we should keep ip
+      newData[key] = value;
+    }
+
+    // If the current data DOES HAVE the key
+    // Don't do anything, because we don't want it to be added, since we want to remove it.
+  });
+
+  return setBlockData(editorState, newData);
 };

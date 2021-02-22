@@ -97,7 +97,7 @@
 
     /* The next input element */
     > * {
-      /* Erro = error border */
+      /* Success border */
       @apply border-pui-success;
 
       /* &:focus {

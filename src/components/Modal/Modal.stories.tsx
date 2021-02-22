@@ -43,7 +43,7 @@ export default {
  * @param props.isOpen Whether or not the drawer should be open
  * @param props.onToggleCallback to update the open state
  * @param props.size The size property set on controls
- * @param props.content.viewMode
+ * @param props.content.viewMode The storybook viewmode, whether it's on canvas or docs
  */
 const Template: Story<ModalProps & { content?: string; onToggleCallback: () => void; size?: string }> = (
   { content, isOpen: isOpenProps, onToggleCallback, size, ...props },
@@ -93,7 +93,7 @@ export const Default = Template.bind({});
  * @param props.isOpen Whether or not the drawer should be open
  * @param props.onToggleCallback to update the open state
  * @param props.size The size property set on controls
- * @param props.content.viewMode
+ * @param props.content.viewMode The storybook viewmode, whether it's on canvas or docs
  */
 const WithActionsTemplate: Story<ModalProps & { content?: string; onToggleCallback: () => void; size?: string }> = (
   { content, isOpen: isOpenProps, onToggleCallback, size, ...props },

@@ -1,5 +1,7 @@
+import classnames from 'classnames';
 import DOMPurify from 'dompurify';
 import {
+  ContentState,
   convertFromRaw,
   convertToRaw,
   DraftStyleMap,
@@ -10,9 +12,9 @@ import {
   RichUtils
 } from 'draft-js';
 import draftToHtml from 'draftjs-to-html';
-import { setBlockData } from 'draftjs-utils';
 import React, { forwardRef, useCallback, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react';
 import { classNameTrim } from '../../utils';
+import { toggleBlockData } from '../../utils/wysiwyg';
 import { blockStyleFn, getBlockDataByName } from './Blocks';
 import { Toolbar } from './Toolbar';
 import { defaultWYSIWYGTranslations, WYSIWYGTranslations } from './translations';
@@ -68,25 +70,23 @@ export type WYSIWYGInputProps = EditorProps & {
    */
   translations?: WYSIWYGTranslations;
   /**
-   * The editor onHtmlChange callback. Provides a sanitizedHtml for the text input
+   * The initial html value to fill the input with. Remember that this is the "default" version. So it'll only work in the first render. And this is how it should behave.
+   */
+  defaultHtmlValue?: string;
+  /**
+   * The editor onHtmlChange callback. Provides a sanitizedHtml for the text input.
+   *
+   * This callback can make the app slower. So it is recommended to wrap it in a debouncer
    */
   onHtmlChangeSlow?: (sanitizedHtml: string) => void;
+  /**
+   * Whether or not the input should be disabled
+   */
+  disabled?: boolean;
 };
+
 /**
  * A Rich text WYSIWYG editor
- *
- * @param props The input props
- * @param props.id The input id
- * @param props.label If provided, displays a label above the input
- * @param props.help If provided, displays a help text under the input
- * @param props.error The error text to replace the help text with
- * @param props.success Shows a success status
- * @param props.loading Shows a loading status
- * @param props.containerClassName The classname string prepended to the input container className
- * @param props.translations The translation object
- * @param props.onChange The editor onChange callback
- * @param props.onHtmlChangeSlow The editor onHtmlChangeSlow callback. Provides a sanitizedHtml for the text input
- * @param props.children If provided, the children will be appended under the input helper texts
  */
 export const WYSIWYGInput = forwardRef<WYSIWYGInputRef, WYSIWYGInputProps>(
   (
@@ -102,6 +102,9 @@ export const WYSIWYGInput = forwardRef<WYSIWYGInputRef, WYSIWYGInputProps>(
       translations: translationsProps,
       onChange,
       onHtmlChangeSlow,
+      disabled,
+      readOnly,
+      defaultHtmlValue,
       ...editorProps
     },
     ref
@@ -155,6 +158,29 @@ export const WYSIWYGInput = forwardRef<WYSIWYGInputRef, WYSIWYGInputProps>(
       // If the editor state changes
     }, [editorState, onHtmlChangeSlow]);
 
+    useEffect(() => {
+      /**
+       * An async wrapper with a dynamic import.
+       * That will update the editor state based on the default html value
+       */
+      const updateFromHtml = async () => {
+        const htmlToDraft = (await import('html-to-draftjs')).default;
+
+        // Ref(HTML part at the end): https://jpuri.github.io/react-draft-wysiwyg/#/docs
+        const contentBlock = htmlToDraft(defaultHtmlValue || '');
+
+        setEditorState(
+          EditorState.createWithContent(
+            ContentState.createFromBlockArray(contentBlock.contentBlocks, contentBlock.entityMap)
+          )
+        );
+      };
+
+      updateFromHtml();
+      // Disable because we only want this to update on the first render
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
     // Extends the ref
     useImperativeHandle(ref, () => ({
       /**
@@ -202,15 +228,7 @@ export const WYSIWYGInput = forwardRef<WYSIWYGInputRef, WYSIWYGInputProps>(
       [editorState, setEditorState]
     );
 
-    // If the user changes block type before entering any text, we can
-    // either style the placeholder or hide it. Let's just hide it now.
-    let className = 'pui-wysiwyg-editor';
     const contentState = editorState.getCurrentContent();
-    if (!contentState.hasText()) {
-      if (contentState.getBlockMap().first().getType() !== 'unstyled') {
-        className += ' pui-wysiwyg-hidePlaceholder';
-      }
-    }
 
     return (
       <div>
@@ -224,13 +242,18 @@ export const WYSIWYGInput = forwardRef<WYSIWYGInputRef, WYSIWYGInputProps>(
             } ${loading ? 'pui-wysiwyg-input-loading' : ''}`
           )}
         >
-          <div className="pui-wysiwyg-root">
+          <div className={classnames('pui-wysiwyg-root', { disabled })}>
             <Toolbar
               translations={translations}
               editorState={editorState}
               onBlockToggle={(blockType, name) => {
                 const newState = RichUtils.toggleBlockType(editorState, blockType);
-                setEditorState(setBlockData(newState, getBlockDataByName(name)));
+
+                // Set the editor state with the returned state from the setBlockData method.
+                // Toggle block data is a helper that will set any object as a metadata in a block.
+                // This is useful because this metadata is also what gets mapped to the "styles" attribute
+                // When the content gets converted to html.
+                setEditorState(toggleBlockData(newState, getBlockDataByName(name)));
               }}
               onInlineToggle={(inlineStyle) => {
                 const newState = RichUtils.toggleInlineStyle(editorState, inlineStyle);
@@ -238,8 +261,19 @@ export const WYSIWYGInput = forwardRef<WYSIWYGInputRef, WYSIWYGInputProps>(
               }}
             />
             {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events */}
-            <div className={className} onClick={focus} role="textbox" tabIndex={0}>
+            <div
+              className={classnames('pui-wysiwyg-editor', {
+                'pui-wysiwyg-hidePlaceholder':
+                  // If the user changes block type before entering any text, we can
+                  // either style the placeholder or hide it. Let's just hide it now.
+                  !contentState.hasText() && contentState.getBlockMap().first().getType() !== 'unstyled'
+              })}
+              onClick={focus}
+              role="textbox"
+              tabIndex={0}
+            >
               <Editor
+                readOnly={disabled || readOnly}
                 spellCheck={true}
                 {...editorProps}
                 blockStyleFn={blockStyleFn}

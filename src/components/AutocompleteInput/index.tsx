@@ -379,6 +379,7 @@ export const AutocompleteInput = <T extends ItemType>({
                         key={`result-${item.id}`}
                         // Remove the default padding
                         className={`${(className as string) || ''} p-0`}
+                        // eslint-disable-next-line @typescript-eslint/no-explicit-any
                         onMouseMove={onMouseMove as any}
                       >
                         {/* Add back the padding only in this element, and allow it to grow */}
@@ -393,6 +394,7 @@ export const AutocompleteInput = <T extends ItemType>({
                         key={`result-${item.id}`}
                         className={className}
                         {...optionProps}
+                        // eslint-disable-next-line @typescript-eslint/no-explicit-any
                         onMouseMove={onMouseMove as any}
                       >
                         {item.label}

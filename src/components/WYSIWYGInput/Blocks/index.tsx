@@ -2,6 +2,8 @@ import { ContentBlock } from 'draft-js';
 
 /**
  * Function that returns a block data object, based on a provided name.
+ * The data is more useful when the content gets converted to html.
+ * Because this is what will be converted as the tag "styles"
  *
  * @param name the block name
  */
@@ -23,6 +25,7 @@ export const getBlockDataByName = (name: string): any => {
 
 /**
  * Function that allows to define class names to apply to the given block when it is rendered.
+ * This is only to render the content inside the editor itself, and not for the output html.
  *
  * @param block The provided DraftJs content block
  */
