@@ -1,0 +1,47 @@
+@layer components {
+  .pui-badge {
+    @apply relative inline-flex align-middle flex-shrink-0;
+  }
+
+  .pui-badge-content {
+    @apply absolute z-10 pointer-events-none select-none flex flex-row flex-wrap items-center justify-center text-center top-0 right-0 text-pui-paragraph-0 bg-pui-placeholder-color;
+
+    transform: translate(50%, -50%);
+    transform-origin: 100% 0%;
+
+    &.pulse {
+      &::before {
+        @apply animate-ping opacity-75 bg-pui-placeholder-color absolute inset-0 rounded-full;
+        z-index: -1;
+
+        /* Displays the before pseudoelement */
+        content: '';
+      }
+    }
+  }
+
+  .pui-badge-default {
+    @apply pui-badge-content h-5 min-w-5 text-xs;
+
+    padding: 0 6px;
+    border-radius: 10px;
+  }
+  .pui-badge-mini {
+    @apply pui-badge-content;
+    height: 14px;
+    min-width: 14px;
+
+    /* Styles the text */
+    font-size: 0.65rem;
+    line-height: 0.8rem;
+
+    padding: 0 3px;
+    border-radius: 10px;
+  }
+
+  .pui-badge-dot {
+    @apply pui-badge-content h-2 min-w-2 p-0;
+
+    border-radius: 4px;
+  }
+}

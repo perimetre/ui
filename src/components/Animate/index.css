@@ -1,0 +1,75 @@
+@layer components {
+  /* Keyframes for these animations are added in the default preset */
+
+  .pui-animate-fadeIn {
+    animation: fadeIn 0.5s ease-out 0s both;
+    opacity: 0;
+  }
+
+  .pui-animate-fadeUp {
+    animation: fadeInto 0.5s ease-out 0s both;
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+
+  .pui-animate-fadeDown {
+    animation: fadeInto 0.5s ease-out 0s both;
+    opacity: 0;
+    transform: translateY(-1rem);
+  }
+
+  .pui-animate-fadeRight {
+    animation: fadeInto 0.5s ease-out 0s both;
+    opacity: 0;
+    transform: translateX(-1rem);
+  }
+
+  .pui-animate-fadeLeft {
+    animation: fadeInto 0.5s ease-out 0s both;
+    opacity: 0;
+    transform: translateX(1rem);
+  }
+
+  .pui-animate-scaleHover-target-base {
+    transition: transform 100ms ease-out;
+  }
+
+  .pui-animate-scaleHover-target-base-hover {
+    transform: scale(1.2);
+  }
+
+  .pui-animate-scaleHover-target-base-active {
+    transition: transform 20ms ease-in;
+    transform: scale(1);
+  }
+
+  .pui-animate-scaleHover-single {
+    @apply pui-animate-scaleHover-target-base;
+
+    &:hover {
+      @apply pui-animate-scaleHover-target-base-hover;
+    }
+
+    &:active {
+      @apply pui-animate-scaleHover-target-base-active;
+    }
+  }
+
+  .pui-animate-scaleHover {
+    .pui-animate-scaleHover-target {
+      @apply pui-animate-scaleHover-target-base;
+    }
+
+    &:hover {
+      .pui-animate-scaleHover-target {
+        @apply pui-animate-scaleHover-target-base-hover;
+      }
+    }
+
+    &:active {
+      .pui-animate-scaleHover-target {
+        @apply pui-animate-scaleHover-target-base-active;
+      }
+    }
+  }
+}

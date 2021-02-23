@@ -1,0 +1,117 @@
+@layer components {
+  /* A class that contains all base input css */
+  .pui-text-input-base {
+    /* Makes it full width */
+    /* Adds the font family */
+    /* Adds the padding */
+    /* The text should use the 900 shading */
+    /* Its colors can transition */
+    /* Uses a light font weight */
+    @apply w-full pui-font-family p-3 text-pui-paragraph-900 transition-colors font-light;
+
+    /* The current font-family is not ideal for web so its line heights needs to be higher or else the "g" gets cut */
+    line-height: 1.25;
+
+    &:focus {
+      /* Removes the outline, bad for acessibility but if we add it it might look weird,
+      we need to think on adding it back after everything is using the new ui */
+      outline: 0;
+    }
+
+    &::placeholder {
+      /* The placeholder should use the 300 shading */
+      /* If it overflows, adds an allipsis */
+      /* If it overflows, don't wrap */
+      /* If it overflows, don't add a scrollbar */
+      @apply text-pui-paragraph-300 overflow-ellipsis whitespace-nowrap overflow-hidden;
+      overflow-wrap: normal;
+    }
+
+    &:disabled {
+      /* The disabled should use the 300 shading */
+      /* When disabled, add a lighter background */
+      @apply text-pui-paragraph-300 bg-gray-100;
+    }
+  }
+
+  /* This adds the border for the inputs, some kinds of inputs might not need a border, so that's why this is split */
+  .pui-text-input-border {
+    /* Adds the default border radius */
+    /* Solid border styling */
+    /* Border color */
+    /* On focus, follow the placeholder color */
+    @apply pui-border-radius border border-solid border-gray-400 focus:border-pui-placeholder-color;
+
+    &:disabled {
+      /* When disabled, add a lighter border */
+      @apply border-gray-300;
+    }
+  }
+
+  /* The class that should be used by all default inputs(different looking inputs can use either pui-text-input-base or pui-text-input-border */
+  .pui-text-input {
+    @apply pui-text-input-base pui-text-input-border;
+  }
+
+  /* Creates an input label */
+  .pui-label-input {
+    /* The input label must be a block element to push siblings to the next line */
+    /* Smaller size */
+    /* Use the bolder shading */
+    /* A bigger letter spacing */
+    /* With a bit of margin bottom */
+    @apply block text-sm text-pui-paragraph-900 tracking-wide mb-2;
+  }
+
+  .pui-help-text-input {
+    /* Smaller size */
+    /* Use the placeholder shading */
+    /* With a bit of margin top */
+    @apply text-sm text-pui-paragraph-300 mt-1;
+    animation-duration: 0.2s;
+  }
+
+  /* Unfortunately, <input> cannot have ::after, so this(and all input statuses) must be used in a wrapper */
+  /* The error status */
+  .pui-text-input-error {
+    @apply pui-absolute-icon-right-padded pui-icon-attention;
+
+    /* The next input element */
+    > * {
+      /* Error border */
+      @apply border-pui-error;
+
+      /* &:focus {
+      } */
+    }
+
+    &::after {
+      /* By setting the bg color, the color of the icon itself is set */
+      @apply bg-pui-error;
+    }
+  }
+
+  /* The success status */
+  .pui-text-input-success {
+    @apply pui-absolute-icon-right-padded pui-icon-check;
+
+    /* The next input element */
+    > * {
+      /* Success border */
+      @apply border-pui-success;
+
+      /* &:focus {
+      } */
+    }
+
+    &::after {
+      /* By setting the bg color, the color of the icon itself is set */
+      @apply bg-pui-success;
+    }
+  }
+
+  /* The loading status */
+  .pui-text-input-loading {
+    @apply pui-absolute-icon-right-padded pui-icon-spinner;
+  }
+}

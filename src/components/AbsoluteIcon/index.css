@@ -1,0 +1,61 @@
+@layer base {
+  .pui-absolute-icon {
+    /* Set up positioning by setting it to relative, so other elements can be absolute */
+    @apply block relative;
+
+    &::after {
+      /* Sets the box sizing */
+      /* It should have absolute position */
+      /* Do not allow for mouse interaction */
+      /* Try to align it on center */
+      /* Top 0 + Bottom 0 makes it have full height */
+      /* Margin auto to help it with center alignment */
+      @apply box-border absolute pointer-events-none pui-flex-center top-0 bottom-0 m-auto;
+
+      /* Displays the after pseudoelement */
+      content: '';
+    }
+  }
+
+  .pui-absolute-icon-right {
+    @apply pui-absolute-icon;
+
+    /* Adds 1rem right offset */
+    &::after {
+      @apply right-4;
+    }
+  }
+
+  .pui-absolute-icon-left {
+    @apply pui-absolute-icon;
+
+    &::after {
+      /* Adds 1rem left offset */
+      @apply left-4;
+    }
+  }
+
+  .pui-absolute-icon-right-padded {
+    @apply pui-absolute-icon-right;
+
+    > * {
+      &:first-child {
+        /* Adds padding right
+        1rem for each side(left and right) + the size of the icon */
+        padding-right: calc((1rem * 2) + var(--pui-absolute-icon-size, 1rem));
+      }
+    }
+  }
+
+  .pui-absolute-icon-left-padded {
+    @apply pui-absolute-icon-left;
+
+    > * {
+      &:first-child {
+        /* Adds padding left
+        1rem for each side(left and right) + the size of the icon */
+        padding-left: calc((1rem * 2) + var(--pui-absolute-icon-size, 1rem));
+      }
+    }
+  }
+}

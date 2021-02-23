@@ -12,7 +12,6 @@ stylelint.config.js
 .eslintrc.js
 .eslintignore
 tests
-public
 node_modules
 .vscode
 .babelrc

@@ -1,0 +1,89 @@
+@layer components {
+  /* The modal wrapper */
+  .pui-modal {
+    /* It starts hidden */
+    /* Its position is fixed */
+    /* It takes the full view size for the background overlay */
+    /* Add a black background-overlay */
+    /* Put it in front of everything */
+    /* Vertical overflow can scroll */
+    /* Horizontal overflow can't scroll */
+    /* Try to add the scrollbad */
+    /* Align items on top */
+    /* Justify items center */
+    /* Add a bit of padding in mobile */
+    /* md and up the padding is larger */
+    /* Animate on display */
+    @apply hidden fixed inset-y-0 w-full h-full bg-black z-50 overflow-y-scroll overflow-x-hidden pui-scrollbar items-start justify-center p-2 md:p-4 pui-animate-fadeIn;
+
+    /* The fadeIn animation duration */
+    animation-duration: 150ms;
+
+    /* Lower the bg opacity */
+    --tw-bg-opacity: 0.65;
+
+    /* If it's open */
+    &.open {
+      /* Apply display */
+      @apply flex;
+    }
+  }
+
+  /* The container inside the background, the modal "card" itself */
+  .pui-modal-container {
+    /* Its position should be relative(so header can be absolute against this) */
+    /* Add a shadow */
+    /* Starts with margin: 0 auto; */
+    /* md and up adds a margin top (it's best that only big screens have margin top) */
+    /* white bg for the card */
+    /* width can't go higher than 100% */
+    /* On mobile its minimum width should be at least 90vw */
+    /* md and up reset the minimum width */
+    /* Adds the default border radius */
+    /* Animate the fadeUp effect */
+    @apply relative shadow-xl my-0 mx-auto md:mt-14 bg-white max-w-full min-w-screen-90 md:min-w-initial pui-border-radius pui-animate-fadeUp;
+  }
+
+  .pui-modal-header {
+    /* Its position should be relative(so header can be absolute against this) */
+    /* Make it flex */
+    /* Justify between adds a space between the button and text */
+    /* The color of the text should be primary */
+    @apply relative flex justify-between text-pui-primary;
+
+    /* If it's the absolute header */
+    &.absolute {
+      /* Make it fullwidth */
+      /* Attach it to top */
+      @apply inset-x-0 top-0;
+
+      /* Make it absolute */
+      position: absolute;
+    }
+
+    /* The title */
+    h3 {
+      /* Apply a small padding */
+      /* It should have a bolder content */
+      /* Text size is xl */
+      @apply p-4 font-bold text-xl;
+    }
+  }
+
+  .pui-modal-content {
+    /* Add a small padding inside the card */
+    @apply p-4;
+  }
+
+  /* The "actions footer" */
+  .pui-modal-actions {
+    /* Make it flex */
+    /* Align center */
+    /* But justify in the end to push it to right side */
+    /* Add a 1 px border top */
+    /* With a light gray color */
+    /* Adds spacing between the buttons */
+    /* Adds padding */
+    @apply flex items-center justify-end border-t border-gray-200 space-x-4 p-2;
+  }
+}

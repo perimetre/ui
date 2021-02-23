@@ -9,6 +9,6 @@ module.exports = plugin((pluginOpts) => {
   const { addUtilities, variants } = pluginOpts;
   addUtilities(
     makeColorUtilities(pluginOpts, 'pui-color', '--pui-placeholder-color'),
-    variants('pui-pui-placeholder-color')
+    variants('pui-placeholder-color')
   );
 });

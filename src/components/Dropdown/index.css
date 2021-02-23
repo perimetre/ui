@@ -1,0 +1,58 @@
+@layer components {
+  /* All of the dropdown content wrappers */
+  .pui-dropdown-menu-header,
+  .pui-dropdown-menu-content,
+  .pui-dropdown-menu-footer {
+    min-width: 180px;
+    max-width: 300px;
+
+    /* The link list inside the dropdown */
+    ul {
+      /* Remove default ul styling */
+      @apply list-none m-0 p-0;
+
+      /* For each list item */
+      li {
+        /* The element right inside the list item, but only the first level deep */
+        > * {
+          /* Make it full width */
+          /* It should have a block display */
+          /* Add a padding */
+          /* Remove the outline */
+          @apply w-full block py-1 px-4 outline-none;
+
+          /* If it's not disabled */
+          &:not(:disabled) {
+            /* On hover */
+            &:hover {
+              /* Changes the text color */
+              /* Changes the font */
+              /* Highlights the background */
+              @apply text-pui-secondary font-semibold bg-gray-100;
+            }
+          }
+
+          /* If disabled */
+          &:disabled {
+            /* Use the disabled text */
+            /* Adds the background color */
+            /* Remove the cursor */
+            @apply text-pui-paragraph-300 bg-gray-100 cursor-default;
+          }
+        }
+      }
+    }
+  }
+
+  /* The header content */
+  .pui-dropdown-menu-header {
+    /* Apply a light border bottom */
+    @apply border-b border-gray-200;
+  }
+
+  /* The footer content */
+  .pui-dropdown-menu-footer {
+    /* Apply a light border top */
+    @apply border-t border-gray-200;
+  }
+}

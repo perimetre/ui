@@ -1,0 +1,206 @@
+@import 'draft-js/dist/Draft.css';
+
+@layer components {
+  .pui-wysiwyg-root {
+    /* It needs to be relative so the toolbar can be sticky */
+    /* Makes it full width */
+    /* Adds the font family */
+    /* The text should use the 900 shading */
+    /* Its colors can transition */
+    /* Uses a light font weight */
+    /* Adds the default border radius */
+    /* Solid border styling */
+    /* Border color */
+    @apply relative w-full pui-font-family text-pui-paragraph-900 transition-colors font-light pui-border-radius border border-solid border-gray-400;
+
+    /* If the input is focused */
+    &:focus-within {
+      /* It should have the primary color */
+      @apply border-pui-placeholder-color;
+    }
+
+    &.disabled {
+      /* The disabled should use the 300 shading */
+      /* When disabled, add a lighter background */
+      /* When disabled, add a lighter border */
+      /* Remove cursor events and selection */
+      @apply text-pui-paragraph-300 bg-gray-100 border-gray-300 pointer-events-none select-none;
+
+      /* Change the toolbar and the editor */
+      .pui-wysiwyg-toolbar,
+      .pui-wysiwyg-editor {
+        /* Apply the disabled bg and border */
+        @apply bg-gray-100 border-gray-300 text-pui-paragraph-300;
+      }
+
+      /* For the editor classes */
+      .public-DraftEditorPlaceholder-root,
+      .DraftEditor-editorContainer {
+        /* Block selection */
+        @apply select-none;
+
+        /* All divs inside editor */
+        div {
+          /* Block selection */
+          @apply select-none;
+        }
+      }
+    }
+  }
+
+  /* The editor toolbar */
+  .pui-wysiwyg-toolbar {
+    /* Makes it sticky so it'll follow the scroll position */
+    /* Top 0 makes sure the sticky is stickied to the top */
+    /* Apply a bg color */
+    /* Puts it in front of stuff */
+    /* Adds the same border radius as parent container, so the white background doesn't cut its borders */
+    /* Adds a bottom border */
+    /* The border is a solid border */
+    /* Border color */
+    /* Remove rounded corners in the bottom part */
+    /* Don't allow for user selection */
+    /* Make it flex so sections are positioned one after the other */
+    /* Allow the flex sections to wrap */
+    @apply sticky top-0 bg-white z-10 pui-border-radius border-b border-solid border-gray-400 rounded-b-none select-none flex flex-wrap transition-colors;
+
+    /* A single toolbar section */
+    .pui-wysiwyg-toolbar-section {
+      /* Make it flex so the buttons are positioned one after the other */
+      /* Each section has a padding of 2 */
+      /* Space out the buttons by 2 */
+      @apply flex p-2 space-x-2;
+
+      /* If not the first section */
+      &:not(:first-child) {
+        /* Adds a border to the left */
+        @apply border-l border-gray-200;
+      }
+    }
+  }
+
+  .pui-wysiwyg-editor {
+    /* Adds the padding */
+    /* The cursor is of text type */
+    /* The max width can only go up until 100% of the parent container */
+    /* Adds a white background */
+    /* Adds the same border radius as parent container, so the white background doesn't cut its borders */
+    /* No outline on focus */
+    /* Style inner content */
+    @apply p-3 cursor-text text-base max-w-full bg-white pui-border-radius outline-none prose text-pui-paragraph-900 transition-colors;
+
+    .public-DraftEditor-content {
+      /* The initial minimum height for the editor content */
+      min-height: 100px;
+    }
+
+    .public-DraftEditorPlaceholder-root {
+      /* Its height should only be 100% of the parent container */
+      /* The placeholder should use the 300 shading */
+      /* If it overflows, adds an allipsis */
+      /* If it overflows, don't wrap */
+      /* If it overflows, don't add a scrollbar */
+      @apply h-full text-pui-paragraph-300 overflow-ellipsis whitespace-nowrap overflow-hidden;
+      overflow-wrap: normal;
+    }
+  }
+
+  /* When the placeholder should be hidden */
+  .pui-wysiwyg-hidePlaceholder {
+    .public-DraftEditorPlaceholder-root {
+      /* Hide it */
+      display: none;
+    }
+  }
+
+  /* On error status */
+  .pui-wysiwyg-input-error {
+    /* The bordered element */
+    .pui-wysiwyg-root {
+      /* Error border */
+      @apply border-pui-error;
+    }
+
+    .pui-wysiwyg-editor {
+      @apply pui-absolute-icon-right-padded pui-icon-attention;
+
+      &::after {
+        /* By setting the bg color, the color of the icon itself is set */
+        @apply bg-pui-error;
+
+        /* Puts the icon on top, since this input can get too big */
+        bottom: initial;
+
+        /* This size should ideally be the same as the editor's padding */
+        top: 0.75rem;
+      }
+    }
+  }
+
+  /* On Success status */
+  .pui-wysiwyg-input-success {
+    /* The bordered element */
+    .pui-wysiwyg-root {
+      /* Success border */
+      @apply border-pui-success;
+    }
+
+    .pui-wysiwyg-editor {
+      @apply pui-absolute-icon-right-padded pui-icon-check;
+
+      &::after {
+        /* By setting the bg color, the color of the icon itself is set */
+        @apply border-pui-success;
+
+        /* Puts the icon on top, since this input can get too big */
+        bottom: initial;
+
+        /* This size should ideally be the same as the editor's padding */
+        top: 0.75rem;
+      }
+    }
+  }
+
+  /* On loading status */
+  .pui-wysiwyg-input-loading {
+    .pui-wysiwyg-editor {
+      @apply pui-absolute-icon-right-padded pui-icon-spinner;
+
+      &::after {
+        /* Puts the icon on top, since this input can get too big */
+        bottom: initial;
+
+        /* This size should ideally be the same as the editor's padding */
+        top: 0.75rem;
+      }
+    }
+  }
+
+  /* --------------- */
+  /* The css for the custom blocks in the content editor */
+  /* The classes are set by the "blockStyleFn" method at "/WYSIWYGInput/Blocks/index.tsx" */
+  /* --------------- */
+
+  .pui-wysiwyg-base {
+    /* We need to override the div behavior or else the css won't work */
+    > div {
+      display: contents;
+    }
+  }
+
+  .pui-wysiwyg-left {
+    @apply pui-wysiwyg-base text-left;
+  }
+
+  .pui-wysiwyg-center {
+    @apply pui-wysiwyg-base text-center;
+  }
+
+  .pui-wysiwyg-right {
+    @apply pui-wysiwyg-base text-right;
+  }
+
+  .pui-wysiwyg-justify {
+    @apply pui-wysiwyg-base text-justify;
+  }
+}
