@@ -2,7 +2,7 @@
 import { Meta, Story } from '@storybook/react/types-6-0';
 import React from 'react';
 import { clampOptions } from '../../prebuiltTailwindTheme';
-import { classNameTrim } from '../../utils';
+import classnames from 'classnames';
 
 export default {
   title: 'Components/LineClamp',
@@ -30,7 +30,7 @@ export default {
  * @param props.className the component classes
  */
 const LineClampTemplate: Story = ({ lineClamp, className, ...props }) => (
-  <div {...props} className={classNameTrim(`line-clamp-${lineClamp} ${className || ''}`) || undefined}>
+  <div {...props} className={classnames(`line-clamp-${lineClamp}`, className)}>
     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem explicabo facilis natus quo impedit reiciendis cum
     deleniti hic, nostrum blanditiis! Necessitatibus inventore blanditiis dolorum ea eum suscipit maxime temporibus
     voluptatem consequuntur totam? Saepe animi placeat maiores quia sequi voluptatibus, eveniet corrupti odio sed optio

@@ -2,7 +2,7 @@
 import { Meta, Story } from '@storybook/react/types-6-0';
 import React, { useEffect, useState } from 'react';
 import { Expander, ExpanderProps } from '.';
-import { classNameTrim } from '../../utils';
+import classnames from 'classnames';
 import { AngleDownIcon } from '../Icons';
 
 export default {
@@ -41,9 +41,9 @@ const Template: Story<ExpanderProps> = ({ isExpanded: isExpandedProps, ...props 
       >
         Open{' '}
         <AngleDownIcon
-          className={classNameTrim(
-            `pui-animate-scaleHover-target ml-2 transition-transform transform-gpu ${isExpanded ? 'rotate-180' : ''}`
-          )}
+          className={classnames('pui-animate-scaleHover-target ml-2 transition-transform transform-gpu', {
+            'rotate-180': isExpanded
+          })}
         />
       </button>
     </div>

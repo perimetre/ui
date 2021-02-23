@@ -1,5 +1,5 @@
 import React from 'react';
-import { classNameTrim } from '../../utils/string';
+import classnames from 'classnames';
 
 export type TextAreaInputProps = React.DetailedHTMLProps<
   React.TextareaHTMLAttributes<HTMLTextAreaElement>,
@@ -65,13 +65,13 @@ export const TextAreaInput: React.FC<TextAreaInputProps> = ({
       {label}
     </label>
     <span
-      className={classNameTrim(
-        `${containerClassName || ''} pui-scrollbar ${error ? 'pui-text-input-error' : ''} ${
-          success ? 'pui-text-input-success' : ''
-        } ${loading ? 'pui-text-input-loading' : ''}`
-      )}
+      className={classnames(containerClassName, 'pui-scrollbar', {
+        'pui-text-input-error': !!error,
+        'pui-text-input-success': success,
+        'pui-text-input-loading': loading
+      })}
     >
-      <textarea {...props} className={classNameTrim(`pui-text-input ${className || ''}`)}>
+      <textarea {...props} className={classnames('pui-text-input', className)}>
         {children}
       </textarea>
     </span>

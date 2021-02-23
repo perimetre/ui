@@ -3,7 +3,7 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { colorOptions, weightOptions } from '../../prebuiltTailwindTheme';
 import { AttentionIcon } from '../Icons';
-import { classNameTrim } from '../../utils';
+import classnames from 'classnames';
 
 export default {
   title: 'Components/Alert',
@@ -55,13 +55,15 @@ export default {
 const Template: Story = ({ color, content, text, weight, className, ...props }) => (
   <div
     {...props}
-    className={
-      classNameTrim(
-        `pui-alert ${color !== 'pui-primary' ? `pui-color-${color}` : ''} ${
-          text && text.length > 0 ? `text-${text}` : ''
-        } ${weight && weight.length > 0 ? `font-${weight}` : ''} ${className || ''}`
-      ) || undefined
-    }
+    className={classnames(
+      'pui-alert',
+      {
+        [`pui-color-${color}`]: color !== 'pui-primary',
+        [`text-${text}`]: text && text.length > 0,
+        [`font-${weight}`]: weight && weight.length > 0
+      },
+      className
+    )}
   >
     {content}
   </div>
@@ -93,13 +95,16 @@ Success.args = {
 const WithIconTemplate: Story = ({ color, content, text, weight, className, ...props }) => (
   <div
     {...props}
-    className={
-      classNameTrim(
-        `pui-alert ${color !== 'pui-primary' ? `pui-color-${color}` : ''} ${
-          text && text.length > 0 ? `text-${text}` : ''
-        } ${weight && weight.length > 0 ? `font-${weight}` : ''} flex items-center space-x-4 ${className || ''}`
-      ) || undefined
-    }
+    className={classnames(
+      'pui-alert',
+      {
+        [`pui-color-${color}`]: color !== 'pui-primary',
+        [`text-${text}`]: text && text.length > 0,
+        [`font-${weight}`]: weight && weight.length > 0
+      },
+      'flex items-center space-x-4',
+      className
+    )}
   >
     <div>
       <AttentionIcon />

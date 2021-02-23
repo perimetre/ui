@@ -1,5 +1,5 @@
 import React from 'react';
-import { classNameTrim } from '../../utils/string';
+import classnames from 'classnames';
 
 export type SelectInputProps = React.DetailedHTMLProps<
   React.SelectHTMLAttributes<HTMLSelectElement>,
@@ -65,11 +65,12 @@ export const SelectInput: React.FC<SelectInputProps> = ({
       {label}
     </label>
     <div
-      className={classNameTrim(
-        `pui-select-input-container ${containerClassName || ''} ${!multiple ? 'pui-select-input-icon' : ''} ${
-          error ? 'pui-text-input-error' : ''
-        } ${success ? 'pui-text-input-success' : ''} ${loading ? 'pui-text-input-loading' : ''}`
-      )}
+      className={classnames('pui-select-input-container', containerClassName, {
+        'pui-select-input-icon': !multiple,
+        'pui-text-input-error': !!error,
+        'pui-text-input-success': success,
+        'pui-text-input-loading': loading
+      })}
     >
       <select {...props} multiple={multiple}>
         {children}

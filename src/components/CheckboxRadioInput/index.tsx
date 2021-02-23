@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { classNameTrim } from '../../utils/string';
+import classnames from 'classnames';
 
 export type CheckboxRadioInputProps = React.DetailedHTMLProps<
   React.InputHTMLAttributes<HTMLInputElement>,
@@ -70,10 +70,13 @@ export const CheckboxRadioInput: React.FC<CheckboxRadioInputProps> = ({
       ref={inputRef}
       {...props}
       type={type}
-      className={classNameTrim(
-        `${!label ? (type === 'checkbox' ? 'pui-checkbox' : 'pui-radio') : ''} pui-check-radio-${size} ${
-          className || ''
-        }`
+      className={classnames(
+        {
+          'pui-checkbox': !label && type === 'checkbox',
+          'pui-radio': !label && type !== 'checkbox'
+        },
+        `pui-check-radio-${size}`,
+        className
       )}
     />
   );

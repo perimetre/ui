@@ -1,5 +1,5 @@
 import React, { forwardRef } from 'react';
-import { classNameTrim } from '../../utils/string';
+import classnames from 'classnames';
 
 export type TextInputProps = React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> & {
   /**
@@ -53,13 +53,13 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
         {label}
       </label>
       <span
-        className={classNameTrim(
-          `${containerClassName || ''} ${error ? 'pui-text-input-error' : ''} ${
-            success ? 'pui-text-input-success' : ''
-          } ${loading ? 'pui-text-input-loading' : ''}`
-        )}
+        className={classnames(containerClassName, {
+          'pui-text-input-error': !!error,
+          'pui-text-input-success': success,
+          'pui-text-input-loading': loading
+        })}
       >
-        <input {...props} ref={ref} className={classNameTrim(`pui-text-input ${className || ''}`)} />
+        <input {...props} ref={ref} className={classnames('pui-text-input', className)} />
         {children}
       </span>
       {help && !error && <p className="pui-help-text-input">{help}</p>}

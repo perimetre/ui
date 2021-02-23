@@ -2,7 +2,7 @@
 import { Meta, Story } from '@storybook/react/types-6-0';
 import React, { useCallback, useMemo } from 'react';
 import { Dropdown, DropdownProps, DropdownItem } from '.';
-import { classNameTrim } from '../../utils';
+import classnames from 'classnames';
 import { AngleDownIcon } from '../Icons';
 
 export default {
@@ -62,7 +62,7 @@ const Template: Story<DropdownProps & { text?: string; content?: string }> = ({ 
   );
 
   return (
-    <div className={classNameTrim(`flex items-center justify-center w-full ${viewMode !== 'docs' ? 'h-5/12vh' : ''}`)}>
+    <div className={classnames('flex items-center justify-center w-full', { 'h-5/12vh': viewMode !== 'docs' })}>
       <Dropdown {...props} content={dropdownContent}>
         <>
           <span>{content}</span>
@@ -126,7 +126,7 @@ const RichContentTemplate: Story<DropdownProps & { text?: string; content?: stri
   const dropdownFooter = useMemo(() => [{ id: 'footer-1', content: <a href="/">Sign out</a> }], []);
 
   return (
-    <div className={classNameTrim(`flex items-center justify-center w-full ${viewMode !== 'docs' ? 'h-5/12vh' : ''}`)}>
+    <div className={classnames('flex items-center justify-center w-full', { 'h-5/12vh': viewMode !== 'docs' })}>
       <Dropdown {...props} header={dropdownHeader} content={dropdownContent} footer={dropdownFooter}>
         <>
           <span>{content}</span>
@@ -187,7 +187,7 @@ const RicherContentTemplate: Story<DropdownProps & { text?: string; content?: st
   const dropdownFooter = useMemo(() => [{ id: 'footer-1', content: <a href="/">Sign out</a> }], []);
 
   return (
-    <div className={classNameTrim(`flex items-center justify-center w-full ${viewMode !== 'docs' ? 'h-5/12vh' : ''}`)}>
+    <div className={classnames('flex items-center justify-center w-full', { 'h-5/12vh': viewMode !== 'docs' })}>
       <Dropdown {...props} header={dropdownHeader} content={dropdownContent} footer={dropdownFooter}>
         <>
           <span>{content}</span>

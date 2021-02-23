@@ -1,5 +1,5 @@
 import React from 'react';
-import { classNameTrim } from '../../../utils';
+import classnames from 'classnames';
 
 /**
  * CheckIcon icon to use with JSX
@@ -8,13 +8,7 @@ import { classNameTrim } from '../../../utils';
  * @param props.className the icon classname value
  */
 export const CheckIcon: React.FC<React.SVGProps<SVGSVGElement>> = ({ className, ...props }) => (
-  <svg
-    width="16"
-    height="16"
-    viewBox="0 0 16 16"
-    {...props}
-    className={classNameTrim(`fill-current ${className || ''}`)}
-  >
+  <svg width="16" height="16" viewBox="0 0 16 16" {...props} className={classnames('fill-current', className)}>
     <path d="M5.852 11.601L1.625 8.22.375 9.781l5.773 4.618 9.626-11.766-1.548-1.266z" />
   </svg>
 );

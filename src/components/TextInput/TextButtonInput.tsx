@@ -1,5 +1,5 @@
 import React from 'react';
-import { classNameTrim } from '../../utils/string';
+import classnames from 'classnames';
 
 export type TextButtonInputProps = React.DetailedHTMLProps<
   React.InputHTMLAttributes<HTMLInputElement>,
@@ -74,19 +74,19 @@ export const TextButtonInput: React.FC<TextButtonInputProps> = ({
     <div className="pui-flex-center items-stretch">
       {/* The status wrapper */}
       <span
-        className={classNameTrim(
-          `${containerClassName || ''} w-full ${error ? 'pui-text-input-error' : ''} ${
-            success ? 'pui-text-input-success' : ''
-          } ${loading ? 'pui-text-input-loading' : ''}`
-        )}
+        className={classnames(containerClassName, 'w-full', {
+          'pui-text-input-error': !!error,
+          'pui-text-input-success': success,
+          'pui-text-input-loading': loading
+        })}
       >
-        <input {...props} className={classNameTrim(`pui-text-input rounded-r-none border-r-0 ${className || ''}`)} />
+        <input {...props} className={classnames('pui-text-input rounded-r-none border-r-0', className)} />
       </span>
       {/* Adds a button WITH NO SIZE, and without rouded corners on the left side */}
       <button
         type="button"
         {...buttonProps}
-        className={classNameTrim(`pui-btn-default rounded-l-none ${buttonProps?.className || ''}`)}
+        className={classnames('pui-btn-default rounded-l-none', buttonProps?.className)}
       >
         {children}
       </button>

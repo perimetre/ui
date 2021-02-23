@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react';
 import Tippy, { TippyProps } from '@tippyjs/react/headless';
-import { classNameTrim } from '../../utils';
+import classnames from 'classnames';
 
 export type TooltipProps = TippyProps & {
   /**
@@ -34,7 +34,7 @@ export const Tooltip: React.FC<TooltipProps> = forwardRef<Element, TooltipProps>
       ref={ref}
       render={(attrs) => (
         <div className="pui-tooltip" tabIndex={-1} {...attrs}>
-          <div className={classNameTrim(`pui-tooltip-content ${contentClassName || ''}`)}>{content}</div>
+          <div className={classnames('pui-tooltip-content', contentClassName)}>{content}</div>
           {arrow && (
             <div data-popper-arrow="">
               <div className="pui-tooltip-arrow" />
@@ -44,10 +44,7 @@ export const Tooltip: React.FC<TooltipProps> = forwardRef<Element, TooltipProps>
       )}
     >
       {/* For correct accessibility reasons, it's recommended that the tooltip element is a button */}
-      <button
-        {...buttonProps}
-        className={classNameTrim(`pui-btn-icon flex items-center ${buttonProps?.className || ''}`)}
-      >
+      <button {...buttonProps} className={classnames('pui-btn-icon flex items-center', buttonProps?.className)}>
         {children}
       </button>
     </Tippy>

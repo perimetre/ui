@@ -1,7 +1,7 @@
 // also exported from '@storybook/react' if you can deal with breaking changes in 6.1
 import { Meta, Story } from '@storybook/react/types-6-0';
 import React from 'react';
-import { classNameTrim } from '../../utils';
+import classnames from 'classnames';
 import { CrossIcon } from '../Icons';
 
 export default {
@@ -37,7 +37,7 @@ export default {
  * @param props.className the component classes
  */
 const Template: Story = ({ variant, content, className, ...props }) => (
-  <div {...props} className={classNameTrim(`pui-animate-${variant} ${className || ''}`) || undefined}>
+  <div {...props} className={classnames(`pui-animate-${variant}`, className)}>
     {content}
   </div>
 );
@@ -56,10 +56,7 @@ FadeUp.args = {
  * @param props.className the component classes
  */
 const ScaleHoverTemplate: Story = ({ className, ...props }) => (
-  <div
-    {...props}
-    className={classNameTrim(`select-none cursor-pointer pui-animate-scaleHover ${className || ''}`) || undefined}
-  >
+  <div {...props} className={classnames('select-none cursor-pointer pui-animate-scaleHover', className)}>
     Please click <span className="inline-block pui-animate-scaleHover-target">here</span>.
   </div>
 );
@@ -73,7 +70,7 @@ export const ScaleHover = ScaleHoverTemplate.bind({});
  * @param props.className the component classes
  */
 const ScaleHoverIconTemplate: Story = ({ className, ...props }) => (
-  <div {...props} className={classNameTrim(`cursor-pointer pui-animate-scaleHover ${className || ''}`) || undefined}>
+  <div {...props} className={classnames('cursor-pointer pui-animate-scaleHover', className)}>
     <CrossIcon className="pui-animate-scaleHover-target" />
   </div>
 );

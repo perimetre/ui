@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { classNameTrim } from '../../utils';
+import classnames from 'classnames';
 import { CrossIcon } from '../Icons';
 import { ReactPortal } from '../ReactPortal';
 
@@ -86,9 +86,9 @@ export const Modal: React.FC<ModalProps> = ({
 
   return (
     <ReactPortal selector="#modal-root">
-      <div className={classNameTrim(`pui-modal ${isOpen ? 'open' : ''}`)}>
+      <div className={classnames('pui-modal', { open: isOpen })}>
         <div className="pui-modal-container">
-          <div className={classNameTrim(`pui-modal-header ${isHeaderAbsolute ? 'absolute' : ''}`)}>
+          <div className={classnames('pui-modal-header', { absolute: isHeaderAbsolute })}>
             <h3>{title}</h3>
             <button className="pui-btn-icon text-pui-paragraph-900 p-4" onClick={onToggle}>
               {/* Adds a close icon */}

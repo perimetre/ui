@@ -2,7 +2,7 @@ import React from 'react';
 // also exported from '@storybook/react' if you can deal with breaking changes in 6.1
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { borderStyleOptions, colorOptions } from '../../prebuiltTailwindTheme';
-import { classNameTrim } from '../../utils';
+import classnames from 'classnames';
 import { CrossIcon } from '../Icons';
 
 export default {
@@ -62,13 +62,15 @@ export default {
 const Template: Story = ({ variant, border, color, content, text, className, ...props }) => (
   <span
     {...props}
-    className={
-      classNameTrim(
-        `pui-chip-${variant} ${color !== 'pui-primary' ? `pui-color-${color}` : ''} ${
-          border && border.length > 0 ? `border-${border}` : ''
-        } ${text && text.length > 0 ? `text-${text}` : ''} ${className || ''}`
-      ) || undefined
-    }
+    className={classnames(
+      `pui-chip-${variant}`,
+      {
+        [`pui-color-${color}`]: color !== 'pui-primary',
+        [`border-${border}`]: border && border.length > 0,
+        [`text-${text}`]: text && text.length > 0
+      },
+      className
+    )}
   >
     {content}
   </span>
@@ -112,13 +114,16 @@ ColoredText.args = {
 const WithIconTemplate: Story = ({ variant, border, color, content, text, className, ...props }) => (
   <span
     {...props}
-    className={
-      classNameTrim(
-        `inline-flex items-center pui-chip-${variant} ${color !== 'pui-primary' ? `pui-color-${color}` : ''} ${
-          border && border.length > 0 ? `border-${border}` : ''
-        } ${text && text.length > 0 ? `text-${text}` : ''} ${className || ''}`
-      ) || undefined
-    }
+    className={classnames(
+      'inline-flex items-center',
+      `pui-chip-${variant}`,
+      {
+        [`pui-color-${color}`]: color !== 'pui-primary',
+        [`border-${border}`]: border && border.length > 0,
+        [`text-${text}`]: text && text.length > 0
+      },
+      className
+    )}
   >
     {content}
     <CrossIcon className="h-4 w-4 ml-2 mt-1 pui-animate-scaleHover-single cursor-pointer" />

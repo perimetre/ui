@@ -3,7 +3,7 @@ import { Meta, Story } from '@storybook/react/types-6-0';
 import React, { useCallback, useEffect, useState } from 'react';
 import { Modal, ModalProps } from '.';
 import { minWidthOptions } from '../../prebuiltTailwindTheme';
-import { classNameTrim } from '../../utils';
+import classnames from 'classnames';
 import { MenuIcon } from '../Icons';
 
 export default {
@@ -76,7 +76,7 @@ const Template: Story<ModalProps & { content?: string; onToggleCallback: () => v
         <MenuIcon className="pui-animate-scaleHover-target" />
       </button>
       <Modal {...props} isOpen={isOpen} onToggle={onToggle}>
-        <div className={classNameTrim(`${size ? `min-w-${size}` : ''}`)}>{content}</div>
+        <div className={classnames({ [`min-w-${size}`]: !!size })}>{content}</div>
       </Modal>
     </div>
   );
@@ -140,7 +140,7 @@ const WithActionsTemplate: Story<ModalProps & { content?: string; onToggleCallba
           </>
         )}
       >
-        <div className={classNameTrim(`${size ? `min-w-${size}` : ''}`)}>{content}</div>
+        <div className={classnames({ [`min-w-${size}`]: !!size })}>{content}</div>
       </Modal>
     </div>
   );

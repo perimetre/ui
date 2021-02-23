@@ -1,5 +1,5 @@
 import React from 'react';
-import { classNameTrim } from '../../utils/string';
+import classnames from 'classnames';
 
 export type ButtonProps = React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> & {
   /**
@@ -39,16 +39,23 @@ export const Button: React.FC<ButtonProps> = ({
   className,
   children,
   ...props
-}) => (
-  <button
-    type="button"
-    {...props}
-    className={classNameTrim(
-      `${variant === 'icon' ? 'pui-btn-icon' : `pui-btn-${size} pui-btn-${variant}`} ${isChip ? 'pui-chip-btn' : ''} ${
-        className || ''
-      }`
-    )}
-  >
-    {children}
-  </button>
-);
+}) => {
+  const isIcon = variant === 'icon';
+  return (
+    <button
+      type="button"
+      {...props}
+      className={classnames(
+        {
+          'pui-btn-icon': isIcon,
+          [`pui-btn-${size}`]: !isIcon,
+          [`pui-btn-${variant}`]: !isIcon,
+          'pui-chip-btn': isChip
+        },
+        className
+      )}
+    >
+      {children}
+    </button>
+  );
+};

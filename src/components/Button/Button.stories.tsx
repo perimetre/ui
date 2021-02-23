@@ -3,7 +3,7 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { borderStyleOptions, colorOptions } from '../../prebuiltTailwindTheme';
 import { Button, ButtonProps } from '.';
-import { classNameTrim } from '../../utils';
+import classnames from 'classnames';
 import { BellIcon, MenuIcon } from '../Icons';
 
 export default {
@@ -62,13 +62,13 @@ const Template: Story<ButtonProps & { border?: string; content?: string }> = ({
 }) => (
   <Button
     {...props}
-    className={
-      classNameTrim(
-        `${color !== 'pui-primary' ? `pui-color-${color}` : ''} ${
-          border && border.length > 0 ? `border-${border}` : ''
-        } ${className || ''}`
-      ) || undefined
-    }
+    className={classnames(
+      {
+        [`pui-color-${color}`]: color !== 'pui-primary',
+        [`border-${border}`]: border && border.length > 0
+      },
+      className
+    )}
   >
     {content}
   </Button>
@@ -120,13 +120,14 @@ Chip.args = {
 const SpinnerTemplate: Story = ({ border, color, content, className, ...props }) => (
   <Button
     {...props}
-    className={
-      classNameTrim(
-        `flex items-center ${color !== 'pui-primary' ? `pui-color-${color}` : ''} ${
-          border && border.length > 0 ? `border-${border}` : ''
-        } ${className || ''}`
-      ) || undefined
-    }
+    className={classnames(
+      'flex items-center',
+      {
+        [`pui-color-${color}`]: color !== 'pui-primary',
+        [`border-${border}`]: border && border.length > 0
+      },
+      className
+    )}
   >
     {content}
     <span className="pui-spinner pui-color-pui-paragraph-0 ml-2" />
@@ -147,13 +148,14 @@ export const WithSpinner = SpinnerTemplate.bind({});
 const WithIconTemplate: Story = ({ border, color, content, className, ...props }) => (
   <Button
     {...props}
-    className={
-      classNameTrim(
-        `flex items-center ${color !== 'pui-primary' ? `pui-color-${color}` : ''} ${
-          border && border.length > 0 ? `border-${border}` : ''
-        } ${className || ''}`
-      ) || undefined
-    }
+    className={classnames(
+      'flex items-center',
+      {
+        [`pui-color-${color}`]: color !== 'pui-primary',
+        [`border-${border}`]: border && border.length > 0
+      },
+      className
+    )}
   >
     {content}
     <BellIcon className="pui-color-pui-paragraph-0 ml-2 h-4 w-4" />
@@ -172,7 +174,12 @@ export const WithIcon = WithIconTemplate.bind({});
 const IconButtonTemplate: Story = ({ color, className, ...props }) => (
   <Button
     {...props}
-    className={classNameTrim(`${color !== 'pui-primary' ? `pui-color-${color}` : ''} ${className || ''}`) || undefined}
+    className={classnames(
+      {
+        [`pui-color-${color}`]: color !== 'pui-primary'
+      },
+      className
+    )}
   >
     <MenuIcon className="pui-animate-scaleHover-target" />
   </Button>

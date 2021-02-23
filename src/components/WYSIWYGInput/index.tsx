@@ -1,6 +1,7 @@
 import classnames from 'classnames';
 import DOMPurify from 'dompurify';
 import {
+  CompositeDecorator,
   ContentState,
   convertFromRaw,
   convertToRaw,
@@ -9,12 +10,10 @@ import {
   EditorProps,
   EditorState,
   getDefaultKeyBinding,
-  RichUtils,
-  CompositeDecorator
+  RichUtils
 } from 'draft-js';
 import draftToHtml from 'draftjs-to-html';
 import React, { forwardRef, useCallback, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react';
-import { classNameTrim } from '../../utils';
 import { toggleBlockData } from '../../utils/wysiwyg';
 import { blockStyleFn, getBlockDataByName } from './Blocks';
 import { linkDecorator } from './Decorators/Link';
@@ -255,11 +254,11 @@ export const WYSIWYGInput = forwardRef<WYSIWYGInputRef, WYSIWYGInputProps>(
           {label}
         </label>
         <span
-          className={classNameTrim(
-            `${containerClassName || ''} ${error ? 'pui-wysiwyg-input-error' : ''} ${
-              success ? 'pui-wysiwyg-input-success' : ''
-            } ${loading ? 'pui-wysiwyg-input-loading' : ''}`
-          )}
+          className={classnames(containerClassName, {
+            'pui-wysiwyg-input-error': !!error,
+            'pui-wysiwyg-input-success': success,
+            'pui-wysiwyg-input-loading': loading
+          })}
         >
           <div className={classnames('pui-wysiwyg-root', { disabled })}>
             <Toolbar

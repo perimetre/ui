@@ -3,7 +3,7 @@ import { Meta, Story } from '@storybook/react/types-6-0';
 import React from 'react';
 import { Badge, BadgeProps } from '.';
 import { colorOptions } from '../../prebuiltTailwindTheme';
-import { classNameTrim } from '../../utils';
+import classnames from 'classnames';
 import { BellIcon } from '../Icons';
 
 export default {
@@ -33,7 +33,7 @@ export default {
  * @param props.color the color property set on controls
  */
 const Template: Story<BadgeProps & { color?: string }> = ({ color, ...props }) => (
-  <span className={classNameTrim(`${color !== 'pui-primary' ? `pui-color-${color}` : ''}`) || undefined}>
+  <span className={classnames({ [`pui-color-${color}`]: color !== 'pui-primary' })}>
     <Badge {...props}>
       <BellIcon />
     </Badge>

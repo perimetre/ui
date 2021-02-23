@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { BackIcon, CrossIcon } from '../Icons';
+import classnames from 'classnames';
 
 // The variants for the drawer itself
 const variants = {
@@ -191,7 +192,7 @@ export const Drawer: React.FC<DrawerProps> = ({
     {/* Adds a "card-like" look to the drawer */}
     <div style={{ width }} className="bg-white border border-gray-300 h-full select-text">
       {/* Aligns the close button to the end */}
-      <div className={`flex items-center${onBack ? ' justify-between' : ' justify-end'}`}>
+      <div className={classnames('flex items-center', { 'justify-between': onBack, 'justify-end': !onBack })}>
         {/* If there's the back button, display it */}
         {onBack && (
           <button className="pui-btn-icon text-pui-paragraph-900 p-4" onClick={onBack}>

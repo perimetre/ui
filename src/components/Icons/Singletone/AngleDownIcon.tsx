@@ -1,5 +1,5 @@
 import React from 'react';
-import { classNameTrim } from '../../../utils';
+import classnames from 'classnames';
 
 /**
  * AngleDown icon to use with JSX
@@ -8,13 +8,7 @@ import { classNameTrim } from '../../../utils';
  * @param props.className the icon classname value
  */
 export const AngleDownIcon: React.FC<React.SVGProps<SVGSVGElement>> = ({ className, ...props }) => (
-  <svg
-    width="16"
-    height="16"
-    viewBox="0 0 16 16"
-    {...props}
-    className={classNameTrim(`fill-current ${className || ''}`)}
-  >
+  <svg width="16" height="16" viewBox="0 0 16 16" {...props} className={classnames('fill-current', className)}>
     <path d="M12.293 4.586L13.707 6 8 11.707 2.293 6l1.414-1.414L8 8.879z" />
   </svg>
 );

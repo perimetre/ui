@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useCallback, useState } from 'react';
 import { useCombobox, useMultipleSelection } from 'downshift';
 import { AttentionIcon, CrossIcon } from '../Icons';
+import classnames from 'classnames';
 
 type ItemType = {
   id: string | number;
@@ -295,7 +296,7 @@ export const AutocompleteInput = <T extends ItemType>({
       )}
       {/* Render the combo container for the input and the results */}
       <div
-        className={`autocomplete-combo pui-dropdown-input-container ${isOpen ? 'open' : ''}`}
+        className={classnames('autocomplete-combo pui-dropdown-input-container', { open: isOpen })}
         // The parent must be relative so the child(result list) position absolute works
         {...getComboboxProps()}
       >
@@ -366,10 +367,10 @@ export const AutocompleteInput = <T extends ItemType>({
                     const isSelected = selectedItems.findIndex((x) => x.id === item.id) > -1;
 
                     // Get the complete classes
-                    const className = `autocomplete-result-item pui-dropdown-input-item flex items-center justify-between ${
-                      isSelected ? 'selected' : ''
-                    } ${highlightedIndex === index ? 'highlighted' : ''}`;
-
+                    const className = classnames(
+                      'autocomplete-result-item pui-dropdown-input-item flex items-center justify-between',
+                      { selected: isSelected, highlighted: highlightedIndex === index }
+                    );
                     // Get the required props passed by downshift
                     const { onMouseMove, ...optionProps } = getItemProps({ item, index });
 
@@ -378,7 +379,7 @@ export const AutocompleteInput = <T extends ItemType>({
                       <li
                         key={`result-${item.id}`}
                         // Remove the default padding
-                        className={`${(className as string) || ''} p-0`}
+                        className={classnames(className, 'p-0')}
                         // eslint-disable-next-line @typescript-eslint/no-explicit-any
                         onMouseMove={onMouseMove as any}
                       >

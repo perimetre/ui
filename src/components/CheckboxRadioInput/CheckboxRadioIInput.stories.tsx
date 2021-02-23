@@ -2,7 +2,7 @@
 import { Meta, Story } from '@storybook/react/types-6-0';
 import React from 'react';
 import { colorOptions } from '../../prebuiltTailwindTheme';
-import { classNameTrim } from '../../utils';
+import classnames from 'classnames';
 import { CheckboxRadioInput, CheckboxRadioInputProps } from '.';
 
 export default {
@@ -53,7 +53,7 @@ export default {
 const Template: Story<CheckboxRadioInputProps> = ({ color, className, ...props }) => (
   <CheckboxRadioInput
     {...props}
-    className={classNameTrim(`${color !== 'pui-primary' ? `pui-color-${color}` : ''} ${className || ''}`) || undefined}
+    className={classnames({ [`pui-color-${color}`]: color !== 'pui-primary' }, className)}
   />
 );
 

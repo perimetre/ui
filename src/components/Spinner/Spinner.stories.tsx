@@ -2,7 +2,7 @@
 import { Meta, Story } from '@storybook/react/types-6-0';
 import React from 'react';
 import { colorOptions, widthHeightOptions } from '../../prebuiltTailwindTheme';
-import { classNameTrim } from '../../utils';
+import classnames from 'classnames';
 
 export default {
   title: 'Components/Spinner',
@@ -39,13 +39,14 @@ export default {
  */
 const SpinnerTemplate: Story = ({ size, color, className }) => (
   <span
-    className={
-      classNameTrim(
-        `pui-spinner ${color !== 'pui-primary' ? `pui-color-${color}` : ''} ${
-          size && size.length > 0 && !size.includes('4') ? `w-${size} h-${size}` : ''
-        } ${className || ''}`
-      ) || undefined
-    }
+    className={classnames(
+      'pui-spinner',
+      {
+        [`pui-color-${color}`]: color !== 'pui-primary',
+        [`w-${size} h-${size}`]: size && size.length > 0 && !size.includes('4')
+      },
+      className
+    )}
   />
 );
 

@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { classNameTrim } from '../../utils';
+import classnames from 'classnames';
 
 export type BadgeProps = {
   /**
@@ -49,11 +49,7 @@ export const Badge: React.FC<BadgeProps> = ({
   return (
     <div className="pui-badge">
       {children}
-      {content && (
-        <span className={classNameTrim(`pui-badge-${variant} ${pulse ? 'pulse' : ''}`)}>
-          {variant !== 'dot' && content}
-        </span>
-      )}
+      {content && <span className={classnames(`pui-badge-${variant}`, { pulse })}>{variant !== 'dot' && content}</span>}
     </div>
   );
 };

@@ -3,7 +3,7 @@ import { Meta, Story } from '@storybook/react/types-6-0';
 import React from 'react';
 import { colorOptions, widthHeightOptions } from '../../prebuiltTailwindTheme';
 import * as IconComponents from '.';
-import { classNameTrim } from '../../utils';
+import classnames from 'classnames';
 
 const iconOptions = Object.entries(IconComponents)
   .map((x) => x[0])
@@ -54,13 +54,13 @@ const Template: Story = ({ icon, size, color, className, ...props }) => {
   return (
     <CurrentIcon
       {...props}
-      className={
-        classNameTrim(
-          `${color && color.length > 0 ? `text-${color}` : ''} ${
-            size && size.length > 0 ? `w-${size} h-${size}` : ''
-          } ${className || ''}`
-        ) || undefined
-      }
+      className={classnames(
+        {
+          [`text-${color}`]: color && color.length > 0,
+          [`w-${size} h-${size}`]: size && size.length > 0
+        },
+        className
+      )}
     />
   );
 };
@@ -82,13 +82,14 @@ const ButtonTemplate: Story = ({ icon, size, color, className, ...props }) => {
     <button type="button" className="pui-btn-icon">
       <CurrentIcon
         {...props}
-        className={
-          classNameTrim(
-            `pui-animate-scaleHover-target ${color && color.length > 0 ? `text-${color}` : ''} ${
-              size && size.length > 0 ? `w-${size} h-${size}` : ''
-            } ${className || ''}`
-          ) || undefined
-        }
+        className={classnames(
+          'pui-animate-scaleHover-target',
+          {
+            [`text-${color}`]: color && color.length > 0,
+            [`w-${size} h-${size}`]: size && size.length > 0
+          },
+          className
+        )}
       />
     </button>
   );
