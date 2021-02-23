@@ -12,12 +12,12 @@ export default [
     input: 'src/index.tsx',
     output: [
       {
-        dir: 'dist',
+        dir: 'dist/cjs',
         format: 'cjs',
         sourcemap: true
       },
       {
-        dir: 'dist',
+        dir: 'dist/esm',
         format: 'esm',
         sourcemap: true
       }
