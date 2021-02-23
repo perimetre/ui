@@ -37,7 +37,7 @@ export type WYSIWYGInputRef = {
   getSanitizedHtml: () => string;
 };
 
-export type WYSIWYGInputProps = EditorProps & {
+export type WYSIWYGInputProps = Omit<EditorProps, 'editorState' | 'onChange'> & {
   /**
    * The input id
    */
@@ -84,6 +84,10 @@ export type WYSIWYGInputProps = EditorProps & {
    * Whether or not the input should be disabled
    */
   disabled?: boolean;
+  /**
+   * The editor onChange callback.
+   */
+  onChange?(editorState: EditorState): void;
 };
 
 /**
@@ -265,14 +269,14 @@ export const WYSIWYGInput = forwardRef<WYSIWYGInputRef, WYSIWYGInputProps>(
               translations={translations}
               editorState={editorState}
               setEditorState={setEditorState}
-              onBlockToggle={(blockType, name) => {
+              onBlockToggle={async (blockType, name) => {
                 const newState = RichUtils.toggleBlockType(editorState, blockType);
 
                 // Set the editor state with the returned state from the setBlockData method.
                 // Toggle block data is a helper that will set any object as a metadata in a block.
                 // This is useful because this metadata is also what gets mapped to the "styles" attribute
                 // When the content gets converted to html.
-                setEditorState(toggleBlockData(newState, getBlockDataByName(name)));
+                setEditorState(await toggleBlockData(newState, getBlockDataByName(name)));
               }}
               onInlineToggle={(inlineStyle) => {
                 const newState = RichUtils.toggleInlineStyle(editorState, inlineStyle);

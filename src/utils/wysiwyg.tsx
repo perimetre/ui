@@ -1,5 +1,4 @@
 import { EditorState } from 'draft-js';
-import { setBlockData } from 'draftjs-utils';
 
 /**
  * A helper method to check whether this inline style should be active or not, from its type property
@@ -43,7 +42,10 @@ export const isBlockActiveByData = (editorState: EditorState, dataKey: string, e
  * @param editorState The current editor state
  * @param data The provided block metadata
  */
-export const toggleBlockData = (editorState: EditorState, data: Record<string, unknown>): EditorState => {
+export const toggleBlockData = async (
+  editorState: EditorState,
+  data: Record<string, unknown>
+): Promise<EditorState> => {
   // Get the current data for this block
   const selection = editorState.getSelection();
   const currentData = editorState.getCurrentContent().getBlockForKey(selection.getStartKey()).getData();
@@ -62,6 +64,8 @@ export const toggleBlockData = (editorState: EditorState, data: Record<string, u
     // If the current data DOES HAVE the key
     // Don't do anything, because we don't want it to be added, since we want to remove it.
   });
+
+  const { setBlockData } = await import('draftjs-utils');
 
   return setBlockData(editorState, newData);
 };
