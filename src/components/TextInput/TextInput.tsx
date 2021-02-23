@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { classNameTrim } from '../../utils/string';
 
 export type TextInputProps = React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> & {
@@ -46,32 +46,24 @@ export type TextInputProps = React.DetailedHTMLProps<React.InputHTMLAttributes<H
  * @param props.className The input className
  * @param props.children If provided, the children will be appended under the input helper texts
  */
-export const TextInput: React.FC<TextInputProps> = ({
-  label,
-  help,
-  error,
-  success,
-  loading,
-  containerClassName,
-  className,
-  children,
-  ...props
-}) => (
-  <div>
-    <label className="pui-label-input" htmlFor={props.id}>
-      {label}
-    </label>
-    <span
-      className={classNameTrim(
-        `${containerClassName || ''} ${error ? 'pui-text-input-error' : ''} ${
-          success ? 'pui-text-input-success' : ''
-        } ${loading ? 'pui-text-input-loading' : ''}`
-      )}
-    >
-      <input {...props} className={classNameTrim(`pui-text-input ${className || ''}`)} />
-      {children}
-    </span>
-    {help && !error && <p className="pui-help-text-input">{help}</p>}
-    {error && <p className="pui-animate-fadeDown pui-help-text-input text-pui-error">{error}</p>}
-  </div>
+export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
+  ({ label, help, error, success, loading, containerClassName, className, children, ...props }, ref) => (
+    <div>
+      <label className="pui-label-input" htmlFor={props.id}>
+        {label}
+      </label>
+      <span
+        className={classNameTrim(
+          `${containerClassName || ''} ${error ? 'pui-text-input-error' : ''} ${
+            success ? 'pui-text-input-success' : ''
+          } ${loading ? 'pui-text-input-loading' : ''}`
+        )}
+      >
+        <input {...props} ref={ref} className={classNameTrim(`pui-text-input ${className || ''}`)} />
+        {children}
+      </span>
+      {help && !error && <p className="pui-help-text-input">{help}</p>}
+      {error && <p className="pui-animate-fadeDown pui-help-text-input text-pui-error">{error}</p>}
+    </div>
+  )
 );

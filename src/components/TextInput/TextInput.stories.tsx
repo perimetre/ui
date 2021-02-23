@@ -45,8 +45,10 @@ export default {
  * A story that displays a TextInput example
  *
  * @param props the story props
+ * @param props.ref grab the ref to fix the issue with forwardRef typing
  */
-const Template: Story<TextInputProps> = (props) => <TextInput {...props} />;
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const Template: Story<TextInputProps> = ({ ref, ...props }) => <TextInput {...props} />;
 
 export const Text = Template.bind({});
 
@@ -74,8 +76,10 @@ WithIconLeft.args = {
  * A story that displays a TextInput example with datalist
  *
  * @param props the story props
+ * @param props.ref grab the ref to fix the issue with forwardRef typing
  */
-const DataListTemplate: Story<TextInputProps> = (props) => (
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const DataListTemplate: Story<TextInputProps> = ({ ref, ...props }) => (
   <TextInput {...props} list="listOptions">
     <datalist id="listOptions">
       {Array(10)

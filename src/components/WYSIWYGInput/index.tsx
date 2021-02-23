@@ -9,13 +9,15 @@ import {
   EditorProps,
   EditorState,
   getDefaultKeyBinding,
-  RichUtils
+  RichUtils,
+  CompositeDecorator
 } from 'draft-js';
 import draftToHtml from 'draftjs-to-html';
 import React, { forwardRef, useCallback, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react';
 import { classNameTrim } from '../../utils';
 import { toggleBlockData } from '../../utils/wysiwyg';
 import { blockStyleFn, getBlockDataByName } from './Blocks';
+import { linkDecorator } from './Decorators/Link';
 import { Toolbar } from './Toolbar';
 import { defaultWYSIWYGTranslations, WYSIWYGTranslations } from './translations';
 
@@ -100,7 +102,7 @@ export const WYSIWYGInput = forwardRef<WYSIWYGInputRef, WYSIWYGInputProps>(
       containerClassName,
       children,
       translations: translationsProps,
-      onChange,
+      onChange: onChangeProps,
       onHtmlChangeSlow,
       disabled,
       readOnly,
@@ -120,6 +122,8 @@ export const WYSIWYGInput = forwardRef<WYSIWYGInputRef, WYSIWYGInputProps>(
     // eslint-disable-next-line react-hooks/exhaustive-deps
     const translations = useMemo(() => translationsProps || defaultWYSIWYGTranslations, []);
 
+    const defaultDecorators = useMemo(() => new CompositeDecorator([linkDecorator]), []);
+
     const [editorState, setEditorState] = useState(() =>
       EditorState.createWithContent(
         convertFromRaw({
@@ -134,19 +138,30 @@ export const WYSIWYGInput = forwardRef<WYSIWYGInputRef, WYSIWYGInputProps>(
               inlineStyleRanges: []
             }
           ]
-        })
+        }),
+        defaultDecorators
       )
     );
     const editor = useRef<Editor | null>(null);
 
+    /**
+     * Make an onChange callback
+     *
+     * @param editorState the current editor state
+     */
+    const onChange = (editorState: EditorState) => {
+      // Update the editor state but making sure to keep the decorators
+      setEditorState(EditorState.set(editorState, { decorator: defaultDecorators }));
+    };
+
     useEffect(() => {
       // If the onChange prop is provided
-      if (onChange) {
+      if (onChangeProps) {
         // Notify the change
-        onChange(editorState);
+        onChangeProps(editorState);
       }
       // If the editor state changes
-    }, [editorState, onChange]);
+    }, [editorState, onChangeProps]);
 
     useEffect(() => {
       // If the onChange prop is provided
@@ -176,7 +191,11 @@ export const WYSIWYGInput = forwardRef<WYSIWYGInputRef, WYSIWYGInputProps>(
         );
       };
 
-      updateFromHtml();
+      setEditorState(EditorState.set(editorState, { decorator: defaultDecorators }));
+
+      if (defaultHtmlValue) {
+        updateFromHtml();
+      }
       // Disable because we only want this to update on the first render
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
@@ -246,6 +265,7 @@ export const WYSIWYGInput = forwardRef<WYSIWYGInputRef, WYSIWYGInputProps>(
             <Toolbar
               translations={translations}
               editorState={editorState}
+              setEditorState={setEditorState}
               onBlockToggle={(blockType, name) => {
                 const newState = RichUtils.toggleBlockType(editorState, blockType);
 
@@ -283,7 +303,7 @@ export const WYSIWYGInput = forwardRef<WYSIWYGInputRef, WYSIWYGInputProps>(
                 editorState={editorState}
                 handleKeyCommand={handleKeyCommand}
                 keyBindingFn={mapKeyToEditorCommand}
-                onChange={setEditorState}
+                onChange={onChange}
                 editorKey={id}
                 ref={editor}
               />

@@ -1,5 +1,7 @@
 export const defaultWYSIWYGTranslations = {
-  textStyleDropdown: 'Style'
+  textStyleDropdown: 'Style',
+  linkInputLabel: 'Link',
+  linkInputSubmit: 'Ok'
 };
 
 export type WYSIWYGTranslations = typeof defaultWYSIWYGTranslations;

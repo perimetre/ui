@@ -83,8 +83,8 @@ const HtmlTemplate: Story<WYSIWYGInputProps & { content?: string; className?: st
       {/* Clear the onHtmlChangeSlow event that storybook provides automatically because it's slow */}
       <WYSIWYGInput ref={inputRef} {...props} onHtmlChangeSlow={undefined} />
       <Button onClick={() => setHtmlContent(inputRef?.current?.getSanitizedHtml() || '')}>Get HTML</Button>
-      <div className="max-w-full mb-4 border-b border-solid border-gray-300">{htmlContent}</div>
-      <div className="min-w-full max-w-full mt-4" dangerouslySetInnerHTML={{ __html: htmlContent }} />
+      <div className="min-w-full max-w-full mt-4 prose" dangerouslySetInnerHTML={{ __html: htmlContent }} />
+      <div className="max-w-full mb-4 border-t border-solid border-gray-300">{htmlContent}</div>
     </div>
   );
 };

@@ -65,3 +65,40 @@ export const toggleBlockData = (editorState: EditorState, data: Record<string, u
 
   return setBlockData(editorState, newData);
 };
+
+/**
+ * A method which will return the url from the current selection if there is any
+ *
+ * @param editorState  The current editor state
+ */
+export const getLinkIfAny = (editorState?: EditorState) => {
+  // Get the selection
+  const selection = editorState?.getSelection();
+
+  // If there's a selection
+  if (editorState && selection && !selection.isCollapsed()) {
+    // Gets the state for the current content
+    const contentState = editorState.getCurrentContent();
+
+    // Gets both the start points
+    const startKey = editorState.getSelection().getStartKey();
+    const startOffset = editorState.getSelection().getStartOffset();
+
+    // Get the block using the current start point
+    const blockWithLinkAtBeginning = contentState.getBlockForKey(startKey);
+
+    // Get if there's a key in the current start point
+    const linkKey = blockWithLinkAtBeginning.getEntityAt(startOffset);
+
+    // If there's a key
+    if (linkKey) {
+      // Get the key entity
+      const linkInstance = contentState.getEntity(linkKey);
+      // Get the key value
+      return linkInstance.getData().url;
+    }
+  }
+
+  // If nothing was returning up until here, there is no link
+  return '';
+};

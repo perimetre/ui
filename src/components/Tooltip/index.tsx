@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import Tippy, { TippyProps } from '@tippyjs/react/headless';
 import { classNameTrim } from '../../utils';
 
@@ -27,33 +27,29 @@ export type TooltipProps = TippyProps & {
  * @param props.content The tooltip content
  * @param props.children The provided children
  */
-export const Tooltip: React.FC<TooltipProps> = ({
-  children,
-  content,
-  buttonProps,
-  arrow = true,
-  contentClassName,
-  ...props
-}) => (
-  <Tippy
-    {...props}
-    render={(attrs) => (
-      <div className="pui-tooltip" tabIndex={-1} {...attrs}>
-        <div className={classNameTrim(`pui-tooltip-content ${contentClassName || ''}`)}>{content}</div>
-        {arrow && (
-          <div data-popper-arrow="">
-            <div className="pui-tooltip-arrow" />
-          </div>
-        )}
-      </div>
-    )}
-  >
-    {/* For correct accessibility reasons, it's recommended that the tooltip element is a button */}
-    <button
-      {...buttonProps}
-      className={classNameTrim(`pui-btn-icon flex items-center ${buttonProps?.className || ''}`)}
+export const Tooltip: React.FC<TooltipProps> = forwardRef<Element, TooltipProps>(
+  ({ children, content, buttonProps, arrow = true, contentClassName, ...props }, ref) => (
+    <Tippy
+      {...props}
+      ref={ref}
+      render={(attrs) => (
+        <div className="pui-tooltip" tabIndex={-1} {...attrs}>
+          <div className={classNameTrim(`pui-tooltip-content ${contentClassName || ''}`)}>{content}</div>
+          {arrow && (
+            <div data-popper-arrow="">
+              <div className="pui-tooltip-arrow" />
+            </div>
+          )}
+        </div>
+      )}
     >
-      {children}
-    </button>
-  </Tippy>
+      {/* For correct accessibility reasons, it's recommended that the tooltip element is a button */}
+      <button
+        {...buttonProps}
+        className={classNameTrim(`pui-btn-icon flex items-center ${buttonProps?.className || ''}`)}
+      >
+        {children}
+      </button>
+    </Tippy>
+  )
 );

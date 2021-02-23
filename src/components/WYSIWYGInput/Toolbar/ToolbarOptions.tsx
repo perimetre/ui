@@ -1,20 +1,21 @@
 /* eslint-disable jsdoc/require-jsdoc */
-import { DraftBlockType, DraftInlineStyleType } from 'draft-js';
-import { EditorState } from 'draft-js';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
 import {
-  faBold,
-  faItalic,
-  faUnderline,
-  faListOl,
-  faListUl,
   faAlignCenter,
+  faAlignJustify,
   faAlignLeft,
   faAlignRight,
-  faAlignJustify
+  faBold,
+  faItalic,
+  faListOl,
+  faListUl,
+  faUnderline
 } from '@fortawesome/free-solid-svg-icons';
-import { isBlockActiveByData, isBlockActiveByType, isInlineActiveByType } from '../../../utils/wysiwyg';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { DraftBlockType, DraftInlineStyleType, EditorState } from 'draft-js';
+import React from 'react';
+import { getLinkIfAny, isBlockActiveByData, isBlockActiveByType, isInlineActiveByType } from '../../../utils/wysiwyg';
+import { WYSIWYGTranslations } from '../translations';
+import { Hyperlink } from './Options/Hyperlink';
 
 export type ToolbarOptions = {
   sections: {
@@ -25,11 +26,15 @@ export type ToolbarOptions = {
     /**
      * The draft.js style type
      */
-    type: 'block' | 'inline';
+    type: 'block' | 'inline' | 'unstyled';
     /**
      * The display type for this section
      */
-    display: 'button' | 'dropdown';
+    display: 'button' | 'dropdown' | 'unstyled';
+    /**
+     * The label if the display supports it
+     */
+    label?: (translations: WYSIWYGTranslations) => string;
     /**
      * The items contained in the section
      */
@@ -38,6 +43,9 @@ export type ToolbarOptions = {
        * The item nem, will be used as a key and an identifier to style the block
        */
       name: string;
+      /**
+       * Whether or not this item should have its active state
+       */
       isActive: (editorState: EditorState) => boolean;
       /**
        * The internal string used by draft.js to understand how the content should be styled
@@ -46,7 +54,13 @@ export type ToolbarOptions = {
       /**
        * The renderer function for this item
        */
-      content: () => React.ReactNode;
+      content: (
+        translations: WYSIWYGTranslations,
+        isActive?: boolean,
+        editorState?: EditorState,
+        setEditorState?: (editorState: EditorState) => void,
+        onToggle?: (itemType: string, name: string) => void
+      ) => React.ReactNode;
     }[];
   }[];
 };
@@ -83,6 +97,7 @@ export const toolbarOptions: ToolbarOptions = {
       name: 'fontStyles',
       type: 'block',
       display: 'dropdown',
+      label: (translations) => translations.textStyleDropdown,
       items: [
         {
           name: 'normalButton',
@@ -190,20 +205,26 @@ export const toolbarOptions: ToolbarOptions = {
           content: () => <FontAwesomeIcon icon={faAlignJustify} />
         }
       ]
+    },
+    {
+      name: 'media',
+      type: 'inline',
+      display: 'unstyled', // This is an unstyled section which means each button will take care of its style AND logic
+      items: [
+        {
+          name: 'pui-hyperlink',
+          type: 'unstyled',
+          isActive: (editorState) => getLinkIfAny(editorState),
+          content: (translations, isActive, editorState, setEditorState) => (
+            <Hyperlink
+              translations={translations}
+              isActive={isActive}
+              editorState={editorState}
+              setEditorState={setEditorState}
+            />
+          )
+        }
+      ]
     }
-    // Maybe add a link option?
-    // {
-    //   type: 'block',
-    //   display: 'button',
-    //   items: [
-    //     {
-    //       /**
-    //        *
-    //        */
-    //       content: () => 'Link',
-    //       type: 'unstyled' // 'pui-align-link'
-    //     }
-    //   ]
-    // }
   ]
 };

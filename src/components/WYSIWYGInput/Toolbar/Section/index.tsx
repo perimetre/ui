@@ -14,6 +14,10 @@ type BlockSectionProps = {
    */
   editorState: EditorState;
   /**
+   * The update function to update the editor state
+   */
+  setEditorState: (editorState: EditorState) => void;
+  /**
    * The toggle method for a style
    */
   onToggle: (itemType: string, name: string) => void;
@@ -31,13 +35,22 @@ type BlockSectionProps = {
  * @param props.editorState The current editor state
  * @param props.onToggle The toggle method for a style
  * @param props.translations The translation object
+ * @param props.setEditorState The update function to update the editor state
  */
-const BlockSection: React.FC<BlockSectionProps> = ({ section, editorState, onToggle, translations }) => (
+const BlockSection: React.FC<BlockSectionProps> = ({
+  section,
+  editorState,
+  onToggle,
+  translations,
+  setEditorState
+}) => (
   <SectionItems
     display={section.display}
     items={section.items}
     editorState={editorState}
+    setEditorState={setEditorState}
     onToggle={onToggle}
+    label={section.label && section.label(translations)}
     translations={translations}
   />
 );
@@ -51,6 +64,10 @@ type InlineSectionProps = {
    * The current editor state
    */
   editorState: EditorState;
+  /**
+   * The update function to update the editor state
+   */
+  setEditorState: (editorState: EditorState) => void;
   /**
    * The toggle method for a style
    */
@@ -69,13 +86,22 @@ type InlineSectionProps = {
  * @param props.editorState The current editor state
  * @param props.onToggle The toggle method for a style
  * @param props.translations The translation object
+ * @param props.setEditorState The update function to update the editor state
  */
-const InlineSection: React.FC<InlineSectionProps> = ({ section, editorState, onToggle, translations }) => (
+const InlineSection: React.FC<InlineSectionProps> = ({
+  section,
+  editorState,
+  onToggle,
+  translations,
+  setEditorState
+}) => (
   <SectionItems
     display={section.display}
     items={section.items}
     editorState={editorState}
+    setEditorState={setEditorState}
     onToggle={onToggle}
+    label={section.label && section.label(translations)}
     translations={translations}
   />
 );
@@ -89,6 +115,10 @@ type ToolbarSectionProps = {
    * The current editor state
    */
   editorState: EditorState;
+  /**
+   * The update function to update the editor state
+   */
+  setEditorState: (editorState: EditorState) => void;
   /**
    * The toggle method for a block style
    */
@@ -112,13 +142,15 @@ type ToolbarSectionProps = {
  * @param props.onBlockToggle The toggle method for a block style
  * @param props.onInlineToggle The toggle method for an inline style
  * @param props.translations The translation object
+ * @param props.setEditorState The update function to update the editor state
  */
 export const ToolbarSection: React.FC<ToolbarSectionProps> = ({
   section,
   editorState,
   onBlockToggle,
   onInlineToggle,
-  translations
+  translations,
+  setEditorState
 }) => {
   switch (section.type) {
     case 'block':
@@ -127,6 +159,7 @@ export const ToolbarSection: React.FC<ToolbarSectionProps> = ({
           <BlockSection
             section={section}
             editorState={editorState}
+            setEditorState={setEditorState}
             onToggle={onBlockToggle}
             translations={translations}
           />
@@ -138,7 +171,21 @@ export const ToolbarSection: React.FC<ToolbarSectionProps> = ({
           <InlineSection
             section={section}
             editorState={editorState}
+            setEditorState={setEditorState}
             onToggle={onInlineToggle}
+            translations={translations}
+          />
+        </span>
+      );
+    case 'unstyled':
+      return (
+        <span className="pui-wysiwyg-toolbar-section">
+          <SectionItems
+            display={section.display}
+            items={section.items}
+            editorState={editorState}
+            setEditorState={setEditorState}
+            label={section.label && section.label(translations)}
             translations={translations}
           />
         </span>
