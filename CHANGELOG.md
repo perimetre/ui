@@ -21,6 +21,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Search icon
+
 ### Fixed
 
 ## [1.1.4] - 2021-02-24
