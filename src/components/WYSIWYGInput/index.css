@@ -1,4 +1,4 @@
-@import 'draft-js/dist/Draft.css';
+@import './draft.css';
 
 @layer components {
   .pui-wysiwyg-root {

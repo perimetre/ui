@@ -25,6 +25,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- Fixed an issue with the rich text editor bullets where they were getting duplicated
+
 ## [1.1.3] - 2021-02-23
 
 ### Fixed

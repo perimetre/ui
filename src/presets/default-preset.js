@@ -97,7 +97,22 @@ module.exports = {
       }),
       height: {
         '5/12vh': '41.666667vh'
-      }
+      },
+      /**
+       * Extends tailwind typography
+       *
+       * @param theme the provided tailwind theme
+       */
+      typography: (theme) => ({
+        DEFAULT: {
+          css: {
+            color: theme('colors.pui-paragraph.500'),
+            'ul > li::before': {
+              backgroundColor: theme('colors.pui-paragraph.500')
+            }
+          }
+        }
+      })
     }
   },
   plugins: [
