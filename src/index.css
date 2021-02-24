@@ -1,6 +1,32 @@
 @import './components/base';
 @import './components';
 
+@layer base {
+  /* First, clears the prose styling because we want to bring back preflight styling */
+  .prose {
+    ol,
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  /* Brings back preflight styling */
+  ul,
+  ol {
+    @apply list-inside;
+  }
+
+  ul {
+    @apply list-disc;
+  }
+
+  ol {
+    @apply list-decimal;
+  }
+}
+
 html,
 body {
   @apply pui-font-family text-pui-paragraph-500;
