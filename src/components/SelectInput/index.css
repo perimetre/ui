@@ -53,7 +53,7 @@
 
   /* We need to separated the icon so the multiple variant doesn't have it */
   .pui-select-input-icon {
-    @apply pui-absolute-icon-right-padded pui-icon-angle-down pui-animate-scaleHover;
+    @apply pui-absolute-icon-after-right-padded pui-icon-angle-down pui-animate-scaleHover;
 
     /* &:after here is the icon */
     &:after {

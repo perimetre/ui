@@ -23,6 +23,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [1.1.7] - 2021-02-25
+
+### **Breaking changes**
+
+- Icon class `pui-absolute-icon` now needs a pseudo element suffix `-after` or `-before`
+
+### Changes
+
+- Icons now works regardless of pseudo element
+
+### Fixed
+
+- On useAutocomplete, removed a place where the onChange method shouldn't get called. Or else the input itself would fill its contents with the selection
+
 ## [1.1.6] - 2021-02-25
 
 ### Changes

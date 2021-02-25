@@ -122,7 +122,7 @@
     }
 
     .pui-wysiwyg-editor {
-      @apply pui-absolute-icon-right-padded pui-icon-attention;
+      @apply pui-absolute-icon-after-right-padded pui-icon-attention;
 
       &::after {
         /* By setting the bg color, the color of the icon itself is set */
@@ -146,7 +146,7 @@
     }
 
     .pui-wysiwyg-editor {
-      @apply pui-absolute-icon-right-padded pui-icon-check;
+      @apply pui-absolute-icon-after-right-padded pui-icon-check;
 
       &::after {
         /* By setting the bg color, the color of the icon itself is set */
@@ -164,7 +164,7 @@
   /* On loading status */
   .pui-wysiwyg-input-loading {
     .pui-wysiwyg-editor {
-      @apply pui-absolute-icon-right-padded pui-icon-spinner;
+      @apply pui-absolute-icon-after-right-padded pui-icon-spinner-after;
 
       &::after {
         /* Puts the icon on top, since this input can get too big */

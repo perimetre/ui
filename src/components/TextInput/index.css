@@ -74,7 +74,7 @@
   /* Unfortunately, <input> cannot have ::after, so this(and all input statuses) must be used in a wrapper */
   /* The error status */
   .pui-text-input-error {
-    @apply pui-absolute-icon-right-padded pui-icon-attention;
+    @apply pui-absolute-icon-after-right-padded pui-icon-attention;
 
     /* The next input element */
     > * {
@@ -93,7 +93,7 @@
 
   /* The success status */
   .pui-text-input-success {
-    @apply pui-absolute-icon-right-padded pui-icon-check;
+    @apply pui-absolute-icon-after-right-padded pui-icon-check;
 
     /* The next input element */
     > * {
@@ -112,6 +112,6 @@
 
   /* The loading status */
   .pui-text-input-loading {
-    @apply pui-absolute-icon-right-padded pui-icon-spinner;
+    @apply pui-absolute-icon-after-right-padded pui-icon-spinner-after;
   }
 }
