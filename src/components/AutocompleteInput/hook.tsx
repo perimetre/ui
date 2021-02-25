@@ -329,22 +329,25 @@ export const useAutocompleteInput = <T extends AutocompleteItemType = Autocomple
   });
 
   const getRootProps = useCallback(
-    (opts?: { className?: string }) => ({
-      className: classnames('autocomplete-root', opts?.className)
+    (opts?: { className?: string; style?: React.CSSProperties }) => ({
+      className: classnames('autocomplete-root', opts?.className),
+      style: opts?.style
     }),
     []
   );
 
   const getInputContainerProps = useCallback(
-    (opts?: { className?: string }) => ({
-      className: classnames('autocomplete-input-container', opts?.className)
+    (opts?: { className?: string; style?: React.CSSProperties }) => ({
+      className: classnames('autocomplete-input-container', opts?.className),
+      style: opts?.style
     }),
     []
   );
 
   const getSelectedListProps = useCallback(
-    (opts?: { className?: string }) => ({
-      className: classnames('autocomplete-selected-list', opts?.className)
+    (opts?: { className?: string; style?: React.CSSProperties }) => ({
+      className: classnames('autocomplete-selected-list', opts?.className),
+      style: opts?.style
     }),
     []
   );
@@ -359,17 +362,21 @@ export const useAutocompleteInput = <T extends AutocompleteItemType = Autocomple
      *
      * @param opts The method options
      * @param opts.className The classname that should be appended
+     * @param opts.style The style property to be forwarded
      */
-    getLabelProps: ({ className }: { className?: string }) => getLabelProps({ id, className }),
+    getLabelProps: ({ className, style }: { className?: string; style?: React.CSSProperties }) =>
+      getLabelProps({ id, className, style }),
     /**
      * Get the required props for the combobox container
      *
      * @param opts The method options
      * @param opts.className The classname that should be appended
+     * @param opts.style The style property to be forwarded
      */
-    getComboboxProps: ({ className }: { className?: string }) =>
+    getComboboxProps: ({ className, style }: { className?: string; style?: React.CSSProperties }) =>
       getComboboxProps({
-        className: classnames('autocomplete-combo', { open: isOpen }, className)
+        className: classnames('autocomplete-combo', { open: isOpen }, className),
+        style
       }),
     getInputContainerProps,
     /**
@@ -377,8 +384,9 @@ export const useAutocompleteInput = <T extends AutocompleteItemType = Autocomple
      *
      * @param opts The method options
      * @param opts.className The classname that should be appended
+     * @param opts.style The style property to be forwarded
      */
-    getInputProps: ({ className }: { className?: string }) =>
+    getInputProps: ({ className, style }: { className?: string; style?: React.CSSProperties }) =>
       getInputProps(
         getDropdownProps({
           id,
@@ -389,6 +397,7 @@ export const useAutocompleteInput = <T extends AutocompleteItemType = Autocomple
             },
             className
           ),
+          style,
           /**
            * The handler for when a key is pressed in the input
            *
@@ -429,8 +438,9 @@ export const useAutocompleteInput = <T extends AutocompleteItemType = Autocomple
      *
      * @param opts The method options
      * @param opts.className The classname that should be appended
+     * @param opts.style The style property to be forwarded
      */
-    getMenuProps: ({ className }: { className?: string }) =>
+    getMenuProps: ({ className, style }: { className?: string; style?: React.CSSProperties }) =>
       getMenuProps({
         className: classnames(
           'autocomplete-result-list',
@@ -440,6 +450,7 @@ export const useAutocompleteInput = <T extends AutocompleteItemType = Autocomple
           className
         ),
         style: {
+          ...style,
           // Don't show when closed
           display: isOpen ? 'block' : 'none'
         }
@@ -451,8 +462,19 @@ export const useAutocompleteInput = <T extends AutocompleteItemType = Autocomple
      * @param opts.item the current item
      * @param opts.index the item's index
      * @param opts.className the classname that should be appended
+     * @param opts.style The style property to be forwarded
      */
-    getItemProps: ({ item, index, className }: { item: T; index: number; className?: string }) => {
+    getItemProps: ({
+      item,
+      index,
+      className,
+      style
+    }: {
+      item: T;
+      index: number;
+      className?: string;
+      style?: React.CSSProperties;
+    }) => {
       // Get if this item is selected or not to use for ui
       const isSelected = selectedItems.findIndex((x) => x.id === item.id) > -1;
       return {
@@ -466,7 +488,8 @@ export const useAutocompleteInput = <T extends AutocompleteItemType = Autocomple
               highlighted: highlightedIndex === index
             },
             className
-          )
+          ),
+          style
         }),
         isSelected
       };
@@ -479,20 +502,24 @@ export const useAutocompleteInput = <T extends AutocompleteItemType = Autocomple
      * @param opts.selectedItem the current selected item
      * @param opts.index the item's index
      * @param opts.className the classname that should be appended
+     * @param opts.style The style property to be forwarded
      */
     getSelectedItemProps: ({
       selectedItem,
       index,
-      className
+      className,
+      style
     }: {
       selectedItem: T;
       index: number;
       className?: string;
+      style?: React.CSSProperties;
     }) =>
       getSelectedItemProps({
         className: classnames('autocomplete-selected-item', className),
         selectedItem,
-        index
+        index,
+        style
       }),
     toggleSelectedItem
   };
