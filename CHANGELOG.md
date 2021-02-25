@@ -27,6 +27,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- On useAutocomplete, removed a place where the onChange method shouldn't get called. Or else the input itself would fill its contents with the selection
+
 ## [1.1.6] - 2021-02-25
 
 ### Changes

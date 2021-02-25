@@ -316,16 +316,16 @@ export const useAutocompleteInput = <T extends AutocompleteItemType = Autocomple
         default:
           break;
       }
-    },
-    /**
-     * The callback for when the input is updated
-     *
-     * @param changes The downshift combobox changes state
-     * @param changes.inputValue The current value of the html input
-     */
-    onInputValueChange: ({ inputValue }) => {
-      if (onChange) onChange(inputValue?.trim() === 'undefined' ? '' : inputValue || '');
     }
+    // /**
+    //  * The callback for when the input is updated
+    //  *
+    //  * @param changes The downshift combobox changes state
+    //  * @param changes.inputValue The current value of the html input
+    //  */
+    // onInputValueChange: ({ inputValue }) => {
+    //   if (onChange) onChange(inputValue?.trim() === 'undefined' ? '' : inputValue || '');
+    // }
   });
 
   const getRootProps = useCallback(
