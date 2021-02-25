@@ -23,6 +23,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [1.1.8] - 2021-02-25
+
+### Fixed
+
 - Added missing Icons export
 
 ## [1.1.7] - 2021-02-25
