@@ -93,6 +93,12 @@
       /* Highlights the background */
       @apply text-pui-secondary font-semibold bg-gray-100;
     }
+
+    &.selected {
+      /* Changes the text color */
+      /* Changes the font */
+      @apply text-pui-primary font-semibold;
+    }
   }
 
   /* The display of selected options */

@@ -1,7 +1,7 @@
 // also exported from '@storybook/react' if you can deal with breaking changes in 6.1
 import { Meta, Story } from '@storybook/react/types-6-0';
 import React from 'react';
-import { AutocompleteInput } from '.';
+import { AutocompleteInput, AutocompleteInputProps } from './AutocompleteInput';
 import { MenuIcon } from '../Icons';
 
 export default {
@@ -20,7 +20,7 @@ export default {
  *
  * @param props the story props
  */
-const Template: Story = (props) => (
+const Template: Story<AutocompleteInputProps> = (props) => (
   <AutocompleteInput
     {...props}
     id="storybook-autocomplete"
@@ -35,12 +35,17 @@ const Template: Story = (props) => (
 
 export const Autocomplete = Template.bind({});
 
+export const SingleSelect = Template.bind({});
+SingleSelect.args = {
+  isSingleSelect: true
+};
+
 /**
  * A story that displays an Autocomplete example
  *
  * @param props the story props
  */
-const WithOptionsTemplate: Story = (props) => (
+const WithButtonsTemplate: Story = (props) => (
   <AutocompleteInput
     {...props}
     id="storybook-autocomplete"
@@ -62,4 +67,4 @@ const WithOptionsTemplate: Story = (props) => (
   />
 );
 
-export const WithOptions = WithOptionsTemplate.bind({});
+export const WithButtons = WithButtonsTemplate.bind({});

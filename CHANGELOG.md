@@ -23,6 +23,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [1.1.6] - 2021-02-25
+
+### Changes
+
+- Refactored autocomplete logic to export it in a hook
+
 ## [1.1.5] - 2021-02-24
 
 ### Added
