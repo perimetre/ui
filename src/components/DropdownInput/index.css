@@ -11,7 +11,7 @@
     /* Turn on relative positioning so the options can be absolute */
     /* Cursor pointer */
     /* Styles the scrollbar */
-    @apply pui-absolute-icon-right-padded pui-icon-angle-down relative cursor-pointer pui-scrollbar;
+    @apply pui-absolute-icon-after-right-padded pui-icon-angle-down relative cursor-pointer pui-scrollbar;
 
     /* First child = input */
     :first-child {

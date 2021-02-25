@@ -3,10 +3,10 @@
 
   /* Css icons */
 
-  .pui-icon-spinner {
+  .pui-icon-spinner-after {
     --pui-absolute-icon-size: 1em;
     &::after {
-      @apply animate-spin border-solid border-2 border-pui-paragraph-300;
+      @apply animate-spin border-solid border-2 border-pui-paragraph-300 bg-transparent;
       animation-duration: 0.6s;
 
       height: 1em;
@@ -23,151 +23,61 @@
 
   .pui-icon-angle-down {
     --pui-absolute-icon-size: 16px;
-    &::after {
-      /* By setting the bg color, the color of the icon itself is set */
-      @apply bg-pui-placeholder-color;
-
-      /* The size to correctly mask the icon */
-      height: 16px;
-      width: 16px;
-
-      /* If updating the icon, use the optimize page to generate a new string */
-      mask-image: url('data:image/svg+xml,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M12.293%204.586L13.707%206%208%2011.707%202.293%206l1.414-1.414L8%208.879z%22%2F%3E%3C%2Fsvg%3E');
-    }
+    /* If updating the icon, use the optimize page to generate a new string */
+    --pui-icon-url-content: url('data:image/svg+xml,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M12.293%204.586L13.707%206%208%2011.707%202.293%206l1.414-1.414L8%208.879z%22%2F%3E%3C%2Fsvg%3E');
   }
 
   .pui-icon-attention-2 {
     --pui-absolute-icon-size: 32px;
-    &::after {
-      /* By setting the bg color, the color of the icon itself is set */
-      @apply bg-pui-placeholder-color;
-
-      /* The size to correctly mask the icon */
-      height: 32px;
-      width: 32px;
-
-      /* If updating the icon, use the optimize page to generate a new string */
-      mask-image: url('data:image/svg+xml,%3Csvg%20width%3D%2232%22%20height%3D%2232%22%20viewBox%3D%220%200%2032%2032%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22none%22%3E%3Cpath%20d%3D%22M0%200h32v32H0z%22%2F%3E%3Cpath%20d%3D%22M16%200c8.837%200%2016%207.163%2016%2016s-7.163%2016-16%2016S0%2024.837%200%2016%207.163%200%2016%200zm0%2020a2%202%200%20100%204%202%202%200%20000-4zm0-12a2%202%200%2000-2%202v6a2%202%200%20104%200v-6a2%202%200%2000-2-2z%22%20fill%3D%22currentColor%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E');
-    }
+    /* If updating the icon, use the optimize page to generate a new string */
+    --pui-icon-url-content: url('data:image/svg+xml,%3Csvg%20width%3D%2232%22%20height%3D%2232%22%20viewBox%3D%220%200%2032%2032%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22none%22%3E%3Cpath%20d%3D%22M0%200h32v32H0z%22%2F%3E%3Cpath%20d%3D%22M16%200c8.837%200%2016%207.163%2016%2016s-7.163%2016-16%2016S0%2024.837%200%2016%207.163%200%2016%200zm0%2020a2%202%200%20100%204%202%202%200%20000-4zm0-12a2%202%200%2000-2%202v6a2%202%200%20104%200v-6a2%202%200%2000-2-2z%22%20fill%3D%22currentColor%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E');
   }
 
   .pui-icon-attention {
     --pui-absolute-icon-size: 22px;
-    &::after {
-      /* By setting the bg color, the color of the icon itself is set */
-      @apply bg-pui-placeholder-color;
-
-      /* The size to correctly mask the icon */
-      height: 22px;
-      width: 22px;
-
-      /* If updating the icon, use the optimize page to generate a new string */
-      mask-image: url('data:image/svg+xml,%3Csvg%20width%3D%2222%22%20height%3D%2222%22%20viewBox%3D%220%200%2022%2022%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22none%22%3E%3Cpath%20d%3D%22M-1-1h24v24H-1z%22%2F%3E%3Cpath%20d%3D%22M11%200c6.075%200%2011%204.925%2011%2011s-4.925%2011-11%2011S0%2017.075%200%2011%204.925%200%2011%200zm0%202a9%209%200%20100%2018%209%209%200%20000-18zm0%2012c.513%200%20.936.383.993.883L12%2015a.997.997%200%2001-.883.993L11%2016c-.552%200-1-.444-1-1%200-.513.383-.936.883-.993L11%2014zm0-8c.552%200%201%20.438%201%201.003v4.994a1%201%200%2001-.883.996L11%2013c-.552%200-1-.438-1-1.003V7.003a1%201%200%2001.883-.996L11%206z%22%20fill%3D%22currentColor%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E');
-    }
+    /* If updating the icon, use the optimize page to generate a new string */
+    --pui-icon-url-content: url('data:image/svg+xml,%3Csvg%20width%3D%2222%22%20height%3D%2222%22%20viewBox%3D%220%200%2022%2022%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22none%22%3E%3Cpath%20d%3D%22M-1-1h24v24H-1z%22%2F%3E%3Cpath%20d%3D%22M11%200c6.075%200%2011%204.925%2011%2011s-4.925%2011-11%2011S0%2017.075%200%2011%204.925%200%2011%200zm0%202a9%209%200%20100%2018%209%209%200%20000-18zm0%2012c.513%200%20.936.383.993.883L12%2015a.997.997%200%2001-.883.993L11%2016c-.552%200-1-.444-1-1%200-.513.383-.936.883-.993L11%2014zm0-8c.552%200%201%20.438%201%201.003v4.994a1%201%200%2001-.883.996L11%2013c-.552%200-1-.438-1-1.003V7.003a1%201%200%2001.883-.996L11%206z%22%20fill%3D%22currentColor%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E');
   }
 
   .pui-icon-back {
     --pui-absolute-icon-size: 24px;
-    &::after {
-      /* By setting the bg color, the color of the icon itself is set */
-      @apply bg-pui-placeholder-color;
-
-      /* The size to correctly mask the icon */
-      height: 24px;
-      width: 24px;
-
-      /* If updating the icon, use the optimize page to generate a new string */
-      mask-image: url('data:image/svg+xml,%3Csvg%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M10.414%205l1.414%201.414-5%205H22v2H6.828l5%205-1.414%201.414L3%2012.414%204.414%2011l6-6z%22%2F%3E%3C%2Fsvg%3E');
-    }
+    /* If updating the icon, use the optimize page to generate a new string */
+    --pui-icon-url-content: url('data:image/svg+xml,%3Csvg%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M10.414%205l1.414%201.414-5%205H22v2H6.828l5%205-1.414%201.414L3%2012.414%204.414%2011l6-6z%22%2F%3E%3C%2Fsvg%3E');
   }
 
   .pui-icon-bell {
     --pui-absolute-icon-size: 16px;
-    &::after {
-      /* By setting the bg color, the color of the icon itself is set */
-      @apply bg-pui-placeholder-color;
-
-      /* The size to correctly mask the icon */
-      height: 16px;
-      width: 16px;
-
-      /* If updating the icon, use the optimize page to generate a new string */
-      mask-image: url('data:image/svg+xml,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22none%22%3E%3Cpath%20d%3D%22M0%200h16v16H0z%22%2F%3E%3Cpath%20d%3D%22M12.364%209.995V6.149c0-2.55-1.954-4.616-4.364-4.616S3.636%203.6%203.636%206.15v3.846a3.2%203.2%200%2001-.389%201.538h9.506a3.2%203.2%200%2001-.39-1.538zm2.909%203.039H.727c-.97%200-.97-1.533%200-1.533.804%200%201.455-.687%201.455-1.534V6.134C2.182%202.746%204.787%200%208%200c3.213%200%205.818%202.746%205.818%206.134v3.833c0%20.847.651%201.534%201.455%201.534.97%200%20.97%201.533%200%201.533zm-5.386%201.82C9.497%2015.564%208.777%2016%208%2016c-.778%200-1.497-.437-1.887-1.146-.282-.511.068-.854.629-.854h2.516c.56%200%20.91.343.63.854z%22%20fill%3D%22currentColor%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E');
-    }
+    /* If updating the icon, use the optimize page to generate a new string */
+    --pui-icon-url-content: url('data:image/svg+xml,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22none%22%3E%3Cpath%20d%3D%22M0%200h16v16H0z%22%2F%3E%3Cpath%20d%3D%22M12.364%209.995V6.149c0-2.55-1.954-4.616-4.364-4.616S3.636%203.6%203.636%206.15v3.846a3.2%203.2%200%2001-.389%201.538h9.506a3.2%203.2%200%2001-.39-1.538zm2.909%203.039H.727c-.97%200-.97-1.533%200-1.533.804%200%201.455-.687%201.455-1.534V6.134C2.182%202.746%204.787%200%208%200c3.213%200%205.818%202.746%205.818%206.134v3.833c0%20.847.651%201.534%201.455%201.534.97%200%20.97%201.533%200%201.533zm-5.386%201.82C9.497%2015.564%208.777%2016%208%2016c-.778%200-1.497-.437-1.887-1.146-.282-.511.068-.854.629-.854h2.516c.56%200%20.91.343.63.854z%22%20fill%3D%22currentColor%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E');
   }
 
   .pui-icon-check {
     --pui-absolute-icon-size: 16px;
-    &::after {
-      /* By setting the bg color, the color of the icon itself is set */
-      @apply bg-pui-placeholder-color;
-
-      /* The size to correctly mask the icon */
-      height: 16px;
-      width: 16px;
-
-      /* If updating the icon, use the optimize page to generate a new string */
-      mask-image: url('data:image/svg+xml,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M5.852%2011.601L1.625%208.22.375%209.781l5.773%204.618%209.626-11.766-1.548-1.266z%22%2F%3E%3C%2Fsvg%3E');
-    }
+    /* If updating the icon, use the optimize page to generate a new string */
+    --pui-icon-url-content: url('data:image/svg+xml,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M5.852%2011.601L1.625%208.22.375%209.781l5.773%204.618%209.626-11.766-1.548-1.266z%22%2F%3E%3C%2Fsvg%3E');
   }
 
   .pui-icon-cross {
     --pui-absolute-icon-size: 24px;
-    &::after {
-      /* By setting the bg color, the color of the icon itself is set */
-      @apply bg-pui-placeholder-color;
-
-      /* The size to correctly mask the icon */
-      height: 24px;
-      width: 24px;
-
-      /* If updating the icon, use the optimize page to generate a new string */
-      mask-image: url('data:image/svg+xml,%3Csvg%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22none%22%3E%3Cpath%20d%3D%22M0%200h24v24H0z%22%2F%3E%3Cpath%20fill%3D%22currentColor%22%20d%3D%22M19.308%2020.705l-7.306-7.304-7.31%207.308-1.401-1.4%207.31-7.31-7.31-7.308%201.401-1.4%207.31%207.308%207.306-7.304%201.401%201.4L13.404%2012l7.305%207.305z%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E');
-    }
+    /* If updating the icon, use the optimize page to generate a new string */
+    --pui-icon-url-content: url('data:image/svg+xml,%3Csvg%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22none%22%3E%3Cpath%20d%3D%22M0%200h24v24H0z%22%2F%3E%3Cpath%20fill%3D%22currentColor%22%20d%3D%22M19.308%2020.705l-7.306-7.304-7.31%207.308-1.401-1.4%207.31-7.31-7.31-7.308%201.401-1.4%207.31%207.308%207.306-7.304%201.401%201.4L13.404%2012l7.305%207.305z%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E');
   }
 
   .pui-icon-menu {
     --pui-absolute-icon-size: 24px;
-    &::after {
-      /* By setting the bg color, the color of the icon itself is set */
-      @apply bg-pui-placeholder-color;
-
-      /* The size to correctly mask the icon */
-      height: 24px;
-      width: 24px;
-
-      /* If updating the icon, use the optimize page to generate a new string */
-      mask-image: url('data:image/svg+xml,%3Csvg%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cdefs%3E%3Cfilter%20x%3D%22-15.3%25%22%20y%3D%22-223.9%25%22%20width%3D%22130.6%25%22%20height%3D%22547.8%25%22%20filterUnits%3D%22objectBoundingBox%22%20id%3D%22prefix_wW_jp_a%22%3E%3CfeOffset%20dy%3D%222%22%20in%3D%22SourceAlpha%22%20result%3D%22shadowOffsetOuter1%22%2F%3E%3CfeGaussianBlur%20stdDeviation%3D%2252.5%22%20in%3D%22shadowOffsetOuter1%22%20result%3D%22shadowBlurOuter1%22%2F%3E%3CfeColorMatrix%20values%3D%220%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200.0908817745%200%22%20in%3D%22shadowBlurOuter1%22%20result%3D%22shadowMatrixOuter1%22%2F%3E%3CfeMerge%3E%3CfeMergeNode%20in%3D%22shadowMatrixOuter1%22%2F%3E%3CfeMergeNode%20in%3D%22SourceGraphic%22%2F%3E%3C%2FfeMerge%3E%3C%2Ffilter%3E%3Cfilter%20x%3D%22-.3%25%22%20y%3D%22-4.4%25%22%20width%3D%22100.6%25%22%20height%3D%22108.9%25%22%20filterUnits%3D%22objectBoundingBox%22%20id%3D%22prefix_wW_jp_b%22%3E%3CfeOffset%20dy%3D%221%22%20in%3D%22SourceAlpha%22%20result%3D%22shadowOffsetOuter1%22%2F%3E%3CfeGaussianBlur%20stdDeviation%3D%22.5%22%20in%3D%22shadowOffsetOuter1%22%20result%3D%22shadowBlurOuter1%22%2F%3E%3CfeColorMatrix%20values%3D%220%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200.0829873252%200%22%20in%3D%22shadowBlurOuter1%22%20result%3D%22shadowMatrixOuter1%22%2F%3E%3CfeMerge%3E%3CfeMergeNode%20in%3D%22shadowMatrixOuter1%22%2F%3E%3CfeMergeNode%20in%3D%22SourceGraphic%22%2F%3E%3C%2FfeMerge%3E%3C%2Ffilter%3E%3C%2Fdefs%3E%3Cg%20filter%3D%22url(%23prefix_wW_jp_a)%22%20transform%3D%22translate(-37%20-32)%22%3E%3Cg%20filter%3D%22url(%23prefix_wW_jp_b)%22%3E%3Cpath%20d%3D%22M61%2049v2H37v-2h24zm0-6v2H37v-2h24zm0-6v2H37v-2h24z%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E');
-    }
+    /* If updating the icon, use the optimize page to generate a new string */
+    --pui-icon-url-content: url('data:image/svg+xml,%3Csvg%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cdefs%3E%3Cfilter%20x%3D%22-15.3%25%22%20y%3D%22-223.9%25%22%20width%3D%22130.6%25%22%20height%3D%22547.8%25%22%20filterUnits%3D%22objectBoundingBox%22%20id%3D%22prefix_wW_jp_a%22%3E%3CfeOffset%20dy%3D%222%22%20in%3D%22SourceAlpha%22%20result%3D%22shadowOffsetOuter1%22%2F%3E%3CfeGaussianBlur%20stdDeviation%3D%2252.5%22%20in%3D%22shadowOffsetOuter1%22%20result%3D%22shadowBlurOuter1%22%2F%3E%3CfeColorMatrix%20values%3D%220%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200.0908817745%200%22%20in%3D%22shadowBlurOuter1%22%20result%3D%22shadowMatrixOuter1%22%2F%3E%3CfeMerge%3E%3CfeMergeNode%20in%3D%22shadowMatrixOuter1%22%2F%3E%3CfeMergeNode%20in%3D%22SourceGraphic%22%2F%3E%3C%2FfeMerge%3E%3C%2Ffilter%3E%3Cfilter%20x%3D%22-.3%25%22%20y%3D%22-4.4%25%22%20width%3D%22100.6%25%22%20height%3D%22108.9%25%22%20filterUnits%3D%22objectBoundingBox%22%20id%3D%22prefix_wW_jp_b%22%3E%3CfeOffset%20dy%3D%221%22%20in%3D%22SourceAlpha%22%20result%3D%22shadowOffsetOuter1%22%2F%3E%3CfeGaussianBlur%20stdDeviation%3D%22.5%22%20in%3D%22shadowOffsetOuter1%22%20result%3D%22shadowBlurOuter1%22%2F%3E%3CfeColorMatrix%20values%3D%220%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200.0829873252%200%22%20in%3D%22shadowBlurOuter1%22%20result%3D%22shadowMatrixOuter1%22%2F%3E%3CfeMerge%3E%3CfeMergeNode%20in%3D%22shadowMatrixOuter1%22%2F%3E%3CfeMergeNode%20in%3D%22SourceGraphic%22%2F%3E%3C%2FfeMerge%3E%3C%2Ffilter%3E%3C%2Fdefs%3E%3Cg%20filter%3D%22url(%23prefix_wW_jp_a)%22%20transform%3D%22translate(-37%20-32)%22%3E%3Cg%20filter%3D%22url(%23prefix_wW_jp_b)%22%3E%3Cpath%20d%3D%22M61%2049v2H37v-2h24zm0-6v2H37v-2h24zm0-6v2H37v-2h24z%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E');
   }
 
   .pui-icon-question {
     --pui-absolute-icon-size: 16px;
-    &::after {
-      /* By setting the bg color, the color of the icon itself is set */
-      @apply bg-pui-placeholder-color;
-
-      /* The size to correctly mask the icon */
-      height: 16px;
-      width: 16px;
-
-      /* If updating the icon, use the optimize page to generate a new string */
-      mask-image: url('data:image/svg+xml,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M8%200a8%208%200%20110%2016A8%208%200%20018%200zm.108%2010.5c-.348%200-.348%200-.576.234-.228.234-.228.234-.228.558%200%20.312%200%20.312.234.546.234.234.234.234.57.234.348%200%20.348%200%20.576-.24.228-.24.228-.24.228-.552%200-.324%200-.324-.228-.552-.228-.228-.228-.228-.576-.228zm.072-7.176c-.504%200-.504%200-.948.15-.444.15-.444.15-.786.438-.342.288-.342.288-.57.702-.182.331-.182.331-.265.728l-.035.202%201.152.132c.06-.552.06-.552.42-.936s.36-.384.96-.384c.576%200%20.576%200%20.942.342s.366.342.366.918c0%20.42%200%20.42-.174.69-.13.202-.13.202-.312.381l-.126.117-.444.42c-.204.192-.204.192-.366.378s-.162.186-.276.39c-.114.204-.114.204-.174.456-.04.168-.04.168-.053.363l-.007.201v.576h1.128v-.42c0-.3%200-.3.042-.504.042-.204.042-.204.138-.372s.096-.168.264-.33.168-.162.408-.366c.252-.216.252-.216.468-.42.216-.204.216-.204.366-.438s.15-.234.234-.522c.084-.288.084-.288.084-.672%200-.54%200-.54-.192-.954-.192-.414-.192-.414-.528-.696s-.336-.282-.774-.426c-.438-.144-.438-.144-.942-.144z%22%2F%3E%3C%2Fsvg%3E');
-    }
+    /* If updating the icon, use the optimize page to generate a new string */
+    --pui-icon-url-content: url('data:image/svg+xml,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M8%200a8%208%200%20110%2016A8%208%200%20018%200zm.108%2010.5c-.348%200-.348%200-.576.234-.228.234-.228.234-.228.558%200%20.312%200%20.312.234.546.234.234.234.234.57.234.348%200%20.348%200%20.576-.24.228-.24.228-.24.228-.552%200-.324%200-.324-.228-.552-.228-.228-.228-.228-.576-.228zm.072-7.176c-.504%200-.504%200-.948.15-.444.15-.444.15-.786.438-.342.288-.342.288-.57.702-.182.331-.182.331-.265.728l-.035.202%201.152.132c.06-.552.06-.552.42-.936s.36-.384.96-.384c.576%200%20.576%200%20.942.342s.366.342.366.918c0%20.42%200%20.42-.174.69-.13.202-.13.202-.312.381l-.126.117-.444.42c-.204.192-.204.192-.366.378s-.162.186-.276.39c-.114.204-.114.204-.174.456-.04.168-.04.168-.053.363l-.007.201v.576h1.128v-.42c0-.3%200-.3.042-.504.042-.204.042-.204.138-.372s.096-.168.264-.33.168-.162.408-.366c.252-.216.252-.216.468-.42.216-.204.216-.204.366-.438s.15-.234.234-.522c.084-.288.084-.288.084-.672%200-.54%200-.54-.192-.954-.192-.414-.192-.414-.528-.696s-.336-.282-.774-.426c-.438-.144-.438-.144-.942-.144z%22%2F%3E%3C%2Fsvg%3E');
   }
 
   .pui-icon-search {
     --pui-absolute-icon-size: 16px;
-    &::after {
-      /* By setting the bg color, the color of the icon itself is set */
-      @apply bg-pui-placeholder-color;
-
-      /* The size to correctly mask the icon */
-      height: 16px;
-      width: 16px;
-
-      /* If updating the icon, use the optimize page to generate a new string */
-      mask-image: url('data:image/svg+xml,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M16%2014.767l-3.906-3.905a6.029%206.029%200%20001.233-3.7A6.126%206.126%200%20007.164%201%206.127%206.127%200%20001%207.164a6.127%206.127%200%20006.164%206.164%206.029%206.029%200%20003.7-1.233L14.767%2016%2016%2014.767zM4.038%204.041A4.36%204.36%200%20017.16%202.764a4.36%204.36%200%20014.4%204.4%204.36%204.36%200%2001-4.4%204.4%204.36%204.36%200%2001-4.4-4.4%204.36%204.36%200%20011.277-3.123z%22%2F%3E%3C%2Fsvg%3E');
-    }
+    /* If updating the icon, use the optimize page to generate a new string */
+    --pui-icon-url-content: url('data:image/svg+xml,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M16%2014.767l-3.906-3.905a6.029%206.029%200%20001.233-3.7A6.126%206.126%200%20007.164%201%206.127%206.127%200%20001%207.164a6.127%206.127%200%20006.164%206.164%206.029%206.029%200%20003.7-1.233L14.767%2016%2016%2014.767zM4.038%204.041A4.36%204.36%200%20017.16%202.764a4.36%204.36%200%20014.4%204.4%204.36%204.36%200%2001-4.4%204.4%204.36%204.36%200%2001-4.4-4.4%204.36%204.36%200%20011.277-3.123z%22%2F%3E%3C%2Fsvg%3E');
   }
 }

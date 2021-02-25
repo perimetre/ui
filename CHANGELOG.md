@@ -17,7 +17,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### **Breaking changes**
 
+- Icon class `pui-absolute-icon` now needs a pseudo element suffix `-after` or `-before`
+
 ### Changes
+
+- Icons now works regardless of pseudo element
 
 ### Added
 

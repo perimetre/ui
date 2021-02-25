@@ -1,24 +1,45 @@
 @layer base {
-  .pui-absolute-icon {
+  .pui-absolute-icon-pseudo {
+    /* Sets the box sizing */
+    /* It should have absolute position */
+    /* Do not allow for mouse interaction */
+    /* Try to align it on center */
+    /* Top 0 + Bottom 0 makes it have full height */
+    /* Margin auto to help it with center alignment */
+    /* By setting the bg color, the color of the icon itself is set */
+    @apply box-border absolute pointer-events-none pui-flex-center top-0 bottom-0 m-auto bg-pui-placeholder-color;
+
+    /* Displays the after pseudoelement */
+    content: '';
+
+    /* The size to correctly mask the icon */
+    height: var(--pui-absolute-icon-size, 1rem);
+    width: var(--pui-absolute-icon-size, 1rem);
+
+    /* If updating the icon, use the optimize page to generate a new string */
+    mask-image: var(--pui-icon-url-content);
+  }
+
+  .pui-absolute-icon-after {
     /* Set up positioning by setting it to relative, so other elements can be absolute */
     @apply block relative;
 
     &::after {
-      /* Sets the box sizing */
-      /* It should have absolute position */
-      /* Do not allow for mouse interaction */
-      /* Try to align it on center */
-      /* Top 0 + Bottom 0 makes it have full height */
-      /* Margin auto to help it with center alignment */
-      @apply box-border absolute pointer-events-none pui-flex-center top-0 bottom-0 m-auto;
-
-      /* Displays the after pseudoelement */
-      content: '';
+      @apply pui-absolute-icon-pseudo;
     }
   }
 
-  .pui-absolute-icon-right {
-    @apply pui-absolute-icon;
+  .pui-absolute-icon-before {
+    /* Set up positioning by setting it to relative, so other elements can be absolute */
+    @apply block relative;
+
+    &::before {
+      @apply pui-absolute-icon-pseudo;
+    }
+  }
+
+  .pui-absolute-icon-after-right {
+    @apply pui-absolute-icon-after;
 
     /* Adds 1rem right offset */
     &::after {
@@ -26,8 +47,8 @@
     }
   }
 
-  .pui-absolute-icon-left {
-    @apply pui-absolute-icon;
+  .pui-absolute-icon-after-left {
+    @apply pui-absolute-icon-after;
 
     &::after {
       /* Adds 1rem left offset */
@@ -35,8 +56,8 @@
     }
   }
 
-  .pui-absolute-icon-right-padded {
-    @apply pui-absolute-icon-right;
+  .pui-absolute-icon-after-right-padded {
+    @apply pui-absolute-icon-after-right;
 
     > * {
       &:first-child {
@@ -47,8 +68,50 @@
     }
   }
 
-  .pui-absolute-icon-left-padded {
-    @apply pui-absolute-icon-left;
+  .pui-absolute-icon-after-left-padded {
+    @apply pui-absolute-icon-after-left;
+
+    > * {
+      &:first-child {
+        /* Adds padding left
+        1rem for each side(left and right) + the size of the icon */
+        padding-left: calc((1rem * 2) + var(--pui-absolute-icon-size, 1rem));
+      }
+    }
+  }
+
+  .pui-absolute-icon-before-right {
+    @apply pui-absolute-icon-before;
+
+    /* Adds 1rem right offset */
+    &::before {
+      @apply right-4;
+    }
+  }
+
+  .pui-absolute-icon-before-left {
+    @apply pui-absolute-icon-before;
+
+    &::before {
+      /* Adds 1rem left offset */
+      @apply left-4;
+    }
+  }
+
+  .pui-absolute-icon-before-right-padded {
+    @apply pui-absolute-icon-before-right;
+
+    > * {
+      &:first-child {
+        /* Adds padding right
+        1rem for each side(left and right) + the size of the icon */
+        padding-right: calc((1rem * 2) + var(--pui-absolute-icon-size, 1rem));
+      }
+    }
+  }
+
+  .pui-absolute-icon-before-left-padded {
+    @apply pui-absolute-icon-before-left;
 
     > * {
       &:first-child {
