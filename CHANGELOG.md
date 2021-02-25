@@ -19,6 +19,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changes
 
+- Refactored autocomplete logic to export it in a hook
+
 ### Added
 
 ### Fixed
