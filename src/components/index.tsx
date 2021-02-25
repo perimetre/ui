@@ -10,3 +10,4 @@ export * from './Dropdown';
 export * from './Expander';
 export * from './Badge';
 export * from './WYSIWYGInput';
+export * from './Icons';
