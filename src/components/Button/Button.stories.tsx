@@ -52,12 +52,15 @@ export default {
  * @param props.color the color property set on controls
  * @param props.content the content property set on controls
  * @param props.className the component classes
+ * @param props.ref grab the ref to fix the issue with forwardRef typing
  */
 const Template: Story<ButtonProps & { border?: string; content?: string }> = ({
   border,
   color,
   content,
   className,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  ref,
   ...props
 }) => (
   <Button
@@ -144,8 +147,10 @@ export const WithSpinner = SpinnerTemplate.bind({});
  * @param props.color the color property set on controls
  * @param props.content the content property set on controls
  * @param props.className the component classes
+ * @param props.ref grab the ref to fix the issue with forwardRef typing
  */
-const WithIconTemplate: Story = ({ border, color, content, className, ...props }) => (
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const WithIconTemplate: Story = ({ border, color, content, className, ref, ...props }) => (
   <Button
     {...props}
     className={classnames(
