@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### **Breaking changes**
 
+### Changes
+
 ### Added
 
 ### Fixed -->
@@ -16,6 +18,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### **Breaking changes**
+
+### Changes
+
+- Button component now allows `ref` forwarding
 
 ### Added
 
