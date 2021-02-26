@@ -127,7 +127,7 @@ export const DrawerWrapper: React.FC<DrawerWrapperProps> = ({
   return (
     <>
       {/* Just a trigger to have a swipe right if drawer is closed */}
-      <div ref={pannerRef} className="z-20 fixed inset-y-0 p-4" />
+      <div ref={pannerRef} className="z-20 fixed inset-y-0 left-0 p-4" />
 
       {/* The backdrop overlay that appears behind the drawer */}
       <motion.div
@@ -147,7 +147,7 @@ export const DrawerWrapper: React.FC<DrawerWrapperProps> = ({
       {/* The element that animates in and out */}
       <motion.div
         ref={drawerRef}
-        className="fixed top-0 bottom-0 z-30"
+        className="fixed inset-y-0 left-0 z-30"
         initial="closed"
         animate={isOpen ? 'open' : 'closed'}
         variants={variants}

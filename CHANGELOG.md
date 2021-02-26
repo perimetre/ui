@@ -15,13 +15,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### **Breaking changes**
-
-### Changes
-
-### Added
-
 ### Fixed
+
+- Absolute position of drawer in relation to screen fixed to also lock beginning of drawer to left side of screen
 
 ## [1.1.8] - 2021-02-25
 
