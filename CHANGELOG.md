@@ -25,6 +25,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [1.1.11] - 2021-02-26
+
+### Fixed
+
+- Fixed an issue where the button classes weren't being applied if using icon variant
+
 ## [1.1.10] - 2021-02-26
 
 ### Changes
