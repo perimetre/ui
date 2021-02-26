@@ -35,16 +35,15 @@ export type ButtonProps = React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTM
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ size = 'medium', variant = 'default', isChip, className, children, ...props }, ref) => {
     const isIcon = variant === 'icon';
+
     return (
       <button
         type="button"
         {...props}
         ref={ref}
         className={classnames(
+          isIcon ? 'pui-btn-icon' : `pui-btn-${size} pui-btn-${variant}`,
           {
-            'pui-btn-icon': isIcon,
-            [`pui-btn-${size}`]: !isIcon,
-            [`pui-btn-${variant}`]: !isIcon,
             'pui-chip-btn': isChip
           },
           className
