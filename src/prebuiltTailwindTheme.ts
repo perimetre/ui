@@ -40,3 +40,13 @@ export const clampOptions = ['none', ...Object.entries(prebuildTailwindTheme.the
 export const minWidthOptions = Object.entries(prebuildTailwindTheme.theme.minWidth).map((x) => x[0]);
 
 export const marginPaddingOptions = Object.entries(prebuildTailwindTheme.theme.margin).map((x) => x[0]);
+
+export const gridColumnOptions = [
+  ...Object.entries(prebuildTailwindTheme.theme.gridTemplateColumns).map((x) => x[0]),
+  undefined
+];
+
+export const gridRowOptions = [
+  ...Object.entries(prebuildTailwindTheme.theme.gridTemplateColumns).map((x) => x[0]),
+  undefined
+];
