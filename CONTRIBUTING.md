@@ -100,7 +100,7 @@ The architecture is how we setup the repository structure:
 1. Create a `RELEASE.md` file in the project root if you don't have one.
 1. Copy **only the latest version** content from `CHANGELOG.md` and paste in your `RELEASE.md`, then save. So it has the contents for the current but not other versions, unlike the changelog file.
    - Examples: https://github.com/perimetre/ui/releases
-1. Go to [this page](https://github.com/perimetre/ui/commits/master) and find your latest `bumping version` commit: https://github.com/perimetre/ui/commits/master
+1. Go to [this page](https://github.com/perimetre/ui/commits/master) and find the **latest merge commit, which should be the merge that just happened**: https://github.com/perimetre/ui/commits/master
 1. Copy the commit SHA code for that commit, the SHA code is the little number/string in the commit's right side.
    - You can click the clipboard icon which will copy the entire code
 1. Now you'll need to checkout to master, pull, generate the tag, push the tag and make a release for that tag:
