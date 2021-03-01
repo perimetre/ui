@@ -1,0 +1,8 @@
+@layer components {
+  /* The pui grid is just the default grid with some default gaps based on the breakpoints */
+  .pui-grid {
+    /* Make it a grid */
+    /* Apply default gaps */
+    @apply grid gap-6 md:gap-8 lg:gap-7 xl:gap-9;
+  }
+}
