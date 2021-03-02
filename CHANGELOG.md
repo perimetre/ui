@@ -25,6 +25,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- Added type definition for new `getPlainText` method in WYSIWYGInput component
+
 ## [1.3.0] - 2021-03-02
 
 ### Added
