@@ -212,7 +212,11 @@ export const WYSIWYGInput = forwardRef<WYSIWYGInputRef, WYSIWYGInputProps>(
         // Ref(HTML part at the end): https://jpuri.github.io/react-draft-wysiwyg/#/docs
         const htmlData = draftToHtml(convertToRaw(editorState.getCurrentContent()));
         return DOMPurify.sanitize(htmlData);
-      }
+      },
+      /**
+       * Returns a plain text string from the current editor state
+       */
+      getPlainText: () => editorState.getCurrentContent().getPlainText()
     }));
 
     const focus = useCallback(() => {
