@@ -14,5 +14,6 @@
 @import './Tooltip';
 @import './Dropdown';
 @import './Badge';
-@import './WYSIWYGInput';
 @import './Grid';
+@import './HTMLParsedContent';
+@import './WYSIWYGInput';

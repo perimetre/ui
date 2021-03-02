@@ -9,5 +9,6 @@ export * from './Tooltip';
 export * from './Dropdown';
 export * from './Expander';
 export * from './Badge';
-export * from './WYSIWYGInput';
 export * from './Icons';
+export * from './HTMLParsedContent';
+export * from './WYSIWYGInput';

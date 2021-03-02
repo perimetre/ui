@@ -21,7 +21,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changes
 
+- Removed `DOMPurify` in favor of `xss` for sanitization due to server side rendering compatibility. `xss` is used instead of `isomorphic-dompurify` because the latter includes the JSDOM in a manner that rollup cannot correctly build it.
+
 ### Added
+
+- The following components were added:
+  - HTMLParsedContent
+- `WYSIWYGInput` now also sanitizes `defaultHtmlValue`
 
 ### Fixed
 
