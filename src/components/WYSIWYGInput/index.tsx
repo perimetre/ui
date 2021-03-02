@@ -35,6 +35,10 @@ export type WYSIWYGInputRef = {
    * Returns a sanitized html from the current editor state
    */
   getSanitizedHtml: () => string;
+  /**
+   * Returns a plain text string from the current editor state
+   */
+  getPlainText: () => string;
 };
 
 export type WYSIWYGInputProps = Omit<EditorProps, 'editorState' | 'onChange'> & {

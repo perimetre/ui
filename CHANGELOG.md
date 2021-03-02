@@ -25,6 +25,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [1.3.1] - 2021-03-02
+
+### Changes
+
+- Overriding tailwind prose default color values for our colors
+
+### Fixed
+
+- Added type definition for new `getPlainText` method in WYSIWYGInput component
+
 ## [1.3.0] - 2021-03-02
 
 ### Added

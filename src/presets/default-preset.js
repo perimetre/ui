@@ -104,11 +104,57 @@ module.exports = {
        * @param theme the provided tailwind theme
        */
       typography: (theme) => ({
+        // Default styling: https://github.com/tailwindlabs/tailwindcss-typography/blob/master/src/styles.js
         DEFAULT: {
           css: {
+            // The default color
             color: theme('colors.pui-paragraph.500'),
+            a: {
+              color: theme('colors.pui-primary'),
+              '&:hover': { color: theme('colors.pui-secondary') },
+              '&:visited': { color: theme('colors.pui-secondary') }
+            },
+            strong: {
+              color: theme('colors.pui-paragraph.900')
+            },
+            blockquote: {
+              color: theme('colors.pui-paragraph.300')
+            },
+            h1: {
+              color: theme('colors.pui-paragraph.900')
+            },
+            h2: {
+              color: theme('colors.pui-paragraph.900')
+            },
+            h3: {
+              color: theme('colors.pui-paragraph.900')
+            },
+            h4: {
+              color: theme('colors.pui-paragraph.900')
+            },
+            'figure figcaption': {
+              color: theme('colors.pui-paragraph.300')
+            },
+            code: {
+              color: theme('colors.pui-paragraph.900')
+            },
+            'a code': {
+              color: theme('colors.pui-paragraph.900')
+            },
+            pre: {
+              color: theme('colors.pui-paragraph.300')
+            },
+            thead: {
+              color: theme('colors.pui-paragraph.900')
+            },
+            // The color of the ol numbers
+            'ol > li::before': {
+              color: theme('colors.pui-paragraph.900'),
+              fontWeight: '600'
+            },
+            // The color of the li bullets
             'ul > li::before': {
-              backgroundColor: theme('colors.pui-paragraph.500')
+              backgroundColor: theme('colors.pui-paragraph.900')
             }
           }
         }
