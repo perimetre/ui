@@ -21,13 +21,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changes
 
-- Overriding tailwind prose default color values for our colors
-
 ### Added
 
 ### Fixed
 
 ## [1.3.1] - 2021-03-02
+
+### Changes
+
+- Overriding tailwind prose default color values for our colors
 
 ### Fixed
 
