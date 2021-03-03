@@ -13,3 +13,4 @@ export * from './Icons';
 export * from './SelectInput';
 export * from './HTMLParsedContent';
 export * from './WYSIWYGInput';
+export * from './DragFileUploadInput';
