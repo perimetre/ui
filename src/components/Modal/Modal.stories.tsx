@@ -5,6 +5,7 @@ import { Modal, ModalProps } from '.';
 import { minWidthOptions } from '../../prebuiltTailwindTheme';
 import classnames from 'classnames';
 import { MenuIcon } from '../Icons';
+import { minWidthClassnameMap } from '../../storybookMappers';
 
 export default {
   title: 'Components/Modal',
@@ -76,7 +77,7 @@ const Template: Story<ModalProps & { content?: string; onToggleCallback: () => v
         <MenuIcon className="pui-animate-scaleHover-target" />
       </button>
       <Modal {...props} isOpen={isOpen} onToggle={onToggle}>
-        <div className={classnames({ [`min-w-${size}`]: !!size })}>{content}</div>
+        <div className={classnames({ [minWidthClassnameMap[size || 'initial']]: !!size })}>{content}</div>
       </Modal>
     </div>
   );
@@ -140,7 +141,7 @@ const WithActionsTemplate: Story<ModalProps & { content?: string; onToggleCallba
           </>
         )}
       >
-        <div className={classnames({ [`min-w-${size}`]: !!size })}>{content}</div>
+        <div className={classnames({ [minWidthClassnameMap[size || 'initial']]: !!size })}>{content}</div>
       </Modal>
     </div>
   );

@@ -4,6 +4,7 @@ import { Story, Meta } from '@storybook/react/types-6-0';
 import { borderStyleOptions, colorOptions } from '../../prebuiltTailwindTheme';
 import classnames from 'classnames';
 import { CrossIcon } from '../Icons';
+import { borderStyleClassnameMap, puiColorClassnameMap, textColorClassnameMap } from '../../storybookMappers';
 
 export default {
   title: 'Components/Chip',
@@ -48,6 +49,11 @@ export default {
   }
 } as Meta;
 
+const variantClassnameMap = {
+  default: 'pui-chip-default',
+  bordered: 'pui-chip-bordered'
+};
+
 /**
  * A story that displays a chip example
  *
@@ -63,11 +69,11 @@ const Template: Story = ({ variant, border, color, content, text, className, ...
   <span
     {...props}
     className={classnames(
-      `pui-chip-${variant}`,
+      variantClassnameMap[variant || 'default'],
       {
-        [`pui-color-${color}`]: color !== 'pui-primary',
-        [`border-${border}`]: border && border.length > 0,
-        [`text-${text}`]: text && text.length > 0
+        [puiColorClassnameMap[color || 'transparent']]: color !== 'pui-primary',
+        [borderStyleClassnameMap[border || 'none']]: border && border.length > 0,
+        [textColorClassnameMap[text || 'transparent']]: text && text.length > 0
       },
       className
     )}
@@ -116,11 +122,11 @@ const WithIconTemplate: Story = ({ variant, border, color, content, text, classN
     {...props}
     className={classnames(
       'inline-flex items-center',
-      `pui-chip-${variant}`,
+      variantClassnameMap[variant || 'default'],
       {
-        [`pui-color-${color}`]: color !== 'pui-primary',
-        [`border-${border}`]: border && border.length > 0,
-        [`text-${text}`]: text && text.length > 0
+        [puiColorClassnameMap[color || 'transparent']]: color !== 'pui-primary',
+        [borderStyleClassnameMap[border || 'none']]: border && border.length > 0,
+        [textColorClassnameMap[text || 'transparent']]: text && text.length > 0
       },
       className
     )}

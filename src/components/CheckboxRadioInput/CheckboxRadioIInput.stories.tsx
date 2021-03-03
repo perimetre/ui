@@ -4,6 +4,7 @@ import React from 'react';
 import { colorOptions } from '../../prebuiltTailwindTheme';
 import classnames from 'classnames';
 import { CheckboxRadioInput, CheckboxRadioInputProps } from '.';
+import { puiColorClassnameMap } from '../../storybookMappers';
 
 export default {
   title: 'Components/Inputs/Checkbox Radio',
@@ -53,7 +54,7 @@ export default {
 const Template: Story<CheckboxRadioInputProps> = ({ color, className, ...props }) => (
   <CheckboxRadioInput
     {...props}
-    className={classnames({ [`pui-color-${color}`]: color !== 'pui-primary' }, className)}
+    className={classnames({ [puiColorClassnameMap[color || 'transparent']]: color !== 'pui-primary' }, className)}
   />
 );
 
