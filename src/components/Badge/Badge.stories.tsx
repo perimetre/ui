@@ -5,6 +5,7 @@ import { Badge, BadgeProps } from '.';
 import { colorOptions } from '../../prebuiltTailwindTheme';
 import classnames from 'classnames';
 import { BellIcon } from '../Icons';
+import { puiColorClassnameMap } from '../../storybookMappers';
 
 export default {
   title: 'Components/Badge',
@@ -33,7 +34,7 @@ export default {
  * @param props.color the color property set on controls
  */
 const Template: Story<BadgeProps & { color?: string }> = ({ color, ...props }) => (
-  <span className={classnames({ [`pui-color-${color}`]: color !== 'pui-primary' })}>
+  <span className={classnames({ [puiColorClassnameMap[color || 'transparent']]: color !== 'pui-primary' })}>
     <Badge {...props}>
       <BellIcon />
     </Badge>

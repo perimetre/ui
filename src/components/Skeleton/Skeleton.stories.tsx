@@ -3,6 +3,7 @@ import { Meta, Story } from '@storybook/react/types-6-0';
 import React from 'react';
 import { widthHeightOptions } from '../../prebuiltTailwindTheme';
 import classnames from 'classnames';
+import { heightClassnameMap, widthClassnameMap } from '../../storybookMappers';
 
 export default {
   title: 'Components/Skeleton',
@@ -42,8 +43,8 @@ const SkeletonTemplate: Story = ({ width, height, className }) => (
     className={classnames(
       'pui-skeleton',
       {
-        [`h-${height}`]: height && height.length > 0,
-        [`w-${width}`]: width && width.length > 0
+        [heightClassnameMap[height || 'auto']]: height && height.length > 0,
+        [widthClassnameMap[width || 'auto']]: width && width.length > 0
       },
       className
     )}

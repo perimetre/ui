@@ -4,6 +4,7 @@ import React from 'react';
 import { colorOptions, widthHeightOptions } from '../../prebuiltTailwindTheme';
 import * as IconComponents from '.';
 import classnames from 'classnames';
+import { textColorClassnameMap, widthClassnameMap, heightClassnameMap } from '../../storybookMappers';
 
 const iconOptions = Object.entries(IconComponents)
   .map((x) => x[0])
@@ -56,8 +57,8 @@ const Template: Story = ({ icon, size, color, className, ...props }) => {
       {...props}
       className={classnames(
         {
-          [`text-${color}`]: color && color.length > 0,
-          [`w-${size} h-${size}`]: size && size.length > 0
+          [textColorClassnameMap[color || 'transparent']]: color && color.length > 0,
+          [`${widthClassnameMap[size || 'auto']} ${heightClassnameMap[size || 'auto']}`]: size && size.length > 0
         },
         className
       )}
@@ -85,8 +86,8 @@ const ButtonTemplate: Story = ({ icon, size, color, className, ...props }) => {
         className={classnames(
           'pui-animate-scaleHover-target',
           {
-            [`text-${color}`]: color && color.length > 0,
-            [`w-${size} h-${size}`]: size && size.length > 0
+            [textColorClassnameMap[color || 'transparent']]: color && color.length > 0,
+            [`${widthClassnameMap[size || 'auto']} ${heightClassnameMap[size || 'auto']}`]: size && size.length > 0
           },
           className
         )}

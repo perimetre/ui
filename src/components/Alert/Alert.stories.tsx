@@ -4,6 +4,7 @@ import { Story, Meta } from '@storybook/react/types-6-0';
 import { colorOptions, weightOptions } from '../../prebuiltTailwindTheme';
 import { AttentionIcon } from '../Icons';
 import classnames from 'classnames';
+import { fontWeightClassnameMap, puiColorClassnameMap, textColorClassnameMap } from '../../storybookMappers';
 
 export default {
   title: 'Components/Alert',
@@ -58,9 +59,9 @@ const Template: Story = ({ color, content, text, weight, className, ...props }) 
     className={classnames(
       'pui-alert',
       {
-        [`pui-color-${color}`]: color !== 'pui-primary',
-        [`text-${text}`]: text && text.length > 0,
-        [`font-${weight}`]: weight && weight.length > 0
+        [puiColorClassnameMap[color || 'transparent']]: color !== 'pui-primary',
+        [textColorClassnameMap[text || 'transparent']]: text && text.length > 0,
+        [fontWeightClassnameMap[weight || 'normal']]: weight && weight.length > 0
       },
       className
     )}
@@ -98,9 +99,9 @@ const WithIconTemplate: Story = ({ color, content, text, weight, className, ...p
     className={classnames(
       'pui-alert',
       {
-        [`pui-color-${color}`]: color !== 'pui-primary',
-        [`text-${text}`]: text && text.length > 0,
-        [`font-${weight}`]: weight && weight.length > 0
+        [puiColorClassnameMap[color]]: color !== 'pui-primary',
+        [textColorClassnameMap[text]]: text && text.length > 0,
+        [fontWeightClassnameMap[weight]]: weight && weight.length > 0
       },
       'flex items-center space-x-4',
       className

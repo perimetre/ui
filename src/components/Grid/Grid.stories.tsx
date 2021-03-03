@@ -3,6 +3,7 @@ import { Meta, Story } from '@storybook/react/types-6-0';
 import React from 'react';
 import classnames from 'classnames';
 import { gridColumnOptions, gridRowOptions } from '../../prebuiltTailwindTheme';
+import { gridColsClassnameMap, gridRowsClassnameMap } from '../../storybookMappers';
 
 export default {
   title: 'Components/Grid',
@@ -41,8 +42,8 @@ const Template: Story = ({ columns, rows, className }) => (
     className={classnames(
       'pui-grid',
       {
-        [`grid-cols-${columns}`]: !!columns,
-        [`grid-rows-${rows}`]: !!rows,
+        [gridColsClassnameMap[columns || 'none']]: !!columns,
+        [gridRowsClassnameMap[rows || 'none']]: !!rows,
         'grid-flow-col': !!rows
       },
       className
