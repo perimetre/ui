@@ -34,6 +34,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [1.3.2] - 2021-03-03
+
+### Fixed
+
+- Added missing export for `SelectInput` component
+
 ## [1.3.1] - 2021-03-02
 
 ### Changes
