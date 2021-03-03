@@ -27,6 +27,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - The following components were added:
   - HTMLParsedContent
+  - DragFileUploadInput
 - `WYSIWYGInput` now also sanitizes `defaultHtmlValue`
 
 ### Fixed

@@ -27,7 +27,8 @@
       overflow-wrap: normal;
     }
 
-    &:disabled {
+    &:disabled,
+    &.disabled {
       /* The disabled should use the 300 shading */
       /* When disabled, add a lighter background */
       @apply text-pui-paragraph-300 bg-gray-100;
@@ -42,7 +43,8 @@
     /* On focus, follow the placeholder color */
     @apply pui-border-radius border border-solid border-gray-400 focus:border-pui-placeholder-color;
 
-    &:disabled {
+    &:disabled,
+    &.disabled {
       /* When disabled, add a lighter border */
       @apply border-gray-300;
     }

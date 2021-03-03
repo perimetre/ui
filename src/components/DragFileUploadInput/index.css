@@ -1,0 +1,154 @@
+@layer components {
+  /* .pui-drag-file-container {
+  } */
+
+  /* The close icon when there's a pending file */
+  .pui-drag-file-close-icon {
+    /* It's a btn icon */
+    /* Override the icon padding my making it the same as the input padding */
+    /* Makes it absolute so clicking it doesn't trigger the file input dialog */
+    /* Make it take full height */
+    /* Put it in the right side */
+    /* Put it in front of input+label so clicking it doesn't trigger the file input dialog */
+    @apply pui-btn-icon p-3 absolute inset-y-0 right-0 z-10;
+  }
+
+  /* The label is what wraps the hidden input */
+  .pui-drag-file-label {
+    /* Makes it flex so we can align vertically */
+    /* Stretch all items inside so they take full height */
+    /* Centralizes everything */
+    /* Adds the input styling to the label, which adds the border and the padding */
+    @apply flex items-stretch justify-center pui-text-input;
+
+    /* If disabled */
+    &.disabled {
+      /* Don't allow the user to select */
+      @apply select-none;
+    }
+
+    /* If not disabled */
+    &:not(.disabled) {
+      /* Make the cursor a pointer cursor */
+      /* Allow this to animate the target on hover */
+      @apply cursor-pointer pui-animate-scaleHover;
+
+      &:hover {
+        /* On hover highlights the border */
+        @apply border-pui-placeholder-color;
+      }
+    }
+
+    /* &.dragging {
+    }
+
+    &.error {
+    }
+
+    &:not(.error) {
+    } */
+  }
+
+  /* On either success or loading statuses */
+  .pui-drag-file-success,
+  .pui-drag-file-loading {
+    /* The icon button */
+    .pui-drag-file-close-icon {
+      /* Adds the same margin right as the icon would add, but to the button
+        So the close button and the status icons don't overlap each other
+
+        1rem for each side(left and right) + the size of the icon */
+      margin-right: calc((1rem * 2) + var(--pui-absolute-icon-size, 1rem));
+    }
+  }
+
+  /* On error status */
+  .pui-drag-file-error {
+    /* If we don't want to hide the status icon */
+    &:not(.hideStatusIcon) {
+      /* Use the default text input error status */
+      @apply pui-text-input-error;
+
+      /* We need to duplicate this due to the CSS precedences */
+      /* The next input element(in this case the label) */
+      > * {
+        /* Error border */
+        @apply border-pui-error;
+
+        /* Remove the padding it would add to the input, which in this case is the label, by making the padding the same as the default input padding */
+        &:first-child {
+          @apply pr-3;
+        }
+      }
+    }
+
+    /* The next input element(in this case the label) */
+    > * {
+      /* Error border */
+      @apply border-pui-error;
+
+      /* Remove the padding it would add to the input, which in this case is the label, by making the padding the same as the default input padding */
+      &:first-child {
+        @apply pr-3;
+      }
+    }
+  }
+
+  /* The success status */
+  .pui-drag-file-success {
+    /* Use the default text input success status */
+    @apply pui-text-input-success;
+
+    /* The next input element(in this case the label) */
+    > * {
+      /* Remove the padding it would add to the input, which in this case is the label, by making the padding the same as the default input padding */
+      &:first-child {
+        @apply pr-3;
+      }
+    }
+  }
+
+  /* The loading status */
+  .pui-drag-file-loading {
+    /* Use the default text input loading status */
+    @apply pui-text-input-loading;
+
+    /* The next input element(in this case the label) */
+    > * {
+      /* Remove the padding it would add to the input, which in this case is the label, by making the padding the same as the default input padding */
+      &:first-child {
+        @apply pr-3;
+      }
+    }
+  }
+
+  /* The content inside the label, it contains the file text and the icon */
+  .pui-drag-file-content {
+    /* Allow it to grow inside the label flex */
+    /* It also is its own flex to help with proper center aligment */
+    /* Flex col makes the flex be vertical */
+    /* Put items in the center */
+    /* Justify items in the center */
+    /* Adds a gap between items(the icon and the text) */
+    @apply flex-grow flex flex-col items-center justify-center space-y-4;
+  }
+
+  /* The text that contains the info message or the file name */
+  .pui-drag-file-text {
+    /* Don't allow the line get bigger than 1 line */
+    /* Centralize the text */
+    /* Set a relative width */
+    @apply line-clamp-1 text-center w-5/6;
+  }
+
+  /* The actual file input */
+  .pui-drag-file-input {
+    /* Makes it absolute */
+    /* Hides the input */
+    /* Make it full width and height relative to the ui element(label) */
+    @apply absolute opacity-0 inset-0 w-full;
+
+    /* Put it under everything */
+    z-index: -10;
+  }
+}

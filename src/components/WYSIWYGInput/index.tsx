@@ -127,7 +127,7 @@ export const WYSIWYGInput = forwardRef<WYSIWYGInputRef, WYSIWYGInputProps>(
 
     // I specifically don't want to update the translations on every update
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    const translations = useMemo(() => translationsProps || defaultWYSIWYGTranslations, []);
+    const translations = useMemo(() => ({ ...defaultWYSIWYGTranslations, ...translationsProps }), []);
 
     const defaultDecorators = useMemo(() => new CompositeDecorator([linkDecorator]), []);
 

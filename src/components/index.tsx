@@ -12,3 +12,4 @@ export * from './Badge';
 export * from './Icons';
 export * from './HTMLParsedContent';
 export * from './WYSIWYGInput';
+export * from './DragFileUploadInput';
