@@ -37,6 +37,7 @@
     "check-commit": "npm run type-check && npm run prettier && npm run lint:css && npm run lint:fix && npm run rollup:build",
     "storybook": "start-storybook -s ./public -p 6006",
     "build-storybook": "build-storybook -s ./public",
+    "serve-storybook": "npm run build-storybook && http-server ./storybook-static",
     "rollup:build": "rollup -c",
     "rollup:watch": "rollup -c -w",
     "prepare": "npm run rollup:build"
@@ -112,6 +113,7 @@
     "yup": "^0.32.9"
   },
   "devDependencies": {
+    "http-server": "^0.12.3",
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^11.0.0",
     "@storybook/addon-a11y": "^6.1.20",
