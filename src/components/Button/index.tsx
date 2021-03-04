@@ -55,10 +55,9 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         {...props}
         ref={ref}
         className={classnames(
+          variantClassnameMap[variant],
           {
-            'pui-btn-icon': isIcon,
             [sizeClassnameMap[size]]: !isIcon,
-            [variantClassnameMap[variant]]: !isIcon,
             'pui-chip-btn': isChip
           },
           className
