@@ -12,7 +12,7 @@ import preval from 'preval.macro';
 export const prebuildTailwindTheme = preval`
 const resolveConfig = require('tailwindcss/resolveConfig');
 const tailwindConfig = require('../tailwind.config.js');
-const flattenColorPalette = require('@tailwindcss/postcss7-compat/lib/util/flattenColorPalette').default;
+const flattenColorPalette = require('tailwindcss/lib/util/flattenColorPalette').default;
 
 const fullConfig = resolveConfig(tailwindConfig);
 

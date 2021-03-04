@@ -1,7 +1,7 @@
-const flattenColorPalette = require('@tailwindcss/postcss7-compat/lib/util/flattenColorPalette').default;
-const withAlphaVariable = require('@tailwindcss/postcss7-compat/lib/util/withAlphaVariable').default;
-const toColorValue = require('@tailwindcss/postcss7-compat/lib/util/toColorValue').default;
-const nameClass = require('@tailwindcss/postcss7-compat/lib/util/nameClass').default;
+const flattenColorPalette = require('tailwindcss/lib/util/flattenColorPalette').default;
+const withAlphaVariable = require('tailwindcss/lib/util/withAlphaVariable').default;
+const toColorValue = require('tailwindcss/lib/util/toColorValue').default;
+const nameClass = require('tailwindcss/lib/util/nameClass').default;
 const fromPairs = require('lodash/fromPairs');
 const map = require('lodash/map');
 

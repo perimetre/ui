@@ -19,6 +19,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### **Breaking changes**
 
+- Updated postcss from 7 to 8 and its dependencies
+
 ### Changes
 
 - Removed `DOMPurify` in favor of `xss` for sanitization due to server side rendering compatibility. `xss` is used instead of `isomorphic-dompurify` because the latter includes the JSDOM in a manner that rollup cannot correctly build it.

@@ -3,13 +3,22 @@ module.exports = {
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
-    'storybook-addon-jsx',
-    '@storybook/addon-a11y',
-    '@whitespace/storybook-addon-html'
+    // '@storybook/addon-postcss'
+    {
+      name: '@storybook/addon-postcss',
+      options: {
+        postcssLoaderOptions: {
+          implementation: require('postcss')
+        }
+      }
+    },
+    // 'storybook-addon-jsx',
+    // '@storybook/addon-a11y',
+    // '@whitespace/storybook-addon-html'
   ],
   babel: async (options) => ({
     ...options,
     // If updating the plugin list make sure you update .babelrc as well, and vice versa
-    plugins: [...options.plugins, 'babel-plugin-styled-components', 'macros']
+    plugins: [...options.plugins, 'babel-plugin-styled-components']
   })
 };
