@@ -1,4 +1,7 @@
-import preval from 'preval.macro';
+// import preval from 'preval.macro';
+import resolveConfig from 'tailwindcss/resolveConfig';
+import tailwindConfig from '../tailwind.config.js';
+import flattenColorPalette from 'tailwindcss/lib/util/flattenColorPalette';
 
 // !!!! Important !!!!
 // This file is recommended to only be used with storybook or at maximum internally.
@@ -6,18 +9,9 @@ import preval from 'preval.macro';
 
 // These are just a bunch of values to fill the storybook dropdown with the correct strings
 
-// Pre evaluate the tailwind theme resolver with the babel preval macro.
-// Tailwind recomends to do this because this can be a heavy operation
-// https://tailwindcss.com/docs/configuration#referencing-in-java-script
-export const prebuildTailwindTheme = preval`
-const resolveConfig = require('tailwindcss/resolveConfig');
-const tailwindConfig = require('../tailwind.config.js');
-const flattenColorPalette = require('@tailwindcss/postcss7-compat/lib/util/flattenColorPalette').default;
-
 const fullConfig = resolveConfig(tailwindConfig);
 
-module.exports = Object.assign(fullConfig, { flattenedColors: flattenColorPalette(fullConfig.theme.colors) }, {});
-`;
+export const prebuildTailwindTheme = Object.assign(fullConfig, { flattenedColors: flattenColorPalette(fullConfig.theme.colors) }, {});
 
 export const colorOptions = Object.entries(prebuildTailwindTheme.flattenedColors).map((x) => x[0]);
 
