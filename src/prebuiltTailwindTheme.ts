@@ -11,7 +11,11 @@ import flattenColorPalette from 'tailwindcss/lib/util/flattenColorPalette';
 
 const fullConfig = resolveConfig(tailwindConfig);
 
-export const prebuildTailwindTheme = Object.assign(fullConfig, { flattenedColors: flattenColorPalette(fullConfig.theme.colors) }, {});
+export const prebuildTailwindTheme = Object.assign(
+  fullConfig,
+  { flattenedColors: flattenColorPalette(fullConfig.theme.colors) },
+  {}
+);
 
 export const colorOptions = Object.entries(prebuildTailwindTheme.flattenedColors).map((x) => x[0]);
 

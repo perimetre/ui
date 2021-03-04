@@ -21,6 +21,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changes
 
+### Added
+
+### Fixed
+
+## [1.4.0] - 2021-03-04
+
+### Changes
+
 - Removed `DOMPurify` in favor of `xss` for sanitization due to server side rendering compatibility. `xss` is used instead of `isomorphic-dompurify` because the latter includes the JSDOM in a manner that rollup cannot correctly build it.
 - Moved string interpolation in favor of classname mappers on components.
 - Moved string interpolation in favor of classname mappers on stories.
