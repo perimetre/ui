@@ -35,6 +35,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - Fixed an issue in `WYSIWYGInput` where its max-width would be limited due to the `prose` class
+- Fixed an issue with the `Button` component classes where the classnames would overlap, and no classname would be returned in the end
 
 ## [1.3.2] - 2021-03-03
 
