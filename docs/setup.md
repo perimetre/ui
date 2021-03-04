@@ -12,6 +12,18 @@ You will need:
 - postcss-combine-media-query@1.0.1
 - postcss-combine-duplicated-selectors@9.4.0
 
+### It is recommended that you read and understand all of these before starting, they are tailwind's core concepts:
+
+- [Preflight](https://tailwindcss.com/docs/preflight)
+- [Optimizing for Production](https://tailwindcss.com/docs/optimizing-for-production)
+- [Utility-First](https://tailwindcss.com/docs/utility-first)
+- [Responsive Design](https://tailwindcss.com/docs/responsive-design)
+- [Hover, Focus, & Other States](https://tailwindcss.com/docs/hover-focus-and-other-states)
+- [Adding Base Styles](https://tailwindcss.com/docs/adding-base-styles)
+- [Extracting Components](https://tailwindcss.com/docs/extracting-components)
+- [Adding New Utilities](https://tailwindcss.com/docs/adding-new-utilities)
+- [Functions & Directives](https://tailwindcss.com/docs/functions-and-directives)
+
 ### Setting up tailwind
 
 1. Go to [Tailwind.css getting started](https://tailwindcss.com/docs/installation), and follow the instructions. But before that, remember that you need to use the PostCSS 7 compat version, and the same is true for the PostCSS plugins.
@@ -26,7 +38,12 @@ You will need:
 1. Edit the `tailwind.config.js` file, adding the following `preset`:
    ```diff
    module.exports = {
-      purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
+      purge: [
+         './pages/**/*.{js,ts,jsx,tsx,css}',
+         './components/**/*.{js,ts,jsx,tsx,css}',
+   +     './node_modules/@perimetre/ui/**/*.{js,ts,jsx,tsx,css}',
+   +     '!./node_modules/@perimetre/ui/**/storybookMappers.tsx'
+      ],
       darkMode: false, // or 'media' or 'class'
       theme: {
          extend: {}

@@ -3,6 +3,7 @@ import { Meta, Story } from '@storybook/react/types-6-0';
 import React from 'react';
 import classnames from 'classnames';
 import { CrossIcon } from '../Icons';
+import { puiAnimateClassnameMap } from '../../storybookMappers';
 
 export default {
   title: 'Components/Animate',
@@ -11,7 +12,7 @@ export default {
       defaultValue: 'fadeIn',
       control: {
         type: 'radio',
-        options: ['fadeIn', 'fadeUp', 'fadeDown', 'fadeRight', 'fadeLeft']
+        options: Object.entries(puiAnimateClassnameMap).map((x) => x[0])
       }
     },
     content: {
@@ -37,7 +38,7 @@ export default {
  * @param props.className the component classes
  */
 const Template: Story = ({ variant, content, className, ...props }) => (
-  <div {...props} className={classnames(`pui-animate-${variant}`, className)}>
+  <div {...props} className={classnames(puiAnimateClassnameMap[variant], className)}>
     {content}
   </div>
 );

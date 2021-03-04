@@ -5,6 +5,7 @@ import { borderStyleOptions, colorOptions } from '../../prebuiltTailwindTheme';
 import { Button, ButtonProps } from '.';
 import classnames from 'classnames';
 import { BellIcon, MenuIcon } from '../Icons';
+import { puiColorClassnameMap, borderStyleClassnameMap } from '../../storybookMappers';
 
 export default {
   title: 'Components/Button',
@@ -67,8 +68,8 @@ const Template: Story<ButtonProps & { border?: string; content?: string }> = ({
     {...props}
     className={classnames(
       {
-        [`pui-color-${color}`]: color !== 'pui-primary',
-        [`border-${border}`]: border && border.length > 0
+        [puiColorClassnameMap[color || 'transparent']]: color !== 'pui-primary',
+        [borderStyleClassnameMap[border || 'none']]: border && border.length > 0
       },
       className
     )}
@@ -126,8 +127,8 @@ const SpinnerTemplate: Story = ({ border, color, content, className, ...props })
     className={classnames(
       'flex items-center',
       {
-        [`pui-color-${color}`]: color !== 'pui-primary',
-        [`border-${border}`]: border && border.length > 0
+        [puiColorClassnameMap[color || 'transparent']]: color !== 'pui-primary',
+        [borderStyleClassnameMap[border || 'none']]: border && border.length > 0
       },
       className
     )}
@@ -156,8 +157,8 @@ const WithIconTemplate: Story = ({ border, color, content, className, ref, ...pr
     className={classnames(
       'flex items-center',
       {
-        [`pui-color-${color}`]: color !== 'pui-primary',
-        [`border-${border}`]: border && border.length > 0
+        [puiColorClassnameMap[color || 'transparent']]: color !== 'pui-primary',
+        [borderStyleClassnameMap[border || 'none']]: border && border.length > 0
       },
       className
     )}
@@ -181,7 +182,7 @@ const IconButtonTemplate: Story = ({ color, className, ...props }) => (
     {...props}
     className={classnames(
       {
-        [`pui-color-${color}`]: color !== 'pui-primary'
+        [puiColorClassnameMap[color || 'transparent']]: color !== 'pui-primary'
       },
       className
     )}

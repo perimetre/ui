@@ -25,6 +25,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [1.4.0] - 2021-03-04
+
+### Changes
+
+- Removed `DOMPurify` in favor of `xss` for sanitization due to server side rendering compatibility. `xss` is used instead of `isomorphic-dompurify` because the latter includes the JSDOM in a manner that rollup cannot correctly build it.
+- Moved string interpolation in favor of classname mappers on components.
+- Moved string interpolation in favor of classname mappers on stories.
+
+### Added
+
+- The following components were added:
+  - HTMLParsedContent
+  - DragFileUploadInput
+- `WYSIWYGInput` now also sanitizes `defaultHtmlValue`
+
+### Fixed
+
+- Fixed an issue in `WYSIWYGInput` where its max-width would be limited due to the `prose` class
+- Fixed an issue with the `Button` component classes where the classnames would overlap, and no classname would be returned in the end
+- Fixed an issue where purgecss wasn't considering the storybook folder
+
 ## [1.3.2] - 2021-03-03
 
 ### Fixed

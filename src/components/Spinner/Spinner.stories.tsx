@@ -3,6 +3,7 @@ import { Meta, Story } from '@storybook/react/types-6-0';
 import React from 'react';
 import { colorOptions, widthHeightOptions } from '../../prebuiltTailwindTheme';
 import classnames from 'classnames';
+import { heightClassnameMap, puiColorClassnameMap, widthClassnameMap } from '../../storybookMappers';
 
 export default {
   title: 'Components/Spinner',
@@ -42,8 +43,9 @@ const SpinnerTemplate: Story = ({ size, color, className }) => (
     className={classnames(
       'pui-spinner',
       {
-        [`pui-color-${color}`]: color !== 'pui-primary',
-        [`w-${size} h-${size}`]: size && size.length > 0 && !size.includes('4')
+        [puiColorClassnameMap[color || 'transparent']]: color !== 'pui-primary',
+        [`${widthClassnameMap[size || 'auto']} ${heightClassnameMap[size || 'auto']}`]:
+          size && size.length > 0 && !size.includes('4')
       },
       className
     )}

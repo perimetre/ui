@@ -1,19 +1,32 @@
 import React, { forwardRef } from 'react';
 import classnames from 'classnames';
 
+const variantClassnameMap = {
+  default: 'pui-btn-default',
+  bordered: 'pui-btn-bordered',
+  icon: 'pui-btn-icon'
+};
+
+const sizeClassnameMap = {
+  small: 'pui-btn-small',
+  medium: 'pui-btn-medium',
+  large: 'pui-btn-large',
+  xlarge: 'pui-btn-xlarge'
+};
+
 export type ButtonProps = React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> & {
   /**
    * The size
    *
    * @default medium
    */
-  size?: 'small' | 'medium' | 'large' | 'xlarge';
+  size?: keyof typeof sizeClassnameMap;
   /**
    * The button type variant
    *
    * @default default
    */
-  variant?: 'default' | 'bordered' | 'icon';
+  variant?: keyof typeof variantClassnameMap;
   /**
    * Whether or not this button should be a chip button
    *
@@ -42,8 +55,9 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         {...props}
         ref={ref}
         className={classnames(
-          isIcon ? 'pui-btn-icon' : `pui-btn-${size} pui-btn-${variant}`,
+          variantClassnameMap[variant],
           {
+            [sizeClassnameMap[size]]: !isIcon,
             'pui-chip-btn': isChip
           },
           className

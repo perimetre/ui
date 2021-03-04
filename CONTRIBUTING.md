@@ -55,6 +55,7 @@ The architecture is how we setup the repository structure:
 ### It is recommended that you read and understand all of these before starting, they are tailwind's core concepts:
 
 - [Preflight](https://tailwindcss.com/docs/preflight)
+- [Optimizing for Production](https://tailwindcss.com/docs/optimizing-for-production)
 - [Utility-First](https://tailwindcss.com/docs/utility-first)
 - [Responsive Design](https://tailwindcss.com/docs/responsive-design)
 - [Hover, Focus, & Other States](https://tailwindcss.com/docs/hover-focus-and-other-states)
@@ -122,6 +123,7 @@ The architecture is how we setup the repository structure:
 1. If it's a **Base** CSS style, make sure to import it in [./src/components/base.css](./src/components/base.css), like it's being done with other base styles.
 1. If it's a React component, make sure to export it in [./src/components/index.tsx](./src/components/index.tsx), like it's being done with other components.
 1. Make sure to wrap your css with the `@layer` directive, like it's being done with other components.
+1. Make sure to append `pui-` as a prefix to all css classes, css variables, tailwind variables/values, mostly everything that is not related to react, like it's being done with other components.
 1. Make sure to add as much (reasonable) comments as possible
 1. Make sure to create a compelling story in storybook for your component, providing the variants, default values and available options for different properties of your component. Check out other stories for components with css only and also stories for react components, and do something similar.
 1. Look at other components, simple and complex ones, for example: WYSIWYGInput, TextInput, Button, Drawer, Badge, Link, Modal, FontFamily. To make sure you're following the same pattern

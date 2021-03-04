@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import DOMPurify from 'dompurify';
+import xss from 'xss';
 import {
   CompositeDecorator,
   ContentState,
@@ -127,7 +127,7 @@ export const WYSIWYGInput = forwardRef<WYSIWYGInputRef, WYSIWYGInputProps>(
 
     // I specifically don't want to update the translations on every update
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    const translations = useMemo(() => translationsProps || defaultWYSIWYGTranslations, []);
+    const translations = useMemo(() => ({ ...defaultWYSIWYGTranslations, ...translationsProps }), []);
 
     const defaultDecorators = useMemo(() => new CompositeDecorator([linkDecorator]), []);
 
@@ -175,7 +175,7 @@ export const WYSIWYGInput = forwardRef<WYSIWYGInputRef, WYSIWYGInputProps>(
       if (onHtmlChangeSlow) {
         // Ref(HTML part at the end): https://jpuri.github.io/react-draft-wysiwyg/#/docs
         const htmlData = draftToHtml(convertToRaw(editorState.getCurrentContent()));
-        onHtmlChangeSlow(DOMPurify.sanitize(htmlData));
+        onHtmlChangeSlow(xss(htmlData));
       }
       // If the editor state changes
     }, [editorState, onHtmlChangeSlow]);
@@ -189,7 +189,7 @@ export const WYSIWYGInput = forwardRef<WYSIWYGInputRef, WYSIWYGInputProps>(
         const htmlToDraft = (await import('html-to-draftjs')).default;
 
         // Ref(HTML part at the end): https://jpuri.github.io/react-draft-wysiwyg/#/docs
-        const contentBlock = htmlToDraft(defaultHtmlValue || '');
+        const contentBlock = htmlToDraft(defaultHtmlValue ? xss(defaultHtmlValue) : '');
 
         setEditorState(
           EditorState.createWithContent(
@@ -215,7 +215,7 @@ export const WYSIWYGInput = forwardRef<WYSIWYGInputRef, WYSIWYGInputProps>(
       getSanitizedHtml: () => {
         // Ref(HTML part at the end): https://jpuri.github.io/react-draft-wysiwyg/#/docs
         const htmlData = draftToHtml(convertToRaw(editorState.getCurrentContent()));
-        return DOMPurify.sanitize(htmlData);
+        return xss(htmlData);
       },
       /**
        * Returns a plain text string from the current editor state

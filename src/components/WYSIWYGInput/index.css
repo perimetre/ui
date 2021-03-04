@@ -87,7 +87,10 @@
     /* Adds the same border radius as parent container, so the white background doesn't cut its borders */
     /* No outline on focus */
     /* Style inner content */
-    @apply p-3 cursor-text text-base max-w-full bg-white pui-border-radius outline-none prose text-pui-paragraph-900 transition-colors;
+    @apply p-3 cursor-text text-base bg-white pui-border-radius outline-none text-pui-paragraph-900 transition-colors pui-prose;
+
+    /* Override the prose width */
+    max-width: 100% !important;
 
     .public-DraftEditor-content {
       /* The initial minimum height for the editor content */

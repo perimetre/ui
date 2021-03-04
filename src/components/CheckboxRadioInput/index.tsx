@@ -1,6 +1,12 @@
 import React, { useEffect, useRef } from 'react';
 import classnames from 'classnames';
 
+const sizeClassnameMap = {
+  small: 'pui-check-radio-small',
+  medium: 'pui-check-radio-medium',
+  large: 'pui-check-radio-large'
+};
+
 export type CheckboxRadioInputProps = React.DetailedHTMLProps<
   React.InputHTMLAttributes<HTMLInputElement>,
   HTMLInputElement
@@ -28,7 +34,7 @@ export type CheckboxRadioInputProps = React.DetailedHTMLProps<
   /**
    * The size
    */
-  size?: 'small' | 'medium' | 'large';
+  size?: keyof typeof sizeClassnameMap;
 };
 
 /**
@@ -75,7 +81,7 @@ export const CheckboxRadioInput: React.FC<CheckboxRadioInputProps> = ({
           'pui-checkbox': !label && type === 'checkbox',
           'pui-radio': !label && type !== 'checkbox'
         },
-        `pui-check-radio-${size}`,
+        sizeClassnameMap[size],
         className
       )}
     />

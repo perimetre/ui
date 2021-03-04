@@ -15,9 +15,13 @@ module.exports = {
         'pui-primary': 'var(--pui-primary, #00BF6F)',
         'pui-secondary': 'var(--pui-secondary, #2A3C47)',
         'pui-paragraph': {
+          // White text color, to use on primary/secondary backgrounds
           0: 'var(--pui-paragraph-0, #fff)',
+          // Ligher, placeholder, blockquote text color
           300: 'var(--pui-paragraph-300, #ABABAB)',
+          // Default text color
           500: 'var(--pui-paragraph-500, #666666)',
+          // Title and bolder color
           900: 'var(--pui-paragraph-900, #333333)'
         },
         // --------------- Colors under this are not theme related, and only are here so tailwind can generate helpers for them

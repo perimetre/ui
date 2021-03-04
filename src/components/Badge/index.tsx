@@ -1,6 +1,12 @@
 import React, { useMemo } from 'react';
 import classnames from 'classnames';
 
+const variantClassnameMap = {
+  default: 'pui-badge-default',
+  mini: 'pui-badge-mini',
+  dot: 'pui-badge-dot'
+};
+
 export type BadgeProps = {
   /**
    * The badge display number
@@ -21,7 +27,7 @@ export type BadgeProps = {
    *
    * @default default
    */
-  variant?: 'default' | 'mini' | 'dot';
+  variant?: keyof typeof variantClassnameMap;
 };
 
 /**
@@ -49,7 +55,9 @@ export const Badge: React.FC<BadgeProps> = ({
   return (
     <div className="pui-badge">
       {children}
-      {content && <span className={classnames(`pui-badge-${variant}`, { pulse })}>{variant !== 'dot' && content}</span>}
+      {content && (
+        <span className={classnames(variantClassnameMap[variant], { pulse })}>{variant !== 'dot' && content}</span>
+      )}
     </div>
   );
 };

@@ -3,6 +3,7 @@ import { Meta, Story } from '@storybook/react/types-6-0';
 import React from 'react';
 import { marginPaddingOptions } from '../../prebuiltTailwindTheme';
 import classnames from 'classnames';
+import { puiGapClassnameMap, puiGapXClassnameMap, puiGapYClassnameMap } from '../../storybookMappers';
 
 export default {
   title: 'Components/Gap',
@@ -49,9 +50,9 @@ const Template: Story = ({ size, horizontal, vertical, className, ...props }) =>
       {...props}
       className={classnames(
         {
-          [`pui-gap-${size}`]: !horizontal && !vertical,
-          [`pui-gap-x-${size}`]: horizontal,
-          [`pui-gap-y-${size}`]: vertical
+          [puiGapClassnameMap[size || 'auto']]: !horizontal && !vertical,
+          [puiGapXClassnameMap[size || 'auto']]: horizontal,
+          [puiGapYClassnameMap[size || 'auto']]: vertical
         },
         className
       )}

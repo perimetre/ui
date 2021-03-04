@@ -1,0 +1,13 @@
+@layer components {
+  /* The pui prose is the default prose but with some custom styling */
+  .pui-prose {
+    /* Apply the prose class */
+    @apply prose;
+
+    /* Before customizing the prose css from here, try to customize it
+    in the default-preset.js "typography" extend value first.
+    By reading the tailwind typography plugin documentation */
+
+    /* For now it doesn't have any custom styling here */
+  }
+}

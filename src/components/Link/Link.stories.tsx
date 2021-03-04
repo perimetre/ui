@@ -4,6 +4,7 @@ import { Meta, Story } from '@storybook/react/types-6-0';
 import React from 'react';
 import { colorOptions } from '../../prebuiltTailwindTheme';
 import classnames from 'classnames';
+import { puiColorClassnameMap } from '../../storybookMappers';
 
 export default {
   title: 'Components/Link',
@@ -33,7 +34,14 @@ export default {
 const LinkTemplate: Story = ({ color, className }) => (
   <div>
     Please click{' '}
-    <a href="#" className={classnames('pui-link', { [`pui-color-${color}`]: color !== 'pui-primary' }, className)}>
+    <a
+      href="#"
+      className={classnames(
+        'pui-link',
+        { [puiColorClassnameMap[color || 'transparent']]: color !== 'pui-primary' },
+        className
+      )}
+    >
       here
     </a>{' '}
     to visit.
@@ -52,7 +60,14 @@ export const Link = LinkTemplate.bind({});
 const VisitedLinkTemplate: Story = ({ color, className }) => (
   <div>
     Please click{' '}
-    <a href="" className={classnames('pui-link', { [`pui-color-${color}`]: color !== 'pui-primary' }, className)}>
+    <a
+      href=""
+      className={classnames(
+        'pui-link',
+        { [puiColorClassnameMap[color || 'transparent']]: color !== 'pui-primary' },
+        className
+      )}
+    >
       here
     </a>{' '}
     to visit.

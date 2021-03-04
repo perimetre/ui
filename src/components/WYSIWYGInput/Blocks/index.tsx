@@ -23,6 +23,13 @@ export const getBlockDataByName = (name: string): any => {
   }
 };
 
+const textAlignClassnameMap = {
+  left: 'pui-wysiwyg-left',
+  center: 'pui-wysiwyg-center',
+  right: 'pui-wysiwyg-right',
+  justify: 'pui-wysiwyg-justify'
+};
+
 /**
  * Function that allows to define class names to apply to the given block when it is rendered.
  * This is only to render the content inside the editor itself, and not for the output html.
@@ -32,7 +39,7 @@ export const getBlockDataByName = (name: string): any => {
 export const blockStyleFn = (block: ContentBlock): string => {
   const textAlignData = block.getData() && block.getData().get('text-align');
   if (textAlignData) {
-    return `pui-wysiwyg-${textAlignData}`;
+    return textAlignClassnameMap[textAlignData];
   } else {
     switch (block.getType()) {
       default:

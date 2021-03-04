@@ -4,6 +4,7 @@ import copy from 'rollup-plugin-copy';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import postcss from 'rollup-plugin-postcss';
 import typescript from 'rollup-plugin-typescript2';
+import json from '@rollup/plugin-json';
 
 // eslint-disable-next-line import/no-default-export
 export default [
@@ -22,11 +23,13 @@ export default [
         sourcemap: true
       }
     ],
+    external: ['util'],
     plugins: [
       // Copy the original postcss files so the user can choose to use those if wanted
       copy({
         targets: [{ src: ['src/index.css', 'src/components*', '!**/*.{tsx, ts, jsx, js}'], dest: 'dist/postcss' }]
       }),
+      json(),
       peerDepsExternal(),
       resolve(),
       commonjs(),
