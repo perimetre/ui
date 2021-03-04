@@ -25,6 +25,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [1.4.1] - 2021-03-04
+
+### Fixed
+
 - Typescript declaration files are now being exported in the `src` folder. Updated the npm lookup to consider that folder now.
 
 ## [1.4.0] - 2021-03-04
