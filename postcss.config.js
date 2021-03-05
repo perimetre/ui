@@ -8,7 +8,7 @@ module.exports = {
     // Required to use the storybook beta with postcss8
     require('postcss-flexbugs-fixes'),
     require('autoprefixer')({
-      flexbox: 'no-2009',
-    }),
+      flexbox: 'no-2009'
+    })
   ]
 };

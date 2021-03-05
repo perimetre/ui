@@ -11,7 +11,7 @@ module.exports = {
           implementation: require('postcss')
         }
       }
-    },
+    }
     // 'storybook-addon-jsx',
     // '@storybook/addon-a11y',
     // '@whitespace/storybook-addon-html'

@@ -14,3 +14,6 @@ export * from './HTMLParsedContent';
 export * from './WYSIWYGInput';
 export * from './DragFileUploadInput';
 export * from './SelectInput';
+export * from './HTMLParsedContent';
+export * from './WYSIWYGInput';
+export * from './DragFileUploadInput';
