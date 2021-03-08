@@ -25,6 +25,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [1.4.2] - 2021-03-08
+
+### Fixed
+
 - Fixed an issue where purgecss was purging more than it needed to
 - Fixed a bug where the WYSIWYGInput text align buttons were not toggling correctly when switching from an alignment to another
 
