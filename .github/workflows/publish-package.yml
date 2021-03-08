@@ -2,7 +2,9 @@ name: publish the package
 
 on:
   push:
-    branches: [master]
+    # Publish the package as `v1.2.3` tags are created.
+    tags:
+      - v*
 
 jobs:
   build:
