@@ -131,7 +131,7 @@ export default function Home() {
     <div className={styles.container}>
       <Head>
         <title>Optimize</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.png" />
       </Head>
 
       <div className="w-full py-8">

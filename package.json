@@ -38,6 +38,7 @@
     "storybook": "start-storybook -s ./public -p 6006",
     "build-storybook": "build-storybook -s ./public",
     "serve-storybook": "npm run build-storybook && http-server ./storybook-static -c-1",
+    "deploy-storybook": "storybook-to-ghpages",
     "rollup:build": "rollup -c",
     "rollup:watch": "rollup -c -w",
     "prepare": "npm run rollup:build"
@@ -57,6 +58,9 @@
     "@rollup/plugin-commonjs": "^17.1.0",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^11.1.1",
+    "@storybook/addons": "^6.1.21",
+    "@storybook/storybook-deployer": "^2.8.7",
+    "@storybook/theming": "^6.1.21",
     "@tailwindcss/line-clamp": "^0.2.0",
     "@tailwindcss/postcss7-compat": "^2.0.2",
     "@tailwindcss/typography": "^0.4.0",
