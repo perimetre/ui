@@ -19,7 +19,7 @@ jobs:
           # Logs in into github packages
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       # This will run the build process due to the "prepare" script
-      - run: npm run deploy-storybook
-        env:
-          # Logs in into github packages
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Deploy storybook to Github Pages
+          run: npm run deploy-storybook -- --ci
+          env:
+            GH_TOKEN: ${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}
