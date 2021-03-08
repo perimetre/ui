@@ -92,8 +92,6 @@ The architecture is how we setup the repository structure:
    - You can name the PR the name of the current version for example: `1.1.9`
 1. Read the instructions in the PR message, check the boxes accordingly
 1. Ask for a code review.
-1. The github action will start right when code is merged to `master` and a new package will be generated. After it's finished you can install the new version.
-   - This process is unrelated to tagging. It will generate a package regardless of a tag/github release
 
 ### Making a release
 
@@ -107,13 +105,15 @@ The architecture is how we setup the repository structure:
 1. Now you'll need to checkout to master, pull, generate the tag, push the tag and make a release for that tag:
    - You can use this chain command:
      ```bash
-     git add . && git stash && git checkout master && git pull && git tag -a v{VERSION} {COMMIT_SHA} -m "v{VERSION}" && git push origin v{VERSION} && git stash apply && gh release create v{VERSION} -F RELEASE.md
+     git add . && git stash && git checkout master && git pull && git tag -a v{VERSION} {COMMIT_SHA} -m "v{VERSION}" && git push origin v{VERSION} && gh release create v{VERSION} -F RELEASE.md
      ```
    - Note the `{VERSION}` and `{COMMIT_SHA}`. You need to replace it with the version number, example `1.1.9`, the commit sha, and remove the brackets `{}`.
+   - Note that if you have uncommited changes, they'll get stashed.
    - Example:
      ```bash
-     git add . && git stash && git checkout master && git pull && git tag -a v1.1.7 a4e0d64 -m "v1.1.7" && git push origin v1.1.7 && git stash apply && gh release create v1.1.7 -F RELEASE.md
+     git add . && git stash && git checkout master && git pull && git tag -a v1.1.7 a4e0d64 -m "v1.1.7" && git push origin v1.1.7 && gh release create v1.1.7 -F RELEASE.md
      ```
+1. The github action will start right when the tag is pushed to `master`, and a new package will be generated. After it's finished you can install the new version.
 
 ### Adding more components/css classes
 
