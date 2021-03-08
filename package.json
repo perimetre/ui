@@ -1,7 +1,7 @@
 {
   "name": "@perimetre/ui",
   "description": "A component library made by @perimetre",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/perimetre/ui.git"
@@ -37,7 +37,7 @@
     "check-commit": "npm run type-check && npm run prettier && npm run lint:css && npm run lint:fix && npm run rollup:build",
     "storybook": "start-storybook -s ./public -p 6006",
     "build-storybook": "build-storybook -s ./public",
-    "serve-storybook": "npm run build-storybook && http-server ./storybook-static",
+    "serve-storybook": "npm run build-storybook && http-server ./storybook-static -c-1",
     "rollup:build": "rollup -c",
     "rollup:watch": "rollup -c -w",
     "prepare": "npm run rollup:build"

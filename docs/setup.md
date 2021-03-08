@@ -38,12 +38,7 @@ You will need:
 1. Edit the `tailwind.config.js` file, adding the following `preset`:
    ```diff
    module.exports = {
-      purge: [
-         './pages/**/*.{js,ts,jsx,tsx,css}',
-         './components/**/*.{js,ts,jsx,tsx,css}',
-   +     './node_modules/@perimetre/ui/**/*.{js,ts,jsx,tsx,css}',
-   +     '!./node_modules/@perimetre/ui/**/storybookMappers.tsx'
-      ],
+   +  purge: false, // Turning tailwindcss purge off because we're customizing the execution order in postcss.config.js
       darkMode: false, // or 'media' or 'class'
       theme: {
          extend: {}
@@ -56,7 +51,33 @@ You will need:
    +  presets: [require('@perimetre/ui').defaultPreset]
    };
    ```
-2. [Check out the preset to learn more about the values](../src/presets/default-preset.js)
+1. Edit the `postcss.config.js` file, adding the following `preset`:
+   ```diff
+   module.exports = {
+      plugins: {
+   +     'postcss-import': {}, // Import must come before tailwind
+         tailwindcss: {},
+   +     // Other plugins come after tailwind and before postcss-purgecss + autoprefixer
+   +     'postcss-nested': {},
+   +     'postcss-combine-media-query': {}, // Media query must come before duplicated-selectors
+   +     'postcss-combine-duplicated-selectors': {},
+   +     // postcss-purgecss should always be last before autoprefixer
+   +     '@fullhuman/postcss-purgecss': {
+   +        content: [
+   +          // All project components
+   +          './pages/**/*.{js,ts,jsx,tsx,css}',
+   +          './components/**/*.{js,ts,jsx,tsx,css}',
+   +          // Consider the components in the ui
+   +          './node_modules/@perimetre/ui/**/*.{js,ts,jsx,tsx,css}',
+   +          '!./node_modules/@perimetre/ui/**/storybookMappers.tsx' // ignore the storybookMappers.tsx inside @perimetre/ui because that should only be used by the ui package itself
+   +        ]
+   +     },
+   +     // autoprefixer should always be the last one
+         autoprefixer: {}
+      }
+   };
+   ```
+1. [Check out the preset to learn more about the values](../src/presets/default-preset.js)
 
 ### Importing the font
 
