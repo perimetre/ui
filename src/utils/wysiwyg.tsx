@@ -56,8 +56,9 @@ export const toggleBlockData = async (
   // For each entry in the provided data object
   Object.entries(data || {}).forEach(([key, value]) => {
     // If the current data DOES NOT have the key
-    if (!currentData.has(key)) {
-      // Add the key to the new data, because we should keep ip
+    // Of if there is but the value is a different one, we then want to update the value
+    if (!currentData.has(key) || currentData.get(key) !== value) {
+      // Add the key to the new data, because we should keep it
       newData[key] = value;
     }
 
