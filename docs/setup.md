@@ -77,7 +77,7 @@ You will need:
    +          // All project components
    +          './pages/**/*.{js,ts,jsx,tsx,css}',
    +          './components/**/*.{js,ts,jsx,tsx,css}',
-   +          // Consider all css files imported from other libs if there is any
+   +          // Consider css files imported from other libs if any
    +          // './node_modules/react-toastify/dist/ReactToastify.css',
    +          // Consider the components in the ui
    +          './node_modules/@perimetre/ui/**/*.{js,ts,jsx,tsx,css}',
