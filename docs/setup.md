@@ -65,8 +65,12 @@ You will need:
    +     '@fullhuman/postcss-purgecss': {
    +        extractors: [
    +          {
-   +            // Fix for escaped tailwind prefixes (sm:, lg:, hover:, etc)
-   +            // https://github.com/tailwindlabs/tailwindcss/issues/391#issuecomment-746829848
+   +            /**
+   +             * Fix for escaped tailwind prefixes (sm:, lg:, hover:, etc)
+   +             * https://github.com/tailwindlabs/tailwindcss/issues/391#issuecomment-746829848
+   +             *
+   +             * @param content the content to be parsed
+   +             */
    +            extractor: (content) => {
    +              return content.match(/[A-Za-z0-9-_:\/]+/g) || [];
    +            },
