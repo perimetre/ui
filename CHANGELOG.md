@@ -25,6 +25,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [1.4.3] - 2021-03-10
+
+### Fixed
+
 - Fixed a bug where the WYSIWYGInput styles were being all filtered out
 - Fixed a bug where the WYSIWYGInput inside a form was making the form submit when clicked on the styles or link buttons
 
