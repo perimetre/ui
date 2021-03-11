@@ -201,18 +201,18 @@
   }
 
   .pui-wysiwyg-left {
-    @apply pui-wysiwyg-base text-left my-4;
+    @apply pui-wysiwyg-base text-left;
   }
 
   .pui-wysiwyg-center {
-    @apply pui-wysiwyg-base text-center my-4;
+    @apply pui-wysiwyg-base text-center;
   }
 
   .pui-wysiwyg-right {
-    @apply pui-wysiwyg-base text-right my-4;
+    @apply pui-wysiwyg-base text-right;
   }
 
   .pui-wysiwyg-justify {
-    @apply pui-wysiwyg-base text-justify my-4;
+    @apply pui-wysiwyg-base text-justify;
   }
 }
