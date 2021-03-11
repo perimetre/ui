@@ -95,6 +95,15 @@
     .public-DraftEditor-content {
       /* The initial minimum height for the editor content */
       min-height: 100px;
+
+      div {
+        /* If not the first nor last editor element */
+        >*:not(:first-child):not(:last-child) {
+          /* Adds a margin between editor elements */
+          /* The prose class is not capable of applying margins to paragraph sections for intance */
+          @apply my-5;
+        }
+      }
     }
 
     .public-DraftEditorPlaceholder-root {
