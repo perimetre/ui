@@ -6,9 +6,13 @@ module.exports = {
     'postcss-nested': {},
     'postcss-combine-media-query': {}, // Media query must come before duplicated-selectors
     'postcss-combine-duplicated-selectors': {},
+    'postcss-flexbugs-fixes': {}, // Required to use the storybook beta with postcss8
     '@fullhuman/postcss-purgecss': {
       content: ['./src/**/*.{js,ts,jsx,tsx,css}', './.storybook/**/*.{js,ts,jsx,tsx,css}']
     },
-    autoprefixer: {}
+    autoprefixer: {
+      // Required to use the storybook beta with postcss8
+      flexbox: 'no-2009'
+    }
   }
 };

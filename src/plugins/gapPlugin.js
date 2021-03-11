@@ -1,6 +1,6 @@
 const plugin = require('tailwindcss/plugin');
 const flatMap = require('lodash/flatMap');
-const nameClass = require('@tailwindcss/postcss7-compat/lib/util/nameClass').default;
+const nameClass = require('tailwindcss/lib/util/nameClass').default;
 
 /**
  * A plugin that outputs all tailwind colors as a class `color-{colorName}`. That class contains the color value as a css variable

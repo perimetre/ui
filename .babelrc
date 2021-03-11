@@ -1,4 +1,5 @@
 {
   "presets": ["next/babel"],
+  // If updating the plugin list make sure you update .storybook/main.js as well, and vice versa
   "plugins": ["babel-plugin-styled-components", "macros"]
 }
