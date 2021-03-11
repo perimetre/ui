@@ -2,6 +2,7 @@ import React from 'react';
 import parse, { HTMLReactParserOptions } from 'html-react-parser';
 import xss, { IFilterXSSOptions } from 'xss';
 import classnames from 'classnames';
+import { editorSanitizeWhiteList } from '../../utils/wysiwyg';
 
 export type HTMLParsedContentProps = React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> & {
   /**
@@ -50,6 +51,8 @@ export const HTMLParsedContent: React.FC<HTMLParsedContentProps> = ({
             }
             return undefined;
           },
+          // Apply default whiteList
+          whiteList: editorSanitizeWhiteList,
           ...sanitizerOptions
         }) as string,
         parserOptions
