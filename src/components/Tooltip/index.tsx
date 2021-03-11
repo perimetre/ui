@@ -44,7 +44,11 @@ export const Tooltip: React.FC<TooltipProps> = forwardRef<Element, TooltipProps>
       )}
     >
       {/* For correct accessibility reasons, it's recommended that the tooltip element is a button */}
-      <button {...buttonProps} className={classnames('pui-btn-icon flex items-center', buttonProps?.className)}>
+      <button
+        type="button"
+        {...buttonProps}
+        className={classnames('pui-btn-icon flex items-center', buttonProps?.className)}
+      >
         {children}
       </button>
     </Tippy>

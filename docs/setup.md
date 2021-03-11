@@ -63,10 +63,26 @@ You will need:
    +     'postcss-combine-duplicated-selectors': {},
    +     // postcss-purgecss should always be last before autoprefixer
    +     '@fullhuman/postcss-purgecss': {
+   +        extractors: [
+   +          {
+   +            /**
+   +             * Fix for escaped tailwind prefixes (sm:, lg:, hover:, etc)
+   +             * https://github.com/tailwindlabs/tailwindcss/issues/391#issuecomment-746829848
+   +             *
+   +             * @param content the content to be parsed
+   +             */
+   +            extractor: (content) => {
+   +              return content.match(/[A-Za-z0-9-_:\/]+/g) || [];
+   +            },
+   +            extensions: ['css', 'js', 'ts', 'tsx']
+   +          }
+   +        ],
    +        content: [
    +          // All project components
    +          './pages/**/*.{js,ts,jsx,tsx,css}',
    +          './components/**/*.{js,ts,jsx,tsx,css}',
+   +          // Consider css files imported from other libs if any
+   +          // './node_modules/react-toastify/dist/ReactToastify.css',
    +          // Consider the components in the ui
    +          './node_modules/@perimetre/ui/**/*.{js,ts,jsx,tsx,css}',
    +          '!./node_modules/@perimetre/ui/**/storybookMappers.tsx' // ignore the storybookMappers.tsx inside @perimetre/ui because that should only be used by the ui package itself
