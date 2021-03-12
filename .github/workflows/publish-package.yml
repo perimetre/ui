@@ -1,6 +1,7 @@
 name: publish the package
 
 on:
+  workflow_dispatch:
   push:
     # Publish the package as `v1.2.3` tags are created.
     tags:
