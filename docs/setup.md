@@ -26,10 +26,10 @@ You will need:
 
 ### Setting up tailwind
 
-1. Go to [Tailwind.css getting started](https://tailwindcss.com/docs/installation), and follow the instructions. But before that, remember that you need to use the PostCSS 7 compat version, and the same is true for the PostCSS plugins.
+1. Go to [Tailwind.css getting started](https://tailwindcss.com/docs/installation), and follow the instructions.
 1. Here's a "do it all" npm install command that installs the correct/expected versions:
    ```bash
-   npm install tailwindcss@npm:@tailwindcss/postcss7-compat @tailwindcss/postcss7-compat postcss@^7 autoprefixer@^9 postcss-import@12.0.1 postcss-nested@4.2.3 postcss-combine-media-query@1.0.1 postcss-combine-duplicated-selectors@9.4.0
+   npm install tailwindcss@latest postcss@latest postcss-import@latest postcss-nested@5.0.1 postcss-combine-media-query@latest postcss-combine-duplicated-selectors@latest postcss-preset-env@latest
    ```
 1. Proceed the tailwind setup as usual. Following that instruction page.
 
@@ -61,6 +61,7 @@ You will need:
    +     'postcss-nested': {},
    +     'postcss-combine-media-query': {}, // Media query must come before duplicated-selectors
    +     'postcss-combine-duplicated-selectors': {},
+   +     'postcss-flexbugs-fixes': {}, // postcss-flexbugs-fixes is required to use with nextjs
    +     // postcss-purgecss should always be last before autoprefixer
    +     '@fullhuman/postcss-purgecss': {
    +        extractors: [
@@ -89,7 +90,17 @@ You will need:
    +        ]
    +     },
    +     // autoprefixer should always be the last one
-         autoprefixer: {}
+   +     // postcss-preset-env is required to use with nextjs, and it already uses autoprefixer
+   +     'postcss-preset-env': {
+   +       autoprefixer: {
+   +         flexbox: 'no-2009'
+   +       },
+   +       stage: 3,
+   +       features: {
+   +         'custom-properties': false
+   +       }
+   +     }
+   -     autoprefixer: {}
       }
    };
    ```
