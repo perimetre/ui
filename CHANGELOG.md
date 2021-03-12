@@ -25,6 +25,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [1.5.0] - 2021-03-12
+
+### **Breaking changes**
+
+- Updated postcss from 7 to 8 and its dependencies
+- Updated setup guide to use updated libraries, and `postcss-nested@5.0.1`
+
+### Fixed
+
+- Fixed a bug in the integration of the PostCSS plugin `postcss-nested` with `tailwind` by downgrading `postcss-nested@5.0.1` until [known issue gets fixed](https://github.com/tailwindlabs/tailwindcss/issues/2423#issuecomment-756580590)
+- Added recommended [Next.js settings](https://nextjs.org/docs/advanced-features/customizing-postcss-config#customizing-plugins) to custom PostCSS configuration file and to recommended PostCSS instructions in docs
+
 ## [1.4.4] - 2021-03-11
 
 ### Changes
