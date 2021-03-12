@@ -1,6 +1,7 @@
 name: builds and pushes the github page
 
 on:
+  workflow_dispatch:
   push:
     branches: [master]
 
