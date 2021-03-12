@@ -19,12 +19,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### **Breaking changes**
 
-- Updated postcss from 7 to 8 and its dependencies
-- Updated setup guide to use updated libraries, and `postcss-nested@5.0.1`
-
 ### Changes
 
 ### Added
+
+### Fixed
+
+## [1.5.0] - 2021-03-12
+
+### **Breaking changes**
+
+- Updated postcss from 7 to 8 and its dependencies
+- Updated setup guide to use updated libraries, and `postcss-nested@5.0.1`
 
 ### Fixed
 
