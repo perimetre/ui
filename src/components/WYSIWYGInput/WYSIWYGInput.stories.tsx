@@ -3,6 +3,7 @@ import { Meta, Story } from '@storybook/react/types-6-0';
 import React, { useRef, useState } from 'react';
 import { WYSIWYGInput, WYSIWYGInputProps, WYSIWYGInputRef } from '.';
 import { Button } from '../Button';
+import { HTMLParsedContent } from '../HTMLParsedContent';
 
 export default {
   title: 'Components/Inputs/WYSIWYG',
@@ -83,7 +84,7 @@ const HtmlTemplate: Story<WYSIWYGInputProps & { content?: string; className?: st
       {/* Clear the onHtmlChangeSlow event that storybook provides automatically because it's slow */}
       <WYSIWYGInput ref={inputRef} {...props} onHtmlChangeSlow={undefined} />
       <Button onClick={() => setHtmlContent(inputRef?.current?.getSanitizedHtml() || '')}>Get HTML</Button>
-      <div className="min-w-full max-w-full mt-4 prose" dangerouslySetInnerHTML={{ __html: htmlContent }} />
+      <HTMLParsedContent className="min-w-full max-w-full mt-4" content={htmlContent} />
       <div className="max-w-full mb-4 border-t border-solid border-gray-300">{htmlContent}</div>
     </div>
   );

@@ -1,5 +1,5 @@
 import { EditorState } from 'draft-js';
-import xss from 'xss';
+import xss, { IWhiteList } from 'xss';
 
 /**
  * A helper method to check whether this inline style should be active or not, from its type property
@@ -109,28 +109,28 @@ export const getLinkIfAny = (editorState?: EditorState) => {
   return '';
 };
 
+export const editorSanitizeWhiteList: IWhiteList = {
+  p: ['style'],
+  h1: ['style'],
+  h2: ['style'],
+  h3: ['style'],
+  h4: ['style'],
+  h5: ['style'],
+  h6: ['style'],
+  blockquote: [],
+  ul: [],
+  ol: [],
+  strong: [],
+  em: [],
+  ins: [],
+  li: [],
+  a: [],
+  br: []
+};
+
 /**
  * A helper method to sanitize the html content used by the rich text editor and prevent XSS vulnerability
  *
  * @param htmlData the html content
  */
-export const sanitizeHtml = (htmlData: string) =>
-  xss(htmlData, {
-    whiteList: {
-      p: ['style'],
-      h1: ['style'],
-      h2: ['style'],
-      h3: ['style'],
-      h4: ['style'],
-      h5: ['style'],
-      h6: ['style'],
-      blockquote: [],
-      ul: [],
-      ol: [],
-      strong: [],
-      em: [],
-      ins: [],
-      li: [],
-      a: []
-    }
-  });
+export const sanitizeHtml = (htmlData: string) => xss(htmlData, { whiteList: editorSanitizeWhiteList });
