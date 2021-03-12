@@ -29,7 +29,7 @@ You will need:
 1. Go to [Tailwind.css getting started](https://tailwindcss.com/docs/installation), and follow the instructions.
 1. Here's a "do it all" npm install command that installs the correct/expected versions:
    ```bash
-   npm install tailwindcss@latest postcss@latest postcss-import@latest postcss-nested@5.0.1 postcss-combine-media-query@latest postcss-combine-duplicated-selectors@latest postcss-preset-env@latest
+   npm install tailwindcss@latest postcss@latest postcss-import@latest postcss-nested@5.0.1 postcss-combine-media-query@latest postcss-combine-duplicated-selectors@latest postcss-preset-env@latest postcss-flexbugs-fixes@latest
    ```
 1. Proceed the tailwind setup as usual. Following that instruction page.
 
@@ -62,33 +62,31 @@ You will need:
    +     'postcss-combine-media-query': {}, // Media query must come before duplicated-selectors
    +     'postcss-combine-duplicated-selectors': {},
    +     'postcss-flexbugs-fixes': {}, // postcss-flexbugs-fixes is required to use with nextjs
-   +     // postcss-purgecss should always be last before autoprefixer
-   +     '@fullhuman/postcss-purgecss': {
-   +        extractors: [
-   +          {
-   +            /**
-   +             * Fix for escaped tailwind prefixes (sm:, lg:, hover:, etc)
-   +             * https://github.com/tailwindlabs/tailwindcss/issues/391#issuecomment-746829848
-   +             *
-   +             * @param content the content to be parsed
-   +             */
-   +            extractor: (content) => {
-   +              return content.match(/[A-Za-z0-9-_:\/]+/g) || [];
-   +            },
-   +            extensions: ['css', 'js', 'ts', 'tsx']
-   +          }
-   +        ],
-   +        content: [
-   +          // All project components
-   +          './pages/**/*.{js,ts,jsx,tsx,css}',
-   +          './components/**/*.{js,ts,jsx,tsx,css}',
-   +          // Consider css files imported from other libs if any
-   +          // './node_modules/react-toastify/dist/ReactToastify.css',
-   +          // Consider the components in the ui
-   +          './node_modules/@perimetre/ui/**/*.{js,ts,jsx,tsx,css}',
-   +          '!./node_modules/@perimetre/ui/**/storybookMappers.tsx' // ignore the storybookMappers.tsx inside @perimetre/ui because that should only be used by the ui package itself
-   +        ]
-   +     },
+   +     // postcss-purgecss should always be last before autoprefixer and only run in production
+   +     ...(process.env.NODE_ENV === 'production' && {
+   +       '@fullhuman/postcss-purgecss': {
+   +         extractors: [
+   +           {
+   +             // Fix for escaped tailwind prefixes (sm:, lg:, hover:, etc)
+   +             // https://github.com/tailwindlabs/tailwindcss/issues/391#issuecomment-746829848
+   +             extractor: (content) => {
+   +               return content.match(/[A-Za-z0-9-._:\/]+/g) || [];
+   +             },
+   +             extensions: ['css', 'js', 'ts', 'tsx']
+   +           }
+   +         ],
+   +         content: [
+   +           // All project components
+   +           './pages/**/*.{js,ts,jsx,tsx}',
+   +           './src/components/**/*.{js,ts,jsx,tsx}',
+   +           // Consider all css files imported from other libs
+   +           './node_modules/react-toastify/dist/ReactToastify.css',
+   +           // Consider the components in the ui
+   +           './node_modules/@perimetre/ui/**/*.{js,ts,jsx,tsx,css}',
+   +           '!./node_modules/@perimetre/ui/**/storybookMappers.tsx' // ignore the storybookMappers.tsx inside @perimetre/ui because that should only be used by the ui package itself
+   +         ]
+   +       }
+   +     }),
    +     // autoprefixer should always be the last one
    +     // postcss-preset-env is required to use with nextjs, and it already uses autoprefixer
    +     'postcss-preset-env': {
@@ -97,7 +95,8 @@ You will need:
    +       },
    +       stage: 3,
    +       features: {
-   +         'custom-properties': false
+   +         'custom-properties': false,
+   +         'nesting-rules': false
    +       }
    +     }
    -     autoprefixer: {}
