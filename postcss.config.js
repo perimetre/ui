@@ -17,7 +17,7 @@ module.exports = {
            * @param content the content to be parsed
            */
           extractor: (content) => {
-            return content.match(/[A-Za-z0-9-_:\/]+/g) || [];
+            return content.match(/[A-Za-z0-9-._:\/]+/g) || [];
           },
           extensions: ['css', 'js', 'ts', 'tsx']
         }
