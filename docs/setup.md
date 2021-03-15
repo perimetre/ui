@@ -70,7 +70,7 @@ You will need:
    +             // Fix for escaped tailwind prefixes (sm:, lg:, hover:, etc)
    +             // https://github.com/tailwindlabs/tailwindcss/issues/391#issuecomment-746829848
    +             extractor: (content) => {
-   +               return content.match(/[A-Za-z0-9-._:\/]+/g) || [];
+   +               return content.match(/[A-Za-z][A-Za-z0-9-._:\/]+/g) || [];
    +             },
    +             extensions: ['css', 'js', 'ts', 'tsx']
    +           }
