@@ -31,6 +31,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - Fixed bug in postcss purge script extractor method, by changing it for Tailwind's default extractor method
+- Fixed a bug in disabled buttons to display a regular cursor on hover
 
 ## [2.0.0] - 2021-03-12
 
