@@ -21,6 +21,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changes
 
+### Added
+
+### Fixed
+
+## [2.1.0] - 2021-03-24
+
+### Changes
+
 - Updated setup instructions to use Tailwind's default extractor in purgecss configuration
 
 ### Added
