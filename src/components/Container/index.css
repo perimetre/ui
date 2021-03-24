@@ -1,0 +1,12 @@
+@layer components {
+  .pui-container {
+    @apply container;
+
+    @screen 2xl {
+      max-width: 1280px;
+    }
+  }
+  .pui-container-large {
+    @apply container;
+  }
+}
