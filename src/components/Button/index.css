@@ -21,6 +21,11 @@
       /* Moves the button down a little bit to give feedback */
       --tw-translate-y: 0.125rem;
     }
+
+    &:disabled {
+      /* Remove pointer */
+      @apply cursor-default;
+    }
   }
 
   /* The default variant */

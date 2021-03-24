@@ -25,6 +25,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [2.1.0] - 2021-03-24
+
+### Changes
+
+- Updated setup instructions to use Tailwind's default extractor in purgecss configuration
+
+### Added
+
+- Added new class `pui-container` extending Tailwind's default `container` class, but only allowing maximum width of 1280px instead of allowing up to 1536px
+- Added new class `pui-container-large` extending Tailwind's default `container` class
+
+### Fixed
+
+- Fixed bug in postcss purge script extractor method, by changing it for Tailwind's default extractor method
+- Fixed a bug in disabled buttons to display a regular cursor on hover
+
 ## [2.0.0] - 2021-03-12
 
 ### **Breaking changes**

@@ -65,22 +65,15 @@ You will need:
    +     // postcss-purgecss should always be last before autoprefixer and only run in production
    +     ...(process.env.NODE_ENV === 'production' && {
    +       '@fullhuman/postcss-purgecss': {
-   +         extractors: [
-   +           {
-   +             // Fix for escaped tailwind prefixes (sm:, lg:, hover:, etc)
-   +             // https://github.com/tailwindlabs/tailwindcss/issues/391#issuecomment-746829848
-   +             extractor: (content) => {
-   +               return content.match(/[A-Za-z0-9-._:\/]+/g) || [];
-   +             },
-   +             extensions: ['css', 'js', 'ts', 'tsx']
-   +           }
-   +         ],
+   +         defaultExtractor: (content) => {
+   +           const extractor = require('tailwindcss/lib/lib/purgeUnusedStyles').tailwindExtractor;
+   +           const preserved = [...extractor(content)];
+   +           return preserved;
+   +         },
    +         content: [
    +           // All project components
    +           './pages/**/*.{js,ts,jsx,tsx}',
    +           './src/components/**/*.{js,ts,jsx,tsx}',
-   +           // Consider all css files imported from other libs
-   +           './node_modules/react-toastify/dist/ReactToastify.css',
    +           // Consider the components in the ui
    +           './node_modules/@perimetre/ui/**/*.{js,ts,jsx,tsx,css}',
    +           '!./node_modules/@perimetre/ui/**/storybookMappers.tsx' // ignore the storybookMappers.tsx inside @perimetre/ui because that should only be used by the ui package itself
