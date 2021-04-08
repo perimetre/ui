@@ -25,6 +25,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [2.1.1] - 2021-04-08
+
+### Fixed
+
+- Fixed a bug that would cause links to sanitize their href tags in the HTMLParsedContent component
+
 ## [2.1.0] - 2021-03-24
 
 ### Changes

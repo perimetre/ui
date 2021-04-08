@@ -124,7 +124,7 @@ export const editorSanitizeWhiteList: IWhiteList = {
   em: [],
   ins: [],
   li: [],
-  a: [],
+  a: ['style', 'href', 'target'],
   br: []
 };
 
