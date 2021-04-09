@@ -25,6 +25,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [2.1.2] - 2021-04-09
+
+### Fixed
+
 - Fixed a bug that would cause links to not display their decorators on first render of the HTMLParsedContent component
 
 ## [2.1.1] - 2021-04-08
