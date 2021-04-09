@@ -192,7 +192,8 @@ export const WYSIWYGInput = forwardRef<WYSIWYGInputRef, WYSIWYGInputProps>(
 
         setEditorState(
           EditorState.createWithContent(
-            ContentState.createFromBlockArray(contentBlock.contentBlocks, contentBlock.entityMap)
+            ContentState.createFromBlockArray(contentBlock.contentBlocks, contentBlock.entityMap),
+            defaultDecorators
           )
         );
       };
