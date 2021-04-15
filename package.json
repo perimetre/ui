@@ -44,7 +44,7 @@
     "prepare": "npm run rollup:build"
   },
   "peerDependencies": {
-    "next": "10.0.5",
+    "next": "10.x",
     "react": "17.x",
     "react-dom": "17.x"
   },
