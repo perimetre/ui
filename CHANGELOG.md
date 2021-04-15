@@ -25,6 +25,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- Fixed a bug that would install mismatching versions of react/react-dom in host projects, causing hooks errors
+
 ## [2.1.2] - 2021-04-09
 
 ### Fixed
