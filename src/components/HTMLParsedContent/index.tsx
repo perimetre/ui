@@ -1,8 +1,7 @@
-import React from 'react';
-import parse, { HTMLReactParserOptions } from 'html-react-parser';
-import xss, { IFilterXSSOptions } from 'xss';
 import classnames from 'classnames';
-import { editorSanitizeWhiteList } from '../../utils/wysiwyg';
+import parse, { HTMLReactParserOptions } from 'html-react-parser';
+import DOMPurify, { Config } from 'isomorphic-dompurify';
+import React from 'react';
 
 export type HTMLParsedContentProps = React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> & {
   /**
@@ -16,7 +15,7 @@ export type HTMLParsedContentProps = React.DetailedHTMLProps<React.HTMLAttribute
   /**
    * The options that are passed down to the sanitizer
    */
-  sanitizerOptions?: IFilterXSSOptions;
+  sanitizerOptions?: Config;
 };
 
 /**
@@ -38,23 +37,7 @@ export const HTMLParsedContent: React.FC<HTMLParsedContentProps> = ({
   content ? (
     <div {...props} className={classnames('pui-prose', className)}>
       {parse(
-        xss(content, {
-          /**
-           * If a string is returned, the tag would be replaced with the string
-           *
-           * @param tag tag is the name of current tag, e.g. 'a' for tag <a>
-           * @param html html is the HTML of this tag, e.g. '<a>' for tag <a>
-           */
-          onIgnoreTag: (tag, html) => {
-            if (['figure', 'figcaption'].includes(tag)) {
-              return html;
-            }
-            return undefined;
-          },
-          // Apply default whiteList
-          whiteList: editorSanitizeWhiteList,
-          ...sanitizerOptions
-        }) as string,
+        (sanitizerOptions ? DOMPurify.sanitize(content, sanitizerOptions) : DOMPurify.sanitize(content)) as string,
         parserOptions
       )}
     </div>
