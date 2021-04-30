@@ -25,9 +25,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-## [2.1.5] - 2021-04-30
+## [3.0.0] - 2021-04-30
 
-### Changes
+**Breaking changes**
 
 - Removed `xss` package in favor of `isomorphic-dompurify`
 
