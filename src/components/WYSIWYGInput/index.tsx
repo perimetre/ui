@@ -12,8 +12,9 @@ import {
   RichUtils
 } from 'draft-js';
 import draftToHtml from 'draftjs-to-html';
+import DOMPurify from 'isomorphic-dompurify';
 import React, { forwardRef, useCallback, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react';
-import { sanitizeHtml, toggleBlockData } from '../../utils/wysiwyg';
+import { toggleBlockData } from '../../utils/wysiwyg';
 import { blockStyleFn, getBlockDataByName } from './Blocks';
 import { linkDecorator } from './Decorators/Link';
 import { Toolbar } from './Toolbar';
@@ -174,7 +175,7 @@ export const WYSIWYGInput = forwardRef<WYSIWYGInputRef, WYSIWYGInputProps>(
       if (onHtmlChangeSlow) {
         // Ref(HTML part at the end): https://jpuri.github.io/react-draft-wysiwyg/#/docs
         const htmlData = draftToHtml(convertToRaw(editorState.getCurrentContent()));
-        onHtmlChangeSlow(sanitizeHtml(htmlData));
+        onHtmlChangeSlow(DOMPurify.sanitize(htmlData));
       }
       // If the editor state changes
     }, [editorState, onHtmlChangeSlow]);
@@ -188,7 +189,7 @@ export const WYSIWYGInput = forwardRef<WYSIWYGInputRef, WYSIWYGInputProps>(
         const htmlToDraft = (await import('html-to-draftjs')).default;
 
         // Ref(HTML part at the end): https://jpuri.github.io/react-draft-wysiwyg/#/docs
-        const contentBlock = htmlToDraft(defaultHtmlValue ? sanitizeHtml(defaultHtmlValue) : '');
+        const contentBlock = htmlToDraft(defaultHtmlValue ? DOMPurify.sanitize(defaultHtmlValue) : '');
 
         setEditorState(
           EditorState.createWithContent(
@@ -215,7 +216,7 @@ export const WYSIWYGInput = forwardRef<WYSIWYGInputRef, WYSIWYGInputProps>(
       getSanitizedHtml: () => {
         // Ref(HTML part at the end): https://jpuri.github.io/react-draft-wysiwyg/#/docs
         const htmlData = draftToHtml(convertToRaw(editorState.getCurrentContent()));
-        return sanitizeHtml(htmlData);
+        return DOMPurify.sanitize(htmlData);
       },
       /**
        * Returns a plain text string from the current editor state
