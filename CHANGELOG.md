@@ -21,6 +21,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changes
 
+- Moved props ordering on Dropdown so other properties can be overidden to allow for further customization
+
 ### Added
 
 ### Fixed
