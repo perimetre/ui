@@ -16,7 +16,7 @@ type DropdownContentOrList =
   | DropdownItem[]
   | ((getLinkList: (items: DropdownItem[]) => React.ReactNode) => JSX.Element);
 
-export type DropdownProps = Omit<TooltipProps, 'arrow' | 'content'> & {
+export type DropdownProps = Omit<TooltipProps, 'content'> & {
   /**
    * A list of items or a function that returns a react component with what should be displayed in the dropdown's header
    */
@@ -57,9 +57,6 @@ export const Dropdown: React.FC<DropdownProps> = forwardRef<Element, DropdownPro
     return (
       <Tooltip
         placement="bottom-start"
-        {...props}
-        ref={ref}
-        interactive
         arrow={false}
         trigger="click"
         contentClassName="p-0"
@@ -80,6 +77,9 @@ export const Dropdown: React.FC<DropdownProps> = forwardRef<Element, DropdownPro
             }
           ]
         }}
+        {...props}
+        interactive
+        ref={ref}
         content={
           <>
             {header && (
