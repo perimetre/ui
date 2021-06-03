@@ -21,6 +21,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changes
 
+### Added
+
+### Fixed
+
+## [3.0.3] - 2021-06-03
+
+### Changes
+
 - Badge property `content` now accepts values of type number or string
 
 ### Added
