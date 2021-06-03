@@ -25,6 +25,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [3.0.3] - 2021-06-03
+
+### Changes
+
+- Badge property `content` now accepts values of type number or string
+
+### Added
+
+- Added `placement` property to Badge component
+
+### Fixed
+
+- Fixed a bug that would cause Badge component to display the badge with no styles when content value is `0`
+
 ## [3.0.2] - 2021-05-19
 
 ### Changes
