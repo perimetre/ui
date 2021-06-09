@@ -23,6 +23,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Added `placement` and `hideBackdrop` property to Drawer component
+
 ### Fixed
 
 ## [3.0.3] - 2021-06-03
