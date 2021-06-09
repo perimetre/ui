@@ -5,8 +5,8 @@ import classnames from 'classnames';
 
 // The variants for the drawer itself
 const variants = {
-  open: { opacity: 1, x: 0 },
-  closed: { opacity: 0, x: '-100%' }
+  open: { opacity: 1, width: 'auto' },
+  closed: { opacity: 0, width: '0' }
 };
 
 // The variants for the drawer backdrop overlay
@@ -22,6 +22,8 @@ export type DrawerWrapperProps = {
    * @default false
    */
   isOpen: boolean;
+  placement: 'left' | 'right';
+  hideBackdrop: boolean;
   /**
    * Callback to update the open state
    */
@@ -35,11 +37,15 @@ export type DrawerWrapperProps = {
  * @param props.isOpen Whether or not the drawer should be open
  * @param props.onOpen Callback to update the open state
  * @param props.children The children provided to this component
+ * @param props.placement Which side the drawer should open
+ * @param props.hideBackdrop Whether or not the drawer backdrop should be shown
  */
 // Ref: https://codesandbox.io/s/framer-motion-drawer-dcnuv?file=/src/Drawer.tsx
 export const DrawerWrapper: React.FC<DrawerWrapperProps> = ({
   isOpen = false,
   onOpen = (isOpen?: boolean) => console.log('onOpen: ', isOpen),
+  placement = 'left',
+  hideBackdrop = true,
   children
 }) => {
   // Stores whether or not hammer was loaded
@@ -127,11 +133,11 @@ export const DrawerWrapper: React.FC<DrawerWrapperProps> = ({
   return (
     <>
       {/* Just a trigger to have a swipe right if drawer is closed */}
-      <div ref={pannerRef} className="z-20 fixed inset-y-0 left-0 p-4" />
+      <div ref={pannerRef} className="z-20 fixed inset-y-0 p-4 left-0" />
 
       {/* The backdrop overlay that appears behind the drawer */}
       <motion.div
-        className="z-10 fixed inset-0 bg-black"
+        className={classnames('z-10 fixed inset-0 bg-black', { hidden: hideBackdrop })}
         style={
           {
             '--tw-bg-opacity': 0.4
@@ -147,11 +153,14 @@ export const DrawerWrapper: React.FC<DrawerWrapperProps> = ({
       {/* The element that animates in and out */}
       <motion.div
         ref={drawerRef}
-        className="fixed inset-y-0 left-0 z-30"
+        className={classnames(
+          'fixed inset-y-0 z-30 overflow-hidden shadow-lg',
+          placement === 'right' ? 'right-0' : 'left-0'
+        )}
         initial="closed"
         animate={isOpen ? 'open' : 'closed'}
         variants={variants}
-        transition={{ type: 'spring', stiffness: 350, damping: 40 }}
+        transition={{ type: 'spring', stiffness: 450, damping: 40 }}
       >
         {children}
       </motion.div>
@@ -190,7 +199,7 @@ export const Drawer: React.FC<DrawerProps> = ({
 }) => (
   <DrawerWrapper onOpen={onOpen} {...props}>
     {/* Adds a "card-like" look to the drawer */}
-    <div style={{ width }} className="bg-white border border-gray-300 h-full select-text">
+    <div style={{ width }} className="bg-white border border-gray-100 h-full select-text">
       {/* Aligns the close button to the end */}
       <div className={classnames('flex items-center', { 'justify-between': onBack, 'justify-end': !onBack })}>
         {/* If there's the back button, display it */}
