@@ -39,7 +39,6 @@ export type DrawerWrapperProps = {
  * @param props.children The children provided to this component
  * @param props.placement Which side the drawer should open
  * @param props.hideBackdrop Whether or not the drawer backdrop should be shown
-
  */
 // Ref: https://codesandbox.io/s/framer-motion-drawer-dcnuv?file=/src/Drawer.tsx
 export const DrawerWrapper: React.FC<DrawerWrapperProps> = ({
