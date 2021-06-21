@@ -23,6 +23,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+### Fixed
+
+## [3.0.6] - 2021-06-21
+
+### Changes
+
+### Added
+
 - Added minHeight at default-present with default spacing.
 
 ### Fixed
