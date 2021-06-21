@@ -137,7 +137,7 @@ export const DrawerWrapper: React.FC<DrawerWrapperProps> = ({
 
       {/* The backdrop overlay that appears behind the drawer */}
       <motion.div
-        className={classnames('z-10 fixed inset-0 bg-black', { hidden: hideBackdrop })}
+        className={classnames('z-10 fixed inset-0', hideBackdrop ? 'bg-transparent' : 'bg-black')}
         style={
           {
             '--tw-bg-opacity': 0.4
