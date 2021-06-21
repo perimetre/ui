@@ -30,6 +30,12 @@ const styleMap: DraftStyleMap = {
   // }
 };
 
+const sizeClassnameMap = {
+  small: 'h-44',
+  medium: 'h-56',
+  large: 'h-96'
+};
+
 export type WYSIWYGInputRef = {
   /**
    * Returns a sanitized html from the current editor state
@@ -92,6 +98,10 @@ export type WYSIWYGInputProps = Omit<EditorProps, 'editorState' | 'onChange'> & 
    * The editor onChange callback.
    */
   onChange?(editorState: EditorState): void;
+  /**
+   * The initial size of the component
+   */
+  size?: 'small' | 'medium' | 'large';
 };
 
 /**
@@ -113,6 +123,7 @@ export const WYSIWYGInput = forwardRef<WYSIWYGInputRef, WYSIWYGInputProps>(
       onHtmlChangeSlow,
       disabled,
       readOnly,
+      size = 'medium',
       defaultHtmlValue,
       ...editorProps
     },
@@ -294,7 +305,7 @@ export const WYSIWYGInput = forwardRef<WYSIWYGInputRef, WYSIWYGInputProps>(
             />
             {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events */}
             <div
-              className={classnames('pui-wysiwyg-editor', {
+              className={classnames('pui-wysiwyg-editor', sizeClassnameMap[size], {
                 'pui-wysiwyg-hidePlaceholder':
                   // If the user changes block type before entering any text, we can
                   // either style the placeholder or hide it. Let's just hide it now.

@@ -25,6 +25,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [3.0.5] - 2021-06-21
+
+### Changes
+
+### Added
+
+- Added `size` property to WYSIWYG input component.
+
+### Fixed
+
 ## [3.0.4] - 2021-06-09
 
 ### Added
