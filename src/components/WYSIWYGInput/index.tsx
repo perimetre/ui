@@ -31,9 +31,9 @@ const styleMap: DraftStyleMap = {
 };
 
 const sizeClassnameMap = {
-  small: 'h-44',
-  medium: 'h-56',
-  large: 'h-96'
+  small: 'min-h-44',
+  medium: 'min-h-56',
+  large: 'min-h-96'
 };
 
 export type WYSIWYGInputRef = {

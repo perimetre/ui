@@ -99,6 +99,15 @@ module.exports = {
         max: 'max-content',
         initial: 'initial'
       }),
+      /**
+       * Returns the minHeight values
+       *
+       * @param theme the provided tailwind theme
+       */
+      minHeight: (theme) => ({
+        auto: 'auto',
+        ...theme('spacing')
+      }),
       height: {
         '5/12vh': '41.666667vh'
       },
