@@ -23,7 +23,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Added minHeight at default-present with default spacing.
+
 ### Fixed
+
+- Fixed a bug with height on the `size` property for WYSIWYG input component.
 
 ## [3.0.5] - 2021-06-21
 
