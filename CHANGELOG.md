@@ -21,15 +21,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changes
 
-Modify `hideBackdrop` logic to make backdrop transparent instead of hidden
-
 ### Added
 
 ### Fixed
 
-## [3.0.6] - 2021-06-21
+## [3.0.7] - 2021-06-21
 
 ### Changes
+
+Modify `hideBackdrop` logic to make backdrop transparent instead of hidden
+
+## [3.0.6] - 2021-06-21
 
 ### Added
 
@@ -41,13 +43,9 @@ Modify `hideBackdrop` logic to make backdrop transparent instead of hidden
 
 ## [3.0.5] - 2021-06-21
 
-### Changes
-
 ### Added
 
 - Added `size` property to WYSIWYG input component.
-
-### Fixed
 
 ## [3.0.4] - 2021-06-09
 
