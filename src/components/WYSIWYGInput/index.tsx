@@ -160,6 +160,7 @@ export const WYSIWYGInput = forwardRef<WYSIWYGInputRef, WYSIWYGInputProps>(
         defaultDecorators
       )
     );
+    const [isEditorStateInitialized, setIsEditorStateInitialized] = useState(false);
     const editor = useRef<Editor | null>(null);
 
     /**
@@ -173,23 +174,23 @@ export const WYSIWYGInput = forwardRef<WYSIWYGInputRef, WYSIWYGInputProps>(
     };
 
     useEffect(() => {
-      // If the onChange prop is provided
-      if (onChangeProps) {
+      // If the onChange prop is provided and we are finished initializing the component state
+      if (onChangeProps && isEditorStateInitialized) {
         // Notify the change
         onChangeProps(editorState);
       }
       // If the editor state changes
-    }, [editorState, onChangeProps]);
+    }, [editorState, onChangeProps, isEditorStateInitialized]);
 
     useEffect(() => {
-      // If the onChange prop is provided
-      if (onHtmlChangeSlow) {
+      // If the onChange prop is provided and we have initialized the component state
+      if (onHtmlChangeSlow && isEditorStateInitialized) {
         // Ref(HTML part at the end): https://jpuri.github.io/react-draft-wysiwyg/#/docs
         const htmlData = draftToHtml(convertToRaw(editorState.getCurrentContent()));
         onHtmlChangeSlow(DOMPurify.sanitize(htmlData));
       }
       // If the editor state changes
-    }, [editorState, onHtmlChangeSlow]);
+    }, [editorState, onHtmlChangeSlow, isEditorStateInitialized]);
 
     useEffect(() => {
       /**
@@ -208,12 +209,18 @@ export const WYSIWYGInput = forwardRef<WYSIWYGInputRef, WYSIWYGInputProps>(
             defaultDecorators
           )
         );
+
+        // make sure to set component as initialized so that it will start sending onChange events
+        setIsEditorStateInitialized(true);
       };
 
       setEditorState(EditorState.set(editorState, { decorator: defaultDecorators }));
 
       if (defaultHtmlValue) {
         updateFromHtml();
+      } else {
+        // make sure to set component as initialized so that it will start sending onChange events
+        setIsEditorStateInitialized(true);
       }
       // Disable because we only want this to update on the first render
       // eslint-disable-next-line react-hooks/exhaustive-deps
