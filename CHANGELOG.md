@@ -25,6 +25,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [3.0.8] - 2021-06-23
+
+### Fixed
+
+- Fixed bug that would cause `WYSIWYGInput` component to send `onChange` events with stale data while initializing its editor state
+
 ## [3.0.7] - 2021-06-21
 
 ### Changes
