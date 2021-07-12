@@ -23,6 +23,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Added option to make WYSIWYG component toolbar always fixed at top of container
+
 ### Fixed
 
 ## [3.0.8] - 2021-06-23

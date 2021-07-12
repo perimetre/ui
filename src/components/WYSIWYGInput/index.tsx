@@ -77,6 +77,10 @@ export type WYSIWYGInputProps = Omit<EditorProps, 'editorState' | 'onChange'> & 
    */
   containerClassName?: string;
   /**
+   * This makes the toolbar position always fixed at the top of the container, so it will not follow scroll
+   */
+  disableStickyToolbar?: boolean;
+  /**
    * The translation object
    */
   translations?: WYSIWYGTranslations;
@@ -125,6 +129,7 @@ export const WYSIWYGInput = forwardRef<WYSIWYGInputRef, WYSIWYGInputProps>(
       readOnly,
       size = 'medium',
       defaultHtmlValue,
+      disableStickyToolbar,
       ...editorProps
     },
     ref
@@ -309,6 +314,7 @@ export const WYSIWYGInput = forwardRef<WYSIWYGInputRef, WYSIWYGInputProps>(
                 const newState = RichUtils.toggleInlineStyle(editorState, inlineStyle);
                 setEditorState(newState);
               }}
+              disableSticky={disableStickyToolbar}
             />
             {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events */}
             <div
