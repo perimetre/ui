@@ -50,8 +50,7 @@
 
   /* The editor toolbar */
   .pui-wysiwyg-toolbar {
-    /* Makes it sticky so it'll follow the scroll position */
-    /* Top 0 makes sure the sticky is stickied to the top */
+    /* Top 0 makes sure when the sticky is activated the toolbar is stickied to the top */
     /* Apply a bg color */
     /* Puts it in front of stuff */
     /* Adds the same border radius as parent container, so the white background doesn't cut its borders */
@@ -62,7 +61,7 @@
     /* Don't allow for user selection */
     /* Make it flex so sections are positioned one after the other */
     /* Allow the flex sections to wrap */
-    @apply sticky top-0 bg-white z-10 pui-border-radius border-b border-solid border-gray-400 rounded-b-none select-none flex flex-wrap transition-colors;
+    @apply top-0 bg-white z-10 pui-border-radius border-b border-solid border-gray-400 rounded-b-none select-none flex flex-wrap transition-colors;
 
     /* A single toolbar section */
     .pui-wysiwyg-toolbar-section {

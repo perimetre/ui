@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { EditorState } from 'draft-js';
 import React from 'react';
 import { WYSIWYGTranslations } from '../translations';
@@ -25,6 +26,10 @@ type ToolbarProps = {
    * The translation object
    */
   translations: WYSIWYGTranslations;
+  /**
+   * This makes the toolbar position always fixed at the top of the container
+   */
+  disableSticky?: boolean;
 };
 
 /**
@@ -36,15 +41,17 @@ type ToolbarProps = {
  * @param props.onInlineToggle The toggle method for an inline style
  * @param props.translations The translation object
  * @param props.setEditorState The update function to update the editor state
+ * @param props.disableSticky This makes the toolbar position always fixed at the top of the container, so it will not follow scroll
  */
 export const Toolbar: React.FC<ToolbarProps> = ({
   editorState,
   onBlockToggle,
   onInlineToggle,
   translations,
-  setEditorState
+  setEditorState,
+  disableSticky
 }) => (
-  <div className="pui-wysiwyg-toolbar">
+  <div className={classNames('pui-wysiwyg-toolbar', { sticky: !disableSticky })}>
     {toolbarOptions.sections.map((section) => (
       <ToolbarSection
         key={section.name}

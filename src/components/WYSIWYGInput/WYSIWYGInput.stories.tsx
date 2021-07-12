@@ -22,6 +22,11 @@ export default {
         type: 'boolean'
       }
     },
+    disableStickyToolbar: {
+      control: {
+        type: 'boolean'
+      }
+    },
     readOnly: {
       control: {
         type: 'boolean'
