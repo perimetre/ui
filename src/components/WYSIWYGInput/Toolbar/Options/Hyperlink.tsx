@@ -50,7 +50,7 @@ export const Hyperlink: React.FC<HyperlinkProps> = ({ translations, isActive, ed
   const tooltipRef = useRef<any | null>(null);
 
   // Whether it has initial url
-  const [hasInitialUrl, setHasInitialUrl] = useState(false);
+  const [, setHasInitialUrl] = useState(false);
 
   // A callback used to add a link to the current editorstate
   const addLink = useCallback(
@@ -111,10 +111,18 @@ export const Hyperlink: React.FC<HyperlinkProps> = ({ translations, isActive, ed
           // This is useful because the user can delete a link by not typing anything
           // So we only validate if the user has typed something, or else the user wouldn't be able
           // To continue with no text
-          link && link.length > 0 ? schema.url().required() : schema
+          link && link.length > 0
+            ? schema
+                .matches(
+                  /((https?):\/\/)?(www.)?[a-z0-9-]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#-]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/,
+                  'Enter correct url!'
+                )
+                .required()
+            : schema
         )
         .label(translations.linkInputLabel)
     }),
+    validateOnChange: false,
     initialValues: {
       link: ''
     },
@@ -129,7 +137,7 @@ export const Hyperlink: React.FC<HyperlinkProps> = ({ translations, isActive, ed
         // Add the link
         addLink(editorState, values.link);
       } else {
-        // If nothing is written, remove the linke
+        // If nothing is written, remove the link
         removeLink(editorState);
       }
 
@@ -186,7 +194,6 @@ export const Hyperlink: React.FC<HyperlinkProps> = ({ translations, isActive, ed
               <button
                 type="button"
                 className="pui-btn-default mt-2 pui-color-pui-error"
-                disabled={!hasInitialUrl}
                 onClick={() => {
                   removeLink(editorState);
                   close();
@@ -194,11 +201,7 @@ export const Hyperlink: React.FC<HyperlinkProps> = ({ translations, isActive, ed
               >
                 Clear
               </button>
-              <button
-                type="submit"
-                className="pui-btn-default mt-2"
-                disabled={!!formik.errors.link && !!formik.touched.link}
-              >
+              <button type="submit" className="pui-btn-default mt-2">
                 {translations.linkInputSubmit}
               </button>
             </div>
@@ -207,6 +210,9 @@ export const Hyperlink: React.FC<HyperlinkProps> = ({ translations, isActive, ed
       )}
       onShow={() => {
         // When the tooltip opens
+
+        // Reset the errors
+        formik.setErrors({ link: undefined });
 
         // Get if has link
         const link = getLinkIfAny(editorState);
