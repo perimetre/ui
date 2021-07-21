@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classnames from 'classnames';
 import { EditorState, RichUtils } from 'draft-js';
 import { useFormik } from 'formik';
-import React, { useCallback, useRef, useState } from 'react';
+import React, { useCallback, useRef } from 'react';
 import { object, string, StringSchema } from 'yup';
 import { getLinkIfAny } from '../../../../utils/wysiwyg';
 import { Dropdown } from '../../../Dropdown';
@@ -49,9 +49,6 @@ export const Hyperlink: React.FC<HyperlinkProps> = ({ translations, isActive, ed
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const tooltipRef = useRef<any | null>(null);
 
-  // Whether it has initial url
-  const [hasInitialUrl, setHasInitialUrl] = useState(false);
-
   // A callback used to add a link to the current editorstate
   const addLink = useCallback(
     (editorState?: EditorState, link?: string) => {
@@ -88,9 +85,6 @@ export const Hyperlink: React.FC<HyperlinkProps> = ({ translations, isActive, ed
         // Update the editor state by toggling the link to null, thus, removing it
         if (setEditorState) setEditorState(RichUtils.toggleLink(editorState, selection, null));
       }
-
-      // Declare that it doesn't has initial url anymore
-      setHasInitialUrl(false);
     },
     [setEditorState]
   );
@@ -111,10 +105,18 @@ export const Hyperlink: React.FC<HyperlinkProps> = ({ translations, isActive, ed
           // This is useful because the user can delete a link by not typing anything
           // So we only validate if the user has typed something, or else the user wouldn't be able
           // To continue with no text
-          link && link.length > 0 ? schema.url().required() : schema
+          link && link.length > 0
+            ? schema
+                .matches(
+                  /((https?):\/\/)?(www.)?[a-z0-9-]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#-]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/,
+                  translations.linkErrorLabel
+                )
+                .required()
+            : schema
         )
         .label(translations.linkInputLabel)
     }),
+    validateOnChange: false,
     initialValues: {
       link: ''
     },
@@ -138,8 +140,6 @@ export const Hyperlink: React.FC<HyperlinkProps> = ({ translations, isActive, ed
       if (tooltipRef?.current?._tippy?.hide) tooltipRef.current._tippy.hide();
       // Clear the form
       formik.resetForm();
-      // Declare that it doesn't has initial url anymore, if any
-      setHasInitialUrl(false);
     }
   });
 
@@ -148,8 +148,6 @@ export const Hyperlink: React.FC<HyperlinkProps> = ({ translations, isActive, ed
     if (tooltipRef?.current?._tippy?.hide) tooltipRef.current._tippy.hide();
     // Clear the form
     formik.resetForm();
-    // Declare that it doesn't has initial url anymore, if any
-    setHasInitialUrl(false);
   }, [formik]);
 
   return (
@@ -186,7 +184,6 @@ export const Hyperlink: React.FC<HyperlinkProps> = ({ translations, isActive, ed
               <button
                 type="button"
                 className="pui-btn-default mt-2 pui-color-pui-error"
-                disabled={!hasInitialUrl}
                 onClick={() => {
                   removeLink(editorState);
                   close();
@@ -194,11 +191,7 @@ export const Hyperlink: React.FC<HyperlinkProps> = ({ translations, isActive, ed
               >
                 Clear
               </button>
-              <button
-                type="submit"
-                className="pui-btn-default mt-2"
-                disabled={!!formik.errors.link && !!formik.touched.link}
-              >
+              <button type="submit" className="pui-btn-default mt-2">
                 {translations.linkInputSubmit}
               </button>
             </div>
@@ -208,14 +201,14 @@ export const Hyperlink: React.FC<HyperlinkProps> = ({ translations, isActive, ed
       onShow={() => {
         // When the tooltip opens
 
+        // Reset the errors
+        formik.setErrors({ link: undefined });
+
         // Get if has link
         const link = getLinkIfAny(editorState);
 
         // Update the formik state
         formik.setFieldValue('link', link);
-
-        // Update whether or not has initial url to enable the button
-        setHasInitialUrl(!!link);
 
         // Focus the input
         inputRef?.current?.focus();
