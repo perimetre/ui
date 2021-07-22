@@ -47,8 +47,12 @@ export const HTMLParsedContent: React.FC<HTMLParsedContentProps> = ({
       // Get all 'a' tags that have a href attribute
       if (domNode.parent?.name === 'a' && domNode.parent?.attribs?.href) {
         // If the link on the tag doesn't have a http:// or https:// return the new link
-        if (!domNode.parent.attribs.href.includes('http://') && !domNode.parent.attribs.href.includes('https://')) {
-          return <a href={`https://${domNode.parent.attribs.href}`}>{domNode.data}</a>;
+        if (!new RegExp(['http://', 'https://'].join('|')).test(domNode.parent.attribs.href)) {
+          return (
+            <a {...domNode.parent.attribs} href={`https://${domNode.parent.attribs.href}`}>
+              {domNode.data}
+            </a>
+          );
         }
       }
       return;
