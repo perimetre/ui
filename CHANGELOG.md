@@ -23,7 +23,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Added `replace` function on `HTMLParsedContent` to convert links without `http://` or `https://` into a valid link
+
 ### Fixed
+
+- Fixed bug on `HTMLParsedContent` that cause the links not to redirect properly
 
 ## [3.1.1] - 2021-07-21
 
