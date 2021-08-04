@@ -63,7 +63,9 @@ export const HTMLParsedContent: React.FC<HTMLParsedContentProps> = ({
   return content ? (
     <div {...props} className={classnames('pui-prose', className)}>
       {parse(
-        (sanitizerOptions ? DOMPurify.sanitize(content, sanitizerOptions) : DOMPurify.sanitize(content)) as string,
+        (sanitizerOptions
+          ? DOMPurify.sanitize(content, sanitizerOptions)
+          : DOMPurify.sanitize(content, { ADD_ATTR: ['target'] })) as string,
         options
       )}
     </div>

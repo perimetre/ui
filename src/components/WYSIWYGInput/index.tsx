@@ -16,7 +16,7 @@ import DOMPurify from 'isomorphic-dompurify';
 import React, { forwardRef, useCallback, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react';
 import { toggleBlockData } from '../../utils/wysiwyg';
 import { blockStyleFn, getBlockDataByName } from './Blocks';
-import { linkDecorator } from './Decorators/Link';
+import { entityLinkTransform, linkDecorator } from './Decorators/Link';
 import { Toolbar } from './Toolbar';
 import { defaultWYSIWYGTranslations, WYSIWYGTranslations } from './translations';
 
@@ -191,8 +191,9 @@ export const WYSIWYGInput = forwardRef<WYSIWYGInputRef, WYSIWYGInputProps>(
       // If the onChange prop is provided and we have initialized the component state
       if (onHtmlChangeSlow && isEditorStateInitialized) {
         // Ref(HTML part at the end): https://jpuri.github.io/react-draft-wysiwyg/#/docs
-        const htmlData = draftToHtml(convertToRaw(editorState.getCurrentContent()));
-        onHtmlChangeSlow(DOMPurify.sanitize(htmlData));
+        const htmlData = draftToHtml(convertToRaw(editorState.getCurrentContent()), {}, false, entityLinkTransform);
+        // Add ADD_ATTR to prevent sanitize to replace target _blank
+        onHtmlChangeSlow(DOMPurify.sanitize(htmlData, { ADD_ATTR: ['target'] }));
       }
       // If the editor state changes
     }, [editorState, onHtmlChangeSlow, isEditorStateInitialized]);
@@ -206,7 +207,9 @@ export const WYSIWYGInput = forwardRef<WYSIWYGInputRef, WYSIWYGInputProps>(
         const htmlToDraft = (await import('html-to-draftjs')).default;
 
         // Ref(HTML part at the end): https://jpuri.github.io/react-draft-wysiwyg/#/docs
-        const contentBlock = htmlToDraft(defaultHtmlValue ? DOMPurify.sanitize(defaultHtmlValue) : '');
+        const contentBlock = htmlToDraft(
+          defaultHtmlValue ? DOMPurify.sanitize(defaultHtmlValue, { ADD_ATTR: ['target'] }) : ''
+        );
 
         setEditorState(
           EditorState.createWithContent(
@@ -238,8 +241,9 @@ export const WYSIWYGInput = forwardRef<WYSIWYGInputRef, WYSIWYGInputProps>(
        */
       getSanitizedHtml: () => {
         // Ref(HTML part at the end): https://jpuri.github.io/react-draft-wysiwyg/#/docs
-        const htmlData = draftToHtml(convertToRaw(editorState.getCurrentContent()));
-        return DOMPurify.sanitize(htmlData);
+        const htmlData = draftToHtml(convertToRaw(editorState.getCurrentContent()), {}, false, entityLinkTransform);
+        // Add ADD_ATTR to prevent sanitize to replace target _blank
+        return DOMPurify.sanitize(htmlData, { ADD_ATTR: ['target'] });
       },
       /**
        * Returns a plain text string from the current editor state
