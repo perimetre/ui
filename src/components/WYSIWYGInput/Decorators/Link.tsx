@@ -1,5 +1,5 @@
 import React from 'react';
-import { DraftDecorator, ContentState, ContentBlock } from 'draft-js';
+import { DraftDecorator, ContentState, ContentBlock, RawDraftEntity } from 'draft-js';
 
 /**
  * The draft strategy to find link entities
@@ -50,4 +50,16 @@ const InternalLinkRender: React.FC<InternalLinkRenderProps> = ({ children, entit
 export const linkDecorator: DraftDecorator = {
   strategy: findLinkEntities,
   component: InternalLinkRender
+};
+
+/**
+ *  Transform all the links adding the target="_blank" and rel="noreferrer" attributes
+ *
+ * @param entity The current entity
+ * @param text The current text
+ * @returns The link tag as string with the new attributes
+ */
+export const entityLinkTransform = (entity: RawDraftEntity, text: string) => {
+  if (entity.type !== 'LINK') return;
+  return `<a href="${entity.data.url}" target="_blank" rel="noreferrer">${text}</a>`;
 };

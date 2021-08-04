@@ -25,6 +25,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [3.1.3] 2021-08-04
+
+### Changes
+
+### Added
+
+- Added `entityLinkTransform` function on `WYSIWYG` input to add the props `target="_blank" rel="noreferrer"` into all links `a` tags.
+- Added new config into `DOMPurify.sanitize` to prevent it from replacing the `target="_blank"` prop on links.
+
+### Fixed
+
+- Fixed problem with links not opening on a new tab.
+
 ## [3.1.2] - 2021-07-22
 
 ### Added
