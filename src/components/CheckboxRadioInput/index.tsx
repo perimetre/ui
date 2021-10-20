@@ -100,7 +100,7 @@ export const CheckboxRadioInput: React.FC<CheckboxRadioInputProps> = ({
       <label className={`${type === 'checkbox' ? 'pui-checkbox-label' : 'pui-radio-label'}`}>
         {input}
         <span>
-          <HTMLParsedContent content={label} />
+          <HTMLParsedContent content={label} className="max-w-none" />
         </span>
       </label>
       {bottom}
