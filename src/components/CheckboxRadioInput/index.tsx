@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import classnames from 'classnames';
+import { HTMLParsedContent } from '../HTMLParsedContent';
 
 const sizeClassnameMap = {
   small: 'pui-check-radio-small',
@@ -98,7 +99,9 @@ export const CheckboxRadioInput: React.FC<CheckboxRadioInputProps> = ({
     <div>
       <label className={`${type === 'checkbox' ? 'pui-checkbox-label' : 'pui-radio-label'}`}>
         {input}
-        <span>{label}</span>
+        <span>
+          <HTMLParsedContent content={label} className="max-w-none" />
+        </span>
       </label>
       {bottom}
     </div>

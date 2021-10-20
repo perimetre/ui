@@ -25,6 +25,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [3.1.4] 2021-10-20
+
+### Added
+
+- Added rich-text support for inputs of type Radio and Checkbox
+
 ## [3.1.3] 2021-08-04
 
 ### Changes
