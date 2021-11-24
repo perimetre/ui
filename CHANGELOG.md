@@ -23,6 +23,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Added imperative handler `resetInitialValue` to reset WYSIWYG rich text editor state to the value set in `defaultHtmlValue`
+
 ### Fixed
 
 ## [3.1.4] 2021-10-20
