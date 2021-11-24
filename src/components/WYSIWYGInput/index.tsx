@@ -45,6 +45,10 @@ export type WYSIWYGInputRef = {
    * Returns a plain text string from the current editor state
    */
   getPlainText: () => string;
+  /**
+   * Resets editor state to defaultHtmlValue
+   */
+  resetInitialValue: () => void;
 };
 
 export type WYSIWYGInputProps = Omit<EditorProps, 'editorState' | 'onChange'> & {
@@ -201,15 +205,15 @@ export const WYSIWYGInput = forwardRef<WYSIWYGInputRef, WYSIWYGInputProps>(
     useEffect(() => {
       /**
        * An async wrapper with a dynamic import.
-       * That will update the editor state based on the default html value
+       * That will update the editor state based on the html value
+       *
+       * @param htmlValue html value to set the editor state to
        */
-      const updateFromHtml = async () => {
+      const updateFromHtml = async (htmlValue: string) => {
         const htmlToDraft = (await import('html-to-draftjs')).default;
 
         // Ref(HTML part at the end): https://jpuri.github.io/react-draft-wysiwyg/#/docs
-        const contentBlock = htmlToDraft(
-          defaultHtmlValue ? DOMPurify.sanitize(defaultHtmlValue, { ADD_ATTR: ['target'] }) : ''
-        );
+        const contentBlock = htmlToDraft(DOMPurify.sanitize(htmlValue, { ADD_ATTR: ['target'] }));
 
         setEditorState(
           EditorState.createWithContent(
@@ -222,17 +226,15 @@ export const WYSIWYGInput = forwardRef<WYSIWYGInputRef, WYSIWYGInputProps>(
         setIsEditorStateInitialized(true);
       };
 
-      setEditorState(EditorState.set(editorState, { decorator: defaultDecorators }));
-
-      if (defaultHtmlValue) {
-        updateFromHtml();
-      } else {
-        // make sure to set component as initialized so that it will start sending onChange events
-        setIsEditorStateInitialized(true);
+      if (!isEditorStateInitialized) {
+        console.log('resetting');
+        // setEditorState(EditorState.set(editorState, { decorator: defaultDecorators }));
+        updateFromHtml(defaultHtmlValue || '');
       }
-      // Disable because we only want this to update on the first render
+
+      // Disable because we only want this to update on the first render or when editor state is reinitialized
       // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [isEditorStateInitialized]);
 
     // Extends the ref
     useImperativeHandle(ref, () => ({
@@ -248,7 +250,11 @@ export const WYSIWYGInput = forwardRef<WYSIWYGInputRef, WYSIWYGInputProps>(
       /**
        * Returns a plain text string from the current editor state
        */
-      getPlainText: () => editorState.getCurrentContent().getPlainText()
+      getPlainText: () => editorState.getCurrentContent().getPlainText(),
+      /**
+       * Resets editor state to defaultHtmlValue
+       */
+      resetInitialValue: () => setIsEditorStateInitialized(false)
     }));
 
     const focus = useCallback(() => {

@@ -25,6 +25,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [3.2.0] 2021-11-24
+
+### Added
+
+- Added imperative handler `resetInitialValue` to reset WYSIWYG rich text editor state to the value set in `defaultHtmlValue`
+
 ## [3.1.4] 2021-10-20
 
 ### Added
@@ -32,8 +38,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added rich-text support for inputs of type Radio and Checkbox
 
 ## [3.1.3] 2021-08-04
-
-### Changes
 
 ### Added
 
