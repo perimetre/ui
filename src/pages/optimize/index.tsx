@@ -111,7 +111,7 @@ export default function Home() {
               setUriSvg('');
             });
         } else {
-          setOptimizedSvg({});
+          setOptimizedSvg(undefined);
           setOriginalSvg('');
           setUriSvg('');
         }
@@ -231,7 +231,7 @@ export default function Home() {
           <label className="pui-label-input" htmlFor="json">
             Optimized SVG
           </label>
-          <textarea readOnly rows={10} id="json" className="pui-text-input" value={optimizedSvg && optimizedSvg.data} />
+          <textarea readOnly rows={10} id="json" className="pui-text-input" value={optimizedSvg?.data || ''} />
         </div>
         <div>
           <label className="pui-label-input" htmlFor="css">

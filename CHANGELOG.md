@@ -25,6 +25,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- Moved storybook libraries to `devDependencies` so they are not included in the package bundle
+- Updated storybook libraries to fix vulnerabilities issues
+- Removed `next` from `peerDependencies` since the components in the UI lib don't depend on it
+- Moved `next` to `devDependencies` so it is not included in the package bundle
+- Updated `next` to fix vulnerabilities issues
+- Updated `formik` to fix vulnerabilities issues
+- Updated `svgo` to fix vulnerabilities issues, and made code tweaks where it is used because the update involved breaking changes
+- Updated other libraries to fix vulnerabilities issues
+
 ## [3.2.0] 2021-11-24
 
 ### Added
