@@ -1,4 +1,4 @@
-import { AppProps } from 'next/dist/next-server/lib/router/router';
+import { AppProps } from 'next/dist/pages/_app';
 import React from 'react';
 import '../styles/globals.css';
 

@@ -227,8 +227,6 @@ export const WYSIWYGInput = forwardRef<WYSIWYGInputRef, WYSIWYGInputProps>(
       };
 
       if (!isEditorStateInitialized) {
-        console.log('resetting');
-        // setEditorState(EditorState.set(editorState, { decorator: defaultDecorators }));
         updateFromHtml(defaultHtmlValue || '');
       }
 
