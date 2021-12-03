@@ -25,6 +25,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [3.3.0]
+
+### Fixed
+
 - Moved storybook libraries to `devDependencies` so they are not included in the package bundle
 - Updated storybook libraries to fix vulnerabilities issues
 - Removed `next` from `peerDependencies` since the components in the UI lib don't depend on it
