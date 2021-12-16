@@ -1,0 +1,38 @@
+@layer components {
+  .pui-listConnector {
+    /* Adds the expected placeholder color for the bg */
+    @apply bg-gray-300 z-0 w-2 h-full min-h-full top-0 left-1/2 -m-1;
+  }
+
+  .iconContainer {
+    @apply w-16 h-16 rounded-full bg-white flex items-center justify-center absolute top-1/2 -mt-8;
+  }
+
+  .pui-listIcon {
+    @apply border-pui-placeholder-color text-pui-placeholder-color w-8 h-8 rounded-full bg-transparent border-2 flex items-center justify-center;
+  }
+
+  .pui-rounded {
+    @apply rounded;
+  }
+
+  .pui-flatTop {
+    @apply rounded-t-none rounded-b-full;
+  }
+
+  .pui-flatBottom {
+    @apply rounded-b-none rounded-t-full;
+  }
+
+  .pui-flat {
+    @apply rounded-none;
+  }
+
+  .pui-icon {
+   @apply hidden;
+
+   &.showIcon {
+     @apply block;
+   }
+  }
+}
