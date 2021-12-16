@@ -25,6 +25,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [3.4.0]
+
+### **Breaking changes**
+
+### Changes
+
+### Added
+
+- Add percentage cicles component
+- Add percentage list connector component
+- Add percentage card Banners component
+- Add percentage Expert image with gradient classes component
+
+### Fixed
+
 ## [3.3.0]
 
 ### Fixed

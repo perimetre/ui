@@ -1,0 +1,8 @@
+@layer components {
+  .pui-cardBadge {
+    /* Adds default card border radius */
+    /* Adds default text color in uneven backgrounds */
+    /* Adds the expected placeholder color for the bg */
+    @apply pl-4 pr-7 py-2 -mb-6 text-sm pui-rounded-bannerCard text-pui-paragraph-0 bg-pui-placeholder-color;
+  }
+}

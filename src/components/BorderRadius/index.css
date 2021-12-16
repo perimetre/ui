@@ -3,4 +3,9 @@
     /* Default border radius */
     border-radius: var(--pui-default-radius, 0.25rem);
   }
+
+  .pui-rounded-bannerCard {
+    border-radius: var(--pui-bradius-bannerCard, 0.625rem 1.875rem 0 0.625rem);
+
+  }
 }
