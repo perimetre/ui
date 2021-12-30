@@ -79,6 +79,7 @@ export type WorkSessionCardProps = {
  * @param props.title Set the event title
  * @param props.content Set the event text content
  * @param props.buttonContent Set the button label
+ * @param props.advisorName Set the advisor Name
  * @param props.advisorTitle Set the title for the advisor
  * @param props.imageUrl Set the sponsor image
  * @param props.className The input className
