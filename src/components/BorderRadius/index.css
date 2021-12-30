@@ -6,6 +6,9 @@
 
   .pui-rounded-bannerCard {
     border-radius: var(--pui-bradius-bannerCard, 0.625rem 1.875rem 0 0.625rem);
+  }
 
+  .pui-rounded-Card {
+    border-radius: var(--pui-bradius-bannerCard, 0.75rem 2.5rem 1.25rem 0.75rem);
   }
 }

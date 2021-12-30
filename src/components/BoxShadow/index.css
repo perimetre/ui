@@ -1,0 +1,14 @@
+@layer base {
+  .pui-boxshadow-sm {
+    /* Default border radius */
+    box-shadow: var(--pui-boxshadow-sm, 0 1px 5px 1px rgba(0, 0, 0, 0.1));
+  }
+
+  .pui-boxshadow-md {
+    box-shadow: var(--pui-boxshadow-md, 2px 4px 10px 0 rgba(0, 0, 0, 0.1));
+  }
+
+  .pui-boxshadow-lg {
+    box-shadow: var(--pui-boxshadow-lg, 3px 6px 20px 0 rgba(0, 0, 0, 0.1));
+  }
+}

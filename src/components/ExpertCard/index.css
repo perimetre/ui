@@ -1,0 +1,6 @@
+@layer components {
+  .pui-expert-card {
+    /* Adds the expected placeholder color for the bg */
+    @apply w-full max-w-lg min-w-1/3vw rounded-xl p-6 pui-boxshadow-lg flex flex-col;
+  }
+}

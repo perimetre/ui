@@ -1,0 +1,16 @@
+@layer components {
+  .pui-programCard {
+    /* Adds the expected placeholder color for the bg */
+    @apply w-full max-w-xs pui-rounded-Card overflow-hidden pui-boxshadow-lg;
+  }
+
+  .percentage-bar {
+    @apply inline-flex items-center justify-start bg-white rounded-full h-3;
+    padding: 2px;
+    width: calc(100% - 45px);
+  }
+
+  .progress-bar {
+    @apply bg-pui-primary h-full w-1/2 rounded-full;
+  }
+}

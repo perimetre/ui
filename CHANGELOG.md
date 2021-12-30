@@ -37,6 +37,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add percentage list connector component
 - Add percentage card Banners component
 - Add percentage Expert image with gradient classes component
+- Add expert cards
+- Add Event cards
+- Add Program cards
+- Add Resources cards
 
 ### Fixed
 

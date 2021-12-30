@@ -2,7 +2,7 @@ import React from 'react';
 
 export type PercentageCircleProps = {
   /**
-   * Connector line borders
+   * Percentage number
    *
    * @default number
    */
