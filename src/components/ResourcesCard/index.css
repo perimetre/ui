@@ -1,0 +1,22 @@
+@layer components {
+  .pui-resources-card {
+    /* Adds the expected placeholder color for the bg */
+    @apply w-full max-w-lg pui-rounded-Card pui-boxshadow-lg flex flex-row;
+  }
+
+  .pui-rounded-gradient-bar {
+    border-radius: var(--pui-rounded-gradient-bar, 0.75rem 0 0 0.75rem);
+  }
+
+  .gradient-bar {
+    @apply w-3 h-auto min-h-full block pui-rounded-gradient-bar;
+  }
+
+  .sponsor {
+    @apply flex flex-row items-center justify-between;
+  }
+
+  .icon {
+    @apply text-pui-placeholder-color;
+  }
+}

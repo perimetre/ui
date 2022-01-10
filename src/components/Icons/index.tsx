@@ -8,3 +8,6 @@ export * from './Singletone/Attention2Icon';
 export * from './Singletone/BellIcon';
 export * from './Singletone/QuestionIcon';
 export * from './Singletone/SearchIcon';
+export * from './Singletone/StarIcon';
+export * from './Singletone/ArrowIcon';
+export * from './Singletone/CalendarIcon';

@@ -1,0 +1,6 @@
+@layer components {
+  .pui-moduleCard {
+    /* Adds the expected placeholder color for the bg */
+    @apply w-full max-w-md pui-rounded-Card overflow-hidden pui-boxshadow-lg;
+  }
+}

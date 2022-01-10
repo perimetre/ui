@@ -1,0 +1,8 @@
+@layer components {
+  .pui-expertImage {
+    /* Adds default card border radius */
+    /* Adds default text color in uneven backgrounds */
+    /* Adds the expected placeholder color for the bg */
+    @apply rounded-full p-1;
+  }
+}

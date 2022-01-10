@@ -1,0 +1,40 @@
+@layer components {
+  .pui-percentageCricle {
+    /* Adds the expected placeholder color for the bg */
+    @apply bg-gray-300 z-0 w-2 h-full min-h-full top-0 left-1/2 -m-1;
+  }
+  
+  .single-chart {
+    @apply inline-block w-full;
+  }
+  
+  .circular-chart {
+    @apply block m-0 max-w-full max-h-full;
+  }
+  
+  .circle-bg {
+    fill: none;
+    stroke: #eee;
+    stroke-width: 3.8;
+  }
+  
+  .circle {
+    @apply text-pui-placeholder-color;
+    fill: none;
+    stroke-width: 3.8;
+    animation: progress 1s ease-out forwards;
+    stroke: currentColor;
+  }
+  
+  @keyframes progress {
+    0% {
+      stroke-dasharray: 0 100;
+    }
+  }
+
+  .percentage {
+    fill: currentColor;
+    font-size: 0.5em;
+    text-anchor: middle;
+  }
+}
