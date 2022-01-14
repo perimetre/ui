@@ -58,3 +58,8 @@ export default {
 const Template: Story<ModuleCardProps & { color?: string }> = ({ ...props }) => <ModuleCard {...props} />;
 
 export const Default = Template.bind({});
+
+export const Gradient = Template.bind({});
+Gradient.args = {
+  filter: 'gradient'
+};
