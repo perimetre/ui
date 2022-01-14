@@ -23,6 +23,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+### Fixed
+
+## [3.4.1] 2022-01-14
+
+### Added
+
 - Added props (classNameTitle and classNameContent) to allow changing the styles of title and content from the `ModuleCard` component.
 - Added filter props (filter variant and classNameFilter) on `ModuleCard` to display a linear gradient overlay on the top of the image.
 - Added `onPressButton` callback to `ModuleCard` button.
