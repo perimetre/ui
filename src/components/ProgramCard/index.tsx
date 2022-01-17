@@ -89,12 +89,12 @@ export const ProgramCard: React.FC<ProgramCardProps> = ({
         <h4 className="text-2xl font-bold mb-3">{title}</h4>
         <div className="w-full flex items-center justify-between mb-6">
           <div className="percentage-bar">
-            <span className="progress-bar"></span>
+            <span className="progress-bar" style={{ width: percentage + '%' }}></span>
           </div>
           {percentage}%
         </div>
         <div className="inline-flex justify-end items-center w-full">
-          <span className="inline-flex items-center pui-chip-bordered h-8 justify-items-end cursor-pointer">
+          <span className="inline-flex items-center pui-chip-bordered h-8 justify-items-end cursor-pointer font-bold">
             {buttonpercentage}
             <ArrowIcon className="h-4 w-4 ml-2" />
           </span>

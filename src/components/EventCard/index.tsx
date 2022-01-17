@@ -113,7 +113,7 @@ export const EventCard: React.FC<EventCardProps> = ({
             <p className="text-sm font-normal mr-2 min-w-20">{sponsorLabel}</p>
             <img src={imageUrl} alt="" className="w-full max-h-10" />
           </div>
-          <span className="inline-flex items-center pui-chip-bordered h-8 justify-items-end cursor-pointer">
+          <span className="inline-flex items-center pui-chip-bordered h-8 justify-items-end cursor-pointer font-bold">
             {buttonContent}
             <ArrowIcon className="h-4 w-4 ml-2" />
           </span>
