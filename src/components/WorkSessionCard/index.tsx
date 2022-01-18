@@ -140,7 +140,7 @@ export const WorkSessionCard: React.FC<WorkSessionCardProps> = ({
               <p className="text-base font-semibold mr-2 min-w-20">{advisorName}</p>
             </div>
           </div>
-          <span className="inline-flex items-center pui-chip-bordered h-8 justify-items-end cursor-pointer">
+          <span className="inline-flex items-center pui-chip-bordered h-8 justify-items-end cursor-pointer font-bold">
             {buttonContent}
             <ArrowIcon className="h-4 w-4 ml-2" />
           </span>

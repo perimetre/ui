@@ -11,6 +11,6 @@
   }
 
   .progress-bar {
-    @apply bg-pui-primary h-full w-1/2 rounded-full;
+    @apply bg-pui-primary rounded-full inline-block h-full;
   }
 }
