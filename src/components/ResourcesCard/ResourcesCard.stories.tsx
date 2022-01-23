@@ -38,15 +38,10 @@ export default {
  * A story that displays a list connector
  *
  * @param props the story props
- * @param props.color the color property set on controls
  * @param props.className the classes for element
  * @param props.imageUrl the image url for the sponsor logo
  * @param props.title card title
  * @param props.content card description
- * @param props.advisorTitle the title for the advisor
- * @param props.advisorName the advisor name
- * @param props.buttonLabel the label for the action button
- * @param props.counter the label for the action button
  */
 const Template: Story<ResourcesCardProps & { color?: string }> = ({ ...props }) => <ResourcesCard {...props} />;
 
