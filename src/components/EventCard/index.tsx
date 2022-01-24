@@ -1,6 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
-import { ArrowIcon, CalendarIcon } from '..';
+import { ArrowIcon, CalendarIcon, TagsIcon } from '..';
 
 export type EventCardProps = {
   /**
@@ -50,6 +50,18 @@ export type EventCardProps = {
    *
    * @default string
    */
+  tags?: string;
+  /**
+   * Events Tags
+   *
+   * @default string
+   */
+  tagsLabel?: string;
+  /**
+   * Events Tags
+   *
+   * @default string
+   */
   gradientInitialColor?: string;
   /**
    * Gradient bar initial color value if needed
@@ -79,6 +91,8 @@ export type EventCardProps = {
  * @param props.gradientInitialColor The gradient bar initial color value
  * @param props.gradientMiddleColor The input className
  * @param props.gradientFinalColor The input className
+ * @param props.tagsLabel The Events tags label
+ * @param props.tags The Events tags
  */
 export const EventCard: React.FC<EventCardProps> = ({
   imageUrl,
@@ -90,7 +104,9 @@ export const EventCard: React.FC<EventCardProps> = ({
   className,
   gradientInitialColor,
   gradientMiddleColor,
-  gradientFinalColor
+  gradientFinalColor,
+  tags,
+  tagsLabel
 }) => {
   return (
     <div className={classnames('pui-event-card', className)}>
@@ -108,10 +124,24 @@ export const EventCard: React.FC<EventCardProps> = ({
         <span className="text-base font-medium mb-3 inline-block">{date}</span>
         <h4 className="text-lg font-bold mb-3">{title}</h4>
         <p className="text-base mb-6 font-normal">{content}</p>
+        <div className="inline-flex justify-start items-center w-full mb-6">
+          <TagsIcon className="text-pui-primary" />
+          <p className="ml-2">
+            <b>{tagsLabel}</b>: {tags}
+          </p>
+        </div>
         <div className="inline-flex justify-between items-center w-full p-0">
           <div className="sponsor">
             <p className="text-sm font-normal mr-2 min-w-20">{sponsorLabel}</p>
-            <img src={imageUrl} alt="" className="w-full max-h-10" />
+            <div
+              style={{
+                backgroundImage: `url(${imageUrl})`,
+                backgroundSize: 'contain',
+                backgroundRepeat: 'no-repeat',
+                backgroundPosition: 'center left'
+              }}
+              className="h-12 w-32 bg-contain bg-no-repeat"
+            />
           </div>
           <span className="inline-flex items-center pui-chip-bordered h-8 justify-items-end cursor-pointer font-bold">
             {buttonContent}

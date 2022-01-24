@@ -14,7 +14,7 @@ export default {
       }
     },
     imageUrl: {
-      defaultValue: 'https://fakeimg.pl/105x30/',
+      defaultValue: 'https://fakeimg.pl/130x50/',
       control: {
         type: 'text'
       }
@@ -70,12 +70,24 @@ export default {
         type: 'select',
         options: gradientViaClassNameMap
       }
+    },
+    tags: {
+      defaultValue: 'Translate, Positioning, Export, Shipping',
+      control: {
+        type: 'text'
+      }
+    },
+    tagsLabel: {
+      defaultValue: 'Tags',
+      control: {
+        type: 'text'
+      }
     }
   }
 } as Meta;
 
 /**
- * A story that displays a list connector
+ * A story that displays a Event card
  *
  * @param props the story props
  * @param props.color the color property set on controls

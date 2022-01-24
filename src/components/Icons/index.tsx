@@ -11,3 +11,4 @@ export * from './Singletone/SearchIcon';
 export * from './Singletone/StarIcon';
 export * from './Singletone/ArrowIcon';
 export * from './Singletone/CalendarIcon';
+export * from './Singletone/TagsIcon';
