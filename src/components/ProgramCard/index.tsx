@@ -2,7 +2,17 @@ import React from 'react';
 import classnames from 'classnames';
 import { ArrowIcon } from '..';
 
+const variantFilterap = {
+  gradient: 'pui-moduleCard-gradient'
+};
+
 export type ProgramCardProps = {
+  /**
+   * The card filter variant
+   *
+   * @default default
+   */
+  filter?: keyof typeof variantFilterap;
   /**
    * Card Image url
    *
@@ -26,13 +36,19 @@ export type ProgramCardProps = {
    *
    * @default string
    */
-  buttonpercentage?: string;
+  buttonPercentage?: string;
   /**
    * Extended classes
    *
    * @default string
    */
   className?: string;
+  /**
+   * Card button callback
+   *
+   * @default void
+   */
+  onPressButton?: () => void;
   /**
    * Gradient bar initial color value
    *
@@ -51,34 +67,65 @@ export type ProgramCardProps = {
    * @default string
    */
   gradientFinalColor?: string;
+  /**
+   * Extended classes for title
+   *
+   * @default string
+   */
+  classNameTitle?: string;
+  /**
+   * Extended classes for filter
+   *
+   * @default string
+   */
+  classNameFilter?: string;
 };
 
 /**
  * A Percentage Circle
  *
  * @param props The input props
+ * @param props.filter The filter variant
  * @param props.imageUrl Set the image for the card
  * @param props.title Set the title for the card
  * @param props.percentage Set the text percentage for the card
- * @param props.buttonpercentage Set the button label for the card
+ * @param props.buttonPercentage Set the button label for the card
  * @param props.className The input className
+ * @param props.onPressButton The callback when pressing the button
  * @param props.gradientInitialColor The gradient bar initial color value
  * @param props.gradientMiddleColor The input className
- * @param props.gradientFinalColor The input className
+ * @param props.gradientFinalColor The input className,
+ * @param props.classNameTitle The title className
+ * @param props.classNameFilter The filter className
  */
 export const ProgramCard: React.FC<ProgramCardProps> = ({
   imageUrl,
   title,
   percentage,
-  buttonpercentage,
+  buttonPercentage,
   className,
   gradientInitialColor,
   gradientMiddleColor,
-  gradientFinalColor
+  gradientFinalColor,
+  filter,
+  onPressButton,
+  classNameTitle,
+  classNameFilter
 }) => {
   return (
     <div className={classnames('pui-programCard', className)}>
-      <img src={imageUrl} alt="" className="w-full max-h-28" />
+      <div className="w-full h-28 overflow-hidden relative">
+        <img src={imageUrl} alt={title} className="w-full h-full" />
+        {filter && (
+          <div
+            className={classnames(
+              'absolute opacity-25 z-10 inset-0 w-full h-full bg-gradient-to-r from-pui-primary to-pui-secondary',
+              classNameFilter
+            )}
+          />
+        )}
+      </div>
+
       <div
         className={classnames(
           'p-6 pui-color-pui-paragraph-0 text-pui-paragraph-0',
@@ -86,7 +133,7 @@ export const ProgramCard: React.FC<ProgramCardProps> = ({
           className
         )}
       >
-        <h4 className="text-2xl font-bold mb-3">{title}</h4>
+        <h4 className={classnames('text-2xl font-bold mb-3', classNameTitle)}>{title}</h4>
         <div className="w-full flex items-center justify-between mb-6">
           <div className="percentage-bar">
             <span className="progress-bar" style={{ width: percentage + '%' }}></span>
@@ -94,10 +141,13 @@ export const ProgramCard: React.FC<ProgramCardProps> = ({
           {percentage}%
         </div>
         <div className="inline-flex justify-end items-center w-full">
-          <span className="inline-flex items-center pui-chip-bordered h-8 justify-items-end cursor-pointer font-bold">
-            {buttonpercentage}
+          <button
+            onClick={onPressButton}
+            className="inline-flex items-center pui-chip-bordered h-8 justify-items-end cursor-pointer font-bold"
+          >
+            {buttonPercentage}
             <ArrowIcon className="h-4 w-4 ml-2" />
-          </span>
+          </button>
         </div>
       </div>
     </div>
