@@ -23,7 +23,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Added prop classNameTitle to allow changing the styles of title for the `ProgramCard` component.
+- Added filter props (filter variant and classNameFilter) on `ProgramCard` to display a linear gradient overlay on the top of the image.
+- Added `onPressButton` callback to `ProgramCard` button.
+
 ### Fixed
+
+- Fixed problem with `ProgramCard` not having a button callback.
 
 ## [3.4.3] 2022-01-24
 
