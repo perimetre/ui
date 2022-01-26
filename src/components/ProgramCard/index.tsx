@@ -50,24 +50,6 @@ export type ProgramCardProps = {
    */
   onPressButton?: () => void;
   /**
-   * Gradient bar initial color value
-   *
-   * @default string
-   */
-  gradientInitialColor?: string;
-  /**
-   * Gradient bar initial color value if needed
-   *
-   * @default string
-   */
-  gradientMiddleColor?: string;
-  /**
-   * Gradient bar final color value
-   *
-   * @default string
-   */
-  gradientFinalColor?: string;
-  /**
    * Extended classes for title
    *
    * @default string
@@ -92,9 +74,6 @@ export type ProgramCardProps = {
  * @param props.buttonPercentage Set the button label for the card
  * @param props.className The input className
  * @param props.onPressButton The callback when pressing the button
- * @param props.gradientInitialColor The gradient bar initial color value
- * @param props.gradientMiddleColor The input className
- * @param props.gradientFinalColor The input className,
  * @param props.classNameTitle The title className
  * @param props.classNameFilter The filter className
  */
@@ -104,9 +83,6 @@ export const ProgramCard: React.FC<ProgramCardProps> = ({
   percentage,
   buttonPercentage,
   className,
-  gradientInitialColor,
-  gradientMiddleColor,
-  gradientFinalColor,
   filter,
   onPressButton,
   classNameTitle,
@@ -115,7 +91,7 @@ export const ProgramCard: React.FC<ProgramCardProps> = ({
   return (
     <div className={classnames('pui-programCard', className)}>
       <div className="w-full h-28 overflow-hidden relative">
-        <img src={imageUrl} alt={title} className="w-full h-full" />
+        <img src={imageUrl} alt={title} className="w-full h-full object-cover" />
         {filter && (
           <div
             className={classnames(
@@ -125,11 +101,9 @@ export const ProgramCard: React.FC<ProgramCardProps> = ({
           />
         )}
       </div>
-
       <div
         className={classnames(
-          'p-6 pui-color-pui-paragraph-0 text-pui-paragraph-0',
-          `bg-gradient-to-b ${gradientInitialColor} ${gradientMiddleColor} ${gradientFinalColor}`,
+          'p-6 pui-color-pui-paragraph-0 text-pui-paragraph-0 bg-pui-secondary bg-gradient-to-b from-pui-primary to-pui-current to-pui-secondary',
           className
         )}
       >
@@ -143,7 +117,7 @@ export const ProgramCard: React.FC<ProgramCardProps> = ({
         <div className="inline-flex justify-end items-center w-full">
           <button
             onClick={onPressButton}
-            className="inline-flex items-center pui-chip-bordered h-8 justify-items-end cursor-pointer font-bold"
+            className="inline-flex items-center pui-chip-bordered h-8 justify-items-end cursor-pointer font-bold focus:outline-none"
           >
             {buttonPercentage}
             <ArrowIcon className="h-4 w-4 ml-2" />
