@@ -46,6 +46,18 @@ export type EventCardProps = {
    */
   className?: string;
   /**
+   * Extended classes for bar
+   *
+   * @default string
+   */
+  classNameBar?: string;
+  /**
+   * Card button callback
+   *
+   * @default void
+   */
+  onPressButton?: () => void;
+  /**
    * Gradient bar initial color value
    *
    * @default string
@@ -57,24 +69,6 @@ export type EventCardProps = {
    * @default string
    */
   tagsLabel?: string;
-  /**
-   * Events Tags
-   *
-   * @default string
-   */
-  gradientInitialColor?: string;
-  /**
-   * Gradient bar initial color value if needed
-   *
-   * @default string
-   */
-  gradientMiddleColor?: string;
-  /**
-   * Gradient bar final color value
-   *
-   * @default string
-   */
-  gradientFinalColor?: string;
 };
 
 /**
@@ -88,11 +82,10 @@ export type EventCardProps = {
  * @param props.sponsorLabel Set the sponsor image label
  * @param props.imageUrl Set the sponsor image
  * @param props.className The input className
- * @param props.gradientInitialColor The gradient bar initial color value
- * @param props.gradientMiddleColor The input className
- * @param props.gradientFinalColor The input className
  * @param props.tagsLabel The Events tags label
  * @param props.tags The Events tags
+ * @param props.classNameBar The bar className
+ * @param props.onPressButton The callback when pressing the button
  */
 export const EventCard: React.FC<EventCardProps> = ({
   imageUrl,
@@ -102,21 +95,19 @@ export const EventCard: React.FC<EventCardProps> = ({
   date,
   sponsorLabel,
   className,
-  gradientInitialColor,
-  gradientMiddleColor,
-  gradientFinalColor,
   tags,
-  tagsLabel
+  tagsLabel,
+  classNameBar,
+  onPressButton
 }) => {
   return (
     <div className={classnames('pui-event-card', className)}>
       <div
         className={classnames(
-          'gradient-bar',
-          `bg-gradient-to-b ${gradientInitialColor} ${gradientMiddleColor} ${gradientFinalColor}`,
-          className
+          'gradient-bar bg-gradient-to-b from-pui-primary to-pui-current to-pui-secondary',
+          classNameBar
         )}
-      ></div>
+      />
       <div className="icon-wrapper py-6 ml-6">
         <CalendarIcon className="icon h-6 w-6 pui-color-pui-primary" />
       </div>
@@ -143,10 +134,13 @@ export const EventCard: React.FC<EventCardProps> = ({
               className="h-12 w-32 bg-contain bg-no-repeat"
             />
           </div>
-          <span className="inline-flex items-center pui-chip-bordered h-8 justify-items-end cursor-pointer font-bold">
+          <button
+            onClick={onPressButton}
+            className="inline-flex items-center pui-chip-bordered h-8 justify-items-end cursor-pointer font-bold focus:outline-none"
+          >
             {buttonContent}
             <ArrowIcon className="h-4 w-4 ml-2" />
-          </span>
+          </button>
         </div>
       </div>
     </div>

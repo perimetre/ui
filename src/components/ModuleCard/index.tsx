@@ -99,7 +99,7 @@ export const ModuleCard: React.FC<ModuleCardProps> = ({
   return (
     <div className={classnames('pui-moduleCard', className)}>
       <div className="w-full h-28 overflow-hidden relative">
-        <img src={imageUrl} alt={title} className="w-full h-full" />
+        <img src={imageUrl} alt={title} className="w-full h-full object-cover" />
         {filter && (
           <div
             className={classnames(
@@ -115,7 +115,7 @@ export const ModuleCard: React.FC<ModuleCardProps> = ({
         <div className="flex-1 inline-flex justify-end items-end w-full">
           <button
             onClick={onPressButton}
-            className="inline-flex items-center pui-chip-bordered h-8 justify-items-end cursor-pointer font-bold"
+            className="inline-flex items-center pui-chip-bordered h-8 justify-items-end cursor-pointer font-bold focus:outline-none"
           >
             {buttonContent}
             <ArrowIcon className="h-4 w-4 ml-2" />
