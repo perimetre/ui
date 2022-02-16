@@ -3,7 +3,6 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { colorOptions } from '../../prebuiltTailwindTheme';
 import { ProgramCard, ProgramCardProps } from '..';
-import { gradientFromClassNameMap, gradientToClassNameMap, gradientViaClassNameMap } from '../../storybookMappers';
 
 export default {
   title: 'Components/ProgramCard',
@@ -43,27 +42,6 @@ export default {
       defaultValue: 'View more CTA',
       control: {
         type: 'text'
-      }
-    },
-    gradientInitialColor: {
-      defaultValue: 'from-pui-primary',
-      control: {
-        type: 'select',
-        options: gradientFromClassNameMap
-      }
-    },
-    gradientFinalColor: {
-      defaultValue: 'to-pui-secondary',
-      control: {
-        type: 'select',
-        options: gradientToClassNameMap
-      }
-    },
-    gradientMiddleColor: {
-      defaultValue: 'to-pui-current',
-      control: {
-        type: 'select',
-        options: gradientViaClassNameMap
       }
     }
   }

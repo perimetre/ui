@@ -15,7 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed -->
 
-[Unreleased]
+## [Unreleased]
 
 ### **Breaking changes**
 
@@ -24,6 +24,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 ### Fixed
+
+## [3.4.5] 2022-01-26
+
+### Changes
+
+- Removed gradient props (gradientInitialColor, gradientMiddleColor, gradientFinalColor) from `ProgramCard` component.
+- Removed gradient props (gradientInitialColor, gradientMiddleColor, gradientFinalColor) from `EventCard` component.
+
+### Added
+
+- Added prop classNameBar to allow changing the styles of bar for the `EventCard` component.
+- Added class `outline-none` to `ModuleCard` to prevent outline when focus the button.
+- Added class `outline-none` to `ProgramCard` to prevent outline when focus the button.
+- Added class `outline-none` to `EventCard` to prevent outline when focus the button.
+- Added `onPressButton` callback to `EventCard` button.
+
+### Fixed
+
+- Fixed problem with `ModuleCard` and `ProgramCard` buttons displaying a black outline when pressed.
+- Fixed problem with `EventCard` not having a button callback.
 
 ## [3.4.4] 2022-01-24
 
