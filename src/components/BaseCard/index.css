@@ -1,0 +1,14 @@
+@layer components {
+  .pui-baseCard {
+    /* Adds the expected placeholder color for the bg */
+    @apply flex w-full pui-rounded-Card overflow-hidden pui-boxshadow-lg;
+  }
+
+  .pui-rounded-gradient-bar {
+    border-radius: var(--pui-rounded-gradient-bar, 0.75rem 0 0 0.75rem);
+  }
+
+  .gradient-bar {
+    @apply w-2.5 h-auto min-h-full block pui-rounded-gradient-bar;
+  }
+}

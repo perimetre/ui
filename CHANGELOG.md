@@ -25,6 +25,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [3.4.6] 2022-02-16
+
+### Added
+
+- Add Base card element
+
+### Fixed
+
+- fix HTML console error <p> wrapping a <div> element on module cards
+
 ## [3.4.5] 2022-01-26
 
 ### Changes
