@@ -58,7 +58,7 @@ export type BaseCardProps = {
  * @param props.classNameContent The content on the card className
  * @param props.classNameGradientImage The filter className
  * @param props.children The content of the card
-
+ 
  */
 export const BaseCard: React.FC<BaseCardProps> = ({
   imageGradient,
