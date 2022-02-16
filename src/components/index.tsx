@@ -22,3 +22,4 @@ export * from './WorkSessionCard';
 export * from './ResourcesCard';
 export * from './ExpertCard';
 export * from './ProgramCard';
+export * from './BaseCard';

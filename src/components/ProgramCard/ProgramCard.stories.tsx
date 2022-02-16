@@ -39,7 +39,7 @@ export default {
         type: 'text'
       }
     },
-    buttonpercentage: {
+    buttonPercentage: {
       defaultValue: 'View more CTA',
       control: {
         type: 'text'
