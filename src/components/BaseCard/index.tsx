@@ -31,7 +31,7 @@ export type BaseCardProps = {
    *
    * @default string
    */
-  className: string;
+  className?: string;
   /**
    * Extended classes for content
    *
@@ -78,7 +78,7 @@ export const BaseCard: React.FC<BaseCardProps> = ({
       <div className="flex flex-col w-full">
         {imageUrl && (
           <div className="w-full h-28 overflow-hidden relative">
-            <img src={imageUrl} alt={imageAlt} className="w-full h-full" />
+            <img src={imageUrl} alt={imageAlt} className="w-full h-full object-cover" />
 
             {imageGradient && (
               <div
