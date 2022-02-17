@@ -25,6 +25,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [3.4.7] 2022-02-17
+
+### Fixed
+
 - fix classname required prop on BaseCard
 - fix image fit on BaseCard
 - update version of fontawesome devs
