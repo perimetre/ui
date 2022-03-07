@@ -27,7 +27,9 @@ const htmlContent = `<h1>Heading 1</h1>
 <h5>Heading 5</h5>
 <p>When one chooses to walk the Way of the Mandalore, you are both <a href="#">hunter</a> and prey.</p>
 
-<p>Read more <a href="https://tailwindcss-typography.netlify.app/" target="_blank">here</a>.
+<p>Read more <a href="https://tailwindcss-typography.netlify.app/" target="_blank">here</a>.</p>
+
+<p>Send us an <a href="mailto:email@perimetre.co">email</a>.</p>
 
 <figure>
   <img src="https://images.unsplash.com/photo-1556740758-90de374c12ad?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1000&amp;q=80" alt="">
