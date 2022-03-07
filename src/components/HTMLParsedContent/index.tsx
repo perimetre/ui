@@ -33,41 +33,14 @@ export const HTMLParsedContent: React.FC<HTMLParsedContentProps> = ({
   sanitizerOptions,
   className,
   ...props
-}) => {
-  /**
-   * options
-   */
-  const options: HTMLReactParserOptions = {
-    /**
-     * Replace all links with https:// if needed
-     *
-     * @param domNode DomNode
-     */
-    replace: (domNode) => {
-      // Get all 'a' tags that have a href attribute
-      if (domNode.parent?.name === 'a' && domNode.parent?.attribs?.href) {
-        // If the link on the tag doesn't have a http:// or https:// return the new link
-        if (!new RegExp(['http://', 'https://'].join('|')).test(domNode.parent.attribs.href)) {
-          return (
-            <a {...domNode.parent.attribs} href={`https://${domNode.parent.attribs.href}`}>
-              {domNode.data}
-            </a>
-          );
-        }
-      }
-      return;
-    },
-    ...parserOptions
-  };
-
-  return content ? (
+}) =>
+  content ? (
     <div {...props} className={classnames('pui-prose', className)}>
       {parse(
         (sanitizerOptions
           ? DOMPurify.sanitize(content, sanitizerOptions)
           : DOMPurify.sanitize(content, { ADD_ATTR: ['target'] })) as string,
-        options
+        parserOptions
       )}
     </div>
   ) : null;
-};
