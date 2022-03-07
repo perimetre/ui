@@ -25,6 +25,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [3.4.8] 2022-03-07
+
+### Fixed
+
 - Reverted fix in HTMLParsedContent component to stop adding `https` in all `a` tags as that can lead to bugs on email links for instance.
 - Fixed critical packages vulnerabilities in dependencies
 
