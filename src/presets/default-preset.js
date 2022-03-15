@@ -1,12 +1,5 @@
 // Ref: https://tailwindcss.com/docs/presets#creating-a-preset
 module.exports = {
-  // Ref: https://tailwindcss.com/docs/hover-focus-and-other-states#default-variants-reference
-  variants: {
-    'pui-placeholder-color': ['after'],
-    extend: {
-      backgroundColor: ['after']
-    }
-  },
   // Default theme: https://github.com/tailwindlabs/tailwindcss/blob/master/stubs/defaultConfig.stub.js#L7
   theme: {
     extend: {
@@ -35,18 +28,24 @@ module.exports = {
         'pui-success': 'var(--pui-success-color, #34D399)'
       },
       keyframes: {
-        fadeInto: {
+        'fade-into': {
+          from: {
+            opacity: '0'
+          },
           to: {
             transform: 'translateY(0)',
             opacity: '1'
           }
         },
-        fadeIn: {
+        'fade-in': {
+          from: {
+            opacity: '0'
+          },
           to: {
             opacity: '1'
           }
         },
-        skeletonBackground: {
+        'skeleton-background': {
           from: {
             backgroundPosition: '100vw'
           },
@@ -54,6 +53,11 @@ module.exports = {
             backgroundPosition: '0vw'
           }
         }
+      },
+      animation: {
+        'fade-into': 'fade-into 0.5s ease-out 0s both',
+        'fade-in': 'fade-in 0.5s ease-out both',
+        'skeleton-background': 'skeleton-background 2s ease infinite, pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite'
       },
       /**
        * Returns the minWidth values
@@ -177,7 +181,6 @@ module.exports = {
   plugins: [
     require('@tailwindcss/typography'),
     require('@tailwindcss/line-clamp'),
-    require('../plugins/afterVariantPlugin'),
     require('../plugins/varPlaceholderColorPlugin'),
     require('../plugins/gapPlugin')
   ]

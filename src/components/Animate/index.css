@@ -2,31 +2,36 @@
   /* Keyframes for these animations are added in the default preset */
 
   .pui-animate-fadeIn {
-    animation: fadeIn 0.5s ease-out 0s both;
-    opacity: 0;
+    @apply animate-fade-in;
+    /* animation: fadeIn 0.5s ease-out 0s both; */
+    /* opacity: 0; */
   }
 
   .pui-animate-fadeUp {
-    animation: fadeInto 0.5s ease-out 0s both;
-    opacity: 0;
+    @apply animate-fade-into;
+    /* animation: fadeInto 0.5s ease-out 0s both; */
+    /* opacity: 0; */
     transform: translateY(1rem);
   }
 
   .pui-animate-fadeDown {
-    animation: fadeInto 0.5s ease-out 0s both;
-    opacity: 0;
+    @apply animate-fade-into;
+    /* animation: fadeInto 0.5s ease-out 0s both; */
+    /* opacity: 0; */
     transform: translateY(-1rem);
   }
 
   .pui-animate-fadeRight {
-    animation: fadeInto 0.5s ease-out 0s both;
-    opacity: 0;
+    @apply animate-fade-into;
+    /* animation: fadeInto 0.5s ease-out 0s both; */
+    /* opacity: 0; */
     transform: translateX(-1rem);
   }
 
   .pui-animate-fadeLeft {
-    animation: fadeInto 0.5s ease-out 0s both;
-    opacity: 0;
+    @apply animate-fade-into;
+    /* animation: fadeInto 0.5s ease-out 0s both; */
+    /* opacity: 0; */
     transform: translateX(1rem);
   }
 

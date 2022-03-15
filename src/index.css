@@ -31,3 +31,7 @@ html,
 body {
   @apply pui-font-family text-pui-paragraph-500;
 }
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

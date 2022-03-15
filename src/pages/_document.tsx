@@ -83,6 +83,7 @@ class MyDocument extends Document {
             type="font/woff2"
             crossOrigin="anonymous"
           />
+          <script src="https://cdn.tailwindcss.com"></script>
         </Head>
         <body>
           <Main />
