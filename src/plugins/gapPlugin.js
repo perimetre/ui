@@ -6,7 +6,7 @@ const nameClass = require('tailwindcss/lib/util/nameClass').default;
  * A plugin that outputs all tailwind colors as a class `color-{colorName}`. That class contains the color value as a css variable
  * that is named `--pui-placeholder-color`. Which can then be used by other components that expect a placeholder color.
  */
-module.exports = plugin(({ addUtilities, theme, variants }) => {
+module.exports = plugin(({ addUtilities, theme }) => {
   // The margin plugin was used as a base for this
   // Ref: https://github.com/tailwindlabs/tailwindcss/blob/master/src/plugins/margin.js
   const generators = [
@@ -62,5 +62,5 @@ module.exports = plugin(({ addUtilities, theme, variants }) => {
 
   const utilities = flatMap(generators, (generator) => flatMap(theme('margin'), generator));
 
-  addUtilities(utilities, variants('pui-gap'));
+  addUtilities(utilities);
 });

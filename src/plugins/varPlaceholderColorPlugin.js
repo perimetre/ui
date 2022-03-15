@@ -6,9 +6,6 @@ const makeColorUtilities = require('../utils/tailwindPlugin').makeColorUtilities
  * that is named `--pui-placeholder-color`. Which can then be used by other components that expect a placeholder color.
  */
 module.exports = plugin((pluginOpts) => {
-  const { addUtilities, variants } = pluginOpts;
-  addUtilities(
-    makeColorUtilities(pluginOpts, 'pui-color', '--pui-placeholder-color'),
-    variants('pui-placeholder-color')
-  );
+  const { addUtilities } = pluginOpts;
+  addUtilities(makeColorUtilities(pluginOpts, 'pui-color', '--pui-placeholder-color'));
 });

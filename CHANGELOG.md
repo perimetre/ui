@@ -19,6 +19,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### **Breaking changes**
 
+- Updated Tailwind version to 3.0.23, and postcss libraries.
+
 ### Changes
 
 ### Added
