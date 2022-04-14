@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 // also exported from '@storybook/react' if you can deal with breaking changes in 6.1
 import { Meta, Story } from '@storybook/react/types-6-0';
 import React from 'react';
@@ -5,6 +6,18 @@ import { colorOptions } from '../../prebuiltTailwindTheme';
 import classnames from 'classnames';
 import { CheckboxRadioInput, CheckboxRadioInputProps } from '.';
 import { puiColorClassnameMap } from '../../storybookMappers';
+
+const labels = {
+  string: 'Label text content',
+  jsx: (
+    <p>
+      Agree with{' '}
+      <a href="#" target="_blank" rel="noreferrer noopener" className="pui-link">
+        terms
+      </a>
+    </p>
+  )
+};
 
 export default {
   title: 'Components/Inputs/Checkbox Radio',
@@ -21,7 +34,16 @@ export default {
       }
     },
     label: {
-      defaultValue: 'Label content'
+      defaultValue: labels.string,
+      options: Object.keys(labels),
+      mapping: labels,
+      control: {
+        type: 'select',
+        labels: {
+          string: 'Text label',
+          jsx: 'JSX component'
+        }
+      }
     },
     defaultChecked: {
       control: {
@@ -68,6 +90,11 @@ Indeterminate.args = {
 export const NoLabel = Template.bind({});
 NoLabel.args = {
   label: undefined
+};
+
+export const JSXLabel = Template.bind({});
+JSXLabel.args = {
+  label: labels.jsx
 };
 
 export const WithHelp = Template.bind({});

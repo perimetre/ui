@@ -133,14 +133,12 @@
     @apply h-6 w-6 border-2;
   }
 
-  /* Style the checkbox label */
+  /* Style the checkbox label within any html tag */
   .pui-checkbox-label,
   .pui-radio-label {
-    /* Adds pointer cursor */
-    /* Don't allow selection */
     /* Make it flex */
     /* Align everything vertically */
-    @apply cursor-pointer select-none flex items-center;
+    @apply flex items-center;
 
     /* The input inside the label */
     input {
@@ -157,12 +155,26 @@
       }
     }
 
-    /* The label text wraper */
+    /* The label content wraper */
     span {
       /* Adds a margin left */
+      @apply ml-2;
+    }
+  }
+
+  /* Style the checkbox label within label tag (entire label tag clickable) */
+  .pui-checkbox-label-clickable,
+  .pui-radio-label-clickable {
+    /* Apply the base checkbox/radio styling */
+    /* Adds pointer cursor */
+    /* Don't allow selection */
+    @apply pui-checkbox-label pui-radio-label cursor-pointer select-none;
+
+    /* The label text content wraper */
+    span {
       /* Its color should use the 900 shade */
       /* Adds a little bit of letter spacing(just like text input label) */
-      @apply ml-2 text-pui-paragraph-900 tracking-wide;
+      @apply text-pui-paragraph-900 tracking-wide;
     }
   }
 }

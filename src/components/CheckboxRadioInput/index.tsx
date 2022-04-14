@@ -21,9 +21,9 @@ export type CheckboxRadioInputProps = React.DetailedHTMLProps<
    */
   indeterminate?: boolean;
   /**
-   * If provided, displays a label above the input
+   * If provided, displays a label above the input. If value provided is of type string, the content will be parsed as rich text/html content
    */
-  label?: string;
+  label?: React.ReactNode;
   /**
    * If provided, displays a help text under the input
    */
@@ -95,14 +95,22 @@ export const CheckboxRadioInput: React.FC<CheckboxRadioInputProps> = ({
     </div>
   );
 
-  return label ? (
+  return typeof label === 'string' ? (
     <div>
-      <label className={`${type === 'checkbox' ? 'pui-checkbox-label' : 'pui-radio-label'}`}>
+      <label className={`${type === 'checkbox' ? 'pui-checkbox-label-clickable' : 'pui-radio-label-clickable'}`}>
         {input}
         <span>
           <HTMLParsedContent content={label} className="max-w-none" />
         </span>
       </label>
+      {bottom}
+    </div>
+  ) : label ? (
+    <div>
+      <div className={`${type === 'checkbox' ? 'pui-checkbox-label' : 'pui-radio-label'}`}>
+        {input}
+        <span>{label}</span>
+      </div>
       {bottom}
     </div>
   ) : (
