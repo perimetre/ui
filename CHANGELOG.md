@@ -25,6 +25,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [3.4.9] 2022-04-14
+
+### Added
+
+- Added option to set values of type `React.ReactNode`, in addition to currently accepted type `string`, to `label` prop of `CheckboxRadioInput` component.
+
 ## [3.4.8] 2022-03-07
 
 ### Fixed
