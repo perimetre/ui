@@ -25,6 +25,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [3.4.10] 2022-04-22
+
+### Fixed
+
 - Add a z-index to the modal header when absolute prop is true
 
 ## [3.4.9] 2022-04-14
