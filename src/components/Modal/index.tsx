@@ -88,7 +88,7 @@ export const Modal: React.FC<ModalProps> = ({
     <ReactPortal selector="#modal-root">
       <div className={classnames('pui-modal', { open: isOpen })}>
         <div className="pui-modal-container">
-          <div className={classnames('pui-modal-header', { absolute: isHeaderAbsolute })}>
+          <div className={classnames('pui-modal-header', { 'absolute z-30': isHeaderAbsolute })}>
             <h3>{title}</h3>
             <button className="pui-btn-icon text-pui-paragraph-900 p-4" onClick={onToggle}>
               {/* Adds a close icon */}
