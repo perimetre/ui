@@ -22,10 +22,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updated Tailwind version to 3.0.23, and postcss libraries.
 
 ### Changes
-
+- `postcss-combine-duplicated-selectors` plugin removed.
 ### Added
 
 ### Fixed
+- `fade-in` animations
 
 ## [3.4.10] 2022-04-22
 

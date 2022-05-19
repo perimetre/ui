@@ -5,7 +5,6 @@ module.exports = {
     tailwindcss: {},
     // Other plugins come between tailwind and autoprefixer
     'postcss-combine-media-query': {}, // Media query must come before duplicated-selectors
-    'postcss-combine-duplicated-selectors': {},
     'postcss-flexbugs-fixes': {}, // Required to use the storybook beta with postcss8 and to use with nextjs
     // autoprefixer should always be the last one
     // postcss-preset-env is required to use with nextjs, and it already uses autoprefixer
