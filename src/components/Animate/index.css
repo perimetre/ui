@@ -3,35 +3,25 @@
 
   .pui-animate-fadeIn {
     @apply animate-fade-in;
-    /* animation: fadeIn 0.5s ease-out 0s both; */
-    /* opacity: 0; */
   }
 
   .pui-animate-fadeUp {
     @apply animate-fade-into;
-    /* animation: fadeInto 0.5s ease-out 0s both; */
-    /* opacity: 0; */
     transform: translateY(1rem);
   }
 
   .pui-animate-fadeDown {
     @apply animate-fade-into;
-    /* animation: fadeInto 0.5s ease-out 0s both; */
-    /* opacity: 0; */
     transform: translateY(-1rem);
   }
 
   .pui-animate-fadeRight {
     @apply animate-fade-into;
-    /* animation: fadeInto 0.5s ease-out 0s both; */
-    /* opacity: 0; */
     transform: translateX(-1rem);
   }
 
   .pui-animate-fadeLeft {
     @apply animate-fade-into;
-    /* animation: fadeInto 0.5s ease-out 0s both; */
-    /* opacity: 0; */
     transform: translateX(1rem);
   }
 
