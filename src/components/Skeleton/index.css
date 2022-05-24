@@ -1,8 +1,6 @@
 @layer components {
   .pui-skeleton {
-    @apply pui-border-radius;
-
-    animation: skeletonBackground 2s ease infinite, pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    @apply pui-border-radius animate-skeleton-background;
 
     background: linear-gradient(
       to right,
