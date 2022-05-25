@@ -1,6 +1,6 @@
 @layer components {
   .pui-badge {
-    @apply relative inline-flex align-middle flex-shrink-0;
+    @apply relative inline-flex align-middle shrink-0;
   }
 
   .pui-badge-content {

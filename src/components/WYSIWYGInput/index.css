@@ -111,7 +111,7 @@
       /* If it overflows, adds an allipsis */
       /* If it overflows, don't wrap */
       /* If it overflows, don't add a scrollbar */
-      @apply h-full text-pui-paragraph-300 overflow-ellipsis whitespace-nowrap overflow-hidden;
+      @apply h-full text-pui-paragraph-300 text-ellipsis whitespace-nowrap overflow-hidden;
       overflow-wrap: normal;
     }
   }

@@ -4,13 +4,15 @@ The lib is only compatible with PostCSS 7(Read more below). And it is required t
 
 You will need:
 
-- tailwindcss@tailwindcss/postcss7-compat
-- postcss@^7
-- autoprefixer@^9
-- postcss-import@12.0.1
-- postcss-nested@4.2.3
+- tailwindcss@latest
+- postcss@^8.4.14
+- autoprefixer@10.4.5
+- postcss-flexbugs-fixes@^5.0.2
+- postcss-import@^14.1.0
+- postcss-preset-env@^7.4.4
 - postcss-combine-media-query@1.0.1
-- postcss-combine-duplicated-selectors@9.4.0
+
+> Locked `autoprefixer@10.4.5` and `postcss-preset-env@7.4.4` because of [this issue](https://github.com/tailwindlabs/tailwindcss/issues/8256). When they fix the issue that causes the warnings we can uninstall `autoprefixer` and update `postcss-preset-env` to latest.
 
 ### It is recommended that you read and understand all of these before starting, they are tailwind's core concepts:
 
@@ -27,23 +29,31 @@ You will need:
 ### Setting up tailwind
 
 1. Go to [Tailwind.css getting started](https://tailwindcss.com/docs/installation), and follow the instructions.
-1. Here's a "do it all" npm install command that installs the correct/expected versions:
+1. Here are the npm install commands to installs the correct/expected versions:
+
+> if your project has postcss-combine-duplicated-selectors and/or postcss-nested installed, make sure to remove it before running the commands bellow
+
    ```bash
-   npm install tailwindcss@latest postcss@latest postcss-import@latest postcss-nested@5.0.1 postcss-combine-media-query@latest postcss-combine-duplicated-selectors@latest postcss-preset-env@latest postcss-flexbugs-fixes@latest
+   npm i autoprefixer@10.4.5
    ```
-1. Proceed the tailwind setup as usual. Following that instruction page.
+   ```bash
+   npm i tailwindcss@latest postcss@latest postcss-import@latest postcss-preset-env@7.4.4 @perimetre/ui@latest
+   ```
+
+3. Proceed the tailwind setup as usual. Following that [instruction page](https://tailwindcss.com/docs/installation).
 
 ### Adding the lib to tailwind.
 
 1. Edit the `tailwind.config.js` file, adding the following `preset`:
    ```diff
    module.exports = {
-   +  purge: false, // Turning tailwindcss purge off because we're customizing the execution order in postcss.config.js
-      darkMode: false, // or 'media' or 'class'
+   +  content: [
+   +  './src/pages/**/*.{js,ts,jsx,tsx}',
+   +  './src/components/**/*.{js,ts,jsx,tsx}',
+   +  './node_modules/@perimetre/ui/**/*.{js,ts,jsx,tsx}',
+   +  '!./node_modules/@perimetre/ui/**/storybookMappers.tsx' // ignore the storybookMappers.tsx inside @perimetre/ui because that should only be used by the ui package itself
+   +  ],
       theme: {
-         extend: {}
-      },
-      variants: {
          extend: {}
       },
       plugins: [],
@@ -56,39 +66,20 @@ You will need:
    module.exports = {
       plugins: {
    +     'postcss-import': {}, // Import must come before tailwind
+   +     'postcss-nesting': {},
          tailwindcss: {},
    +     // Other plugins come after tailwind and before postcss-purgecss + autoprefixer
-   +     'postcss-nested': {},
    +     'postcss-combine-media-query': {}, // Media query must come before duplicated-selectors
-   +     'postcss-combine-duplicated-selectors': {},
    +     'postcss-flexbugs-fixes': {}, // postcss-flexbugs-fixes is required to use with nextjs
-   +     // postcss-purgecss should always be last before autoprefixer and only run in production
-   +     ...(process.env.NODE_ENV === 'production' && {
-   +       '@fullhuman/postcss-purgecss': {
-   +         defaultExtractor: (content) => {
-   +           const extractor = require('tailwindcss/lib/lib/purgeUnusedStyles').tailwindExtractor;
-   +           const preserved = [...extractor(content)];
-   +           return preserved;
-   +         },
-   +         content: [
-   +           // All project components
-   +           './pages/**/*.{js,ts,jsx,tsx}',
-   +           './src/components/**/*.{js,ts,jsx,tsx}',
-   +           // Consider the components in the ui
-   +           './node_modules/@perimetre/ui/**/*.{js,ts,jsx,tsx,css}',
-   +           '!./node_modules/@perimetre/ui/**/storybookMappers.tsx' // ignore the storybookMappers.tsx inside @perimetre/ui because that should only be used by the ui package itself
-   +         ]
-   +       }
-   +     }),
-   +     // autoprefixer should always be the last one
-   +     // postcss-preset-env is required to use with nextjs, and it already uses autoprefixer
+
+   +     // postcss-preset-env is required to use with nextjs, and it already uses autoprefixer link for details: https://nextjs.org/docs/advanced-features/customizing-postcss-config#customizing-plugins
    +     'postcss-preset-env': {
    +       autoprefixer: {
    +         flexbox: 'no-2009'
    +       },
    +       stage: 3,
    +       features: {
-   +         'custom-properties': false,
+   +         'custom-properties': false, // disable nesting and let tailwindcss/nesting handle it for you instead
    +         'nesting-rules': false
    +       }
    +     }
