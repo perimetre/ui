@@ -13,7 +13,7 @@
     /* Adds a white background */
     /* Adds a gray border */
     /* Allow for color transition */
-    @apply appearance-none inline-block align-middle select-none cursor-pointer flex-shrink-0 bg-white border-gray-400 transition-colors;
+    @apply appearance-none inline-block align-middle select-none cursor-pointer shrink-0 bg-white border-gray-400 transition-colors;
 
     /* Don't allow the browser to do any color adjustments */
     color-adjust: exact;

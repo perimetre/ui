@@ -130,7 +130,7 @@
     /* Put items in the center */
     /* Justify items in the center */
     /* Adds a gap between items(the icon and the text) */
-    @apply flex-grow flex flex-col items-center justify-center space-y-4;
+    @apply grow flex flex-col items-center justify-center space-y-4;
   }
 
   /* The text that contains the info message or the file name */

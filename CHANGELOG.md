@@ -25,6 +25,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [4.0.1] 2022-05-25
+
+### Changes
+
+- Tailwindcss utilities classes alias changed
+- Setup doc updated
+
+## [4.0.0] 2022-05-19
+
+### **Breaking changes**
+
+- Updated Tailwind version to 3.0.23, and postcss libraries.
+
+### Changes
+
+- `postcss-combine-duplicated-selectors` plugin removed.
+
+### Fixed
+
+- `fade-in` animations
+
 ## [3.4.10] 2022-04-22
 
 ### Fixed

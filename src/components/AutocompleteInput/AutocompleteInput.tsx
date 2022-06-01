@@ -135,7 +135,7 @@ export const AutocompleteInput = <T extends AutocompleteItemType = AutocompleteI
                         onMouseMove={onMouseMove as any}
                       >
                         {/* Add back the padding only in this element, and allow it to grow */}
-                        <span {...optionProps} className="px-2 py-4 flex-grow">
+                        <span {...optionProps} className="px-2 py-4 grow">
                           {item.label}
                         </span>
                         {/* Render the buttons */}

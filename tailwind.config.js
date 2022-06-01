@@ -1,7 +1,6 @@
 // Ref: https://tailwindcss.com/docs/configuration
 
 module.exports = {
-  purge: false,
-  darkMode: false, // or 'media' or 'class'
+  content: ['./src/**/*.{js,ts,jsx,tsx,css}', './.storybook/**/*.{js,ts,jsx,tsx,css}'],
   presets: [require('./src/presets/default-preset')]
 };
