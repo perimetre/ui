@@ -19,10 +19,16 @@ export default {
       defaultValue: 'This is my modal'
     },
     size: {
-      defaultValue: '1/3vw',
+      defaultValue: '2/5vw',
       control: {
         type: 'select',
         options: minWidthOptions
+      }
+    },
+    paddingContent: {
+      defaultValue: 'p-4',
+      control: {
+        type: 'text'
       }
     },
     content: {

@@ -24,6 +24,18 @@ export type ModalProps = {
    */
   title?: string;
   /**
+   * Whether or not close button should be displayed
+   */
+  closeButton?: string;
+  /**
+   * Define a padding for content container
+   */
+  paddingContent?: string;
+  /**
+   * Add css classes to content container
+   */
+  containerClass?: string;
+  /**
    * A component that if provided will add a "actions" footer
    */
   actions?: () => React.ReactNode;
@@ -39,6 +51,9 @@ export type ModalProps = {
  * @param props.title A title string
  * @param props.actions A component that if provided will add a "actions" footer
  * @param props.children The provided children content
+ * @param props.closeButton Whether or not close button should be displayed
+ * @param props.containerClass Add css classes to content container
+ * @param props.paddingContent Define a padding for content container
  */
 export const Modal: React.FC<ModalProps> = ({
   onToggle,
@@ -46,6 +61,9 @@ export const Modal: React.FC<ModalProps> = ({
   isHeaderAbsolute,
   title,
   actions,
+  paddingContent = 'p-4',
+  containerClass,
+  closeButton = true,
   children
 }) => {
   const [isOpen, setIsOpen] = useState(!!isOpenProps);
@@ -88,14 +106,16 @@ export const Modal: React.FC<ModalProps> = ({
     <ReactPortal selector="#modal-root">
       <div className={classnames('pui-modal', { open: isOpen })}>
         <div className="pui-modal-container">
-          <div className={classnames('pui-modal-header', { 'absolute z-30': isHeaderAbsolute })}>
-            <h3>{title}</h3>
-            <button className="pui-btn-icon text-pui-paragraph-900 p-4" onClick={onToggle}>
-              {/* Adds a close icon */}
-              <CrossIcon className="pui-animate-scaleHover-target" />
-            </button>
+          <div className={classnames('pui-modal-header ', { 'absolute z-30': isHeaderAbsolute })}>
+            <h3 className={paddingContent}>{title}</h3>
+            {/* Adds a close icon */}
+            {closeButton && (
+              <button className="pui-btn-icon text-pui-paragraph-900 px-6 py-4 " onClick={onToggle}>
+                <CrossIcon className="pui-animate-scaleHover-target" />
+              </button>
+            )}
           </div>
-          <div className="pui-modal-content">{children}</div>
+          <div className={classnames('pui-modal-content', containerClass, paddingContent)}>{children}</div>
           {actions && <div className="pui-modal-actions">{actions()}</div>}
         </div>
       </div>
