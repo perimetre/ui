@@ -25,12 +25,19 @@ export default {
         options: minWidthOptions
       }
     },
-    paddingContent: {
-      defaultValue: 'p-4',
+    isClosable: {
+      defaultValue: true,
       control: {
-        type: 'text'
+        type: 'boolean'
       }
     },
+    removePadding: {
+      defaultValue: false,
+      control: {
+        type: 'boolean'
+      }
+    },
+    variant: { defaultValue: 'Default' },
     content: {
       defaultValue: 'A modal content',
       control: {
