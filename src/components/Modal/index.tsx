@@ -24,15 +24,15 @@ export type ModalProps = {
    */
   title?: string;
   /**
-   * Whether or not close button should be displayed
+   * If true the close button won't be displayed and user won't be able to close modal by any means
    */
-  isClosable?: string;
+  isClosable?: boolean;
   /**
    * What style of the componenteZ should be displayed
    */
-  variant?: 'Default' | 'New';
+  variant?: 'default' | 'new';
   /**
-   * Whether the content container should be removed
+   * Whether the padding of content container should be removed
    */
   removePadding?: boolean;
   /**
@@ -51,9 +51,9 @@ export type ModalProps = {
  * @param props.title A title string
  * @param props.actions A component that if provided will add a "actions" footer
  * @param props.children The provided children content
- * @param props.isClosable Whether or not modal can be closed
+ * @param props.isClosable If true the close button won't be displayed and user won't be able to close modal by any means
  * @param props.variant What style should be displayed
- * @param props.removePadding Whether content container should be removed
+ * @param props.removePadding Whether the padding of content container should be removed
  */
 export const Modal: React.FC<ModalProps> = ({
   onToggle,
@@ -105,7 +105,7 @@ export const Modal: React.FC<ModalProps> = ({
   return (
     <ReactPortal selector="#modal-root">
       <div className={classnames('pui-modal', { open: isOpen })}>
-        <div className={classnames('pui-modal-container', variant)}>
+        <div className={classnames('pui-modal-container', { 'new': variant === 'new' })}>
           <div className={classnames('pui-modal-header ', { 'absolute z-30': isHeaderAbsolute })}>
             <h3 className={classnames(removePadding ? 'p-0' : 'p-4')}>{title}</h3>
             {/* Adds a close icon */}
