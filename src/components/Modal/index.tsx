@@ -16,7 +16,7 @@ export type ModalProps = {
   onToggle?: () => void;
   /**
    * Whether or not the top section with the close button should be absolute or not.
-   * If yes. It won't push the content down and the hasPadding should be set on the children component.
+   * If yes. It won't push the content down and the padding should be set on the children component.
    */
   isHeaderAbsolute?: boolean;
   /**
@@ -62,7 +62,7 @@ export const Modal: React.FC<ModalProps> = ({
   title,
   actions,
   removePadding,
-  variant = 'Default',
+  variant = 'default',
   isClosable = true,
   children
 }) => {
