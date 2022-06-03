@@ -19,12 +19,25 @@ export default {
       defaultValue: 'This is my modal'
     },
     size: {
-      defaultValue: '1/3vw',
+      defaultValue: '2/5vw',
       control: {
         type: 'select',
         options: minWidthOptions
       }
     },
+    isClosable: {
+      defaultValue: true,
+      control: {
+        type: 'boolean'
+      }
+    },
+    removePadding: {
+      defaultValue: false,
+      control: {
+        type: 'boolean'
+      }
+    },
+    variant: { defaultValue: 'Default' },
     content: {
       defaultValue: 'A modal content',
       control: {

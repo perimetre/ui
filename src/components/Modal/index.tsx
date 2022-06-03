@@ -24,6 +24,18 @@ export type ModalProps = {
    */
   title?: string;
   /**
+   * If true close button won't be displayed and the user won't be able to close modal by any means
+   */
+  isClosable?: boolean;
+  /**
+   * What style of the component should be used
+   */
+  variant?: 'default' | 'new';
+  /**
+   * Whether the padding of content container should be removed or not
+   */
+  removePadding?: boolean;
+  /**
    * A component that if provided will add a "actions" footer
    */
   actions?: () => React.ReactNode;
@@ -37,6 +49,9 @@ export type ModalProps = {
  * @param props.onToggle Callback to update the isOpen state
  * @param props.isHeaderAbsolute Whether or not the top section with the close button should be absolute or not.
  * @param props.title A title string
+ * @param props.isClosable If true close button won't be displayed and the user won't be able to close modal by any means
+ * @param props.variant What style of the component should be used
+ * @param props.removePadding Whether the padding of content container should be removed or not
  * @param props.actions A component that if provided will add a "actions" footer
  * @param props.children The provided children content
  */
@@ -46,6 +61,9 @@ export const Modal: React.FC<ModalProps> = ({
   isHeaderAbsolute,
   title,
   actions,
+  removePadding,
+  variant = 'default',
+  isClosable = true,
   children
 }) => {
   const [isOpen, setIsOpen] = useState(!!isOpenProps);
@@ -72,7 +90,7 @@ export const Modal: React.FC<ModalProps> = ({
      */
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const escape = (e: any) => {
-      if (e.keyCode === 27 && isOpen && onToggle) {
+      if (e.keyCode === 27 && isOpen && onToggle && isClosable) {
         onToggle();
       }
     };
@@ -82,20 +100,22 @@ export const Modal: React.FC<ModalProps> = ({
     return () => {
       document.removeEventListener('keydown', escape);
     };
-  }, [onToggle, isOpen]);
+  }, [onToggle, isOpen, isClosable]);
 
   return (
     <ReactPortal selector="#modal-root">
       <div className={classnames('pui-modal', { open: isOpen })}>
-        <div className="pui-modal-container">
-          <div className={classnames('pui-modal-header', { 'absolute z-30': isHeaderAbsolute })}>
-            <h3>{title}</h3>
-            <button className="pui-btn-icon text-pui-paragraph-900 p-4" onClick={onToggle}>
-              {/* Adds a close icon */}
-              <CrossIcon className="pui-animate-scaleHover-target" />
-            </button>
+        <div className={classnames('pui-modal-container', { new: variant === 'new' })}>
+          <div className={classnames('pui-modal-header ', { 'absolute z-30': isHeaderAbsolute })}>
+            <h3 className={classnames(removePadding ? 'p-0' : 'p-4')}>{title}</h3>
+            {/* Adds a close icon */}
+            {isClosable && (
+              <button className="pui-btn-icon text-pui-paragraph-900 px-6 py-4" onClick={onToggle}>
+                <CrossIcon className="pui-animate-scaleHover-target" />
+              </button>
+            )}
           </div>
-          <div className="pui-modal-content">{children}</div>
+          <div className={classnames('pui-modal-content', removePadding ? 'p-0' : 'p-4')}>{children}</div>
           {actions && <div className="pui-modal-actions">{actions()}</div>}
         </div>
       </div>

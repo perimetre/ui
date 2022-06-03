@@ -1,4 +1,5 @@
 @layer components {
+
   /* The modal wrapper */
   .pui-modal {
     /* It starts hidden */
@@ -42,6 +43,10 @@
     /* Adds the default border radius */
     /* Animate the fadeUp effect */
     @apply relative shadow-xl my-0 mx-auto md:mt-14 bg-white max-w-full min-w-screen-90 md:min-w-initial pui-border-radius pui-animate-fadeUp;
+    /* Define a border radius that matches with new design */
+    &.new {
+      border-radius: 20px 45px 20px 20px;
+    }
   }
 
   .pui-modal-header {
@@ -66,13 +71,13 @@
       /* Apply a small padding */
       /* It should have a bolder content */
       /* Text size is xl */
-      @apply p-4 font-bold text-xl;
+      @apply font-bold text-xl;
     }
   }
 
   .pui-modal-content {
-    /* Add a small padding inside the card */
-    @apply p-4;
+    /* Apply a minimum hight for modal*/
+    min-height: 56px;
   }
 
   /* The "actions footer" */

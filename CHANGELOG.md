@@ -25,6 +25,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [4.1.0] 2022-06-03
+
+### Added
+
+- Updated the layout of modal component
+- Added props variant to choose beteween default or new layout
+- Added props removePadding to modal component to allow custom styling of its child
+
 ## [4.0.1] 2022-05-25
 
 ### Changes
