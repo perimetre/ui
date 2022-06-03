@@ -33,12 +33,13 @@ You will need:
 
 > if your project has postcss-combine-duplicated-selectors and/or postcss-nested installed, make sure to remove it before running the commands bellow
 
-   ```bash
-   npm i autoprefixer@10.4.5
-   ```
-   ```bash
-   npm i tailwindcss@latest postcss@latest postcss-import@latest postcss-preset-env@7.4.4 @perimetre/ui@latest
-   ```
+```bash
+npm i autoprefixer@10.4.5
+```
+
+```bash
+npm i tailwindcss@latest postcss@latest postcss-import@latest postcss-preset-env@7.4.4 @perimetre/ui@latest
+```
 
 3. Proceed the tailwind setup as usual. Following that [instruction page](https://tailwindcss.com/docs/installation).
 
@@ -62,6 +63,7 @@ You will need:
    };
    ```
 1. Edit the `postcss.config.js` file, adding the following `preset`:
+
    ```diff
    module.exports = {
       plugins: {
@@ -87,6 +89,7 @@ You will need:
       }
    };
    ```
+
 1. [Check out the preset to learn more about the values](../src/presets/default-preset.js)
 
 ### Importing the font
