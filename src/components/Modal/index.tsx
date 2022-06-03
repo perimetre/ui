@@ -24,15 +24,15 @@ export type ModalProps = {
    */
   title?: string;
   /**
-   * If true the close button won't be displayed and user won't be able to close modal by any means
+   * If true close button won't be displayed and the user won't be able to close modal by any means
    */
   isClosable?: boolean;
   /**
-   * What style of the componenteZ should be displayed
+   * What style of the component should be used
    */
   variant?: 'default' | 'new';
   /**
-   * Whether the padding of content container should be removed
+   * Whether the padding of content container should be removed or not
    */
   removePadding?: boolean;
   /**
@@ -49,11 +49,11 @@ export type ModalProps = {
  * @param props.onToggle Callback to update the isOpen state
  * @param props.isHeaderAbsolute Whether or not the top section with the close button should be absolute or not.
  * @param props.title A title string
+ * @param props.isClosable If true close button won't be displayed and the user won't be able to close modal by any means
+ * @param props.variant What style of the component should be used
+ * @param props.removePadding Whether the padding of content container should be removed or not
  * @param props.actions A component that if provided will add a "actions" footer
  * @param props.children The provided children content
- * @param props.isClosable If true the close button won't be displayed and user won't be able to close modal by any means
- * @param props.variant What style should be displayed
- * @param props.removePadding Whether the padding of content container should be removed
  */
 export const Modal: React.FC<ModalProps> = ({
   onToggle,
@@ -105,7 +105,7 @@ export const Modal: React.FC<ModalProps> = ({
   return (
     <ReactPortal selector="#modal-root">
       <div className={classnames('pui-modal', { open: isOpen })}>
-        <div className={classnames('pui-modal-container', { 'new': variant === 'new' })}>
+        <div className={classnames('pui-modal-container', { new: variant === 'new' })}>
           <div className={classnames('pui-modal-header ', { 'absolute z-30': isHeaderAbsolute })}>
             <h3 className={classnames(removePadding ? 'p-0' : 'p-4')}>{title}</h3>
             {/* Adds a close icon */}
