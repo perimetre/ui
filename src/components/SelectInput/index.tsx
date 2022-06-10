@@ -61,9 +61,11 @@ export const SelectInput: React.FC<SelectInputProps> = ({
   ...props
 }) => (
   <div>
-    <label className="pui-label-input" htmlFor={props.id}>
-      {label}
-    </label>
+    {label && (
+      <label className="pui-label-input" htmlFor={props.id}>
+        {label}
+      </label>
+    )}
     <div
       className={classnames('pui-select-input-container', containerClassName, {
         'pui-select-input-icon': !multiple,

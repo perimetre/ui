@@ -95,6 +95,8 @@ export const CheckboxRadioInput: React.FC<CheckboxRadioInputProps> = ({
     </div>
   );
 
+  // ! TODO: label should be a simple string, at most render the string as html but perhaps even that can be removed and done instead in
+  // !       the project that imports this (set a label tag separate from this component when more customization is needed and use htmlFor)
   return typeof label === 'string' ? (
     <div>
       <label className={`${type === 'checkbox' ? 'pui-checkbox-label-clickable' : 'pui-radio-label-clickable'}`}>
