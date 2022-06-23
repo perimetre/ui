@@ -3,7 +3,7 @@ import React from 'react';
 import { AttentionIcon, CrossIcon } from '../Icons';
 import { AutocompleteItemType, AutocompleteSettings, useAutocompleteInput } from './hook';
 
-export type AutocompleteInputProps<T extends AutocompleteItemType = AutocompleteItemType> = Omit<
+export type AutocompleteDropdownInputProps<T extends AutocompleteItemType = AutocompleteItemType> = Omit<
   React.InputHTMLAttributes<HTMLInputElement>,
   'onChange'
 > &
@@ -65,7 +65,7 @@ export const AutocompleteDropdownInput = <T extends AutocompleteItemType = Autoc
   renderButtons,
   // Input props
   ...inputProps
-}: AutocompleteInputProps<T>) => {
+}: AutocompleteDropdownInputProps<T>) => {
   const {
     isOpen,
     filteredOptions,

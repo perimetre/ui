@@ -1,7 +1,7 @@
 // also exported from '@storybook/react' if you can deal with breaking changes in 6.1
 import { Meta, Story } from '@storybook/react/types-6-0';
 import React from 'react';
-import { AutocompleteDropdownInput, AutocompleteInputProps } from './AutocompleteDropdownInput';
+import { AutocompleteDropdownInput, AutocompleteDropdownInputProps } from './AutocompleteDropdownInput';
 import { MenuIcon } from '../Icons';
 
 export default {
@@ -20,7 +20,7 @@ export default {
  *
  * @param props the story props
  */
-const Template: Story<AutocompleteInputProps> = (props) => (
+const Template: Story<AutocompleteDropdownInputProps> = (props) => (
   <AutocompleteDropdownInput
     {...props}
     id="storybook-autocomplete"
@@ -33,7 +33,7 @@ const Template: Story<AutocompleteInputProps> = (props) => (
   />
 );
 
-export const AutocompleteDropdown = Template.bind({});
+export const Dropdown = Template.bind({});
 
 export const DropdownSingleSelect = Template.bind({});
 DropdownSingleSelect.args = {
