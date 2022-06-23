@@ -1,15 +1,15 @@
 // also exported from '@storybook/react' if you can deal with breaking changes in 6.1
 import { Meta, Story } from '@storybook/react/types-6-0';
 import React from 'react';
-import { AutocompleteInput, AutocompleteInputProps } from './AutocompleteInput';
+import { AutocompleteDropdownInput, AutocompleteInputProps } from './AutocompleteDropdownInput';
 import { MenuIcon } from '../Icons';
 
 export default {
   title: 'Components/Inputs/Autocomplete',
-  component: AutocompleteInput,
+  component: AutocompleteDropdownInput,
   argTypes: {
     label: {
-      defaultValue: 'Autocomplete Input'
+      defaultValue: 'Autocomplete Dropdown Input'
     },
     onItemToggle: { action: 'onItemToggle' }
   }
@@ -21,7 +21,7 @@ export default {
  * @param props the story props
  */
 const Template: Story<AutocompleteInputProps> = (props) => (
-  <AutocompleteInput
+  <AutocompleteDropdownInput
     {...props}
     id="storybook-autocomplete"
     options={Array(10)
@@ -33,10 +33,10 @@ const Template: Story<AutocompleteInputProps> = (props) => (
   />
 );
 
-export const Autocomplete = Template.bind({});
+export const AutocompleteDropdown = Template.bind({});
 
-export const SingleSelect = Template.bind({});
-SingleSelect.args = {
+export const DropdownSingleSelect = Template.bind({});
+DropdownSingleSelect.args = {
   isSingleSelect: true
 };
 
@@ -45,8 +45,8 @@ SingleSelect.args = {
  *
  * @param props the story props
  */
-const WithButtonsTemplate: Story = (props) => (
-  <AutocompleteInput
+const DropdownWithButtonsTemplate: Story = (props) => (
+  <AutocompleteDropdownInput
     {...props}
     id="storybook-autocomplete"
     options={Array(10)
@@ -67,4 +67,4 @@ const WithButtonsTemplate: Story = (props) => (
   />
 );
 
-export const WithButtons = WithButtonsTemplate.bind({});
+export const DropdownWithButtons = DropdownWithButtonsTemplate.bind({});

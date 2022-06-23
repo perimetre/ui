@@ -45,7 +45,7 @@ export type AutocompleteInputProps<T extends AutocompleteItemType = Autocomplete
  * @param props.renderButtons The render function used to render the option buttons
  * @param props.displaySelected Keep selected items in dropdown list regardless.
  */
-export const AutocompleteInput = <T extends AutocompleteItemType = AutocompleteItemType>({
+export const AutocompleteDropdownInput = <T extends AutocompleteItemType = AutocompleteItemType>({
   // Hook settings
   options = [],
   initialSelectedItems,
