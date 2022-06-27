@@ -25,6 +25,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [5.0.0] 2022-06-27
+
+### Added
+
+- Added a new Autocomplete Input
+
+### Changes
+
+- Renamed existing Autocomplete Input to AutoComplete Dropdown
+
 ## [4.1.1] 2022-06-10
 
 ### Fixed
