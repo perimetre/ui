@@ -10,7 +10,8 @@ export default {
     label: {
       defaultValue: 'Autocomplete Input'
     },
-    onItemToggle: { action: 'onItemToggle' }
+    onItemToggle: { action: 'onItemToggle' },
+    fetchMore: { action: 'fetchMore' }
   }
 } as Meta;
 
@@ -19,19 +20,23 @@ export default {
  *
  * @param props the story props
  */
-const Template: Story<AutocompleteInputProps> = (props) => (
-  <AutocompleteInput
-    {...props}
-    id="storybook-autocomplete"
-    options={Array(10)
-      .fill(null)
-      .map((_, i) => ({
-        id: i,
-        label: `Option ${i + 1}`
-      }))}
-    itemToString={(item) => (item ? item.label : '')}
-    filterItem={(item, inputValue) => item.label.toLowerCase().includes(inputValue.toLowerCase())}
-  />
-);
+const Template: Story<AutocompleteInputProps> = (props) => {
+  const options = Array(10)
+    .fill(null)
+    .map((_, i) => ({
+      id: i,
+      label: `Option ${i + 1}`
+    }));
+  return (
+    <AutocompleteInput
+      {...props}
+      id="storybook-autocomplete"
+      options={options}
+      itemToString={(item) => (item ? item.label : '')}
+      filterItem={(item, inputValue) => item.label.toLowerCase().includes(inputValue.toLowerCase())}
+      initialSelectedItem={options[0]}
+    />
+  );
+};
 
 export const Input = Template.bind({});
