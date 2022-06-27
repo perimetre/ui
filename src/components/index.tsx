@@ -1,4 +1,5 @@
 export * from './Drawer';
+export * from './AutocompleteDropdownInput';
 export * from './AutocompleteInput';
 export * from './TextInput';
 export * from './CheckboxRadioInput';

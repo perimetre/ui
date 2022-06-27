@@ -1,8 +1,7 @@
 // also exported from '@storybook/react' if you can deal with breaking changes in 6.1
 import { Meta, Story } from '@storybook/react/types-6-0';
 import React from 'react';
-import { AutocompleteInput, AutocompleteInputProps } from './AutocompleteInput';
-import { MenuIcon } from '../Icons';
+import { AutocompleteInput, AutocompleteInputProps } from './index';
 
 export default {
   title: 'Components/Inputs/Autocomplete',
@@ -11,7 +10,8 @@ export default {
     label: {
       defaultValue: 'Autocomplete Input'
     },
-    onItemToggle: { action: 'onItemToggle' }
+    onItemToggle: { action: 'onItemToggle' },
+    fetchMore: { action: 'fetchMore' }
   }
 } as Meta;
 
@@ -20,51 +20,23 @@ export default {
  *
  * @param props the story props
  */
-const Template: Story<AutocompleteInputProps> = (props) => (
-  <AutocompleteInput
-    {...props}
-    id="storybook-autocomplete"
-    options={Array(10)
-      .fill(null)
-      .map((_, i) => ({
-        id: i,
-        label: `Option ${i + 1}`
-      }))}
-  />
-);
-
-export const Autocomplete = Template.bind({});
-
-export const SingleSelect = Template.bind({});
-SingleSelect.args = {
-  isSingleSelect: true
+const Template: Story<AutocompleteInputProps> = (props) => {
+  const options = Array(10)
+    .fill(null)
+    .map((_, i) => ({
+      id: i,
+      label: `Option ${i + 1}`
+    }));
+  return (
+    <AutocompleteInput
+      {...props}
+      id="storybook-autocomplete"
+      options={options}
+      itemToString={(item) => (item ? item.label : '')}
+      filterItem={(item, inputValue) => item.label.toLowerCase().includes(inputValue.toLowerCase())}
+      initialSelectedItem={options[0]}
+    />
+  );
 };
 
-/**
- * A story that displays an Autocomplete example
- *
- * @param props the story props
- */
-const WithButtonsTemplate: Story = (props) => (
-  <AutocompleteInput
-    {...props}
-    id="storybook-autocomplete"
-    options={Array(10)
-      .fill(null)
-      .map((_, i) => ({
-        id: i,
-        label: `Option ${i + 1}`
-      }))}
-    renderButtons={(item) => (
-      <button
-        type="button"
-        className="pui-btn-icon pui-color-pui-primary"
-        onClick={() => alert(`Clicked on ${item.label}`)}
-      >
-        <MenuIcon className="pui-animate-scaleHover-target" />
-      </button>
-    )}
-  />
-);
-
-export const WithButtons = WithButtonsTemplate.bind({});
+export const Input = Template.bind({});

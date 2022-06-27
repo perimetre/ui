@@ -3,7 +3,7 @@ import React from 'react';
 import { AttentionIcon, CrossIcon } from '../Icons';
 import { AutocompleteItemType, AutocompleteSettings, useAutocompleteInput } from './hook';
 
-export type AutocompleteInputProps<T extends AutocompleteItemType = AutocompleteItemType> = Omit<
+export type AutocompleteDropdownInputProps<T extends AutocompleteItemType = AutocompleteItemType> = Omit<
   React.InputHTMLAttributes<HTMLInputElement>,
   'onChange'
 > &
@@ -26,7 +26,7 @@ export type AutocompleteInputProps<T extends AutocompleteItemType = Autocomplete
   };
 
 /**
- * An autocomplete input
+ * A dropdown with autocomplete capabilities
  *
  * @param props the react component props
  * @param props.options The options that should be displayed in the dropdown
@@ -45,7 +45,7 @@ export type AutocompleteInputProps<T extends AutocompleteItemType = Autocomplete
  * @param props.renderButtons The render function used to render the option buttons
  * @param props.displaySelected Keep selected items in dropdown list regardless.
  */
-export const AutocompleteInput = <T extends AutocompleteItemType = AutocompleteItemType>({
+export const AutocompleteDropdownInput = <T extends AutocompleteItemType = AutocompleteItemType>({
   // Hook settings
   options = [],
   initialSelectedItems,
@@ -65,7 +65,7 @@ export const AutocompleteInput = <T extends AutocompleteItemType = AutocompleteI
   renderButtons,
   // Input props
   ...inputProps
-}: AutocompleteInputProps<T>) => {
+}: AutocompleteDropdownInputProps<T>) => {
   const {
     isOpen,
     filteredOptions,
