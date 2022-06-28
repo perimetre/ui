@@ -25,7 +25,7 @@ const Template: Story<AutocompleteInputProps<{ id: number; label: string }>> = (
     .fill(null)
     .map((_, i) => ({
       id: i,
-      label: `Organization ${i + 1}`
+      label: `Option ${i + 1}`
     }));
   return (
     <AutocompleteInput
