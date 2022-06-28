@@ -25,6 +25,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [5.1.0] 2022-06-28
+
+### Added
+
+- Autocomplete input now has two new properties: `shouldFetchOnInit` and `loading`
+
+### Changes
+
+- Autocomplete input now expects loading state to be provided to it
+
 ## [5.0.0] 2022-06-27
 
 ### Added

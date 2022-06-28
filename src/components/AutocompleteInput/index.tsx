@@ -1,10 +1,10 @@
 import classnames from 'classnames';
 import Downshift, { ControllerStateAndHelpers } from 'downshift';
 import { debounce } from 'lodash';
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef } from 'react';
 import { AttentionIcon } from '../Icons';
 
-export type AutocompleteInputProps<T extends Record<string, unknown> = Record<string, unknown>> =
+export type AutocompleteInputProps<Item> =
   // Omit<
   //   React.InputHTMLAttributes<HTMLInputElement>,
   //   'onChange' | 'value' | 'defaultValue'
@@ -17,11 +17,11 @@ export type AutocompleteInputProps<T extends Record<string, unknown> = Record<st
     /**
      * The options that should be displayed in the dropdown
      */
-    options?: T[];
+    options: Item[];
     /**
      * The initial selected item
      */
-    initialSelectedItem?: T;
+    initialSelectedItem?: Item;
     /**
      * Whether or not should always show the result list regardless if the user is searching or not.
      *
@@ -38,7 +38,7 @@ export type AutocompleteInputProps<T extends Record<string, unknown> = Record<st
     /**
      * A callback that is called every time the user selects or unselects an item
      */
-    onItemToggle?: (item?: T | null) => void;
+    onItemToggle?: (item?: Item | null) => void;
     /**
      *  The input defaultValue property
      */
@@ -50,11 +50,11 @@ export type AutocompleteInputProps<T extends Record<string, unknown> = Record<st
     /**
      * Predicate to modify the items on display, for example, filter based on the value
      */
-    filterItem: (item: T, inputValue: string) => boolean;
+    filterItem: (item: Item, inputValue: string) => boolean;
     /**
      * Method used to convert the object item into the string that is shown on the dropdown
      */
-    itemToString: (item: T | null) => string;
+    itemToString: (item: Item | null) => string;
     /**
      * The text that should be placed in the input's label
      */
@@ -69,11 +69,11 @@ export type AutocompleteInputProps<T extends Record<string, unknown> = Record<st
     /**
      * The render function used to render the option buttons
      */
-    renderButtons?: (item: T, isSelected: boolean, isHighlighted: boolean) => React.ReactNode;
+    renderButtons?: (item: Item, isSelected: boolean, isHighlighted: boolean) => React.ReactNode;
     /**
      * The render function used to render the dropdown item
      */
-    renderItem?: (item: T, isSelected: boolean, isHighlighted: boolean) => React.ReactNode;
+    renderItem?: (item: Item, isSelected: boolean, isHighlighted: boolean) => React.ReactNode;
     /**
      * The component classname
      */
@@ -81,12 +81,18 @@ export type AutocompleteInputProps<T extends Record<string, unknown> = Record<st
     /**
      * A callback for when the input changes so more items can be loaded
      */
-    fetchMore?: (value: string | null | undefined, setLoading: (loading: boolean) => void) => Promise<void>;
+    fetchMore?: (value: string | null | undefined) => Promise<void>;
+    /**
+     * Whether or not the options should be fetched on init
+     */
+    shouldFetchOnInit?: boolean;
+    /**
+     * Whether the options are loading
+     */
+    loading?: boolean;
   };
 
-type DownshiftAutocompleteContentProps<
-  T extends Record<string, unknown> = Record<string, unknown>
-> = ControllerStateAndHelpers<T> & AutocompleteInputProps<T>;
+type DownshiftAutocompleteContentProps<Item> = ControllerStateAndHelpers<Item> & AutocompleteInputProps<Item>;
 
 /**
  * A simple input with autocomplete capabilities
@@ -106,6 +112,8 @@ type DownshiftAutocompleteContentProps<
  * @param props.renderItem The render function used to render the dropdown item
  * @param props.className The component classname
  * @param props.fetchMore A callback for when the input changes so more items can be loaded
+ * @param props.shouldFetchOnInit Whether or not the options should be fetched on init
+ * @param props.loading Whether the options are loading
  * @param props.getInputProps Downshift getInputProps
  * @param props.getItemProps Downshift getItemProps
  * @param props.getLabelProps Downshift getLabelProps
@@ -115,7 +123,7 @@ type DownshiftAutocompleteContentProps<
  * @param props.highlightedIndex Downshift highlightedIndex
  * @param props.toggleMenu Downshift toggleMenu
  */
-const DownshiftAutocompleteContent = <T extends Record<string, unknown> = Record<string, unknown>>({
+const DownshiftAutocompleteContent = <Item extends { id: string | number }>({
   // Autocomplete props
   options,
   // initialSelectedItem,
@@ -132,6 +140,8 @@ const DownshiftAutocompleteContent = <T extends Record<string, unknown> = Record
   renderItem,
   className,
   fetchMore,
+  shouldFetchOnInit,
+  loading,
 
   // Downshift props
   getInputProps,
@@ -142,9 +152,7 @@ const DownshiftAutocompleteContent = <T extends Record<string, unknown> = Record
   inputValue,
   highlightedIndex,
   toggleMenu
-}: DownshiftAutocompleteContentProps<T>) => {
-  const [isLoading, setIsLoading] = useState(false);
-
+}: DownshiftAutocompleteContentProps<Item>) => {
   // I use ref instead of state for this, because I don't want it to trigger an effect or re-render.
   // I could simply not use it on the deps array, BUT then the value wouldn't be up to date inside the effect scope
   const isFetchingRef = useRef(false);
@@ -160,17 +168,17 @@ const DownshiftAutocompleteContent = <T extends Record<string, unknown> = Record
      */
     const fetch = async () => {
       // If haven't initialized it yet, it's on the first render
-      if (!didInitializeRef.current) return;
+      if (!shouldFetchOnInit && !didInitializeRef.current) return;
 
       if (!isFetchingRef.current && fetchMoreDebounced) {
         isFetchingRef.current = true;
-        await fetchMoreDebounced(inputValue, setIsLoading);
+        await fetchMoreDebounced(inputValue);
         isFetchingRef.current = false;
       }
     };
 
     fetch();
-  }, [inputValue, fetchMoreDebounced]);
+  }, [fetchMoreDebounced, inputValue, shouldFetchOnInit]);
 
   useEffect(() => {
     // This is needed so the fetchMore function is not called on the first render
@@ -210,7 +218,7 @@ const DownshiftAutocompleteContent = <T extends Record<string, unknown> = Record
         <ul {...getMenuProps({ className: classnames('pui-dropdown-input-options', !isOpen && 'hidden') })}>
           {/* Only render this if open */}
           {isOpen &&
-            (!isLoading ? (
+            (!loading ? (
               <>
                 <li className="italic py-2 px-4 text-sm text-pui-paragraph-300">
                   {translations?.explanation || 'Press enter to select, ↑↓ to navigate, esc to dismiss'}
@@ -233,9 +241,13 @@ const DownshiftAutocompleteContent = <T extends Record<string, unknown> = Record
                     // If it wants to render the buttons
                     return renderButtons ? (
                       <li
-                        key={`result-${item.id}`}
+                        key={`result-${item.id || index}`}
                         // Remove the default padding
-                        className={classnames(className, isHighlighted && 'highlighted', 'p-0')}
+                        className={classnames(
+                          className,
+                          isHighlighted && 'highlighted',
+                          'p-0 whitespace-pre-wrap pr-2'
+                        )}
                       >
                         {/* Add back the padding only in this element, and allow it to grow */}
                         <span {...optionProps} className="px-2 py-4 grow">
@@ -246,8 +258,8 @@ const DownshiftAutocompleteContent = <T extends Record<string, unknown> = Record
                       </li>
                     ) : (
                       <li
-                        key={`result-${item.id}`}
-                        className={classnames(className, isHighlighted && 'highlighted')}
+                        key={`result-${item.id || index}`}
+                        className={classnames(className, isHighlighted && 'highlighted', 'whitespace-pre-wrap pr-2')}
                         {...optionProps}
                       >
                         {renderItem ? renderItem(item, isSelected, isHighlighted) : itemString}
@@ -290,9 +302,11 @@ const DownshiftAutocompleteContent = <T extends Record<string, unknown> = Record
  * @param props.renderItem The render function used to render the dropdown item
  * @param props.className The component classname
  * @param props.fetchMore A callback for when the input changes so more items can be loaded
+ * @param props.shouldFetchOnInit Whether or not the options should be fetched on init
+ * @param props.loading Whether the options are loading
  */
-export const AutocompleteInput = <T extends Record<string, unknown> = Record<string, unknown>>(
-  props: AutocompleteInputProps<T>
+export const AutocompleteInput = <Item extends { id: string | number } = { id: string | number }>(
+  props: AutocompleteInputProps<Item>
 ) => {
   const {
     itemToString,
