@@ -20,12 +20,12 @@ export default {
  *
  * @param props the story props
  */
-const Template: Story<AutocompleteInputProps> = (props) => {
+const Template: Story<AutocompleteInputProps<{ id: number; label: string }>> = (props) => {
   const options = Array(10)
     .fill(null)
     .map((_, i) => ({
       id: i,
-      label: `Option ${i + 1}`
+      label: `Organization ${i + 1}`
     }));
   return (
     <AutocompleteInput
@@ -34,7 +34,6 @@ const Template: Story<AutocompleteInputProps> = (props) => {
       options={options}
       itemToString={(item) => (item ? item.label : '')}
       filterItem={(item, inputValue) => item.label.toLowerCase().includes(inputValue.toLowerCase())}
-      initialSelectedItem={options[0]}
     />
   );
 };
