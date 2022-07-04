@@ -25,7 +25,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- Added full height to the resize button
+## [5.2.1] 2022-07-04
+
+### Fixed
+
+- Added full height to the `HorizontalResizeablePanel` button
 
 ## [5.2.0] 2022-06-29
 
