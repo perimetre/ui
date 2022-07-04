@@ -122,7 +122,7 @@ export const HorizontalResizeablePanel: React.FC<HorizontalResizeablePanelProps>
       )}
       {resizeRight && (
         <button
-          className="absolute inset-y-0 w-2 cursor-col-resize"
+          className="absolute h-full inset-y-0 w-2 cursor-col-resize"
           style={{ right: '-4px' }}
           onMouseDown={(e) => onMove(e, 'right')}
         />
