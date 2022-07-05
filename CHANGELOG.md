@@ -25,6 +25,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [5.2.2] 2022-07-05
+
+### Fixed
+
+- Add cursor-col-resize to the tailwind safelist
+- Add full height classes to the right reziseable column
+
 ## [5.2.1] 2022-07-04
 
 ### Fixed
