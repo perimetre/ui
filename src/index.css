@@ -6,7 +6,7 @@
   .prose {
     ol,
     ul {
-      list-style: none;
+      list-style-type: inside;
       margin: 0;
       padding: 0;
     }
