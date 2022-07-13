@@ -25,6 +25,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [5.2.3] 2022-07-13
+
+### Fixed
+
 - Change base list styles that hide bullets inside the rich text elements
 
 ## [5.2.2] 2022-07-05
