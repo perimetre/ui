@@ -25,6 +25,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [6.0.1] 2022-07-19
+
+### Fixed
+
+- Remove width/height classes from horizontal resizeable panel
+
 ## [6.0.0] 2022-07-14
 
 ### Fixed

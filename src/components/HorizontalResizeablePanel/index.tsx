@@ -112,7 +112,7 @@ export const HorizontalResizeablePanel: React.FC<HorizontalResizeablePanelProps>
   }, []);
 
   return (
-    <div {...props} className={classNames('relative h-full w-full', props.className)} ref={ref}>
+    <div {...props} className={classNames('relative', props.className)} ref={ref}>
       {resizeLeft && (
         <button
           className="absolute h-full inset-y-0 w-2 cursor-col-resize"
