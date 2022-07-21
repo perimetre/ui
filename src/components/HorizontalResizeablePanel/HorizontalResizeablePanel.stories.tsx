@@ -38,7 +38,9 @@ export default {
       control: {
         type: 'text'
       }
-    }
+    },
+    onResize: { action: 'onResize' },
+    onResizeChange: { action: 'onResizeChange' }
   }
 } as Meta;
 

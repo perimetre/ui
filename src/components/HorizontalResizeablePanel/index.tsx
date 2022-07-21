@@ -31,6 +31,10 @@ export type HorizontalResizeablePanelProps = React.HTMLAttributes<HTMLDivElement
    * Callback that is called every time the panel is being resized
    */
   onResize?: () => void;
+  /**
+   * Callback for when the isResizing state changes
+   */
+  onResizeChange?: (isResizing: boolean) => void;
 
   children?: (props: { isResizing: boolean }) => React.ReactNode;
 };
@@ -46,6 +50,7 @@ export type HorizontalResizeablePanelProps = React.HTMLAttributes<HTMLDivElement
  * @param props.minRightSize The minimum width allowed when resizing from the right border
  * @param props.maxRightSize The maximum width allowed when resizing from the right border
  * @param props.onResize Callback that is called every time the panel is being resized
+ * @param props.onResizeChange Callback for when the isResizing state changes
  * @param props.children The element children components
  */
 export const HorizontalResizeablePanel: React.FC<HorizontalResizeablePanelProps> = ({
@@ -56,6 +61,7 @@ export const HorizontalResizeablePanel: React.FC<HorizontalResizeablePanelProps>
   minRightSize,
   maxRightSize,
   onResize,
+  onResizeChange,
   children,
   ...props
 }) => {
@@ -63,6 +69,18 @@ export const HorizontalResizeablePanel: React.FC<HorizontalResizeablePanelProps>
 
   const dragRef = useRef<{ isResizing: boolean; lastDownX: number; resizeSide: 'left' | 'right' } | null>(null);
   const ref = useRef<HTMLDivElement>(null);
+  const didInitialize = useRef<boolean | null>(null);
+
+  useEffect(() => {
+    // If the method exists, and has the component initialized
+    if (onResizeChange && didInitialize.current) {
+      onResizeChange(isResizing);
+    }
+
+    if (!didInitialize.current) {
+      didInitialize.current = true;
+    }
+  }, [isResizing, onResizeChange]);
 
   useEffect(() => {
     /**
