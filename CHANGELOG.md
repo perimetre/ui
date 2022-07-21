@@ -25,6 +25,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [7.0.0] 2022-07-21
+
+### Changes
+
+- `HorizontalResizeablePanel` now expects a function as its children
+
 ## [6.0.1] 2022-07-19
 
 ### Fixed

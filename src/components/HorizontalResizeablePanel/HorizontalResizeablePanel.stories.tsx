@@ -53,16 +53,20 @@ export default {
  */
 const Template: Story = ({ width, height, backgroundColor, className, ...props }) => {
   return (
-    <div
-      className={classnames({
-        [heightClassnameMap[height || 'auto']]: height && height.length > 0,
-        [widthClassnameMap[width || 'auto']]: width && width.length > 0
-      })}
-    >
+    <div>
       <HorizontalResizeablePanel
         {...props}
-        className={classnames(backgroundColorClassnameMap[backgroundColor || 'transparent'], className)}
-      />
+        className={classnames(
+          backgroundColorClassnameMap[backgroundColor || 'transparent'],
+          {
+            [heightClassnameMap[height || 'auto']]: height && height.length > 0,
+            [widthClassnameMap[width || 'auto']]: width && width.length > 0
+          },
+          className
+        )}
+      >
+        {({ isResizing }) => <span>isResizing: {`${isResizing}`}</span>}
+      </HorizontalResizeablePanel>
     </div>
   );
 };
