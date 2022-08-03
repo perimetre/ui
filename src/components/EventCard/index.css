@@ -1,7 +1,7 @@
 @layer components {
   .pui-event-card {
     /* Adds the expected placeholder color for the bg */
-    @apply w-full max-w-lg pui-rounded-Card pui-boxshadow-lg flex flex-row;
+    @apply w-full max-w-lg pui-boxshadow-lg flex flex-row;
   }
 
   .pui-rounded-gradient-bar {

@@ -44,6 +44,12 @@ export type BaseCardProps = {
    * @default string
    */
   classNameGradientImage?: string;
+  /**
+   * Extended classes for hover state
+   *
+   * @default false
+   */
+  hoverState?: boolean;
 };
 
 /**
@@ -58,7 +64,7 @@ export type BaseCardProps = {
  * @param props.classNameContent The content on the card className
  * @param props.classNameGradientImage The filter className
  * @param props.children The content of the card
- 
+ * @param props.hoverState Extended classes for hover state
  */
 export const BaseCard: React.FC<BaseCardProps> = ({
   imageGradient,
@@ -68,10 +74,17 @@ export const BaseCard: React.FC<BaseCardProps> = ({
   children,
   className,
   classNameContent,
-  classNameGradientImage
+  classNameGradientImage,
+  hoverState
 }) => {
   return (
-    <div className={classnames('pui-baseCard', className)}>
+    <div
+      className={classnames(
+        'pui-baseCard',
+        { 'hover:border-pui-primary hover:shadow-lg hover:cursor-pointer': hoverState },
+        className
+      )}
+    >
       {leftGradientBar && (
         <div className={classnames('gradient-bar', `bg-gradient-to-b from-pui-primary to-pui-secondary`)}></div>
       )}
