@@ -53,7 +53,7 @@ export type BaseCardProps = {
 };
 
 /**
- * A Percentage Circle
+ * A Base Card
  *
  * @param props The input props
  * @param props.imageGradient The gradient background over the image
@@ -80,7 +80,7 @@ export const BaseCard: React.FC<BaseCardProps> = ({
   return (
     <div
       className={classnames(
-        'pui-baseCard',
+        'pui-baseCard transition-all',
         { 'hover:border-pui-primary hover:shadow-lg hover:cursor-pointer': hoverState },
         className
       )}
