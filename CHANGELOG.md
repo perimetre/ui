@@ -25,6 +25,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [7.1.0] 2022-08-03
+
+### Added
+
+- Remove uneven borders in cards and add hover state styles
+
 ## [7.0.1] 2022-07-21
 
 ### Changes

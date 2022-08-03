@@ -1,7 +1,7 @@
 @layer components {
   .pui-programCard {
     /* Adds the expected placeholder color for the bg */
-    @apply w-full max-w-xs pui-rounded-Card overflow-hidden pui-boxshadow-lg;
+    @apply w-full max-w-xs overflow-hidden pui-boxshadow-lg;
   }
 
   .percentage-bar {
