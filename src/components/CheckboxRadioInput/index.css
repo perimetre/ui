@@ -16,7 +16,9 @@
     @apply appearance-none inline-block align-middle select-none cursor-pointer shrink-0 bg-white border-gray-400 transition-colors;
 
     /* Don't allow the browser to do any color adjustments */
-    color-adjust: exact;
+    /* Color adjust is now deprecated and should be print-color-adjust */
+    /* stylelint-disable-next-line property-no-unknown */
+    print-color-adjust: exact;
 
     /* The background origin should consider the entire box */
     background-origin: border-box;

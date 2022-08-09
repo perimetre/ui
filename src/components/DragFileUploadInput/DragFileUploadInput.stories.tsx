@@ -48,3 +48,8 @@ FileType.args = {
   accept: 'pdf',
   help: 'Only .pdf files allowed'
 };
+
+export const InitialDescription = Template.bind({});
+InitialDescription.args = {
+  initialFilesDescription: 'image.png'
+};
