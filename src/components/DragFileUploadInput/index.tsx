@@ -51,6 +51,10 @@ export type DragFileUploadInputProps = Omit<React.InputHTMLAttributes<HTMLInputE
    * The translation object
    */
   translations?: DragFileUploadTranslations;
+  /**
+   * The initial description to show in the input when it is loaded
+   */
+  initialFilesDescription?: string;
 };
 
 export const DragFileUploadInput = forwardRef<DragFileUploadInputRef, DragFileUploadInputProps>(
@@ -67,6 +71,7 @@ export const DragFileUploadInput = forwardRef<DragFileUploadInputRef, DragFileUp
       onError,
       onReset: onResetProps,
       translations: translationsProps,
+      initialFilesDescription,
       ...props
     }: DragFileUploadInputProps,
     ref
@@ -81,7 +86,7 @@ export const DragFileUploadInput = forwardRef<DragFileUploadInputRef, DragFileUp
     // Create a state for whether or not the user is currently dragging
     const [isDragging, setIsDragging] = useState(false);
 
-    const [filesDescription, setFilesDescription] = useState<string | undefined>();
+    const [filesDescription, setFilesDescription] = useState<string | undefined>(initialFilesDescription);
     const [error, setError] = useState<string | undefined>();
 
     // Create a reference of the container element

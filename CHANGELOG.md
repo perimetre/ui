@@ -25,6 +25,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [7.2.0] 2022-08-09
+
+### Changes
+
+- DragFileUploadInput now also expects an initialFilesDescription property
+
 ## [7.1.1] 2022-08-03
 
 ### Fixed
