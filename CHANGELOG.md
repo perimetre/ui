@@ -25,6 +25,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [7.2.1] 2022-08-15
+
+### Fixed
+
+- Fixed an issue with the autocomplete where the previous elements on the dropdown weren't being cleaned up
+
 ## [7.2.0] 2022-08-09
 
 ### Changes

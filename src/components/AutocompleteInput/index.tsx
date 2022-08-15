@@ -229,8 +229,8 @@ const DownshiftAutocompleteContent = <Item extends { id: string | number }>({
                     const itemString = itemToString(item);
                     // Get the complete classes
                     // Get the required props passed by downshift
-                    const { className, isSelected, ...optionProps } = getItemProps({
-                      key: itemString,
+                    const { className, isSelected, key, ...optionProps } = getItemProps({
+                      key: `result-${item.id || index}`,
                       item,
                       index,
                       className: 'pui-dropdown-input-item flex items-center'
@@ -241,7 +241,7 @@ const DownshiftAutocompleteContent = <Item extends { id: string | number }>({
                     // If it wants to render the buttons
                     return renderButtons ? (
                       <li
-                        key={`result-${item.id || index}`}
+                        key={key}
                         // Remove the default padding
                         className={classnames(
                           className,
@@ -258,7 +258,7 @@ const DownshiftAutocompleteContent = <Item extends { id: string | number }>({
                       </li>
                     ) : (
                       <li
-                        key={`result-${item.id || index}`}
+                        key={key}
                         className={classnames(className, isHighlighted && 'highlighted', 'whitespace-pre-wrap pr-2')}
                         {...optionProps}
                       >
