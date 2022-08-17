@@ -46,7 +46,9 @@ InitialText.args = {
 };
 
 /**
- * @param props
+ * A story that displays an Autocomplete example
+ *
+ * @param props the story props
  */
 const ControlledTemplate: Story<AutocompleteInputProps<{ id: number; label: string }>> = (props) => {
   const options = useMemo(
