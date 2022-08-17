@@ -23,6 +23,10 @@ export type AutocompleteInputProps<Item> =
      */
     initialSelectedItem?: Item;
     /**
+     * The initial selected item
+     */
+    selectedItem?: Item | null;
+    /**
      * Whether or not should always show the result list regardless if the user is searching or not.
      *
      * @default false
@@ -290,6 +294,7 @@ const DownshiftAutocompleteContent = <Item extends { id: string | number }>({
  * @param props the react component props
  * @param props.options The options that should be displayed in the dropdown
  * @param props.initialSelectedItem The initial selected item
+ * @param props.selectedItem The selected item
  * @param props.displayRegardlessIfSearching Whether or not should always show the result list regardless if the user is searching or not.
  * @param props.onItemToggle A callback that is called every time the user selects or unselects an item
  * @param props.defaultValue The input defaultValue property
@@ -312,6 +317,7 @@ export const AutocompleteInput = <Item extends { id: string | number } = { id: s
     itemToString,
     onItemToggle,
     initialSelectedItem,
+    selectedItem,
     defaultValue,
     displayRegardlessIfSearching
     // displayRegardlessIfFocused
@@ -322,6 +328,7 @@ export const AutocompleteInput = <Item extends { id: string | number } = { id: s
       onChange={onItemToggle}
       itemToString={itemToString}
       initialSelectedItem={initialSelectedItem}
+      selectedItem={selectedItem}
       initialInputValue={defaultValue}
       defaultIsOpen={
         displayRegardlessIfSearching !== undefined && displayRegardlessIfSearching === true ? true : undefined
