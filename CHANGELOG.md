@@ -25,6 +25,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [7.4.0] 2022-08-17
+
+### Added
+
+- AutocompleteInput can now also be controlled
+
 ## [7.3.1] 2022-08-17
 
 ### Fixed
