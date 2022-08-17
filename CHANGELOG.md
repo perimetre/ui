@@ -25,6 +25,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [7.3.0] 2022-08-17
+
+### Added
+
+- Added a controlled `htmlValueSlow` to `WYSIWYGInput`
+
+### Fixed
+
+- Fixed an issue with `WYSIWYGInput` where it would trigger the change event even when it shouldn't
+
 ## [7.2.1] 2022-08-15
 
 ### Fixed

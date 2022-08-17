@@ -1,9 +1,6 @@
 import classnames from 'classnames';
 import {
   CompositeDecorator,
-  ContentState,
-  convertFromRaw,
-  convertToRaw,
   DraftStyleMap,
   Editor,
   EditorProps,
@@ -11,12 +8,11 @@ import {
   getDefaultKeyBinding,
   RichUtils
 } from 'draft-js';
-import draftToHtml from 'draftjs-to-html';
-import DOMPurify from 'isomorphic-dompurify';
 import React, { forwardRef, useCallback, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react';
 import { toggleBlockData } from '../../utils/wysiwyg';
 import { blockStyleFn, getBlockDataByName } from './Blocks';
 import { entityLinkTransform, linkDecorator } from './Decorators/Link';
+import { getEmptyState, getSanitizedHtmlFromState, getStateFromHtml } from './helpers';
 import { Toolbar } from './Toolbar';
 import { defaultWYSIWYGTranslations, WYSIWYGTranslations } from './translations';
 
@@ -93,6 +89,10 @@ export type WYSIWYGInputProps = Omit<EditorProps, 'editorState' | 'onChange'> & 
    */
   defaultHtmlValue?: string;
   /**
+   * The html value to fill the input with
+   */
+  htmlValueSlow?: string;
+  /**
    * The editor onHtmlChange callback. Provides a sanitizedHtml for the text input.
    *
    * This callback can make the app slower. So it is recommended to wrap it in a debouncer
@@ -105,7 +105,7 @@ export type WYSIWYGInputProps = Omit<EditorProps, 'editorState' | 'onChange'> & 
   /**
    * The editor onChange callback.
    */
-  onChange?(editorState: EditorState): void;
+  onChange?: (editorState: EditorState) => void;
   /**
    * The initial size of the component
    */
@@ -133,11 +133,17 @@ export const WYSIWYGInput = forwardRef<WYSIWYGInputRef, WYSIWYGInputProps>(
       readOnly,
       size = 'medium',
       defaultHtmlValue,
+      htmlValueSlow,
       disableStickyToolbar,
       ...editorProps
     },
     ref
   ) => {
+    // Refs are good for storing state that you don't need to display or react to on re-render
+    const wasLastStateUpdateFromHtmlValue = useRef(false);
+    const isEditorStateInitialized = useRef(false);
+    const lastHtmlValueSlow = useRef(htmlValueSlow);
+
     // This is an implementation of:
     // Ref: https://github.com/facebook/draft-js/blob/master/website/src/components/DraftEditorExample/index.js
     // But with custom blocks and custom styling
@@ -151,25 +157,7 @@ export const WYSIWYGInput = forwardRef<WYSIWYGInputRef, WYSIWYGInputProps>(
 
     const defaultDecorators = useMemo(() => new CompositeDecorator([linkDecorator]), []);
 
-    const [editorState, setEditorState] = useState(() =>
-      EditorState.createWithContent(
-        convertFromRaw({
-          entityMap: {},
-          blocks: [
-            {
-              text: '',
-              key: id,
-              type: 'unstyled',
-              entityRanges: [],
-              depth: 0,
-              inlineStyleRanges: []
-            }
-          ]
-        }),
-        defaultDecorators
-      )
-    );
-    const [isEditorStateInitialized, setIsEditorStateInitialized] = useState(false);
+    const [editorState, setEditorState] = useState(() => getEmptyState(id, defaultDecorators));
     const editor = useRef<Editor | null>(null);
 
     /**
@@ -179,28 +167,26 @@ export const WYSIWYGInput = forwardRef<WYSIWYGInputRef, WYSIWYGInputProps>(
      */
     const onChange = (editorState: EditorState) => {
       // Update the editor state but making sure to keep the decorators
+      wasLastStateUpdateFromHtmlValue.current = false;
       setEditorState(EditorState.set(editorState, { decorator: defaultDecorators }));
     };
 
     useEffect(() => {
       // If the onChange prop is provided and we are finished initializing the component state
-      if (onChangeProps && isEditorStateInitialized) {
+      if (onChangeProps && isEditorStateInitialized.current) {
         // Notify the change
         onChangeProps(editorState);
       }
       // If the editor state changes
-    }, [editorState, onChangeProps, isEditorStateInitialized]);
+    }, [editorState, onChangeProps]);
 
     useEffect(() => {
       // If the onChange prop is provided and we have initialized the component state
-      if (onHtmlChangeSlow && isEditorStateInitialized) {
-        // Ref(HTML part at the end): https://jpuri.github.io/react-draft-wysiwyg/#/docs
-        const htmlData = draftToHtml(convertToRaw(editorState.getCurrentContent()), {}, false, entityLinkTransform);
-        // Add ADD_ATTR to prevent sanitize to replace target _blank
-        onHtmlChangeSlow(DOMPurify.sanitize(htmlData, { ADD_ATTR: ['target'] }));
+      if (onHtmlChangeSlow && isEditorStateInitialized.current && !wasLastStateUpdateFromHtmlValue.current) {
+        onHtmlChangeSlow(getSanitizedHtmlFromState(editorState, entityLinkTransform));
       }
       // If the editor state changes
-    }, [editorState, onHtmlChangeSlow, isEditorStateInitialized]);
+    }, [editorState, onHtmlChangeSlow]);
 
     useEffect(() => {
       /**
@@ -209,42 +195,51 @@ export const WYSIWYGInput = forwardRef<WYSIWYGInputRef, WYSIWYGInputProps>(
        *
        * @param htmlValue html value to set the editor state to
        */
-      const updateFromHtml = async (htmlValue: string) => {
-        const htmlToDraft = (await import('html-to-draftjs')).default;
-
-        // Ref(HTML part at the end): https://jpuri.github.io/react-draft-wysiwyg/#/docs
-        const contentBlock = htmlToDraft(DOMPurify.sanitize(htmlValue, { ADD_ATTR: ['target'] }));
-
-        setEditorState(
-          EditorState.createWithContent(
-            ContentState.createFromBlockArray(contentBlock.contentBlocks, contentBlock.entityMap),
-            defaultDecorators
-          )
-        );
+      const updateFromHtml = async (htmlValue?: string) => {
+        if (htmlValue) setEditorState(await getStateFromHtml(htmlValue, defaultDecorators));
 
         // make sure to set component as initialized so that it will start sending onChange events
-        setIsEditorStateInitialized(true);
+        isEditorStateInitialized.current = true;
       };
 
-      if (!isEditorStateInitialized) {
-        updateFromHtml(defaultHtmlValue || '');
+      if (!isEditorStateInitialized.current) {
+        if (htmlValueSlow) {
+          wasLastStateUpdateFromHtmlValue.current = true;
+        }
+        lastHtmlValueSlow.current = htmlValueSlow;
+        updateFromHtml(defaultHtmlValue || htmlValueSlow);
       }
 
       // Disable because we only want this to update on the first render or when editor state is reinitialized
       // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [isEditorStateInitialized]);
+    }, []);
+
+    useEffect(() => {
+      /**
+       * An async wrapper with a dynamic import.
+       * That will update the editor state based on the html value
+       *
+       * @param htmlValue html value to set the editor state to
+       */
+      const updateFromHtml = async (htmlValue?: string) => {
+        setEditorState(await getStateFromHtml(htmlValue || '', defaultDecorators));
+        lastHtmlValueSlow.current = htmlValue;
+      };
+
+      if (isEditorStateInitialized.current && lastHtmlValueSlow.current !== htmlValueSlow) {
+        wasLastStateUpdateFromHtmlValue.current = true;
+        updateFromHtml(htmlValueSlow);
+      }
+      // Disable because we know defaultDecoratos is unique and we don't want to re-render based on it
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [htmlValueSlow]);
 
     // Extends the ref
     useImperativeHandle(ref, () => ({
       /**
        * Returns a sanitized html from the current editor state
        */
-      getSanitizedHtml: () => {
-        // Ref(HTML part at the end): https://jpuri.github.io/react-draft-wysiwyg/#/docs
-        const htmlData = draftToHtml(convertToRaw(editorState.getCurrentContent()), {}, false, entityLinkTransform);
-        // Add ADD_ATTR to prevent sanitize to replace target _blank
-        return DOMPurify.sanitize(htmlData, { ADD_ATTR: ['target'] });
-      },
+      getSanitizedHtml: () => getSanitizedHtmlFromState(editorState, entityLinkTransform),
       /**
        * Returns a plain text string from the current editor state
        */
@@ -252,7 +247,7 @@ export const WYSIWYGInput = forwardRef<WYSIWYGInputRef, WYSIWYGInputProps>(
       /**
        * Resets editor state to defaultHtmlValue
        */
-      resetInitialValue: () => setIsEditorStateInitialized(false)
+      resetInitialValue: () => setEditorState(getEmptyState(id, defaultDecorators))
     }));
 
     const focus = useCallback(() => {
