@@ -183,7 +183,11 @@ export const WYSIWYGInput = forwardRef<WYSIWYGInputRef, WYSIWYGInputProps>(
     useEffect(() => {
       // If the onChange prop is provided and we have initialized the component state
       if (onHtmlChangeSlow && isEditorStateInitialized.current && !wasLastStateUpdateFromHtmlValue.current) {
-        onHtmlChangeSlow(getSanitizedHtmlFromState(editorState, entityLinkTransform));
+        const htmlSlow = getSanitizedHtmlFromState(editorState, entityLinkTransform);
+        if (htmlSlow !== lastHtmlValueSlow.current) {
+          onHtmlChangeSlow(htmlSlow);
+          lastHtmlValueSlow.current = htmlSlow;
+        }
       }
       // If the editor state changes
     }, [editorState, onHtmlChangeSlow]);

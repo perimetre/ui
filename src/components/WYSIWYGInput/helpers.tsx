@@ -7,17 +7,35 @@ import DOMPurify from 'isomorphic-dompurify';
  *
  * @param htmlValue html value to set the editor state to
  * @param defaultDecorators the decorators setting to use if any
+ * @param editorState an existing editor state to derive to, if any
  */
-export const getStateFromHtml = async (htmlValue: string, defaultDecorators?: CompositeDecorator) => {
+export const getStateFromHtml = async (
+  htmlValue: string,
+  defaultDecorators?: CompositeDecorator,
+  editorState?: EditorState
+) => {
   const htmlToDraft = (await import('html-to-draftjs')).default;
 
   // Ref(HTML part at the end): https://jpuri.github.io/react-draft-wysiwyg/#/docs
   const contentBlock = htmlToDraft(DOMPurify.sanitize(htmlValue, { ADD_ATTR: ['target'] }));
 
-  return EditorState.createWithContent(
-    ContentState.createFromBlockArray(contentBlock.contentBlocks, contentBlock.entityMap),
-    defaultDecorators
-  );
+  if (!editorState) {
+    return EditorState.createWithContent(
+      ContentState.createFromBlockArray(contentBlock.contentBlocks, contentBlock.entityMap),
+      defaultDecorators
+    );
+  } else {
+    const newEditorState = EditorState.createWithContent(
+      ContentState.createFromBlockArray(contentBlock.contentBlocks, contentBlock.entityMap),
+      defaultDecorators
+    );
+
+    const selection = editorState.getSelection();
+
+    EditorState.forceSelection(newEditorState, selection);
+
+    return newEditorState;
+  }
 };
 
 /**

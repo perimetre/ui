@@ -25,6 +25,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [7.3.1] 2022-08-17
+
+### Fixed
+
+- Fixed an issue with `WYSIWYGInput` where it would skip the cursor to the start when using controlled input
+
 ## [7.3.0] 2022-08-17
 
 ### Added
