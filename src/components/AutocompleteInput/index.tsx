@@ -35,6 +35,22 @@ export type AutocompleteInputProps<Item> =
      */
     displayRegardlessIfSearching?: boolean;
     /**
+     * If provided, displays a help text under the input
+     */
+    help?: string;
+    /**
+     * The error text to replace the help text with
+     */
+    error?: string;
+    /**
+     * Shows a success status
+     */
+    success?: boolean;
+    /**
+     * The classname string prepended to the input container className
+     */
+    containerClassName?: string;
+    /**
      * Whether or not should always show the result list regardless if the input is focused or not
      * (Only relevant when using TAB to focus the input)
      *
@@ -111,6 +127,10 @@ type DownshiftAutocompleteContentProps<Item> = ControllerStateAndHelpers<Item> &
  * @param props.options The options that should be displayed in the dropdown
  * @param props.initialSelectedItem The initial selected item
  * @param props.displayRegardlessIfSearching Whether or not should always show the result list regardless if the user is searching or not.
+ * @param props.help If provided, displays a help text under the input
+ * @param props.error The error text to replace the help text with
+ * @param props.success Shows a success status
+ * @param props.containerClassName The classname string prepended to the input container className
  * @param props.onItemToggle A callback that is called every time the user selects or unselects an item
  * @param props.defaultValue The input defaultValue property
  * @param props.ignoreFilter Whether or not the options should be filtered based on user's input
@@ -196,6 +216,10 @@ const DownshiftAutocompleteContent = <Item extends { id: string | number }>({
   setItemCount,
   setState,
   unsetItemCount,
+  containerClassName,
+  error,
+  success,
+  help,
 
   ...props
 }: DownshiftAutocompleteContentProps<Item> &
@@ -251,10 +275,22 @@ const DownshiftAutocompleteContent = <Item extends { id: string | number }>({
   );
 
   return (
-    <>
+    <div>
       {label && <label {...getLabelProps({ className: 'pui-label-input' })}>{label}</label>}
       {/* Render the combo container for the input and the results */}
-      <div className="pui-dropdown-input-container">
+      <div
+        className={classnames('pui-dropdown-input-container', {
+          error: !!error,
+          success: success
+        })}
+      >
+        {/* <span
+          className={classnames(containerClassName, {
+            'pui-text-input-error': !!error,
+            'pui-text-input-success': success,
+            'pui-text-input-loading': loading
+          })}
+        > */}
         <input
           {...getInputProps({
             className: classnames('pui-text-input', className),
@@ -262,6 +298,7 @@ const DownshiftAutocompleteContent = <Item extends { id: string | number }>({
           })}
           onClick={() => !isOpen && toggleMenu()}
         />
+        {/* </span> */}
         {/* <button aria-label={'toggle menu'} className="p-2" type="button" {...getToggleButtonProps()}></button> */}
 
         {/* The container for the results must be in the DOM at all times for accessibility reasons */}
@@ -332,7 +369,9 @@ const DownshiftAutocompleteContent = <Item extends { id: string | number }>({
             ))}
         </ul>
       </div>
-    </>
+      {help && !error && <p className="pui-help-text-input">{help}</p>}
+      {error && <p className="pui-animate-fadeDown pui-help-text-input text-pui-error">{error}</p>}
+    </div>
   );
 };
 
