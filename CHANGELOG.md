@@ -25,6 +25,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [7.6.0] 2022-08-22
+
+### Changes
+
+- Additional props passed down to `AutocompleteInput` now get forwarded to the underlying input field
+
 ## [7.5.0] 2022-08-19
 
 ### Added

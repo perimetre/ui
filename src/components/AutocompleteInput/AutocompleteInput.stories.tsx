@@ -71,8 +71,13 @@ const ControlledTemplate: Story<AutocompleteInputProps<{ id: number; label: stri
       options={options}
       itemToString={(item) => (item ? item.label : '')}
       filterItem={(item, inputValue) => item.label.toLowerCase().includes(inputValue.toLowerCase())}
-      selectedItem={state}
+      selectedItem={state || null}
       onItemToggle={(item) => setState(item || undefined)}
+      onChange={(e) => {
+        if (e.target.value === '') {
+          setState(undefined);
+        }
+      }}
     />
   );
 };
