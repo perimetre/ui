@@ -19,6 +19,34 @@
       @apply z-20;
     }
 
+    &.error {
+      @apply pui-icon-attention;
+
+      /* First child = input */
+      :first-child {
+        @apply border-pui-error;
+      }
+
+      &::after {
+        /* By setting the bg color, the color of the icon itself is set */
+        @apply bg-pui-error;
+      }
+    }
+
+    &.success {
+      @apply pui-icon-check;
+
+      /* First child = input */
+      :first-child {
+        @apply border-pui-success;
+      }
+
+      &::after {
+        /* By setting the bg color, the color of the icon itself is set */
+        @apply bg-pui-success;
+      }
+    }
+
     /* On open */
     &.open {
       /* First child = input */

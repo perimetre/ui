@@ -45,6 +45,16 @@ InitialText.args = {
   defaultValue: 'Option 999'
 };
 
+export const WithHelp = Template.bind({});
+WithHelp.args = {
+  help: 'You can also have a help text'
+};
+
+export const WithError = Template.bind({});
+WithError.args = {
+  error: 'Input is required'
+};
+
 /**
  * A story that displays an Autocomplete example
  *
