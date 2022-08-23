@@ -25,6 +25,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [7.7.1] 2022-08-23
+
+### Fixed
+
+- Makes sure `AutocompleteInput` exported properties also export the expected html props
+
 ## [7.7.0] 2022-08-22
 
 ### Changes
