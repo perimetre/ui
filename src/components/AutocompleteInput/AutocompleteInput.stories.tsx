@@ -10,6 +10,12 @@ export default {
     label: {
       defaultValue: 'Autocomplete Input'
     },
+    disabled: {
+      defaultValue: false,
+      control: {
+        type: 'boolean'
+      }
+    },
     onItemToggle: { action: 'onItemToggle' },
     fetchMore: { action: 'fetchMore' }
   }

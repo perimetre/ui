@@ -6,117 +6,115 @@ import { debounce } from 'lodash';
 import React, { useEffect, useMemo, useRef } from 'react';
 import { AttentionIcon } from '../Icons';
 
-export type AutocompleteInputProps<Item> =
-  // Omit<
-  //   React.InputHTMLAttributes<HTMLInputElement>,
-  //   'onChange' | 'value' | 'defaultValue'
-  // > &
-  {
-    /**
-     * The autocomplete input id
-     */
-    id: string;
-    /**
-     * The options that should be displayed in the dropdown
-     */
-    options: Item[];
-    /**
-     * The initial selected item
-     */
-    initialSelectedItem?: Item;
-    /**
-     * The initial selected item
-     */
-    selectedItem?: Item | null;
-    /**
-     * Whether or not should always show the result list regardless if the user is searching or not.
-     *
-     * @default false
-     */
-    displayRegardlessIfSearching?: boolean;
-    /**
-     * If provided, displays a help text under the input
-     */
-    help?: string;
-    /**
-     * The error text to replace the help text with
-     */
-    error?: string;
-    /**
-     * Shows a success status
-     */
-    success?: boolean;
-    /**
-     * The classname string prepended to the input container className
-     */
-    containerClassName?: string;
-    /**
-     * Whether or not should always show the result list regardless if the input is focused or not
-     * (Only relevant when using TAB to focus the input)
-     *
-     * @default true
-     */
-    // displayRegardlessIfFocused?: boolean;
-    /**
-     * A callback that is called every time the user selects or unselects an item
-     */
-    onItemToggle?: (item?: Item | null) => void;
-    /**
-     *  The input defaultValue property
-     */
-    defaultValue?: string;
-    /**
-     * Whether or not the options should be filtered based on user's input
-     */
-    ignoreFilter?: boolean;
-    /**
-     * Predicate to modify the items on display, for example, filter based on the value
-     */
-    filterItem: (item: Item, inputValue: string) => boolean;
-    /**
-     * Method used to convert the object item into the string that is shown on the dropdown
-     */
-    itemToString: (item: Item | null) => string;
-    /**
-     * The text that should be placed in the input's label
-     */
-    label?: string;
-    /**
-     * A translation object to override existing translations
-     */
-    translations?: {
-      explanation?: string;
-      blankState?: string;
-    };
-    /**
-     * The render function used to render the option buttons
-     */
-    renderButtons?: (item: Item, isSelected: boolean, isHighlighted: boolean) => React.ReactNode;
-    /**
-     * The render function used to render the dropdown item
-     */
-    renderItem?: (item: Item, isSelected: boolean, isHighlighted: boolean) => React.ReactNode;
-    /**
-     * The render function used to render the blank slate
-     */
-    renderBlankState?: (selectItem: (item: Item) => void) => React.ReactNode;
-    /**
-     * The component classname
-     */
-    className?: string;
-    /**
-     * A callback for when the input changes so more items can be loaded
-     */
-    fetchMore?: (value: string | null | undefined) => Promise<void>;
-    /**
-     * Whether or not the options should be fetched on init
-     */
-    shouldFetchOnInit?: boolean;
-    /**
-     * Whether the options are loading
-     */
-    loading?: boolean;
+export type AutocompleteInputProps<Item> = Omit<
+  React.InputHTMLAttributes<HTMLInputElement>,
+  'value' | 'defaultValue'
+> & {
+  /**
+   * The autocomplete input id
+   */
+  id: string;
+  /**
+   * The options that should be displayed in the dropdown
+   */
+  options: Item[];
+  /**
+   * The initial selected item
+   */
+  initialSelectedItem?: Item;
+  /**
+   * The initial selected item
+   */
+  selectedItem?: Item | null;
+  /**
+   * Whether or not should always show the result list regardless if the user is searching or not.
+   *
+   * @default false
+   */
+  displayRegardlessIfSearching?: boolean;
+  /**
+   * If provided, displays a help text under the input
+   */
+  help?: string;
+  /**
+   * The error text to replace the help text with
+   */
+  error?: string;
+  /**
+   * Shows a success status
+   */
+  success?: boolean;
+  /**
+   * The classname string prepended to the input container className
+   */
+  containerClassName?: string;
+  /**
+   * Whether or not should always show the result list regardless if the input is focused or not
+   * (Only relevant when using TAB to focus the input)
+   *
+   * @default true
+   */
+  // displayRegardlessIfFocused?: boolean;
+  /**
+   * A callback that is called every time the user selects or unselects an item
+   */
+  onItemToggle?: (item?: Item | null) => void;
+  /**
+   *  The input defaultValue property
+   */
+  defaultValue?: string;
+  /**
+   * Whether or not the options should be filtered based on user's input
+   */
+  ignoreFilter?: boolean;
+  /**
+   * Predicate to modify the items on display, for example, filter based on the value
+   */
+  filterItem: (item: Item, inputValue: string) => boolean;
+  /**
+   * Method used to convert the object item into the string that is shown on the dropdown
+   */
+  itemToString: (item: Item | null) => string;
+  /**
+   * The text that should be placed in the input's label
+   */
+  label?: string;
+  /**
+   * A translation object to override existing translations
+   */
+  translations?: {
+    explanation?: string;
+    blankState?: string;
   };
+  /**
+   * The render function used to render the option buttons
+   */
+  renderButtons?: (item: Item, isSelected: boolean, isHighlighted: boolean) => React.ReactNode;
+  /**
+   * The render function used to render the dropdown item
+   */
+  renderItem?: (item: Item, isSelected: boolean, isHighlighted: boolean) => React.ReactNode;
+  /**
+   * The render function used to render the blank slate
+   */
+  renderBlankState?: (selectItem: (item: Item) => void) => React.ReactNode;
+  /**
+   * The component classname
+   */
+  className?: string;
+  /**
+   * A callback for when the input changes so more items can be loaded
+   */
+  fetchMore?: (value: string | null | undefined) => Promise<void>;
+  /**
+   * Whether or not the options should be fetched on init
+   */
+  shouldFetchOnInit?: boolean;
+  /**
+   * Whether the options are loading
+   */
+  loading?: boolean;
+};
 
 type DownshiftAutocompleteContentProps<Item> = ControllerStateAndHelpers<Item> & AutocompleteInputProps<Item>;
 
@@ -223,7 +221,7 @@ const DownshiftAutocompleteContent = <Item extends { id: string | number }>({
 
   ...props
 }: DownshiftAutocompleteContentProps<Item> &
-  React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>) => {
+  Omit<React.InputHTMLAttributes<HTMLInputElement>, 'value' | 'defaultValue'>) => {
   // I use ref instead of state for this, because I don't want it to trigger an effect or re-render.
   // I could simply not use it on the deps array, BUT then the value wouldn't be up to date inside the effect scope
   const isFetchingRef = useRef(false);
@@ -398,8 +396,7 @@ const DownshiftAutocompleteContent = <Item extends { id: string | number }>({
  * @param props.loading Whether the options are loading
  */
 export const AutocompleteInput = <Item extends { id: string | number } = { id: string | number }>(
-  props: AutocompleteInputProps<Item> &
-    React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
+  props: AutocompleteInputProps<Item>
 ) => {
   const {
     itemToString,
