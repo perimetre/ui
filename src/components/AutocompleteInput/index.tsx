@@ -220,8 +220,7 @@ const DownshiftAutocompleteContent = <Item extends { id: string | number }>({
   help,
 
   ...props
-}: DownshiftAutocompleteContentProps<Item> &
-  Omit<React.InputHTMLAttributes<HTMLInputElement>, 'value' | 'defaultValue'>) => {
+}: DownshiftAutocompleteContentProps<Item>) => {
   // I use ref instead of state for this, because I don't want it to trigger an effect or re-render.
   // I could simply not use it on the deps array, BUT then the value wouldn't be up to date inside the effect scope
   const isFetchingRef = useRef(false);
