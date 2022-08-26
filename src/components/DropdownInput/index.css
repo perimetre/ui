@@ -101,7 +101,7 @@
     /* Animate it down on display */
     /* Make it full width */
     /* Add a background */
-    @apply list-none absolute my-0 mx-auto pui-text-input-border shadow-lg overflow-auto py-2 px-0 border-t-0 rounded-t-none z-10 pui-animate-fadeDown w-full bg-white;
+    @apply list-none absolute my-0 mx-auto pui-text-input-border shadow-lg overflow-auto py-2 px-0 border-t-0 rounded-t-none z-20 pui-animate-fadeDown w-full bg-white;
     animation-duration: 200ms;
     max-height: 225px;
   }
