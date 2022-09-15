@@ -27,7 +27,7 @@ export type TooltipProps = TippyProps & {
  * @param props.content The tooltip content
  * @param props.children The provided children
  */
-export const Tooltip: React.FC<TooltipProps> = forwardRef<Element, TooltipProps>(
+export const Tooltip = forwardRef<Element, TooltipProps>(
   ({ children, content, buttonProps, arrow = true, contentClassName, ...props }, ref) => (
     <Tippy
       {...props}

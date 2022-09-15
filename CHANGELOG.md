@@ -25,11 +25,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-## [7.7.2] 2022-08-26
+## [7.8.0] 2022-09-15
 
-### Fixed
+### Added
 
-- Fixes dropdown showing up under rich text toolbar
+- Added `ButtonStack` component
 
 ## [7.7.1] 2022-08-23
 
