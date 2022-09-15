@@ -25,6 +25,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [7.8.0] 2022-09-15
+
+### Added
+
+- Added `ButtonStack` component
+
 ## [7.7.2] 2022-08-26
 
 ### Fixed
