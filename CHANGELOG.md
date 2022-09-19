@@ -25,6 +25,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [7.9.0] 2022-09-19
+
+### Added
+
+- Added `AlignObjectsCenter` Icon
+- Added `AlignObjectsLeft` Icon
+- Added `AlignObjectsRight` Icon
+- Added `JustifyObjectsBottom` Icon
+- Added `JustifyObjectsCenter` Icon
+- Added `JustifyObjectsTop` Icon
+- Added `JustifySpaceAround` Icon
+- Added `JustifySpaceBetween` Icon
+- Added `JustifySpaceEvenly` Icon
+
 ## [7.8.0] 2022-09-15
 
 ### Added
