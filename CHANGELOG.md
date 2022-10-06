@@ -25,6 +25,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [7.9.1] 2022-10-05
+
+### Fixed
+
+- Remove list style position inside on .prose styles
+
 ## [7.9.0] 2022-09-19
 
 ### Added
