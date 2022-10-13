@@ -25,6 +25,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- Fix pui-btn-default button styles overwritten by anchor styles inside pui-prose class
+
 ## [7.9.1] 2022-10-05
 
 ### Fixed
