@@ -5,7 +5,7 @@
     @apply prose;
 
     .pui-btn-default {
-      @apply !text-white;
+      @apply !text-pui-btn-text-0;
       text-decoration: none !important;
     }
 

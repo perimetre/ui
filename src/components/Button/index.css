@@ -33,7 +33,7 @@
     /* Adds a text color */
     /* Makes the border expect the placeholder color */
     /* Makes the background expect the placeholder color */
-    @apply pui-btn text-white border-pui-placeholder-color bg-pui-placeholder-color;
+    @apply pui-btn text-pui-btn-text-0 border-pui-placeholder-color bg-pui-placeholder-color;
 
     /* If the button is not a chip button */
     &:not(.pui-chip-btn) {
