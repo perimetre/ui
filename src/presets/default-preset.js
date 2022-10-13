@@ -17,6 +17,10 @@ module.exports = {
           // Title and bolder color
           900: 'var(--pui-paragraph-900, #333333)'
         },
+        'pui-btn-text': {
+          // White text color, to use as default
+          0: 'var(--pui-btn-text-0, #fff)'
+        },
         // --------------- Colors under this are not theme related, and only are here so tailwind can generate helpers for them
         // Add a reset color
         'pui-initial': 'initial',
