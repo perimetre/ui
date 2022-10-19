@@ -25,6 +25,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [8.0.0] 2022-10-19
+
+### Changes
+
+- Updates node version to 18
+
+### Fixed
+
+- Makes sure that the `AutocompleteInput` `fetchMore` callback gets called on init
+
 ## [7.9.1] 2022-10-13
 
 ### Fixed

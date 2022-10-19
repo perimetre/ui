@@ -3,7 +3,7 @@
 import classnames from 'classnames';
 import Downshift, { ControllerStateAndHelpers } from 'downshift';
 import { debounce } from 'lodash';
-import React, { useEffect, useMemo, useRef } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { AttentionIcon } from '../Icons';
 
 export type AutocompleteInputProps<Item> = Omit<
@@ -151,7 +151,6 @@ type DownshiftAutocompleteContentProps<Item> = ControllerStateAndHelpers<Item> &
  * @param props.inputValue Downshift inputValue
  * @param props.highlightedIndex Downshift highlightedIndex
  * @param props.toggleMenu Downshift toggleMenu
- * @param props.initialSelectedItem The item to already start selected if any
  * @param props.clearItems Clear the list of items
  * @param props.clearSelection Clear the currently selected item
  * @param props.openMenu Open the dropdown
@@ -224,7 +223,7 @@ const DownshiftAutocompleteContent = <Item extends { id: string | number }>({
   // I use ref instead of state for this, because I don't want it to trigger an effect or re-render.
   // I could simply not use it on the deps array, BUT then the value wouldn't be up to date inside the effect scope
   const isFetchingRef = useRef(false);
-  const didInitializeRef = useRef(false);
+  const [didInitialize, setDidInitialize] = useState(false);
 
   const fetchMoreDebounced = useMemo(() => (fetchMore ? debounce(fetchMore, 250, { maxWait: 500 }) : undefined), [
     fetchMore
@@ -236,7 +235,7 @@ const DownshiftAutocompleteContent = <Item extends { id: string | number }>({
      */
     const fetch = async () => {
       // If haven't initialized it yet, it's on the first render
-      if (!shouldFetchOnInit && !didInitializeRef.current) return;
+      if (!shouldFetchOnInit && !didInitialize) return;
 
       if (!isFetchingRef.current && fetchMoreDebounced) {
         isFetchingRef.current = true;
@@ -246,13 +245,10 @@ const DownshiftAutocompleteContent = <Item extends { id: string | number }>({
     };
 
     fetch();
-  }, [fetchMoreDebounced, inputValue, shouldFetchOnInit]);
+  }, [fetchMoreDebounced, inputValue, shouldFetchOnInit, didInitialize]);
 
   useEffect(() => {
-    // This is needed so the fetchMore function is not called on the first render
-    if (!didInitializeRef.current) {
-      didInitializeRef.current = true;
-    }
+    setDidInitialize(true);
   }, []);
 
   const items = useMemo(
