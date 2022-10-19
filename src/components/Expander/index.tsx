@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import React, { useMemo, useState } from 'react';
+import React, { PropsWithChildren, useMemo, useState } from 'react';
 
 export type ExpanderProps = {
   /**
@@ -17,7 +17,7 @@ export type ExpanderProps = {
  * @param props.isExpanded Whether or not it should be expanded
  * @param props.children The provided children
  */
-export const Expander: React.FC<ExpanderProps> = ({ children, isExpanded }) => {
+export const Expander: React.FC<PropsWithChildren<ExpanderProps>> = ({ children, isExpanded }) => {
   // Creates the animation variants
   const variants = useMemo(
     () => ({

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropsWithChildren } from 'react';
 import classnames from 'classnames';
 
 export type BaseCardProps = {
@@ -66,7 +66,7 @@ export type BaseCardProps = {
  * @param props.children The content of the card
  * @param props.hoverState Extended classes for hover state
  */
-export const BaseCard: React.FC<BaseCardProps> = ({
+export const BaseCard: React.FC<PropsWithChildren<BaseCardProps>> = ({
   imageGradient,
   leftGradientBar,
   imageUrl,

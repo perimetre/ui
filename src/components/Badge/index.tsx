@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { PropsWithChildren, useMemo } from 'react';
 import classnames from 'classnames';
 
 const variantClassnameMap = {
@@ -54,7 +54,7 @@ export type BadgeProps = {
  * @param props.placement The bagge placement
  * @param props.children the provided children
  */
-export const Badge: React.FC<BadgeProps> = ({
+export const Badge: React.FC<PropsWithChildren<BadgeProps>> = ({
   content: propsContent,
   maxValue = 9,
   pulse,

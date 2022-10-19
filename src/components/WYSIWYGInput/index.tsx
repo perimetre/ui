@@ -8,7 +8,16 @@ import {
   getDefaultKeyBinding,
   RichUtils
 } from 'draft-js';
-import React, { forwardRef, useCallback, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react';
+import React, {
+  forwardRef,
+  PropsWithChildren,
+  useCallback,
+  useEffect,
+  useImperativeHandle,
+  useMemo,
+  useRef,
+  useState
+} from 'react';
 import { toggleBlockData } from '../../utils/wysiwyg';
 import { blockStyleFn, getBlockDataByName } from './Blocks';
 import { entityLinkTransform, linkDecorator } from './Decorators/Link';
@@ -47,70 +56,72 @@ export type WYSIWYGInputRef = {
   resetInitialValue: () => void;
 };
 
-export type WYSIWYGInputProps = Omit<EditorProps, 'editorState' | 'onChange'> & {
-  /**
-   * The input id
-   */
-  id: string;
-  /**
-   * If provided, displays a label above the input
-   */
-  label?: string;
-  /**
-   * If provided, displays a help text under the input
-   */
-  help?: string;
-  /**
-   * The error text to replace the help text with
-   */
-  error?: string;
-  /**
-   * Shows a success status
-   */
-  success?: boolean;
-  /**
-   * Shows a loading status
-   */
-  loading?: boolean;
-  /**
-   * The classname string prepended to the input container className
-   */
-  containerClassName?: string;
-  /**
-   * This makes the toolbar position always fixed at the top of the container, so it will not follow scroll
-   */
-  disableStickyToolbar?: boolean;
-  /**
-   * The translation object
-   */
-  translations?: WYSIWYGTranslations;
-  /**
-   * The initial html value to fill the input with. Remember that this is the "default" version. So it'll only work in the first render. And this is how it should behave.
-   */
-  defaultHtmlValue?: string;
-  /**
-   * The html value to fill the input with
-   */
-  htmlValueSlow?: string;
-  /**
-   * The editor onHtmlChange callback. Provides a sanitizedHtml for the text input.
-   *
-   * This callback can make the app slower. So it is recommended to wrap it in a debouncer
-   */
-  onHtmlChangeSlow?: (sanitizedHtml: string) => void;
-  /**
-   * Whether or not the input should be disabled
-   */
-  disabled?: boolean;
-  /**
-   * The editor onChange callback.
-   */
-  onChange?: (editorState: EditorState) => void;
-  /**
-   * The initial size of the component
-   */
-  size?: 'small' | 'medium' | 'large';
-};
+export type WYSIWYGInputProps = PropsWithChildren<
+  Omit<EditorProps, 'editorState' | 'onChange'> & {
+    /**
+     * The input id
+     */
+    id: string;
+    /**
+     * If provided, displays a label above the input
+     */
+    label?: string;
+    /**
+     * If provided, displays a help text under the input
+     */
+    help?: string;
+    /**
+     * The error text to replace the help text with
+     */
+    error?: string;
+    /**
+     * Shows a success status
+     */
+    success?: boolean;
+    /**
+     * Shows a loading status
+     */
+    loading?: boolean;
+    /**
+     * The classname string prepended to the input container className
+     */
+    containerClassName?: string;
+    /**
+     * This makes the toolbar position always fixed at the top of the container, so it will not follow scroll
+     */
+    disableStickyToolbar?: boolean;
+    /**
+     * The translation object
+     */
+    translations?: WYSIWYGTranslations;
+    /**
+     * The initial html value to fill the input with. Remember that this is the "default" version. So it'll only work in the first render. And this is how it should behave.
+     */
+    defaultHtmlValue?: string;
+    /**
+     * The html value to fill the input with
+     */
+    htmlValueSlow?: string;
+    /**
+     * The editor onHtmlChange callback. Provides a sanitizedHtml for the text input.
+     *
+     * This callback can make the app slower. So it is recommended to wrap it in a debouncer
+     */
+    onHtmlChangeSlow?: (sanitizedHtml: string) => void;
+    /**
+     * Whether or not the input should be disabled
+     */
+    disabled?: boolean;
+    /**
+     * The editor onChange callback.
+     */
+    onChange?: (editorState: EditorState) => void;
+    /**
+     * The initial size of the component
+     */
+    size?: 'small' | 'medium' | 'large';
+  }
+>;
 
 /**
  * A Rich text WYSIWYG editor
@@ -261,7 +272,7 @@ export const WYSIWYGInput = forwardRef<WYSIWYGInputRef, WYSIWYGInputProps>(
     }, []);
 
     const handleKeyCommand = useCallback(
-      (command, editorState) => {
+      (command: string, editorState: EditorState) => {
         const newState = RichUtils.handleKeyCommand(editorState, command);
         if (newState) {
           setEditorState(newState);
@@ -275,7 +286,8 @@ export const WYSIWYGInput = forwardRef<WYSIWYGInputRef, WYSIWYGInputProps>(
     );
 
     const mapKeyToEditorCommand = useCallback(
-      (e) => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (e: any) => {
         switch (e.keyCode) {
           case 9: // TAB
             const newEditorState = RichUtils.onTab(e, editorState, 4 /* maxDepth */);

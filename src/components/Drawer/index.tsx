@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { PropsWithChildren, useCallback, useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { BackIcon, CrossIcon } from '../Icons';
 import classnames from 'classnames';
@@ -41,7 +41,7 @@ export type DrawerWrapperProps = {
  * @param props.hideBackdrop Whether or not the drawer backdrop should be shown
  */
 // Ref: https://codesandbox.io/s/framer-motion-drawer-dcnuv?file=/src/Drawer.tsx
-export const DrawerWrapper: React.FC<DrawerWrapperProps> = ({
+export const DrawerWrapper: React.FC<PropsWithChildren<DrawerWrapperProps>> = ({
   isOpen = false,
   onOpen = (isOpen?: boolean) => console.log('onOpen: ', isOpen),
   placement = 'left',
@@ -190,7 +190,7 @@ export type DrawerProps = DrawerWrapperProps & {
  * @param props.onOpen Callback to update the open state
  * @param props.children The children provided to this component
  */
-export const Drawer: React.FC<DrawerProps> = ({
+export const Drawer: React.FC<PropsWithChildren<DrawerProps>> = ({
   width = 350,
   onBack,
   onOpen = (isOpen?: boolean) => console.log('onOpen: ', isOpen),

@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 
 // eslint-disable-next-line @typescript-eslint/ban-types
-export type HorizontalResizeablePanelProps = React.HTMLAttributes<HTMLDivElement> & {
+export type HorizontalResizeablePanelProps = Omit<React.HTMLAttributes<HTMLDivElement>, 'children'> & {
   /**
    * Turn on or off the resizing behavior on the left border
    */

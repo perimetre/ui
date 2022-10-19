@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { PropsWithChildren, useEffect, useState } from 'react';
 import classnames from 'classnames';
 import { CrossIcon } from '../Icons';
 import { ReactPortal } from '../ReactPortal';
@@ -55,7 +55,7 @@ export type ModalProps = {
  * @param props.actions A component that if provided will add a "actions" footer
  * @param props.children The provided children content
  */
-export const Modal: React.FC<ModalProps> = ({
+export const Modal: React.FC<PropsWithChildren<ModalProps>> = ({
   onToggle,
   isOpen: isOpenProps,
   isHeaderAbsolute,

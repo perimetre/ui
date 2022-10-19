@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropsWithChildren } from 'react';
 import { DraftDecorator, ContentState, ContentBlock, RawDraftEntity } from 'draft-js';
 
 /**
@@ -38,7 +38,11 @@ type InternalLinkRenderProps = {
  * @param props.entityKey The entity key provided by draft
  * @param props.contentState The content state provided by draft
  */
-const InternalLinkRender: React.FC<InternalLinkRenderProps> = ({ children, entityKey, contentState }) => {
+const InternalLinkRender: React.FC<PropsWithChildren<InternalLinkRenderProps>> = ({
+  children,
+  entityKey,
+  contentState
+}) => {
   const { url } = contentState.getEntity(entityKey).getData();
   return (
     <a href={url} className="pui-link">

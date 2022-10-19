@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState, PropsWithChildren } from 'react';
 import { createPortal } from 'react-dom';
 
 export type ReactPortalProps = { selector: string };
@@ -10,7 +10,7 @@ export type ReactPortalProps = { selector: string };
  * @param props.selector the selector in which the portal should attach to
  * @param props.children the content of the portal
  */
-export const ReactPortal: React.FC<ReactPortalProps> = ({ selector, children }) => {
+export const ReactPortal: React.FC<PropsWithChildren<ReactPortalProps>> = ({ selector, children }) => {
   const ref = useRef<Element | null>(null);
   const [mounted, setMounted] = useState(false);
 
