@@ -95,24 +95,25 @@ export const Hyperlink: React.FC<HyperlinkProps> = ({ translations, isActive, ed
     validationSchema: object().shape({
       link: string()
         // Use a conditional validation
-        .when((
-          link: string | undefined,
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          schema: StringSchema<string | undefined, Record<string, any>, string | undefined>
-        ) =>
-          // If the link has at least one character, then validate if it's an url and it should be required
-          // If the link doesn't have a character, return the schema without appending any validation.
-          // This is useful because the user can delete a link by not typing anything
-          // So we only validate if the user has typed something, or else the user wouldn't be able
-          // To continue with no text
-          link && link.length > 0
-            ? schema
-                .matches(
-                  /((https?):\/\/)?(www.)?[a-z0-9-]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#-]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/,
-                  translations.linkErrorLabel
-                )
-                .required()
-            : schema
+        .when(
+          (
+            link: string | undefined,
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            schema: StringSchema<string | undefined, Record<string, any>, string | undefined>
+          ) =>
+            // If the link has at least one character, then validate if it's an url and it should be required
+            // If the link doesn't have a character, return the schema without appending any validation.
+            // This is useful because the user can delete a link by not typing anything
+            // So we only validate if the user has typed something, or else the user wouldn't be able
+            // To continue with no text
+            link && link.length > 0
+              ? schema
+                  .matches(
+                    /((https?):\/\/)?(www.)?[a-z0-9-]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#-]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/,
+                    translations.linkErrorLabel
+                  )
+                  .required()
+              : schema
         )
         .label(translations.linkInputLabel)
     }),

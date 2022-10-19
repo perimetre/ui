@@ -25,6 +25,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [8.0.1] 2022-10-19
+
+### Fixed
+
+- Fixes issue with storybook and updated node
+
 ## [8.0.0] 2022-10-19
 
 ### Changes

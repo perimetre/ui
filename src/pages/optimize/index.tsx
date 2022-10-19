@@ -119,13 +119,15 @@ export default function Home() {
     []
   );
 
-  const onType = useCallback((event: React.ChangeEvent<HTMLTextAreaElement>) => optimize(event.target.value), [
-    optimize
-  ]);
+  const onType = useCallback(
+    (event: React.ChangeEvent<HTMLTextAreaElement>) => optimize(event.target.value),
+    [optimize]
+  );
 
-  const onCheck = useCallback(() => optimize((document?.getElementById('svg') as HTMLTextAreaElement)?.value), [
-    optimize
-  ]);
+  const onCheck = useCallback(
+    () => optimize((document?.getElementById('svg') as HTMLTextAreaElement)?.value),
+    [optimize]
+  );
 
   return (
     <div className={styles.container}>

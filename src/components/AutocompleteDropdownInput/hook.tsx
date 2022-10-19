@@ -310,7 +310,7 @@ export const useAutocompleteInput = <T extends AutocompleteItemType = Autocomple
             setInputValue('');
 
             // Clear the pending selected item
-            selectItem((null as unknown) as T);
+            selectItem(null as unknown as T);
           }
           break;
         default:

@@ -225,9 +225,10 @@ const DownshiftAutocompleteContent = <Item extends { id: string | number }>({
   const isFetchingRef = useRef(false);
   const [didInitialize, setDidInitialize] = useState(false);
 
-  const fetchMoreDebounced = useMemo(() => (fetchMore ? debounce(fetchMore, 250, { maxWait: 500 }) : undefined), [
-    fetchMore
-  ]);
+  const fetchMoreDebounced = useMemo(
+    () => (fetchMore ? debounce(fetchMore, 250, { maxWait: 500 }) : undefined),
+    [fetchMore]
+  );
 
   useEffect(() => {
     /**

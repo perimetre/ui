@@ -9,11 +9,13 @@ import flattenColorPalette from 'tailwindcss/lib/util/flattenColorPalette';
 
 // These are just a bunch of values to fill the storybook dropdown with the correct strings
 
-const fullConfig = resolveConfig(tailwindConfig);
+// This is just for storybook
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const fullConfig: any = resolveConfig(tailwindConfig as any);
 
 export const prebuildTailwindTheme = Object.assign(
   fullConfig,
-  { flattenedColors: flattenColorPalette(fullConfig.theme.colors) },
+  { flattenedColors: flattenColorPalette(fullConfig.theme?.colors) },
   {}
 );
 
