@@ -105,7 +105,7 @@ export type AutocompleteInputProps<Item> = Omit<
   /**
    * A callback for when the input changes so more items can be loaded
    */
-  fetchMore?: (value: string | null | undefined) => Promise<void>;
+  fetchMore?: ((value: string | null | undefined) => Promise<void>) | ((value: string | null | undefined) => void);
   /**
    * Whether or not the options should be fetched on init
    */

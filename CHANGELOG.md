@@ -25,6 +25,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [9.1.0] 2022-11-10
+
+### Added
+
+- Allow for both async and synchronous fetch more callbacks on `AutocompleteInput`
+
+### Fixed
+
+- Formik is now a peer dependency
+
 ## [9.0.0] 2022-10-23
 
 ### Changes
