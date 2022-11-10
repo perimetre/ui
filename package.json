@@ -1,7 +1,7 @@
 {
   "name": "@perimetre/ui",
   "description": "A component library made by @perimetre",
-  "version": "9.0.0",
+  "version": "9.1.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/perimetre/ui.git"
@@ -152,7 +152,8 @@
     "stylelint": "^13.9.0",
     "stylelint-config-recommended": "^3.0.0",
     "stylelint-config-styled-components": "^0.1.1",
-    "webpack": "^5.74.0"
+    "webpack": "^5.74.0",
+    "formik": "^2.2.9"
   },
   "resolutions": {
     "@storybook/react/webpack": "^5"
