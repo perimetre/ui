@@ -23,7 +23,7 @@ type CalendarButtonProps = AriaButtonProps<'button'> & {
  * @param props Button props
  * @param props.children Content for the button
  */
-const CalendarButton: React.FC<PropsWithChildren<CalendarButtonProps>> = ({ children, ...props }) => {
+export const CalendarButton: React.FC<PropsWithChildren<CalendarButtonProps>> = ({ children, ...props }) => {
   const ref = useRef<HTMLButtonElement>(null);
 
   const { buttonProps } = useButton(props, ref);
@@ -41,7 +41,6 @@ const CalendarButton: React.FC<PropsWithChildren<CalendarButtonProps>> = ({ chil
           'ring-2 ring-pui-placeholder-color ring-offset-2': isFocusVisible
         }
       )}
-      data-hide-menu-on-press="false"
     >
       {children}
     </Button>

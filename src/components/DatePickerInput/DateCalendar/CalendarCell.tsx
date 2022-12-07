@@ -62,7 +62,6 @@ export const CalendarCell: React.FC<CalendarCellProps> = ({ state, date, locale,
 
   const { focusProps, isFocusVisible } = useFocusRing();
   const finalButtonProps = mergeProps(buttonProps, focusProps);
-  console.log({ finalButtonProps });
 
   return (
     <td {...cellProps} className={`relative py-0.5 ${isFocusVisible ? 'z-10' : 'z-0'}`}>
@@ -71,14 +70,19 @@ export const CalendarCell: React.FC<CalendarCellProps> = ({ state, date, locale,
         onPointerUp={(e) => {
           finalButtonProps.onPointerUp?.(e);
 
-          // Makes sure to run hide on the next tick
-          setTimeout(() => tippyInstance?.hide(), 10);
+          if ('highlightedRange' in state ? !state.isDragging : true) {
+            // Makes sure to run hide on the next tick
+            setTimeout(() => tippyInstance?.hide(), 10);
+          }
         }}
         onKeyUp={(e) => {
           finalButtonProps.onKeyUp?.(e);
 
-          // Makes sure to run hide on the next tick
-          if (e.key === 'Enter') setTimeout(() => tippyInstance?.hide(), 10);
+          // If it's finished selecting a range, or if it's a single date picker
+          if (('highlightedRange' in state ? !state.isDragging : true) && e.key === 'Enter') {
+            // Makes sure to run hide on the next tick
+            setTimeout(() => tippyInstance?.hide(), 10);
+          }
         }}
         ref={ref}
         hidden={isOutsideVisibleRange}

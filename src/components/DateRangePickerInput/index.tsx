@@ -1,25 +1,23 @@
 import { faCalendar } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { CalendarDate, CalendarDateTime, ZonedDateTime } from '@internationalized/date';
 import classnames from 'classnames';
 import React, { useRef } from 'react';
-import { AriaDatePickerProps, useButton, useDatePicker } from 'react-aria';
-import { useDatePickerState } from 'react-stately';
+import { AriaDateRangePickerProps, useButton, useDateRangePicker } from 'react-aria';
+import { useDateRangePickerState } from 'react-stately';
 import { Instance as TippyInstance } from 'tippy.js';
+import { DateValue } from '../DatePickerInput';
+import { DateField } from '../DatePickerInput/DateField';
 import { Tooltip } from '../Tooltip';
-import { DateCalendar } from './DateCalendar';
-import { DateField } from './DateField';
+import { DateRangeCalendar } from './DateCalendar';
 
 const buttonVariantClassnameMap = {
   default: 'pui-btn-default rounded-l-none border-l-0 text-white',
   bordered: 'pui-btn-bordered pui-text-input-border rounded-l-none'
 };
 
-export type DatePickerState = ReturnType<typeof useDatePickerState>;
+export type DateRangePickerState = ReturnType<typeof useDateRangePickerState>;
 
-export type DateValue = CalendarDate | CalendarDateTime | ZonedDateTime;
-
-export type DatePickerProps<T extends DateValue = DateValue> = AriaDatePickerProps<T> & {
+export type DateRangePickerProps<T extends DateValue = DateValue> = AriaDateRangePickerProps<T> & {
   /**
    * The button type variant
    *
@@ -89,7 +87,7 @@ export type DatePickerProps<T extends DateValue = DateValue> = AriaDatePickerPro
  * @param props.className The input className
  */
 //! Do not destructure label from props since useDatePicker also expects it
-export const DatePickerInput: React.FC<DatePickerProps> = ({
+export const DateRangePickerInput: React.FC<DateRangePickerProps> = ({
   variant = 'default',
   help,
   error,
@@ -104,17 +102,18 @@ export const DatePickerInput: React.FC<DatePickerProps> = ({
 
   const tippyRef = useRef<HTMLElement & { _tippy?: TippyInstance }>(null);
 
-  const state = useDatePickerState(props);
+  const state = useDateRangePickerState(props);
   // Ref: https://react-spectrum.adobe.com/react-aria/useDatePicker.html
   // Ref: https://codesandbox.io/s/reverent-faraday-5nwk87?file=/src/DatePicker.js
   const {
     groupProps,
     labelProps,
-    fieldProps,
+    startFieldProps,
+    endFieldProps,
     buttonProps: dateButtonProps,
     // dialogProps,
     calendarProps
-  } = useDatePicker(
+  } = useDateRangePicker(
     { ...props, errorMessage: error, isDisabled: props.disabled, isReadOnly: props.readOnly },
     state,
     ref
@@ -150,19 +149,22 @@ export const DatePickerInput: React.FC<DatePickerProps> = ({
             )}
           >
             {/* The input content, eg the date segments like day, month, year */}
-            <DateField locale={locale} {...fieldProps} />
+            <DateField locale={locale} {...startFieldProps} />
+            <span aria-hidden="true" className="px-2">
+              -
+            </span>
+            <DateField locale={locale} {...endFieldProps} />
           </div>
         </span>
         <Tooltip
-          ref={tippyRef}
           hideOnClick
           interactive
+          ref={tippyRef}
           disabled={props.disabled || props.readOnly}
-          // plugins={[hideOnInnerButtonPress]}
           content={
             <div className="px-2 py-4">
               {state.isOpen && (
-                <DateCalendar locale={locale} {...calendarProps} tippyInstance={tippyRef.current?._tippy} />
+                <DateRangeCalendar locale={locale} {...calendarProps} tippyInstance={tippyRef.current?._tippy} />
               )}
             </div>
           }
