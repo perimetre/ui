@@ -15,7 +15,8 @@
     }
 
     /* If clicking */
-    &:active {
+    &:active,
+    .active {
       /* Remove transition effect if there's any transition transform(only on active) */
       @apply transition-none;
       /* Moves the button down a little bit to give feedback */
