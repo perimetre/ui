@@ -43,7 +43,9 @@
     "suppressImplicitAnyIndexErrors": true,
 
     /* Source Map Options */
-    "sourceMap": true /* Generates corresponding '.map' file. */
+    "sourceMap": true /* Generates corresponding '.map' file. */,
+
+    "downlevelIteration": true
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["dist", "node_modules", ".next", "storybook-static"]

@@ -25,6 +25,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [9.2.0] 2022-12-07
+
+### Added
+
+- Added `DatePickerInput` and `DateRangePickerInput`
+
 ## [9.1.0] 2022-11-10
 
 ### Added

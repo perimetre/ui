@@ -40,8 +40,12 @@
     /* Adds the default border radius */
     /* Solid border styling */
     /* Border color */
-    /* On focus, follow the placeholder color */
-    @apply pui-border-radius border border-solid border-gray-400 focus:border-pui-placeholder-color;
+    @apply pui-border-radius border border-solid border-gray-400;
+
+    &:focus {
+      /* On focus, follow the placeholder color */
+      @apply border-pui-placeholder-color;
+    }
 
     &:disabled,
     &.disabled {
