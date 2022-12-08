@@ -38,3 +38,5 @@ storybook-static
 RELEASE.md
 
 out*
+
+safelist.txt

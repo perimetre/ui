@@ -68,6 +68,10 @@ export type DateRangePickerProps<T extends DateValue = DateValue> = AriaDateRang
    * The input className
    */
   className?: string;
+  /**
+   * A string that defines the order of the segments
+   */
+  format?: string;
 };
 
 /**
@@ -85,6 +89,7 @@ export type DateRangePickerProps<T extends DateValue = DateValue> = AriaDateRang
  * @param props.locale The current app locale
  * @param props.containerClassName The classname string prepended to the input container className
  * @param props.className The input className
+ * @param props.format A string that defines the order of the segments
  */
 //! Do not destructure label from props since useDatePicker also expects it
 export const DateRangePickerInput: React.FC<DateRangePickerProps> = ({
@@ -96,6 +101,7 @@ export const DateRangePickerInput: React.FC<DateRangePickerProps> = ({
   locale,
   containerClassName,
   className,
+  format,
   ...props
 }) => {
   const ref = useRef<HTMLDivElement>(null);
@@ -149,11 +155,11 @@ export const DateRangePickerInput: React.FC<DateRangePickerProps> = ({
             )}
           >
             {/* The input content, eg the date segments like day, month, year */}
-            <DateField locale={locale} {...startFieldProps} />
+            <DateField locale={locale} format={format} {...startFieldProps} />
             <span aria-hidden="true" className="px-2">
               -
             </span>
-            <DateField locale={locale} {...endFieldProps} />
+            <DateField locale={locale} format={format} {...endFieldProps} />
           </div>
         </span>
         <Tooltip

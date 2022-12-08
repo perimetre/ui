@@ -1,5 +1,6 @@
 import { createCalendar, DateValue } from '@internationalized/date';
-import React, { useRef } from 'react';
+import React, { useMemo, useRef } from 'react';
+import { replaceIntoArray } from '@perimetre/helpers';
 import { AriaDateFieldProps, useDateField, useDateSegment } from 'react-aria';
 import { DateFieldState, DateSegment as DateSegmentType, useDateFieldState } from 'react-stately';
 
@@ -60,6 +61,10 @@ type DateFieldProps<T extends DateValue = DateValue> = AriaDateFieldProps<T> & {
    * The current app locale
    */
   locale: string;
+  /**
+   * A string that defines the order of the segments
+   */
+  format?: string;
 };
 
 /**
@@ -67,8 +72,9 @@ type DateFieldProps<T extends DateValue = DateValue> = AriaDateFieldProps<T> & {
  *
  * @param props The props for the inner date field
  * @param props.locale The current app locale
+ * @param props.format A string that defines the order of the segments
  */
-export const DateField: React.FC<DateFieldProps> = ({ locale, ...props }) => {
+export const DateField: React.FC<DateFieldProps> = ({ locale, format, ...props }) => {
   const ref = useRef<HTMLDivElement>(null);
 
   const state = useDateFieldState({
@@ -77,10 +83,27 @@ export const DateField: React.FC<DateFieldProps> = ({ locale, ...props }) => {
     createCalendar
   });
   const { fieldProps } = useDateField(props, state, ref);
+  const { segments } = state;
+
+  const order = useMemo(() => format?.split('/').map((x) => (x === '' ? 'literal' : x)), [format]);
+  const orderedSegments = useMemo(() => {
+    if (!order) {
+      return segments;
+    }
+
+    return segments.reduce((incoming, curr, index) => {
+      if (curr.type === 'literal') {
+        return replaceIntoArray(incoming, index, curr);
+      } else {
+        const foundIndex = order.findIndex((item) => item === curr.type);
+        return replaceIntoArray(incoming, foundIndex, curr);
+      }
+    }, Array(segments.length).fill(null) as DateSegmentType[]);
+  }, [segments, order]);
 
   return (
     <div {...fieldProps} ref={ref} className="flex">
-      {state.segments.map((segment, i) => (
+      {orderedSegments.map((segment, i) => (
         <DateSegment key={i} segment={segment} state={state} />
       ))}
     </div>

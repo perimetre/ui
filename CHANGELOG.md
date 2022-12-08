@@ -25,6 +25,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [9.2.1] 2022-12-08
+
+### Added
+
+- Added the ability to have different date formats in date picker input
+
 ## [9.2.0] 2022-12-07
 
 ### Added

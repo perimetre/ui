@@ -62,6 +62,11 @@ const Template: Story<DatePickerProps & { color?: string }> = ({ color, classNam
 
 export const Text = Template.bind({});
 
+export const LocalizedDate = Template.bind({});
+LocalizedDate.args = {
+  format: 'year//month//day'
+};
+
 export const BorderedPrimary = Template.bind({});
 BorderedPrimary.args = {
   variant: 'bordered'
