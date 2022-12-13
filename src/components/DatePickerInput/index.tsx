@@ -183,6 +183,8 @@ export const DatePickerInput: React.FC<DatePickerProps> = ({
             ...buttonProps,
             ref: buttonRef
           }}
+          onHide={state.close}
+          onDestroy={() => state?.close && state.close()}
         >
           <FontAwesomeIcon className="h-5 w-5" icon={faCalendar} />
         </Tooltip>
