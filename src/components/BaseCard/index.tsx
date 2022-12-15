@@ -81,7 +81,7 @@ export const BaseCard: React.FC<PropsWithChildren<BaseCardProps>> = ({
     <div
       className={classnames(
         'pui-baseCard transition-all',
-        { 'hover:border-pui-primary hover:shadow-lg hover:cursor-pointer': hoverState },
+        { 'hover:border-pui-primary hover:shadow-lg': hoverState },
         className
       )}
     >
