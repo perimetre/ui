@@ -25,6 +25,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [9.2.3] 2022-12-15
+
+### Fixed
+
+- Fixes type of `HTMLParsedContent` component `content` prop to accept `null` values as they can be treated the same as `undefined`
+- Removes pointer cursor css rule from `BaseCard` component in hover state, as the cursor is automatically changed when the component is wrapped by a link
+
 ## [9.2.2] 2022-12-13
 
 ### Fixed

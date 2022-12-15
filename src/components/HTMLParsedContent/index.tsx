@@ -7,7 +7,7 @@ export type HTMLParsedContentProps = React.DetailedHTMLProps<React.HTMLAttribute
   /**
    * The content that should be parsed
    */
-  content?: string;
+  content?: string | null;
   /**
    * The options that are passed down to the parser
    */
