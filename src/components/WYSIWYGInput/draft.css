@@ -1,5 +1,5 @@
 /*
-  This the `draft-js/dist/Draft.css` file With the list part commented out.
+  This the `draft-js/dist/Draft.css` file, but with the lists part tweaked to conform with our "prose" classes for lists.
   Because it's too opinionated and conflicts with tailwind's "prose".
   Ref: https://github.com/facebook/draft-js/blob/master/src/component/utils/DraftStyleDefault.css, https://draftjs.org/docs/advanced-topics-issues-and-pitfalls/#missing-draftcss
 */
