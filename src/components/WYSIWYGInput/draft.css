@@ -98,7 +98,7 @@
   text-align: right;
 }
 
-/* .public-DraftStyleDefault-listLTR {
+.public-DraftStyleDefault-listLTR {
   direction: ltr;
 }
 
@@ -108,7 +108,7 @@
 
 .public-DraftStyleDefault-ol, .public-DraftStyleDefault-ul {
   margin: 16px 0;
-  padding: 0;
+  padding: 0 !important;
 }
 
 .public-DraftStyleDefault-depth0 {
@@ -183,6 +183,7 @@
     position: absolute;
     text-align: right;
     width: 30px;
+    font-weight: initial;
   }
 
   &.public-DraftStyleDefault-listRTL:before {
@@ -190,31 +191,37 @@
     right: -36px;
     text-align: left;
     width: 30px;
+    font-weight: initial;
   }
 
   &:before {
     content: counter(ol0) ". ";
     counter-increment: ol0;
+    font-weight: initial;
   }
 
   &.public-DraftStyleDefault-depth1:before {
-    content: counter(ol1, lower-alpha) ". ";
+    content: counter(ol1, initial) ". ";
     counter-increment: ol1;
+    font-weight: initial;
   }
 
   &.public-DraftStyleDefault-depth2:before {
-    content: counter(ol2, lower-roman) ". ";
+    content: counter(ol2, initial) ". ";
     counter-increment: ol2;
+    font-weight: initial;
   }
 
   &.public-DraftStyleDefault-depth3:before {
     content: counter(ol3) ". ";
     counter-increment: ol3;
+    font-weight: initial;
   }
 
   &.public-DraftStyleDefault-depth4:before {
-    content: counter(ol4, lower-alpha) ". ";
+    content: counter(ol4, initial) ". ";
     counter-increment: ol4;
+    font-weight: initial;
   }
 }
 
@@ -237,4 +244,4 @@
 .public-DraftStyleDefault-depth4.public-DraftStyleDefault-reset {
   counter-reset: ol4;
 }
- */
+

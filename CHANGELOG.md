@@ -25,6 +25,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- Fixed a bug that would cause `WYSIWYGInput` component to incorrectly render nested ordered/unordered lists
+- Tweaked default list style classes from `draft-js` to conform with list styles from class `pui-prose`
+
 ## [9.2.3] 2022-12-15
 
 ### Fixed
