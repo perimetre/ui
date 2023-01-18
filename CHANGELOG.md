@@ -25,6 +25,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- Fixed a bug that would cause rich text editor to fail validation (or break while validating) for complex links
+
 ## [9.2.4] 2023-01-04
 
 ### Fixed
