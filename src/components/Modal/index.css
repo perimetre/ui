@@ -47,6 +47,10 @@
     &.new {
       border-radius: 20px 45px 20px 20px;
     }
+    /* Centers modal container */
+    &.center {
+      @apply my-auto
+    }
   }
 
   .pui-modal-header {
