@@ -25,6 +25,13 @@ export default {
         options: minWidthOptions
       }
     },
+    position: {
+      defaultValue: 'default',
+      control: {
+        type: 'select',
+        options: ['default', 'center']
+      }
+    },
     isClosable: {
       defaultValue: true,
       control: {
