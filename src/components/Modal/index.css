@@ -45,7 +45,7 @@
     @apply relative shadow-xl my-0 mx-auto md:mt-14 bg-white max-w-full min-w-screen-90 md:min-w-initial pui-border-radius pui-animate-fadeUp;
     /* Define a border radius that matches with new design */
     &.new {
-      border-radius: 20px 45px 20px 20px;
+      border-radius: 20px 20px 20px 20px;
     }
     /* Centers modal container */
     &.center {
