@@ -21,11 +21,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changes
 
-- Changed modal `new` variant to use same border radius in all corners
-
 ### Added
 
 ### Fixed
+
+## [9.3.1] 2023-03-14
+
+### Changes
+
+- Changed modal `new` variant to use same border radius in all corners
 
 ## [9.3.0] 2023-03-13
 
