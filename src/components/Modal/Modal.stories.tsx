@@ -44,7 +44,13 @@ export default {
         type: 'boolean'
       }
     },
-    variant: { defaultValue: 'Default' },
+    variant: {
+      defaultValue: 'default',
+      control: {
+        type: 'select',
+        options: ['default', 'new']
+      }
+    },
     content: {
       defaultValue: 'A modal content',
       control: {

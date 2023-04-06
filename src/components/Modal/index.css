@@ -28,6 +28,11 @@
       /* Apply display */
       @apply flex;
     }
+
+    /* Define a light background that matches with new design for qadense */
+    &.new {
+      @apply bg-white bg-opacity-90;
+    }
   }
 
   /* The container inside the background, the modal "card" itself */
@@ -43,9 +48,9 @@
     /* Adds the default border radius */
     /* Animate the fadeUp effect */
     @apply relative shadow-xl my-0 mx-auto md:mt-14 bg-white max-w-full min-w-screen-90 md:min-w-initial pui-border-radius pui-animate-fadeUp;
-    /* Define a border radius that matches with new design */
+    /* Define square border radius that matches with new design for qadense */
     &.new {
-      border-radius: 20px 20px 20px 20px;
+      @apply rounded-none shadow-2xl;
     }
     /* Centers modal container */
     &.center {

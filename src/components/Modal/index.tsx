@@ -110,10 +110,8 @@ export const Modal: React.FC<PropsWithChildren<ModalProps>> = ({
 
   return (
     <ReactPortal selector="#modal-root">
-      <div className={classnames('pui-modal', { open: isOpen })}>
-        <div
-          className={classnames('pui-modal-container', { new: variant === 'new' }, { center: position === 'center' })}
-        >
+      <div className={classnames('pui-modal', { open: isOpen, new: variant === 'new' })}>
+        <div className={classnames('pui-modal-container', { new: variant === 'new', center: position === 'center' })}>
           <div className={classnames('pui-modal-header ', { 'absolute z-30': isHeaderAbsolute })}>
             <h3 className={classnames(removePadding ? 'p-0' : 'p-4')}>{title}</h3>
             {/* Adds a close icon */}
