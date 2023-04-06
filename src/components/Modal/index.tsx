@@ -110,7 +110,7 @@ export const Modal: React.FC<PropsWithChildren<ModalProps>> = ({
 
   return (
     <ReactPortal selector="#modal-root">
-      <div className={classnames('pui-modal', { open: isOpen })}>
+      <div className={classnames('pui-modal', { open: isOpen }, { new: variant === 'new' })}>
         <div
           className={classnames('pui-modal-container', { new: variant === 'new' }, { center: position === 'center' })}
         >

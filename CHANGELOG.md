@@ -21,6 +21,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changes
 
+- Changed modal `new` variant to use UI as updated designs
+
 ### Added
 
 ### Fixed
