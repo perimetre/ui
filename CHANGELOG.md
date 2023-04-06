@@ -21,11 +21,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changes
 
-- Changed modal `new` variant to use UI as updated designs
-
 ### Added
 
 ### Fixed
+
+## [9.3.2] 2023-04-06
+
+### Changes
+
+- Changed modal `new` variant to use UI as updated designs
 
 ## [9.3.1] 2023-03-14
 
