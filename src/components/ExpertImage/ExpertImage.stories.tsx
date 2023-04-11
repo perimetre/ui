@@ -5,7 +5,7 @@ import classnames from 'classnames';
 import { gradientFromClassNameMap, gradientToClassNameMap, gradientViaClassNameMap } from '../../storybookMappers';
 
 export default {
-  title: 'Components/ExpertImage',
+  title: 'Components/qadense/ExpertImage',
   argTypes: {
     gradientInitialColor: {
       defaultValue: 'from-pui-primary',

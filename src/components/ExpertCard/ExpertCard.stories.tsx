@@ -5,7 +5,7 @@ import { ExpertCard, ExpertCardProps } from '.';
 import { gradientFromClassNameMap, gradientToClassNameMap, gradientViaClassNameMap } from '../../storybookMappers';
 
 export default {
-  title: 'Components/ExpertCard',
+  title: 'Components/qadense/ExpertCard',
   component: ExpertCard,
   argTypes: {
     className: {

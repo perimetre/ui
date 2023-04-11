@@ -5,7 +5,7 @@ import { EventCard, EventCardProps } from '.';
 import { gradientFromClassNameMap, gradientToClassNameMap, gradientViaClassNameMap } from '../../storybookMappers';
 
 export default {
-  title: 'Components/EventCard',
+  title: 'Components/qadense/EventCard',
   component: EventCard,
   argTypes: {
     className: {

@@ -4,7 +4,7 @@ import { Story, Meta } from '@storybook/react/types-6-0';
 import { ResourcesCard, ResourcesCardProps } from '.';
 
 export default {
-  title: 'Components/ResourcesCard',
+  title: 'Components/qadense/ResourcesCard',
   component: ResourcesCard,
   argTypes: {
     className: {

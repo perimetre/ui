@@ -5,7 +5,7 @@ import { colorOptions } from '../../prebuiltTailwindTheme';
 import { ProgramCard, ProgramCardProps } from '..';
 
 export default {
-  title: 'Components/ProgramCard',
+  title: 'Components/qadense/ProgramCard',
   component: ProgramCard,
   argTypes: {
     color: {

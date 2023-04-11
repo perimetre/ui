@@ -4,7 +4,7 @@ import { Story, Meta } from '@storybook/react/types-6-0';
 import { BaseCard, BaseCardProps } from '.';
 
 export default {
-  title: 'Components/BaseCard',
+  title: 'Components/qadense/BaseCard',
   component: BaseCard,
   argTypes: {
     className: {

@@ -9,7 +9,7 @@ import { puiColorClassnameMap } from '../../storybookMappers';
 import { BellIcon } from '../Icons';
 
 export default {
-  title: 'Components/ButtonStack',
+  title: 'Components/Buttons/Stack',
   component: ButtonStack,
   argTypes: {
     color: {
