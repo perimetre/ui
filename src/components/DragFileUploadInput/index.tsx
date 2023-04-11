@@ -5,6 +5,7 @@ import React, { forwardRef, useCallback, useEffect, useImperativeHandle, useMemo
 import { addMultipleEventListeners, removeMultipleEventListeners } from '../../utils/dom';
 import { AttentionIcon, CrossIcon } from '../Icons';
 import { defaultDragFileUploadTranslations, DragFileUploadTranslations } from './translations';
+import { ImageLoader } from '../ImageLoader';
 
 export type DragFileUploadInputRef = { reset: () => void };
 
@@ -55,6 +56,26 @@ export type DragFileUploadInputProps = Omit<React.InputHTMLAttributes<HTMLInputE
    * The initial description to show in the input when it is loaded
    */
   initialFilesDescription?: string;
+  /**
+   * The class used for the container that wraps the input
+   */
+  containerClassName?: string;
+  /**
+   * The SRC content used to preview the file
+   */
+  previewSrc?: string;
+  /**
+   * Classname for the preview image
+   */
+  previewClassName?: string;
+  /**
+   * Classname for the preview image loader
+   */
+  previewLoaderClassName?: string;
+  /**
+   * Whether or not to hide the file description text
+   */
+  hideFilesDescription?: boolean;
 };
 
 export const DragFileUploadInput = forwardRef<DragFileUploadInputRef, DragFileUploadInputProps>(
@@ -72,6 +93,11 @@ export const DragFileUploadInput = forwardRef<DragFileUploadInputRef, DragFileUp
       onReset: onResetProps,
       translations: translationsProps,
       initialFilesDescription,
+      containerClassName,
+      previewSrc,
+      previewClassName,
+      previewLoaderClassName,
+      hideFilesDescription,
       ...props
     }: DragFileUploadInputProps,
     ref
@@ -322,10 +348,13 @@ export const DragFileUploadInput = forwardRef<DragFileUploadInputRef, DragFileUp
       [onReset]
     );
 
+    if (previewSrc && !previewLoaderClassName)
+      throw new Error('DragFileUploadInput: You must provide a previewLoaderClassName when using previewSrc');
+
     return (
-      <div className="pui-drag-file-container">
+      <div className={classnames('pui-drag-file-container', containerClassName)}>
         <div
-          className={classnames('relative', {
+          className={classnames('relative h-full', {
             'pui-drag-file-error': !!error || errorProps,
             'pui-drag-file-success': success,
             'pui-drag-file-loading': loading,
@@ -335,7 +364,7 @@ export const DragFileUploadInput = forwardRef<DragFileUploadInputRef, DragFileUp
           <label
             htmlFor={id}
             ref={labelRef}
-            className={classnames('pui-drag-file-label', {
+            className={classnames('pui-drag-file-label h-full', {
               disabled: props.disabled
               // dragging: isDragging,
               // error: !!error
@@ -349,8 +378,17 @@ export const DragFileUploadInput = forwardRef<DragFileUploadInputRef, DragFileUp
                 </>
               ) : filesDescription ? (
                 <>
-                  <FontAwesomeIcon icon={faFileUpload} className="pui-animate-fadeIn" size="2x" />
-                  <p className="pui-drag-file-text pui-animate-fadeIn">{filesDescription}</p>
+                  {previewSrc ? (
+                    <ImageLoader
+                      className={previewClassName}
+                      loaderClassName={previewLoaderClassName || 'h-64 w-64'}
+                      src={previewSrc}
+                      alt={filesDescription}
+                    />
+                  ) : (
+                    <FontAwesomeIcon icon={faFileUpload} className="pui-animate-fadeIn" size="2x" />
+                  )}
+                  {!hideFilesDescription && <p className="pui-drag-file-text pui-animate-fadeIn">{filesDescription}</p>}
                 </>
               ) : hasDragSupport ? (
                 isDragging ? (

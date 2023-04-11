@@ -53,3 +53,11 @@ export const InitialDescription = Template.bind({});
 InitialDescription.args = {
   initialFilesDescription: 'image.png'
 };
+
+export const PreviewContent = Template.bind({});
+PreviewContent.args = {
+  initialFilesDescription: 'cat.png',
+  previewSrc: 'https://cataas.com/cat',
+  previewClassName: 'max-h-64',
+  previewLoaderClassName: 'h-64 w-72'
+};
