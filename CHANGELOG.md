@@ -25,6 +25,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [10.0.2] 2023-04-12
+
+### Fixed
+
+- Fix: Fixes z-index isolation on toggle button component
+
 ## [10.0.1] 2023-04-12
 
 ### Fixed

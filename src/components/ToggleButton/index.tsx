@@ -34,7 +34,7 @@ export const ToggleButton: React.FC<ToggleButtonProps> = ({ offLabel, onLabel, .
     layout
     layoutRoot
     className={classnames(
-      'flex w-fit relative border rounded-full items-center justify-around overflow-hidden',
+      'flex w-fit relative border rounded-full items-center justify-around overflow-hidden isolate',
       { 'cursor-pointer': !props.disabled && !props.readOnly, 'select-none': !props.readOnly },
       !props.disabled ? 'border-black' : 'border-gray-300',
       props.className
