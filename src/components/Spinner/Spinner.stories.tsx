@@ -6,7 +6,7 @@ import classnames from 'classnames';
 import { heightClassnameMap, puiColorClassnameMap, widthClassnameMap } from '../../storybookMappers';
 
 export default {
-  title: 'Components/Spinner',
+  title: 'Components/Loaders/Spinner',
   argTypes: {
     size: {
       defaultValue: '4',

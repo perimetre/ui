@@ -5,7 +5,7 @@ import { colorOptions } from '../../prebuiltTailwindTheme';
 import { ModuleCard, ModuleCardProps } from '.';
 
 export default {
-  title: 'Components/ModuleCard',
+  title: 'Components/qadense/ModuleCard',
   component: ModuleCard,
   argTypes: {
     color: {

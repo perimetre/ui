@@ -8,7 +8,7 @@ import { BellIcon, MenuIcon } from '../Icons';
 import { puiColorClassnameMap, borderStyleClassnameMap } from '../../storybookMappers';
 
 export default {
-  title: 'Components/Button',
+  title: 'Components/Buttons/Default',
   component: Button,
   argTypes: {
     border: {

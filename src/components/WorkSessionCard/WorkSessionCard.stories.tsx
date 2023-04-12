@@ -5,7 +5,7 @@ import { WorkSessionCard, WorkSessionCardProps } from '.';
 import { gradientFromClassNameMap, gradientToClassNameMap, gradientViaClassNameMap } from '../../storybookMappers';
 
 export default {
-  title: 'Components/WorkSessionCard',
+  title: 'Components/qadense/WorkSessionCard',
   component: WorkSessionCard,
   argTypes: {
     className: {

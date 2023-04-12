@@ -1,7 +1,7 @@
 {
   "name": "@perimetre/ui",
   "description": "A component library made by @perimetre",
-  "version": "9.4.0",
+  "version": "9.5.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/perimetre/ui.git"
@@ -88,7 +88,7 @@
     "draft-js": "^0.11.7",
     "draftjs-to-html": "^0.9.1",
     "draftjs-utils": "^0.10.2",
-    "framer-motion": "^3.3.0",
+    "framer-motion": "^10.11.6",
     "hammerjs": "^2.0.8",
     "html-react-parser": "^1.2.4",
     "html-to-draftjs": "^1.5.0",

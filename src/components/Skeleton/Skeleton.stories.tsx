@@ -6,7 +6,7 @@ import classnames from 'classnames';
 import { heightClassnameMap, widthClassnameMap } from '../../storybookMappers';
 
 export default {
-  title: 'Components/Skeleton',
+  title: 'Components/Loaders/Skeleton',
   argTypes: {
     width: {
       defaultValue: '3/4',

@@ -4,7 +4,7 @@ import React from 'react';
 import { ImageLoader, ImageLoaderProps } from '.';
 
 export default {
-  title: 'Components/ImageLoader',
+  title: 'Components/Loaders/ImageLoader',
   component: ImageLoader,
   argTypes: {
     src: { defaultValue: 'https://cataas.com/cat' },
