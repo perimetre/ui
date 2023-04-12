@@ -66,6 +66,7 @@ export const SectionItems: React.FC<SectionItemsProps> = ({
             const isActive = item.isActive(editorState);
             return (
               <button
+                type="button"
                 key={item.name}
                 className={classnames(
                   'pui-btn-icon p-0 h-8 w-8 flex items-center justify-center border border-gray-200',

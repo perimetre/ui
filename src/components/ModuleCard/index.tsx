@@ -114,6 +114,7 @@ export const ModuleCard: React.FC<ModuleCardProps> = ({
         <div className={classnames('text-base mb-6 font-normal', classNameContent)}>{content}</div>
         <div className="flex-1 inline-flex justify-end items-end w-full">
           <button
+            type="button"
             onClick={onPressButton}
             className="inline-flex items-center pui-chip-bordered h-8 justify-items-end cursor-pointer font-bold focus:outline-none"
           >

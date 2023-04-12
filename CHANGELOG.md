@@ -25,6 +25,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [10.0.0] 2023-04-12
+
+### **Breaking changes**
+
+- Fix: made sure all buttons are of `type=button` unless stated otherwise. To fix issues where buttons would accidentally submit forms.
+
+### Added
+
+- Added `SelectStack` component
+
 ## [9.5.0] 2023-04-12
 
 ### Added

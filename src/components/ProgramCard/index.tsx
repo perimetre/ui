@@ -116,6 +116,7 @@ export const ProgramCard: React.FC<ProgramCardProps> = ({
         </div>
         <div className="inline-flex justify-end items-center w-full">
           <button
+            type="button"
             onClick={onPressButton}
             className="inline-flex items-center pui-chip-bordered h-8 justify-items-end cursor-pointer font-bold focus:outline-none"
           >

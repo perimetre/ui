@@ -147,6 +147,7 @@ export const HorizontalResizeablePanel: React.FC<HorizontalResizeablePanelProps>
     <div {...props} className={classNames('relative', props.className)} ref={ref}>
       {resizeLeft && (
         <button
+          type="button"
           className="absolute h-full inset-y-0 w-2 cursor-col-resize"
           style={{ left: '-4px' }}
           onMouseDown={(e) => onMove(e, 'left')}
@@ -154,6 +155,7 @@ export const HorizontalResizeablePanel: React.FC<HorizontalResizeablePanelProps>
       )}
       {resizeRight && (
         <button
+          type="button"
           className="absolute h-full inset-y-0 w-2 cursor-col-resize"
           style={{ right: '-4px' }}
           onMouseDown={(e) => onMove(e, 'right')}
