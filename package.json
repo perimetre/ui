@@ -1,7 +1,7 @@
 {
   "name": "@perimetre/ui",
   "description": "A component library made by @perimetre",
-  "version": "9.4.0",
+  "version": "9.5.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/perimetre/ui.git"

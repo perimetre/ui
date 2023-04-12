@@ -23,10 +23,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+### Fixed
+
+## [9.5.0] 2023-04-12
+
+### Added
+
 - Added examples for time picker on `DatePickerInput`
 - Added `ToggleInput` component
-
-### Fixed
+- Added `ToggleButton` component
 
 ## [9.4.0] 2023-04-11
 
