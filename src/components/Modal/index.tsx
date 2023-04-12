@@ -116,7 +116,7 @@ export const Modal: React.FC<PropsWithChildren<ModalProps>> = ({
             <h3 className={classnames(removePadding ? 'p-0' : 'p-4')}>{title}</h3>
             {/* Adds a close icon */}
             {isClosable && (
-              <button className="pui-btn-icon text-pui-paragraph-900 px-6 py-4" onClick={onToggle}>
+              <button type="button" className="pui-btn-icon text-pui-paragraph-900 px-6 py-4" onClick={onToggle}>
                 <CrossIcon className="pui-animate-scaleHover-target" />
               </button>
             )}
