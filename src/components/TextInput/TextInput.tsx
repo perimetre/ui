@@ -13,7 +13,7 @@ export type TextInputProps = React.DetailedHTMLProps<React.InputHTMLAttributes<H
   /**
    * If provided, displays a help text under the input
    */
-  help?: string;
+  help?: React.ReactNode;
   /**
    * The error text to replace the help text with
    */
@@ -62,7 +62,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
         <input {...props} ref={ref} className={classnames('pui-text-input', className)} />
         {children}
       </span>
-      {help && !error && <p className="pui-help-text-input">{help}</p>}
+      {help && !error && (typeof help === 'string' ? <p className="pui-help-text-input">{help}</p> : help)}
       {error && <p className="pui-animate-fadeDown pui-help-text-input text-pui-error">{error}</p>}
     </div>
   )

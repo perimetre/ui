@@ -57,6 +57,18 @@ WithHelp.args = {
   help: 'You can also have a help text'
 };
 
+export const HelpJSX = Template.bind({});
+HelpJSX.args = {
+  help: (
+    <p>
+      You can also have a {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+      <a href="#" className="text-pui-primary underline">
+        help text
+      </a>
+    </p>
+  )
+};
+
 export const WithError = Template.bind({});
 WithError.args = {
   error: 'Input is required'
