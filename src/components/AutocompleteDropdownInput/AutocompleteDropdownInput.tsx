@@ -23,6 +23,10 @@ export type AutocompleteDropdownInputProps<T extends AutocompleteItemType = Auto
      * The render function used to render the option buttons
      */
     renderButtons?: (item: T, isSelected: boolean) => React.ReactNode;
+    /**
+     * Whether or not the chips should be full size
+     */
+    chipFullSize?: boolean;
   };
 
 /**
@@ -44,6 +48,7 @@ export type AutocompleteDropdownInputProps<T extends AutocompleteItemType = Auto
  * @param props.translations A translation object to override existing translations
  * @param props.renderButtons The render function used to render the option buttons
  * @param props.displaySelected Keep selected items in dropdown list regardless.
+ * @param props.chipFullSize Whether or not the chips should be full size
  */
 export const AutocompleteDropdownInput = <T extends AutocompleteItemType = AutocompleteItemType>({
   // Hook settings
@@ -63,6 +68,7 @@ export const AutocompleteDropdownInput = <T extends AutocompleteItemType = Autoc
   label,
   translations,
   renderButtons,
+  chipFullSize,
   // Input props
   ...inputProps
 }: AutocompleteDropdownInputProps<T>) => {
@@ -177,16 +183,23 @@ export const AutocompleteDropdownInput = <T extends AutocompleteItemType = Autoc
                 {...getSelectedItemProps({
                   selectedItem,
                   index,
-                  className: 'pui-dropdown-input-selected-item-base pui-animate-scaleHover focus:outline-none'
+                  className: classnames(
+                    'pui-dropdown-input-selected-item-base pui-animate-scaleHover focus:outline-none',
+                    {
+                      fullSize: chipFullSize
+                    }
+                  )
                 })}
               >
                 <button
                   type="button"
-                  className="pui-btn-default pui-chip-btn flex items-center"
+                  className="pui-btn-default pui-chip-btn flex items-center w-full"
                   onClick={() => toggleSelectedItem(selectedItem)}
                 >
-                  {selectedItem.label}
-                  <CrossIcon className="pui-animate-scaleHover-target h-4 w-4 ml-2 mt-1" />
+                  <div className="line-clamp-1 text-ellipsis flex-1">{selectedItem.label}</div>
+                  <div>
+                    <CrossIcon className="pui-animate-scaleHover-target h-4 w-4 ml-2 mt-1" />
+                  </div>
                 </button>
               </li>
             ))}

@@ -68,3 +68,26 @@ const DropdownWithButtonsTemplate: Story = (props) => (
 );
 
 export const DropdownWithButtons = DropdownWithButtonsTemplate.bind({});
+
+/**
+ * A story that displays an Autocomplete example
+ *
+ * @param props the story props
+ */
+const ChipsFullSizeTemplate: Story<AutocompleteDropdownInputProps> = (props) => (
+  <AutocompleteDropdownInput
+    {...props}
+    id="storybook-autocomplete"
+    options={Array(10)
+      .fill(null)
+      .map((_, i) => ({
+        id: i,
+        label: `Option Option Option Option Option Option Option Option ${i + 1}`
+      }))}
+  />
+);
+
+export const ChipsFullSize = ChipsFullSizeTemplate.bind({});
+ChipsFullSize.args = {
+  chipFullSize: true
+};
