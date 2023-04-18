@@ -12,7 +12,7 @@ export type TextAreaInputProps = React.DetailedHTMLProps<
   /**
    * If provided, displays a label above the input
    */
-  label?: string;
+  label?: React.ReactNode;
   /**
    * If provided, displays a help text under the input
    */

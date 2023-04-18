@@ -25,6 +25,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [10.2.0] 2023-04-18
+
+### Changes
+
+- Added option to use JSX as label text of `TextInput`
+- Added option to use JSX as label text of `TextAreaInput`
+
 ## [10.1.0] 2023-04-17
 
 ### Added
