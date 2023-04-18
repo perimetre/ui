@@ -145,6 +145,10 @@
     @apply mb-2 mr-2 pui-text-ellipsis;
 
     max-width: 220px;
+
+    &.fullSize {
+      max-width: none;
+    }
   }
 
   /* The styling for a single selected option */
