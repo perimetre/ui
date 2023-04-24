@@ -25,6 +25,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [10.4.0] 2023-04-24
+
+### Changes
+
+- Added option to use JSX as label text of `WYSIWYGInput`
+
 ## [10.3.0] 2023-04-18
 
 ### Changes

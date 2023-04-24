@@ -40,3 +40,10 @@ RELEASE.md
 out*
 
 safelist.txt
+/.idea/codeStyles/codeStyleConfig.xml
+/.idea/codeStyles/Project.xml
+/.idea/inspectionProfiles/Project_Default.xml
+/.idea/.gitignore
+/.idea/modules.xml
+/.idea/ui.iml
+/.idea/vcs.xml

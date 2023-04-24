@@ -65,7 +65,7 @@ export type WYSIWYGInputProps = PropsWithChildren<
     /**
      * If provided, displays a label above the input
      */
-    label?: string;
+    label?: React.ReactNode;
     /**
      * If provided, displays a help text under the input
      */
@@ -305,9 +305,11 @@ export const WYSIWYGInput = forwardRef<WYSIWYGInputRef, WYSIWYGInputProps>(
 
     return (
       <div>
-        <label className="pui-label-input" htmlFor={id}>
-          {label}
-        </label>
+        {label && (
+          <label className="pui-label-input" htmlFor={id}>
+            {label}
+          </label>
+        )}
         <span
           className={classnames(containerClassName, {
             'pui-wysiwyg-input-error': !!error,
