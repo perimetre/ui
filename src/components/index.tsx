@@ -25,6 +25,7 @@ export * from './ExpertCard';
 export * from './ProgramCard';
 export * from './BaseCard';
 export * from './HorizontalResizeablePanel';
+export * from './VerticalResizeablePanel';
 export * from './FormikSubmitOnChange';
 export * from './ButtonStack';
 export * from './DatePickerInput';

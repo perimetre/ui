@@ -25,7 +25,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-## [10.5.0] 2023-09-24
+## [10.5.1] 2023-09-18
+
+### Fixed
+
+- Correctly exports `VerticalResizeablePanel` component
+
+## [10.5.0] 2023-09-18
 
 ### Changes
 
