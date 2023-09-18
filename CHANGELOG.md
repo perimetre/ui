@@ -25,6 +25,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [10.5.0] 2023-09-24
+
+### Changes
+
+- Added `VerticalResizeablePanel` component
+- Added `renderDragContent` property to `HorizontalResizeablePanel` that gives control over handle content when dragging
+
 ## [10.4.0] 2023-04-24
 
 ### Changes

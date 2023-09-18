@@ -2,15 +2,15 @@
 import { Meta, Story } from '@storybook/react/types-6-0';
 import classnames from 'classnames';
 import React from 'react';
-import { HorizontalResizeablePanel } from '.';
+import { VerticalResizeablePanel } from '.';
 import { colorOptions, widthHeightOptions } from '../../prebuiltTailwindTheme';
 import { backgroundColorClassnameMap, heightClassnameMap, widthClassnameMap } from '../../storybookMappers';
 
 export default {
-  title: 'Components/ResizeablePanel/Horizontal',
-  component: HorizontalResizeablePanel,
+  title: 'Components/ResizeablePanel/Vertical',
+  component: VerticalResizeablePanel,
   argTypes: {
-    resizeRight: {
+    resizeBottom: {
       defaultValue: true
     },
     width: {
@@ -21,7 +21,7 @@ export default {
       }
     },
     height: {
-      defaultValue: 'screen',
+      defaultValue: '1/2',
       control: {
         type: 'select',
         options: widthHeightOptions
@@ -56,7 +56,7 @@ export default {
 const Template: Story = ({ width, height, backgroundColor, className, ...props }) => {
   return (
     <div>
-      <HorizontalResizeablePanel
+      <VerticalResizeablePanel
         {...props}
         className={classnames(
           backgroundColorClassnameMap[backgroundColor || 'transparent'],
@@ -68,7 +68,7 @@ const Template: Story = ({ width, height, backgroundColor, className, ...props }
         )}
       >
         {({ isResizing }) => <span>isResizing: {`${isResizing}`}</span>}
-      </HorizontalResizeablePanel>
+      </VerticalResizeablePanel>
     </div>
   );
 };
@@ -81,6 +81,6 @@ RenderDragContent.args = {
    * Renders content inside the drag area
    */
   renderDragContent: () => (
-    <div className="h-full w-[2px] bg-transparent transition-colors duration-100 group-hover:bg-pui-secondary" />
+    <div className="w-full h-[2px] bg-transparent transition-colors duration-100 group-hover:bg-pui-secondary" />
   )
 };
