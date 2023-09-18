@@ -1,31 +1,31 @@
 import classNames from 'classnames';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 
-export type HorizontalResizeablePanelProps = Omit<React.HTMLAttributes<HTMLDivElement>, 'children'> & {
+export type VerticalResizeablePanelProps = Omit<React.HTMLAttributes<HTMLDivElement>, 'children'> & {
   /**
-   * Turn on or off the resizing behavior on the left border
+   * Turn on or off the resizing behavior on the top border
    */
-  resizeLeft?: boolean;
+  resizeTop?: boolean;
   /**
-   * Turn on or off the resizing behavior on the right border
+   * Turn on or off the resizing behavior on the bottom border
    */
-  resizeRight?: boolean;
+  resizeBottom?: boolean;
   /**
-   * The minimum width allowed when resizing from the left border
+   * The minimum width allowed when resizing from the top border
    */
-  minLeftSize?: number;
+  minTopSize?: number;
   /**
-   * The maximum width allowed when resizing from the left border
+   * The maximum width allowed when resizing from the top border
    */
-  maxLeftSize?: number;
+  maxTopSize?: number;
   /**
-   * The minimum width allowed when resizing from the right border
+   * The minimum width allowed when resizing from the bottom border
    */
-  minRightSize?: number;
+  minBottomSize?: number;
   /**
-   * The maximum width allowed when resizing from the right border
+   * The maximum width allowed when resizing from the bottom border
    */
-  maxRightSize?: number;
+  maxBottomSize?: number;
   /**
    * Callback that is called every time the panel is being resized
    */
@@ -43,27 +43,27 @@ export type HorizontalResizeablePanelProps = Omit<React.HTMLAttributes<HTMLDivEl
 };
 
 /**
- * A panel with resize abilities on its left and right borders
+ * A panel with resize abilities on its top and bottom borders
  *
  * @param props The component props
- * @param props.resizeLeft Turn on or off the resizing behavior on the left border
- * @param props.resizeRight Turn on or off the resizing behavior on the right border
- * @param props.minLeftSize The minimum width allowed when resizing from the left border
- * @param props.maxLeftSize The maximum width allowed when resizing from the left border
- * @param props.minRightSize The minimum width allowed when resizing from the right border
- * @param props.maxRightSize The maximum width allowed when resizing from the right border
+ * @param props.resizeTop Turn on or off the resizing behavior on the top border
+ * @param props.resizeBottom Turn on or off the resizing behavior on the bottom border
+ * @param props.minTopSize The minimum width allowed when resizing from the top border
+ * @param props.maxTopSize The maximum width allowed when resizing from the top border
+ * @param props.minBottomSize The minimum width allowed when resizing from the bottom border
+ * @param props.maxBottomSize The maximum width allowed when resizing from the bottom border
  * @param props.onResize Callback that is called every time the panel is being resized
  * @param props.onResizeChange Callback for when the isResizing state changes
  * @param props.renderDragContent The content to render when the user is dragging the panel
  * @param props.children The element children components
  */
-export const HorizontalResizeablePanel: React.FC<HorizontalResizeablePanelProps> = ({
-  resizeLeft,
-  resizeRight,
-  minLeftSize,
-  maxLeftSize,
-  minRightSize,
-  maxRightSize,
+export const VerticalResizeablePanel: React.FC<VerticalResizeablePanelProps> = ({
+  resizeTop,
+  resizeBottom,
+  minTopSize,
+  maxTopSize,
+  minBottomSize,
+  maxBottomSize,
   onResize,
   onResizeChange,
   renderDragContent,
@@ -72,7 +72,7 @@ export const HorizontalResizeablePanel: React.FC<HorizontalResizeablePanelProps>
 }) => {
   const [isResizing, setIsResizing] = useState(false);
 
-  const dragRef = useRef<{ isResizing: boolean; lastDownX: number; resizeSide: 'left' | 'right' } | null>(null);
+  const dragRef = useRef<{ isResizing: boolean; lastDownX: number; resizeSide: 'top' | 'bottom' } | null>(null);
   const ref = useRef<HTMLDivElement>(null);
   const didInitialize = useRef<boolean | null>(null);
 
@@ -99,30 +99,30 @@ export const HorizontalResizeablePanel: React.FC<HorizontalResizeablePanelProps>
 
       if (onResize) onResize();
 
-      if (dragRef.current.resizeSide === 'left') {
-        let width = ref.current.clientWidth + (e.clientX - ref.current.offsetLeft) * -1;
+      if (dragRef.current.resizeSide === 'top') {
+        let height = ref.current.clientHeight + (e.clientY - ref.current.offsetTop) * -1;
 
-        if (minLeftSize && width < minLeftSize) {
-          width = minLeftSize;
+        if (minTopSize && height < minTopSize) {
+          height = minTopSize;
         }
 
-        if (maxLeftSize && width > maxLeftSize) {
-          width = maxLeftSize;
+        if (maxTopSize && height > maxTopSize) {
+          height = maxTopSize;
         }
 
-        ref.current.style.width = `${width}px`;
-      } else if (dragRef.current.resizeSide === 'right') {
-        let width = e.clientX - ref.current.offsetLeft;
+        ref.current.style.height = `${height}px`;
+      } else if (dragRef.current.resizeSide === 'bottom') {
+        let height = e.clientY - 16;
 
-        if (minRightSize && width < minRightSize) {
-          width = minRightSize;
+        if (minBottomSize && height < minBottomSize) {
+          height = minBottomSize;
         }
 
-        if (maxRightSize && width > maxRightSize) {
-          width = maxRightSize;
+        if (maxBottomSize && height > maxBottomSize) {
+          height = maxBottomSize;
         }
 
-        ref.current.style.width = `${width}px`;
+        ref.current.style.height = `${height}px`;
       }
     };
 
@@ -131,7 +131,7 @@ export const HorizontalResizeablePanel: React.FC<HorizontalResizeablePanelProps>
      */
     const onMouseUp = () => {
       // Resets the values
-      dragRef.current = { isResizing: false, lastDownX: 0, resizeSide: 'left' };
+      dragRef.current = { isResizing: false, lastDownX: 0, resizeSide: 'top' };
       setIsResizing(false);
     };
 
@@ -141,31 +141,31 @@ export const HorizontalResizeablePanel: React.FC<HorizontalResizeablePanelProps>
       window.removeEventListener('mousemove', onMouseMove);
       window.removeEventListener('mouseup', onMouseUp);
     };
-  }, [maxLeftSize, maxRightSize, minLeftSize, minRightSize, onResize]);
+  }, [maxTopSize, maxBottomSize, minTopSize, minBottomSize, onResize]);
 
-  const onMove = useCallback((e: React.MouseEvent<HTMLButtonElement, MouseEvent>, resizeSide: 'left' | 'right') => {
+  const onMove = useCallback((e: React.MouseEvent<HTMLButtonElement, MouseEvent>, resizeSide: 'top' | 'bottom') => {
     dragRef.current = { isResizing: true, lastDownX: e.clientX, resizeSide };
     setIsResizing(true);
   }, []);
 
   return (
     <div {...props} className={classNames('relative', props.className)} ref={ref}>
-      {resizeLeft && (
+      {resizeTop && (
         <button
           type="button"
-          className="absolute h-full inset-y-0 w-2 cursor-col-resize group"
-          style={{ left: '-5px' }}
-          onMouseDown={(e) => onMove(e, 'left')}
+          className="absolute w-full inset-x-0 h-2 cursor-row-resize group"
+          style={{ top: '-5px' }}
+          onMouseDown={(e) => onMove(e, 'top')}
         >
           {renderDragContent && renderDragContent({ isResizing })}
         </button>
       )}
-      {resizeRight && (
+      {resizeBottom && (
         <button
           type="button"
-          className="absolute h-full inset-y-0 w-2 cursor-col-resize group"
-          style={{ right: '-5px' }}
-          onMouseDown={(e) => onMove(e, 'right')}
+          className="absolute w-full inset-x-0 h-2 cursor-row-resize group"
+          style={{ bottom: '-5px' }}
+          onMouseDown={(e) => onMove(e, 'bottom')}
         >
           {renderDragContent && renderDragContent({ isResizing })}
         </button>
