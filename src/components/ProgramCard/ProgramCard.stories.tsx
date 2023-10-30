@@ -8,10 +8,9 @@ export default {
   component: ProgramCard,
   argTypes: {
     color: {
-      defaultValue: 'pui-primary',
+      options: colorOptions,
       control: {
-        type: 'select',
-        options: colorOptions
+        type: 'select'
       }
     },
     className: {
@@ -20,29 +19,32 @@ export default {
       }
     },
     imageUrl: {
-      defaultValue: 'https://fakeimg.pl/370x110/',
       control: {
         type: 'text'
       }
     },
     title: {
-      defaultValue: 'This is a title',
       control: {
         type: 'text'
       }
     },
     percentage: {
-      defaultValue: '50',
       control: {
         type: 'text'
       }
     },
     buttonPercentage: {
-      defaultValue: 'View more CTA',
       control: {
         type: 'text'
       }
     }
+  },
+  args: {
+    color: 'pui-primary',
+    imageUrl: 'https://fakeimg.pl/370x110/',
+    title: 'This is a title',
+    percentage: '50',
+    buttonPercentage: 'View more CTA'
   }
 } as Meta;
 

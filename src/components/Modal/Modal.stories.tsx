@@ -11,52 +11,50 @@ export default {
   component: Modal,
   parameters: { layout: 'fullscreen' },
   argTypes: {
-    isOpen: {
-      defaultValue: true
-    },
-    title: {
-      defaultValue: 'This is my modal'
-    },
     size: {
-      defaultValue: '2/5vw',
+      options: minWidthOptions,
       control: {
-        type: 'select',
-        options: minWidthOptions
+        type: 'select'
       }
     },
     position: {
-      defaultValue: 'default',
+      options: ['default', 'center'],
       control: {
-        type: 'select',
-        options: ['default', 'center']
+        type: 'select'
       }
     },
     isClosable: {
-      defaultValue: true,
       control: {
         type: 'boolean'
       }
     },
     removePadding: {
-      defaultValue: false,
       control: {
         type: 'boolean'
       }
     },
     variant: {
-      defaultValue: 'default',
+      options: ['default', 'new'],
       control: {
-        type: 'select',
-        options: ['default', 'new']
+        type: 'select'
       }
     },
     content: {
-      defaultValue: 'A modal content',
       control: {
         type: 'text'
       }
     },
     onToggleCallback: { action: 'onToggle' }
+  },
+  args: {
+    isOpen: true,
+    title: 'This is my modal',
+    size: '2/5vw',
+    position: 'default',
+    isClosable: true,
+    removePadding: false,
+    variant: 'default',
+    content: 'A modal content'
   }
 } as Meta;
 

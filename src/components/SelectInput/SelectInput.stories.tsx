@@ -6,12 +6,7 @@ export default {
   title: 'Components/Inputs/Select',
   component: SelectInput,
   argTypes: {
-    id: { defaultValue: 'input-id' },
-    label: {
-      defaultValue: 'Input'
-    },
     placeholder: {
-      defaultValue: 'Type here...',
       control: {
         type: 'text'
       }
@@ -44,6 +39,15 @@ export default {
     onChange: { action: 'onChange' },
     onBlur: { action: 'onBlur' },
     onFocus: { action: 'onFocus' }
+  },
+  args: {
+    id: 'input-id',
+    label: 'Input',
+    placeholder: 'Type here...',
+    defaultValue: '',
+    multiple: false,
+    disabled: false,
+    readOnly: false
   }
 } as Meta;
 

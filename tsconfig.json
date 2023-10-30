@@ -3,11 +3,7 @@
     /* ------ Next.js required options ------ */
     /* ------ This was generated automatically by next and it is recommended not to change ------ */
     "target": "es5" /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017', 'ES2018', 'ES2019' or 'ESNEXT'. */,
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ] /* Specify library files to be included in the compilation. */,
+    "lib": ["dom", "dom.iterable", "esnext"] /* Specify library files to be included in the compilation. */,
     "allowJs": true /* Allow javascript files to be compiled. */,
     "skipLibCheck": true,
     "strict": true /* Enable all strict type-checking options. */,
@@ -44,15 +40,6 @@
     "downlevelIteration": true,
     "incremental": true
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx"
-  ],
-  "exclude": [
-    "dist",
-    "node_modules",
-    ".next",
-    "storybook-static"
-  ]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "exclude": ["dist", "node_modules", ".next", "storybook-static"]
 }

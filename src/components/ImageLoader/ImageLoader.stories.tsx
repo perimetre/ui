@@ -5,11 +5,12 @@ import { ImageLoader, ImageLoaderProps } from '.';
 export default {
   title: 'Components/Loaders/ImageLoader',
   component: ImageLoader,
-  argTypes: {
-    src: { defaultValue: 'https://cataas.com/cat' },
-    alt: { defaultValue: 'An image of a cat' },
-    className: { defaultValue: 'w-64 h-64 object-cover' },
-    loaderClassName: { defaultValue: 'w-64 h-64' }
+  argTypes: {},
+  args: {
+    src: 'https://cataas.com/cat',
+    alt: 'An image of a cat',
+    className: 'w-64 h-64 object-cover',
+    loaderClassName: 'w-64 h-64'
   }
 } as Meta;
 

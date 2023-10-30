@@ -6,10 +6,7 @@ export default {
   title: 'Components/Inputs/Text',
   component: TextInput,
   argTypes: {
-    id: { defaultValue: 'input-id' },
-    label: { defaultValue: 'Input' },
     placeholder: {
-      defaultValue: 'Type here...',
       control: {
         type: 'text'
       }
@@ -37,6 +34,14 @@ export default {
     onChange: { action: 'onChange' },
     onBlur: { action: 'onBlur' },
     onFocus: { action: 'onFocus' }
+  },
+  args: {
+    id: 'input-id',
+    label: 'Input',
+    placeholder: 'Type here...',
+    defaultValue: '',
+    disabled: false,
+    readOnly: false
   }
 } as Meta;
 

@@ -43,7 +43,6 @@ export default {
   component: HTMLParsedContent,
   argTypes: {
     content: {
-      defaultValue: htmlContent,
       control: {
         type: 'text'
       }
@@ -53,6 +52,9 @@ export default {
         type: 'text'
       }
     }
+  },
+  args: {
+    content: htmlContent
   }
 } as Meta;
 

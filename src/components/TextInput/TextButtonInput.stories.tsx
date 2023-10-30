@@ -7,15 +7,11 @@ export default {
   component: TextButtonInput,
   argTypes: {
     content: {
-      defaultValue: 'Search',
       control: {
         type: 'text'
       }
     },
-    id: { defaultValue: 'input-id' },
-    label: { defaultValue: 'Input' },
     placeholder: {
-      defaultValue: 'Type here...',
       control: {
         type: 'text'
       }
@@ -44,6 +40,15 @@ export default {
     onBlur: { action: 'onBlur' },
     onFocus: { action: 'onFocus' },
     onButtonClick: { action: 'onButtonClick' }
+  },
+  args: {
+    content: 'Search',
+    id: 'input-id',
+    label: 'Input',
+    placeholder: 'Type here...',
+    defaultValue: '',
+    disabled: false,
+    readOnly: false
   }
 } as Meta;
 

@@ -9,13 +9,10 @@ export default {
   title: 'Components/Inputs/ToggleButton',
   component: ToggleButton,
   argTypes: {
-    offLabel: { defaultValue: 'Off' },
-    onLabel: { defaultValue: 'On' },
     color: {
-      defaultValue: 'pui-primary',
+      options: colorOptions,
       control: {
-        type: 'select',
-        options: colorOptions
+        type: 'select'
       }
     },
     defaultChecked: {
@@ -36,6 +33,11 @@ export default {
     onChange: { action: 'onChange' },
     onBlur: { action: 'onBlur' },
     onFocus: { action: 'onFocus' }
+  },
+  args: {
+    offLabel: 'Off',
+    onLabel: 'On',
+    color: 'pui-primary'
   }
 } as Meta;
 

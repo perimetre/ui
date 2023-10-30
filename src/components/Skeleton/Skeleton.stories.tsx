@@ -8,17 +8,15 @@ export default {
   title: 'Components/Loaders/Skeleton',
   argTypes: {
     width: {
-      defaultValue: '3/4',
+      options: widthHeightOptions,
       control: {
-        type: 'select',
-        options: widthHeightOptions
+        type: 'select'
       }
     },
     height: {
-      defaultValue: '4',
+      options: widthHeightOptions,
       control: {
-        type: 'select',
-        options: widthHeightOptions
+        type: 'select'
       }
     },
     className: {
@@ -26,6 +24,10 @@ export default {
         type: 'text'
       }
     }
+  },
+  args: {
+    width: '3/4',
+    height: '4'
   }
 } as Meta;
 

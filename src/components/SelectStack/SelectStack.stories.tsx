@@ -18,8 +18,10 @@ export default {
         type: 'text'
       }
     },
-    items: { defaultValue: items },
     onClick: { action: 'onClick' }
+  },
+  args: {
+    items
   }
 } as Meta;
 

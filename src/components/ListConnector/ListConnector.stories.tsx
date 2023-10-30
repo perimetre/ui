@@ -9,10 +9,9 @@ export default {
   title: 'Components/ListConnector',
   argTypes: {
     color: {
-      defaultValue: 'pui-primary',
+      options: colorOptions,
       control: {
-        type: 'select',
-        options: colorOptions
+        type: 'select'
       }
     },
     className: {
@@ -20,6 +19,9 @@ export default {
         type: 'text'
       }
     }
+  },
+  args: {
+    color: 'pui-primary'
   }
 } as Meta;
 
@@ -64,8 +66,8 @@ FlatBottom.args = {
   showIcon: true
 };
 
-export const noRounded = Template.bind({});
-noRounded.args = {
+export const NoRounded = Template.bind({});
+NoRounded.args = {
   borders: 'noRounded',
   showIcon: true
 };

@@ -13,23 +13,21 @@ export default {
   title: 'Components/Icons',
   argTypes: {
     icon: {
-      defaultValue: iconOptions[0],
+      options: iconOptions,
       control: {
-        type: 'select',
-        options: iconOptions
+        type: 'select'
       }
     },
     size: {
+      options: widthHeightOptions,
       control: {
-        type: 'select',
-        options: widthHeightOptions
+        type: 'select'
       }
     },
     color: {
-      defaultValue: 'pui-primary',
+      options: colorOptions,
       control: {
-        type: 'select',
-        options: colorOptions
+        type: 'select'
       }
     },
     className: {
@@ -37,6 +35,10 @@ export default {
         type: 'text'
       }
     }
+  },
+  args: {
+    icon: iconOptions[0],
+    color: 'pui-primary'
   }
 } as Meta;
 

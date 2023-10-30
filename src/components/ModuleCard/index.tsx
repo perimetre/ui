@@ -2,7 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 import { ArrowIcon } from '..';
 
-const variantFilterap = {
+export const variantFilterap = {
   gradient: 'pui-moduleCard-gradient'
 };
 

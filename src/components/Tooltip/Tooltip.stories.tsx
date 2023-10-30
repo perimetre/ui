@@ -9,30 +9,28 @@ export default {
   component: Tooltip,
   argTypes: {
     placement: {
-      defaultValue: 'top',
+      options: [
+        'top',
+        'top-start',
+        'top-end',
+        'right',
+        'right-start',
+        'right-end',
+        'bottom',
+        'bottom-start',
+        'bottom-end',
+        'left',
+        'left-start',
+        'left-end',
+        'auto',
+        'auto-start',
+        'auto-end'
+      ],
       control: {
-        type: 'select',
-        options: [
-          'top',
-          'top-start',
-          'top-end',
-          'right',
-          'right-start',
-          'right-end',
-          'bottom',
-          'bottom-start',
-          'bottom-end',
-          'left',
-          'left-start',
-          'left-end',
-          'auto',
-          'auto-start',
-          'auto-end'
-        ]
+        type: 'select'
       }
     },
     trigger: {
-      defaultValue: 'mouseenter focus',
       control: {
         type: 'select',
         options: ['mouseenter focus', 'click', 'focusin', 'mouseenter click']
@@ -49,17 +47,21 @@ export default {
       }
     },
     text: {
-      defaultValue: 'Open',
       control: {
         type: 'text'
       }
     },
     content: {
-      defaultValue: 'Tooltip!',
       control: {
         type: 'text'
       }
     }
+  },
+  args: {
+    placement: 'top',
+    trigger: 'mouseenter focus',
+    text: 'Open',
+    content: 'Tooltip!'
   }
 } as Meta;
 

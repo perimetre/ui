@@ -8,10 +8,9 @@ export default {
   component: ModuleCard,
   argTypes: {
     color: {
-      defaultValue: 'pui-primary',
+      options: colorOptions,
       control: {
-        type: 'select',
-        options: colorOptions
+        type: 'select'
       }
     },
     className: {
@@ -20,7 +19,6 @@ export default {
       }
     },
     imageUrl: {
-      defaultValue: 'https://fakeimg.pl/370x110/',
       control: {
         type: 'text'
       }
@@ -32,17 +30,22 @@ export default {
       }
     },
     content: {
-      defaultValue: 'Here goes the content or description of the card',
       control: {
         type: 'text'
       }
     },
     buttonContent: {
-      defaultValue: 'View more CTA',
       control: {
         type: 'text'
       }
     }
+  },
+  args: {
+    color: 'pui-primary',
+    imageUrl: 'https://fakeimg.pl/370x110/',
+    title: 'This is a title',
+    content: 'Here goes the content or description of the card',
+    buttonContent: 'View more CTA'
   }
 } as Meta;
 

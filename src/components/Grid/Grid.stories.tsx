@@ -8,16 +8,15 @@ export default {
   title: 'Components/Grid',
   argTypes: {
     columns: {
-      defaultValue: '4',
+      options: gridColumnOptions,
       control: {
-        type: 'select',
-        options: gridColumnOptions
+        type: 'select'
       }
     },
     rows: {
+      options: gridRowOptions,
       control: {
-        type: 'select',
-        options: gridRowOptions
+        type: 'select'
       }
     },
     className: {
@@ -25,6 +24,10 @@ export default {
         type: 'text'
       }
     }
+  },
+  args: {
+    columns: '4',
+    rows: undefined
   }
 } as Meta;
 

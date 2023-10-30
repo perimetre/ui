@@ -9,12 +9,10 @@ export default {
   title: 'Components/Inputs/ToggleInput',
   component: ToggleInput,
   argTypes: {
-    label: { defaultValue: 'Input' },
     color: {
-      defaultValue: 'pui-primary',
+      options: colorOptions,
       control: {
-        type: 'select',
-        options: colorOptions
+        type: 'select'
       }
     },
     defaultChecked: {
@@ -23,7 +21,6 @@ export default {
       }
     },
     placeholder: {
-      defaultValue: 'Type here...',
       control: {
         type: 'text'
       }
@@ -41,6 +38,11 @@ export default {
     onChange: { action: 'onChange' },
     onBlur: { action: 'onBlur' },
     onFocus: { action: 'onFocus' }
+  },
+  args: {
+    label: 'Input',
+    color: 'pui-primary',
+    placeholder: 'Type here...'
   }
 } as Meta;
 

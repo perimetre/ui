@@ -10,10 +10,9 @@ export default {
   component: PercentageCircle,
   argTypes: {
     color: {
-      defaultValue: 'pui-primary',
+      options: colorOptions,
       control: {
-        type: 'select',
-        options: colorOptions
+        type: 'select'
       }
     },
     className: {
@@ -22,11 +21,14 @@ export default {
       }
     },
     percentage: {
-      defaultValue: 50,
       control: {
         type: 'number'
       }
     }
+  },
+  args: {
+    color: 'pui-primary',
+    percentage: 50
   }
 } as Meta;
 

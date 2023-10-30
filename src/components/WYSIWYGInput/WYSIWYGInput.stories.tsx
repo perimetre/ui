@@ -8,10 +8,7 @@ export default {
   title: 'Components/Inputs/WYSIWYG',
   component: WYSIWYGInput,
   argTypes: {
-    id: { defaultValue: 'input-id' },
-    label: { defaultValue: 'Input' },
     placeholder: {
-      defaultValue: 'Type here...',
       control: {
         type: 'text'
       }
@@ -40,6 +37,14 @@ export default {
     onHtmlChangeSlow: { action: 'onHtmlChangeSlow' },
     onBlur: { action: 'onBlur' },
     onFocus: { action: 'onFocus' }
+  },
+  args: {
+    id: 'input-id',
+    label: 'Input',
+    placeholder: 'Type here...',
+    disabled: false,
+    disableStickyToolbar: false,
+    readOnly: false
   }
 } as Meta;
 

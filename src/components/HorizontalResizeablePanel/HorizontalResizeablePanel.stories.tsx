@@ -9,28 +9,22 @@ export default {
   title: 'Components/ResizeablePanel/Horizontal',
   component: HorizontalResizeablePanel,
   argTypes: {
-    resizeRight: {
-      defaultValue: true
-    },
     width: {
-      defaultValue: '1/4',
+      options: widthHeightOptions,
       control: {
-        type: 'select',
-        options: widthHeightOptions
+        type: 'select'
       }
     },
     height: {
-      defaultValue: 'screen',
+      options: widthHeightOptions,
       control: {
-        type: 'select',
-        options: widthHeightOptions
+        type: 'select'
       }
     },
     backgroundColor: {
-      defaultValue: 'pui-primary',
+      options: colorOptions,
       control: {
-        type: 'select',
-        options: colorOptions
+        type: 'select'
       }
     },
     className: {
@@ -40,6 +34,12 @@ export default {
     },
     onResize: { action: 'onResize' },
     onResizeChange: { action: 'onResizeChange' }
+  },
+  args: {
+    resizeRight: true,
+    width: '1/4',
+    height: 'screen',
+    backgroundColor: 'pui-primary'
   }
 } as Meta;
 

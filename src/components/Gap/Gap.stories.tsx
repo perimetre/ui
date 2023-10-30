@@ -8,20 +8,17 @@ export default {
   title: 'Components/Gap',
   argTypes: {
     size: {
-      defaultValue: '2',
+      options: marginPaddingOptions,
       control: {
-        type: 'select',
-        options: marginPaddingOptions
+        type: 'select'
       }
     },
     horizontal: {
-      defaultValue: false,
       control: {
         type: 'boolean'
       }
     },
     vertical: {
-      defaultValue: false,
       control: {
         type: 'boolean'
       }
@@ -31,6 +28,11 @@ export default {
         type: 'text'
       }
     }
+  },
+  args: {
+    size: '2',
+    horizontal: false,
+    vertical: false
   }
 } as Meta;
 

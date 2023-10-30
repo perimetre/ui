@@ -9,28 +9,22 @@ export default {
   title: 'Components/ResizeablePanel/Vertical',
   component: VerticalResizeablePanel,
   argTypes: {
-    resizeBottom: {
-      defaultValue: true
-    },
     width: {
-      defaultValue: '1/4',
+      options: widthHeightOptions,
       control: {
-        type: 'select',
-        options: widthHeightOptions
+        type: 'select'
       }
     },
     height: {
-      defaultValue: '1/2',
+      options: widthHeightOptions,
       control: {
-        type: 'select',
-        options: widthHeightOptions
+        type: 'select'
       }
     },
     backgroundColor: {
-      defaultValue: 'pui-primary',
+      options: colorOptions,
       control: {
-        type: 'select',
-        options: colorOptions
+        type: 'select'
       }
     },
     className: {
@@ -40,6 +34,12 @@ export default {
     },
     onResize: { action: 'onResize' },
     onResizeChange: { action: 'onResizeChange' }
+  },
+  args: {
+    resizeBottom: true,
+    width: '1/4',
+    height: '1/2',
+    backgroundColor: 'pui-primary'
   }
 } as Meta;
 

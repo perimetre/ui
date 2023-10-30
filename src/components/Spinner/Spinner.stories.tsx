@@ -8,17 +8,15 @@ export default {
   title: 'Components/Loaders/Spinner',
   argTypes: {
     size: {
-      defaultValue: '4',
+      options: widthHeightOptions,
       control: {
-        type: 'select',
-        options: widthHeightOptions
+        type: 'select'
       }
     },
     color: {
-      defaultValue: 'pui-primary',
+      options: colorOptions,
       control: {
-        type: 'select',
-        options: colorOptions
+        type: 'select'
       }
     },
     className: {
@@ -26,6 +24,10 @@ export default {
         type: 'text'
       }
     }
+  },
+  args: {
+    size: '4',
+    color: 'pui-primary'
   }
 } as Meta;
 

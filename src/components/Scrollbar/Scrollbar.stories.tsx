@@ -8,10 +8,9 @@ export default {
   title: 'Components/Scrollbar',
   argTypes: {
     color: {
-      defaultValue: 'pui-primary',
+      options: colorOptions,
       control: {
-        type: 'select',
-        options: colorOptions
+        type: 'select'
       }
     },
     className: {
@@ -19,6 +18,9 @@ export default {
         type: 'text'
       }
     }
+  },
+  args: {
+    color: 'pui-primary'
   }
 } as Meta;
 

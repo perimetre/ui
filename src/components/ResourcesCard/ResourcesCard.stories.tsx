@@ -12,24 +12,26 @@ export default {
       }
     },
     imageUrl: {
-      defaultValue: 'https://fakeimg.pl/260x80/',
       control: {
         type: 'text'
       }
     },
     title: {
-      defaultValue: 'This is a title',
       control: {
         type: 'text'
       }
     },
     content: {
-      defaultValue:
-        'Adopting ecommerce means a lot more than just taking orders online. To succeed and be profitable, you must plan for all the aspects of ecommerce that impact your value chain.',
       control: {
         type: 'text'
       }
     }
+  },
+  args: {
+    imageUrl: 'https://fakeimg.pl/260x80/',
+    title: 'This is a title',
+    content:
+      'Adopting ecommerce means a lot more than just taking orders online. To succeed and be profitable, you must plan for all the aspects of ecommerce that impact your value chain.'
   }
 } as Meta;
 

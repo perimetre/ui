@@ -8,10 +8,9 @@ export default {
   title: 'Components/LineClamp',
   argTypes: {
     lineClamp: {
-      defaultValue: '3',
+      options: clampOptions,
       control: {
-        type: 'select',
-        options: clampOptions
+        type: 'select'
       }
     },
     className: {
@@ -19,6 +18,9 @@ export default {
         type: 'text'
       }
     }
+  },
+  args: {
+    lineClamp: '3'
   }
 } as Meta;
 

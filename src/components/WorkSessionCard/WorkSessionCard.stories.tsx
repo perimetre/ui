@@ -13,68 +13,70 @@ export default {
       }
     },
     imageUrl: {
-      defaultValue: 'https://fakeimg.pl/60x60/',
       control: {
         type: 'text'
       }
     },
     title: {
-      defaultValue: 'This is a title',
       control: {
         type: 'text'
       }
     },
     content: {
-      defaultValue: 'Work Session preparation',
       control: {
         type: 'text'
       }
     },
     buttonContent: {
-      defaultValue: 'Schedule a meeting',
       control: {
         type: 'text'
       }
     },
     advisorName: {
-      defaultValue: 'Mathew Casablanca',
       control: {
         type: 'text'
       }
     },
     advisorTitle: {
-      defaultValue: 'Regional Leader Latam',
       control: {
         type: 'text'
       }
     },
     gradientInitialColor: {
-      defaultValue: 'from-pui-primary',
+      options: gradientFromClassNameMap,
       control: {
-        type: 'select',
-        options: gradientFromClassNameMap
+        type: 'select'
       }
     },
     gradientFinalColor: {
-      defaultValue: 'to-pui-secondary',
+      options: gradientToClassNameMap,
       control: {
-        type: 'select',
-        options: gradientToClassNameMap
+        type: 'select'
       }
     },
     gradientMiddleColor: {
-      defaultValue: 'to-pui-current',
+      options: gradientViaClassNameMap,
       control: {
-        type: 'select',
-        options: gradientViaClassNameMap
+        type: 'select'
       }
     },
     counter: {
-      defaultValue: '0/5',
       control: {
         type: 'text'
       }
     }
+  },
+  args: {
+    imageUrl: 'https://fakeimg.pl/60x60/',
+    title: 'This is a title',
+    content: 'Work Session preparation',
+    buttonContent: 'Schedule a meeting',
+    advisorName: 'Mathew Casablanca',
+    advisorTitle: 'Regional Leader Latam',
+    gradientInitialColor: 'from-pui-primary',
+    gradientFinalColor: 'to-pui-secondary',
+    gradientMiddleColor: 'to-pui-current',
+    counter: '0/5'
   }
 } as Meta;
 
