@@ -1,5 +1,4 @@
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Meta, Story } from '@storybook/react/types-6-0';
+import { Meta, StoryFn } from '@storybook/react';
 import React from 'react';
 import { AutocompleteDropdownInput, AutocompleteDropdownInputProps } from './AutocompleteDropdownInput';
 import { MenuIcon } from '../Icons';
@@ -8,10 +7,10 @@ export default {
   title: 'Components/Inputs/Autocomplete',
   component: AutocompleteDropdownInput,
   argTypes: {
-    label: {
-      defaultValue: 'Autocomplete Dropdown Input'
-    },
     onItemToggle: { action: 'onItemToggle' }
+  },
+  args: {
+    label: 'Autocomplete Dropdown Input'
   }
 } as Meta;
 
@@ -20,7 +19,7 @@ export default {
  *
  * @param props the story props
  */
-const Template: Story<AutocompleteDropdownInputProps> = (props) => (
+const Template: StoryFn<AutocompleteDropdownInputProps> = (props) => (
   <AutocompleteDropdownInput
     {...props}
     id="storybook-autocomplete"
@@ -45,7 +44,7 @@ DropdownSingleSelect.args = {
  *
  * @param props the story props
  */
-const DropdownWithButtonsTemplate: Story = (props) => (
+const DropdownWithButtonsTemplate: StoryFn = (props) => (
   <AutocompleteDropdownInput
     {...props}
     id="storybook-autocomplete"
@@ -74,7 +73,7 @@ export const DropdownWithButtons = DropdownWithButtonsTemplate.bind({});
  *
  * @param props the story props
  */
-const ChipsFullSizeTemplate: Story<AutocompleteDropdownInputProps> = (props) => (
+const ChipsFullSizeTemplate: StoryFn<AutocompleteDropdownInputProps> = (props) => (
   <AutocompleteDropdownInput
     {...props}
     id="storybook-autocomplete"

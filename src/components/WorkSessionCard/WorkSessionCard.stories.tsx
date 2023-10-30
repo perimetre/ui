@@ -1,6 +1,5 @@
 import React from 'react';
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Story, Meta } from '@storybook/react/types-6-0';
+import { StoryFn, Meta } from '@storybook/react';
 import { WorkSessionCard, WorkSessionCardProps } from '.';
 import { gradientFromClassNameMap, gradientToClassNameMap, gradientViaClassNameMap } from '../../storybookMappers';
 
@@ -93,6 +92,6 @@ export default {
  * @param props.buttonLabel the label for the action button
  * @param props.counter the label for the action button
  */
-const Template: Story<WorkSessionCardProps & { color?: string }> = ({ ...props }) => <WorkSessionCard {...props} />;
+const Template: StoryFn<WorkSessionCardProps & { color?: string }> = ({ ...props }) => <WorkSessionCard {...props} />;
 
 export const Default = Template.bind({});

@@ -21,6 +21,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changes
 
+- Updated storybook libraries, and its dependencies
+- Updated ui lib code with breaking changes from new storybook version
+
 ### Added
 
 ### Fixed

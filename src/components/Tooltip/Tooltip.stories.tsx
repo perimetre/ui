@@ -1,5 +1,4 @@
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Meta, Story } from '@storybook/react/types-6-0';
+import { Meta, StoryFn } from '@storybook/react';
 import React from 'react';
 import { Tooltip, TooltipProps } from '.';
 import classnames from 'classnames';
@@ -72,7 +71,7 @@ export default {
  * @param props.content the content property set on controls
  * @param props.text.viewMode The storybook's viewmode
  */
-const Template: Story<TooltipProps & { text?: string; content?: string }> = (
+const Template: StoryFn<TooltipProps & { text?: string; content?: string }> = (
   { text, content, ...props },
   { viewMode }
 ) => (

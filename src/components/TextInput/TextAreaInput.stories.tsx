@@ -1,5 +1,4 @@
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Meta, Story } from '@storybook/react/types-6-0';
+import { Meta, StoryFn } from '@storybook/react';
 import React from 'react';
 import { TextAreaInput, TextAreaInputProps } from './TextAreaInput';
 
@@ -52,7 +51,7 @@ export default {
  *
  * @param props the story props
  */
-const Template: Story<TextAreaInputProps> = (props) => <TextAreaInput {...props} />;
+const Template: StoryFn<TextAreaInputProps> = (props) => <TextAreaInput {...props} />;
 
 export const TextArea = Template.bind({});
 

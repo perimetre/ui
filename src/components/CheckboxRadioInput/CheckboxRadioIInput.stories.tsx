@@ -1,6 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Meta, Story } from '@storybook/react/types-6-0';
+import { Meta, StoryFn } from '@storybook/react';
 import React from 'react';
 import { colorOptions } from '../../prebuiltTailwindTheme';
 import classnames from 'classnames';
@@ -23,18 +22,13 @@ export default {
   title: 'Components/Inputs/Checkbox Radio',
   component: CheckboxRadioInput,
   argTypes: {
-    type: {
-      defaultValue: 'checkbox'
-    },
     color: {
-      defaultValue: 'pui-primary',
+      options: colorOptions,
       control: {
-        type: 'select',
-        options: colorOptions
+        type: 'select'
       }
     },
     label: {
-      defaultValue: labels.string,
       options: Object.keys(labels),
       mapping: labels,
       control: {
@@ -63,6 +57,11 @@ export default {
     onChange: { action: 'onChange' },
     onBlur: { action: 'onBlur' },
     onFocus: { action: 'onFocus' }
+  },
+  args: {
+    type: 'checkbox',
+    color: 'pui-primary',
+    label: labels.string
   }
 } as Meta;
 
@@ -73,7 +72,7 @@ export default {
  * @param props.color the color property set on controls
  * @param props.className the component classes
  */
-const Template: Story<CheckboxRadioInputProps> = ({ color, className, ...props }) => (
+const Template: StoryFn<CheckboxRadioInputProps> = ({ color, className, ...props }) => (
   <CheckboxRadioInput
     {...props}
     className={classnames({ [puiColorClassnameMap[color || 'transparent']]: color !== 'pui-primary' }, className)}

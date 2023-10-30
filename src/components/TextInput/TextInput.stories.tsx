@@ -1,5 +1,4 @@
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Meta, Story } from '@storybook/react/types-6-0';
+import { Meta, StoryFn } from '@storybook/react';
 import React from 'react';
 import { TextInput, TextInputProps } from './TextInput';
 
@@ -48,7 +47,7 @@ export default {
  * @param props.ref grab the ref to fix the issue with forwardRef typing
  */
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const Template: Story<TextInputProps> = ({ ref, ...props }) => <TextInput {...props} />;
+const Template: StoryFn<TextInputProps> = ({ ref, ...props }) => <TextInput {...props} />;
 
 export const Text = Template.bind({});
 
@@ -91,7 +90,7 @@ WithIconLeft.args = {
  * @param props.ref grab the ref to fix the issue with forwardRef typing
  */
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const DataListTemplate: Story<TextInputProps> = ({ ref, ...props }) => (
+const DataListTemplate: StoryFn<TextInputProps> = ({ ref, ...props }) => (
   <TextInput {...props} list="listOptions">
     <datalist id="listOptions">
       {Array(10)

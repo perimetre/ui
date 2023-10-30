@@ -1,5 +1,4 @@
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Meta, Story } from '@storybook/react/types-6-0';
+import { Meta, StoryFn } from '@storybook/react';
 import { now, getLocalTimeZone } from '@internationalized/date';
 import React from 'react';
 import classnames from 'classnames';
@@ -11,14 +10,10 @@ export default {
   title: 'Components/Inputs/DatePickerInput',
   component: DatePickerInput,
   argTypes: {
-    id: { defaultValue: 'input-id' },
-    label: { defaultValue: 'Input' },
-    locale: { defaultValue: 'en' },
     color: {
-      defaultValue: 'pui-primary',
+      options: colorOptions,
       control: {
-        type: 'select',
-        options: colorOptions
+        type: 'select'
       }
     },
     disabled: {
@@ -39,6 +34,12 @@ export default {
     onChange: { action: 'onChange' },
     onBlur: { action: 'onBlur' },
     onFocus: { action: 'onFocus' }
+  },
+  args: {
+    id: 'input-id',
+    label: 'Input',
+    locale: 'en',
+    color: 'pui-primary'
   }
 } as Meta;
 
@@ -49,7 +50,7 @@ export default {
  * @param props.color the color property set on controls
  * @param props.className The input className
  */
-const Template: Story<DatePickerProps & { color?: string }> = ({ color, className, ...props }) => (
+const Template: StoryFn<DatePickerProps & { color?: string }> = ({ color, className, ...props }) => (
   <DatePickerInput
     {...props}
     className={classnames(
@@ -101,7 +102,7 @@ Time24Hours.args = {
  * @param props.color the color property set on controls
  * @param props.className The input className
  */
-const LocalTimezoneTemplate: Story<DatePickerProps & { color?: string }> = ({ color, className, ...props }) => {
+const LocalTimezoneTemplate: StoryFn<DatePickerProps & { color?: string }> = ({ color, className, ...props }) => {
   return (
     <DatePickerInput
       {...props}
@@ -126,7 +127,7 @@ export const LocalTimezone = LocalTimezoneTemplate.bind({});
  * @param props.color the color property set on controls
  * @param props.className The input className
  */
-const OtherTimezoneTemplate: Story<DatePickerProps & { color?: string }> = ({ color, className, ...props }) => {
+const OtherTimezoneTemplate: StoryFn<DatePickerProps & { color?: string }> = ({ color, className, ...props }) => {
   return (
     <DatePickerInput
       {...props}

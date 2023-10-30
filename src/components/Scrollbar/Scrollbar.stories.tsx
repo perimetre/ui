@@ -1,5 +1,4 @@
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Meta, Story } from '@storybook/react/types-6-0';
+import { Meta, StoryFn } from '@storybook/react';
 import React from 'react';
 import { colorOptions } from '../../prebuiltTailwindTheme';
 import classnames from 'classnames';
@@ -30,7 +29,7 @@ export default {
  * @param props.color the color property set on controls
  * @param props.className the component classes
  */
-const ScrollbarTemplate: Story = ({ color, className }) => (
+const ScrollbarTemplate: StoryFn = ({ color, className }) => (
   <div
     className={classnames(
       'pui-scrollbar',

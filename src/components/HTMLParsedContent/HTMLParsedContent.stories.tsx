@@ -1,5 +1,4 @@
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Meta, Story } from '@storybook/react/types-6-0';
+import { Meta, StoryFn } from '@storybook/react';
 import React from 'react';
 import { HTMLParsedContent, HTMLParsedContentProps } from '.';
 
@@ -64,6 +63,6 @@ export default {
  * @param props.content the content property set on controls
  * @param props.className the component classes
  */
-const Template: Story<HTMLParsedContentProps> = (props) => <HTMLParsedContent {...props} />;
+const Template: StoryFn<HTMLParsedContentProps> = (props) => <HTMLParsedContent {...props} />;
 
 export const ParseContent = Template.bind({});

@@ -1,6 +1,5 @@
 import React from 'react';
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Story, Meta } from '@storybook/react/types-6-0';
+import { StoryFn, Meta } from '@storybook/react';
 import { ExpertCard, ExpertCardProps } from '.';
 import { gradientFromClassNameMap, gradientToClassNameMap, gradientViaClassNameMap } from '../../storybookMappers';
 
@@ -14,75 +13,77 @@ export default {
       }
     },
     imageUrl: {
-      defaultValue: 'https://fakeimg.pl/125x125/',
       control: {
         type: 'text'
       }
     },
     title: {
-      defaultValue: 'This is a title',
       control: {
         type: 'text'
       }
     },
     content: {
-      defaultValue:
-        'From choosing the right ecommerce platform for your business to making sure you are covered on the legal front, the number of aspects you must handle and plan for can seem like an insurmountable challenge.  From choosing the right ecommerce platform for your business to making sure you are covered on the legal front',
       control: {
         type: 'text'
       }
     },
     buttonContent: {
-      defaultValue: 'Schedule a meeting',
       control: {
         type: 'text'
       }
     },
     advisorName: {
-      defaultValue: 'Mathew',
       control: {
         type: 'text'
       }
     },
     advisorLastname: {
-      defaultValue: 'Casablanca',
       control: {
         type: 'text'
       }
     },
     advisorTitle: {
-      defaultValue: 'Regional Leader Latam',
       control: {
         type: 'text'
       }
     },
     gradientInitialColor: {
-      defaultValue: 'from-pui-primary',
+      options: gradientFromClassNameMap,
       control: {
-        type: 'select',
-        options: gradientFromClassNameMap
+        type: 'select'
       }
     },
     gradientFinalColor: {
-      defaultValue: 'to-pui-secondary',
+      options: gradientToClassNameMap,
       control: {
-        type: 'select',
-        options: gradientToClassNameMap
+        type: 'select'
       }
     },
     gradientMiddleColor: {
-      defaultValue: 'to-pui-current',
+      options: gradientViaClassNameMap,
       control: {
-        type: 'select',
-        options: gradientViaClassNameMap
+        type: 'select'
       }
     },
     email: {
-      defaultValue: 'advisoremail@test.com',
       control: {
         type: 'text'
       }
     }
+  },
+  args: {
+    imageUrl: 'https://fakeimg.pl/125x125/',
+    title: 'This is a title',
+    content:
+      'From choosing the right ecommerce platform for your business to making sure you are covered on the legal front, the number of aspects you must handle and plan for can seem like an insurmountable challenge.  From choosing the right ecommerce platform for your business to making sure you are covered on the legal front',
+    buttonContent: 'Schedule a meeting',
+    advisorName: 'Mathew',
+    advisorLastname: 'Casablanca',
+    advisorTitle: 'Regional Leader Latam',
+    gradientInitialColor: 'from-pui-primary',
+    gradientFinalColor: 'to-pui-secondary',
+    gradientMiddleColor: 'to-pui-current',
+    email: 'advisoremail@test.com'
   }
 } as Meta;
 
@@ -101,6 +102,6 @@ export default {
  * @param props.buttonLabel the label for the action button
  * @param props.counter the label for the action button
  */
-const Template: Story<ExpertCardProps & { color?: string }> = ({ ...props }) => <ExpertCard {...props} />;
+const Template: StoryFn<ExpertCardProps & { color?: string }> = ({ ...props }) => <ExpertCard {...props} />;
 
 export const Default = Template.bind({});

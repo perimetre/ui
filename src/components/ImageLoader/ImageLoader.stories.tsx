@@ -1,5 +1,4 @@
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Meta, Story } from '@storybook/react/types-6-0';
+import { Meta, StoryFn } from '@storybook/react';
 import React from 'react';
 import { ImageLoader, ImageLoaderProps } from '.';
 
@@ -19,6 +18,6 @@ export default {
  *
  * @param props the story props
  */
-const Template: Story<ImageLoaderProps> = (props) => <ImageLoader {...props} />;
+const Template: StoryFn<ImageLoaderProps> = (props) => <ImageLoader {...props} />;
 
 export const Default = Template.bind({});

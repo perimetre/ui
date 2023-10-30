@@ -1,5 +1,4 @@
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Meta, Story } from '@storybook/react/types-6-0';
+import { Meta, StoryFn } from '@storybook/react';
 import React from 'react';
 import { clampOptions } from '../../prebuiltTailwindTheme';
 import classnames from 'classnames';
@@ -30,7 +29,7 @@ export default {
  * @param props.lineClamp the lineClamp property set on controls
  * @param props.className the component classes
  */
-const LineClampTemplate: Story = ({ lineClamp, className, ...props }) => (
+const LineClampTemplate: StoryFn = ({ lineClamp, className, ...props }) => (
   <div {...props} className={classnames(clampClassnameMap[lineClamp || 'none'], className)}>
     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem explicabo facilis natus quo impedit reiciendis cum
     deleniti hic, nostrum blanditiis! Necessitatibus inventore blanditiis dolorum ea eum suscipit maxime temporibus

@@ -1,5 +1,4 @@
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Meta, Story } from '@storybook/react/types-6-0';
+import { Meta, StoryFn } from '@storybook/react';
 import React, { useRef, useState } from 'react';
 import { WYSIWYGInput, WYSIWYGInputProps, WYSIWYGInputRef } from '.';
 import { Button } from '../Button';
@@ -51,7 +50,7 @@ export default {
  * @param props.content  the content property set on controls
  * @param props.className the component classes
  */
-const Template: Story<WYSIWYGInputProps & { content?: string; className?: string }> = ({ ...props }) => (
+const Template: StoryFn<WYSIWYGInputProps & { content?: string; className?: string }> = ({ ...props }) => (
   <WYSIWYGInput {...props} />
 );
 
@@ -81,7 +80,7 @@ DefaultValue.args = {
  * @param props.htmlValueSlow The html value to fill the input with
  * @param props.className the component classes
  */
-const ControlledValueTemplate: Story<WYSIWYGInputProps & { content?: string; className?: string }> = ({
+const ControlledValueTemplate: StoryFn<WYSIWYGInputProps & { content?: string; className?: string }> = ({
   htmlValueSlow,
   ...props
 }) => {
@@ -108,7 +107,7 @@ ControlledValue.args = {
  * @param props.content  the content property set on controls
  * @param props.className the component classes
  */
-const HtmlTemplate: Story<WYSIWYGInputProps & { content?: string; className?: string }> = ({ ...props }) => {
+const HtmlTemplate: StoryFn<WYSIWYGInputProps & { content?: string; className?: string }> = ({ ...props }) => {
   const [htmlContent, setHtmlContent] = useState('');
   const inputRef = useRef<WYSIWYGInputRef | null>(null);
 

@@ -1,6 +1,5 @@
 import React from 'react';
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Story, Meta } from '@storybook/react/types-6-0';
+import { StoryFn, Meta } from '@storybook/react';
 import { EventCard, EventCardProps } from '.';
 import { gradientFromClassNameMap, gradientToClassNameMap, gradientViaClassNameMap } from '../../storybookMappers';
 
@@ -14,75 +13,77 @@ export default {
       }
     },
     imageUrl: {
-      defaultValue: 'https://fakeimg.pl/130x50/',
       control: {
         type: 'text'
       }
     },
     title: {
-      defaultValue: 'This is a title',
       control: {
         type: 'text'
       }
     },
     content: {
-      defaultValue:
-        'Here goes the content or description of the card Prepare your business to begin exporting successfully by creating an export action plan with your advisor. Prepare your business.',
       control: {
         type: 'text'
       }
     },
     buttonContent: {
-      defaultValue: 'View more CTA',
       control: {
         type: 'text'
       }
     },
     date: {
-      defaultValue: '05 - dec - 2022',
       control: {
         type: 'text'
       }
     },
     sponsorLabel: {
-      defaultValue: 'Sponsor by:',
       control: {
         type: 'text'
       }
     },
     gradientInitialColor: {
-      defaultValue: 'from-pui-primary',
+      options: gradientFromClassNameMap,
       control: {
-        type: 'select',
-        options: gradientFromClassNameMap
+        type: 'select'
       }
     },
     gradientFinalColor: {
-      defaultValue: 'to-pui-secondary',
+      options: gradientToClassNameMap,
       control: {
-        type: 'select',
-        options: gradientToClassNameMap
+        type: 'select'
       }
     },
     gradientMiddleColor: {
-      defaultValue: 'to-pui-current',
+      options: gradientViaClassNameMap,
       control: {
-        type: 'select',
-        options: gradientViaClassNameMap
+        type: 'select'
       }
     },
     tags: {
-      defaultValue: 'Translate, Positioning, Export, Shipping',
       control: {
         type: 'text'
       }
     },
     tagsLabel: {
-      defaultValue: 'Tags',
       control: {
         type: 'text'
       }
     }
+  },
+  args: {
+    imageUrl: 'https://fakeimg.pl/130x50/',
+    title: 'This is a title',
+    content:
+      'Here goes the content or description of the card Prepare your business to begin exporting successfully by creating an export action plan with your advisor. Prepare your business.',
+    buttonContent: 'View more CTA',
+    date: '05 - dec - 2022',
+    sponsorLabel: 'Sponsor by:',
+    gradientInitialColor: 'from-pui-primary',
+    gradientFinalColor: 'to-pui-secondary',
+    gradientMiddleColor: 'to-pui-current',
+    tags: 'Translate, Positioning, Export, Shipping',
+    tagsLabel: 'Tags'
   }
 } as Meta;
 
@@ -99,6 +100,6 @@ export default {
  * @param props.sponsorLabel the label for the sponsor logo
  * @param props.buttonLabel the label for the action button
  */
-const Template: Story<EventCardProps & { color?: string }> = ({ ...props }) => <EventCard {...props} />;
+const Template: StoryFn<EventCardProps & { color?: string }> = ({ ...props }) => <EventCard {...props} />;
 
 export const Default = Template.bind({});

@@ -1,6 +1,5 @@
 import React from 'react';
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Story, Meta } from '@storybook/react/types-6-0';
+import { StoryFn, Meta } from '@storybook/react';
 import { colorOptions } from '../../prebuiltTailwindTheme';
 import { ModuleCard, ModuleCardProps } from '.';
 
@@ -55,7 +54,7 @@ export default {
  * @param props.className the classes for element
  * @param props.imageUrl the image url set on controls
  */
-const Template: Story<ModuleCardProps & { color?: string }> = ({ ...props }) => <ModuleCard {...props} />;
+const Template: StoryFn<ModuleCardProps & { color?: string }> = ({ ...props }) => <ModuleCard {...props} />;
 
 export const Default = Template.bind({});
 

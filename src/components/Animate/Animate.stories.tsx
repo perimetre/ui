@@ -1,5 +1,4 @@
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Meta, Story } from '@storybook/react/types-6-0';
+import { Meta, StoryFn } from '@storybook/react';
 import React from 'react';
 import classnames from 'classnames';
 import { CrossIcon } from '../Icons';
@@ -9,14 +8,12 @@ export default {
   title: 'Components/Animate',
   argTypes: {
     variant: {
-      defaultValue: 'fadeIn',
+      options: Object.entries(puiAnimateClassnameMap).map((x) => x[0]),
       control: {
-        type: 'radio',
-        options: Object.entries(puiAnimateClassnameMap).map((x) => x[0])
+        type: 'radio'
       }
     },
     content: {
-      defaultValue: 'My animation',
       control: {
         type: 'text'
       }
@@ -26,6 +23,10 @@ export default {
         type: 'text'
       }
     }
+  },
+  args: {
+    variant: 'fadeIn',
+    content: 'My animation'
   }
 } as Meta;
 
@@ -37,7 +38,7 @@ export default {
  * @param props.content the content property set on co
  * @param props.className the component classes
  */
-const Template: Story = ({ variant, content, className, ...props }) => (
+const Template: StoryFn = ({ variant, content, className, ...props }) => (
   <div {...props} className={classnames(puiAnimateClassnameMap[variant], className)}>
     {content}
   </div>
@@ -56,7 +57,7 @@ FadeUp.args = {
  * @param props the story props
  * @param props.className the component classes
  */
-const ScaleHoverTemplate: Story = ({ className, ...props }) => (
+const ScaleHoverTemplate: StoryFn = ({ className, ...props }) => (
   <div {...props} className={classnames('select-none cursor-pointer pui-animate-scaleHover', className)}>
     Please click <span className="inline-block pui-animate-scaleHover-target">here</span>.
   </div>
@@ -70,7 +71,7 @@ export const ScaleHover = ScaleHoverTemplate.bind({});
  * @param props the story props
  * @param props.className the component classes
  */
-const ScaleHoverIconTemplate: Story = ({ className, ...props }) => (
+const ScaleHoverIconTemplate: StoryFn = ({ className, ...props }) => (
   <div {...props} className={classnames('cursor-pointer pui-animate-scaleHover', className)}>
     <CrossIcon className="pui-animate-scaleHover-target" />
   </div>

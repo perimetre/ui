@@ -1,6 +1,5 @@
 import React from 'react';
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Story, Meta } from '@storybook/react/types-6-0';
+import { StoryFn, Meta } from '@storybook/react';
 import { borderStyleOptions, colorOptions } from '../../prebuiltTailwindTheme';
 import classnames from 'classnames';
 import { CrossIcon } from '../Icons';
@@ -10,33 +9,30 @@ export default {
   title: 'Components/Chip',
   argTypes: {
     variant: {
-      defaultValue: 'default',
+      options: ['default', 'bordered'],
       control: {
-        type: 'radio',
-        options: ['default', 'bordered']
+        type: 'radio'
       }
     },
     border: {
+      options: borderStyleOptions,
       control: {
-        type: 'check',
-        options: borderStyleOptions
+        type: 'check'
       }
     },
     color: {
-      defaultValue: 'pui-primary',
+      options: colorOptions,
       control: {
-        type: 'select',
-        options: colorOptions
+        type: 'select'
       }
     },
     text: {
+      options: colorOptions,
       control: {
-        type: 'select',
-        options: colorOptions
+        type: 'select'
       }
     },
     content: {
-      defaultValue: 'Chip content',
       control: {
         type: 'text'
       }
@@ -46,6 +42,11 @@ export default {
         type: 'text'
       }
     }
+  },
+  args: {
+    variant: 'default',
+    color: 'pui-primary',
+    content: 'Chip content'
   }
 } as Meta;
 
@@ -65,7 +66,7 @@ const variantClassnameMap = {
  * @param props.text the text property set on controls
  * @param props.className the component classes
  */
-const Template: Story = ({ variant, border, color, content, text, className, ...props }) => (
+const Template: StoryFn = ({ variant, border, color, content, text, className, ...props }) => (
   <span
     {...props}
     className={classnames(
@@ -117,7 +118,7 @@ ColoredText.args = {
  * @param props.text the text property set on controls
  * @param props.className the component classes
  */
-const WithIconTemplate: Story = ({ variant, border, color, content, text, className, ...props }) => (
+const WithIconTemplate: StoryFn = ({ variant, border, color, content, text, className, ...props }) => (
   <span
     {...props}
     className={classnames(

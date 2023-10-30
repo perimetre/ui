@@ -1,5 +1,4 @@
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Meta, Story } from '@storybook/react/types-6-0';
+import { Meta, StoryFn } from '@storybook/react';
 import React from 'react';
 import { SelectInput, SelectInputProps } from '.';
 
@@ -53,7 +52,7 @@ export default {
  *
  * @param props the story props
  */
-const Template: Story<SelectInputProps> = (props) => (
+const Template: StoryFn<SelectInputProps> = (props) => (
   <SelectInput {...props}>
     {Array(10)
       .fill(null)
@@ -87,7 +86,7 @@ Multiple.args = {
  *
  * @param props the story props
  */
-const OptionGroupTemplate: Story<SelectInputProps> = (props) => (
+const OptionGroupTemplate: StoryFn<SelectInputProps> = (props) => (
   <SelectInput {...props}>
     <optgroup label="First list">
       {Array(10)

@@ -1,6 +1,5 @@
 import React from 'react';
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Story, Meta } from '@storybook/react/types-6-0';
+import { StoryFn, Meta } from '@storybook/react';
 import classnames from 'classnames';
 import { gradientFromClassNameMap, gradientToClassNameMap, gradientViaClassNameMap } from '../../storybookMappers';
 
@@ -8,28 +7,24 @@ export default {
   title: 'Components/qadense/ExpertImage',
   argTypes: {
     gradientInitialColor: {
-      defaultValue: 'from-pui-primary',
+      options: gradientFromClassNameMap,
       control: {
-        type: 'select',
-        options: gradientFromClassNameMap
+        type: 'select'
       }
     },
     gradientFinalColor: {
-      defaultValue: 'to-pui-secondary',
+      options: gradientToClassNameMap,
       control: {
-        type: 'select',
-        options: gradientToClassNameMap
+        type: 'select'
       }
     },
     gradientMiddleColor: {
-      defaultValue: 'to-pui-current',
+      options: gradientViaClassNameMap,
       control: {
-        type: 'select',
-        options: gradientViaClassNameMap
+        type: 'select'
       }
     },
     url: {
-      defaultValue: 'https://fakeimg.pl/250x250/',
       control: {
         type: 'text'
       }
@@ -39,6 +34,12 @@ export default {
         type: 'text'
       }
     }
+  },
+  args: {
+    gradientInitialColor: 'from-pui-primary',
+    gradientFinalColor: 'to-pui-secondary',
+    gradientMiddleColor: 'to-pui-current',
+    url: 'https://fakeimg.pl/250x250/'
   }
 } as Meta;
 
@@ -52,7 +53,7 @@ export default {
  * @param props.url the image url set on controls
  * @param props.className the component classes
  */
-const Template: Story = ({
+const Template: StoryFn = ({
   url,
   className,
   gradientInitialColor,

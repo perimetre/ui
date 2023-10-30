@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Story, Meta } from '@storybook/react/types-6-0';
+import { StoryFn, Meta } from '@storybook/react';
 import { Drawer, DrawerProps } from '.';
 import { MenuIcon } from '../Icons';
 
@@ -10,13 +9,15 @@ export default {
   parameters: { layout: 'fullscreen' },
   argTypes: {
     content: {
-      defaultValue: 'Drawer content',
       control: {
         type: 'text'
       }
     },
     onOpenCallback: { action: 'onOpen' },
     onBack: { action: 'onBack' }
+  },
+  args: {
+    content: 'Drawer content'
   }
 } as Meta;
 
@@ -28,7 +29,7 @@ export default {
  * @param props.onOpenCallback Callback to update the open state
  * @param props.isOpen Whether or not the drawer should be open
  */
-const Template: Story<DrawerProps & { content?: string; onOpenCallback: (isOpen: boolean) => void }> = ({
+const Template: StoryFn<DrawerProps & { content?: string; onOpenCallback: (isOpen: boolean) => void }> = ({
   content,
   onOpenCallback,
   isOpen: isOpenProps,

@@ -1,6 +1,5 @@
 import React from 'react';
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Story, Meta } from '@storybook/react/types-6-0';
+import { StoryFn, Meta } from '@storybook/react';
 import { ResourcesCard, ResourcesCardProps } from '.';
 
 export default {
@@ -43,6 +42,6 @@ export default {
  * @param props.title card title
  * @param props.content card description
  */
-const Template: Story<ResourcesCardProps & { color?: string }> = ({ ...props }) => <ResourcesCard {...props} />;
+const Template: StoryFn<ResourcesCardProps & { color?: string }> = ({ ...props }) => <ResourcesCard {...props} />;
 
 export const Default = Template.bind({});

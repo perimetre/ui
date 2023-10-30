@@ -1,6 +1,5 @@
 import React from 'react';
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Story, Meta } from '@storybook/react/types-6-0';
+import { StoryFn, Meta } from '@storybook/react';
 import { colorOptions } from '../../prebuiltTailwindTheme';
 import classnames from 'classnames';
 import { puiColorClassnameMap } from '../../storybookMappers';
@@ -38,7 +37,7 @@ export default {
  * @param props.color the color property set on controls
  * @param props.className the classes for element
  */
-const Template: Story<PercentageCircleProps & { color?: string } & { className?: string }> = ({
+const Template: StoryFn<PercentageCircleProps & { color?: string } & { className?: string }> = ({
   color,
   className,
   ...props

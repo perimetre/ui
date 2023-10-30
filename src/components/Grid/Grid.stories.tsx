@@ -1,5 +1,4 @@
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Meta, Story } from '@storybook/react/types-6-0';
+import { Meta, StoryFn } from '@storybook/react';
 import React from 'react';
 import classnames from 'classnames';
 import { gridColumnOptions, gridRowOptions } from '../../prebuiltTailwindTheme';
@@ -37,7 +36,7 @@ export default {
  * @param props.rows the rows property set on controls
  * @param props.className the component classes
  */
-const Template: Story = ({ columns, rows, className }) => (
+const Template: StoryFn = ({ columns, rows, className }) => (
   <div
     className={classnames(
       'pui-grid',

@@ -1,5 +1,4 @@
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Meta, Story } from '@storybook/react/types-6-0';
+import { Meta, StoryFn } from '@storybook/react';
 import React, { useCallback, useEffect, useState } from 'react';
 import { Modal, ModalProps } from '.';
 import { minWidthOptions } from '../../prebuiltTailwindTheme';
@@ -72,7 +71,7 @@ export default {
  * @param props.size The size property set on controls
  * @param props.content.viewMode The storybook viewmode, whether it's on canvas or docs
  */
-const Template: Story<ModalProps & { content?: string; onToggleCallback: () => void; size?: string }> = (
+const Template: StoryFn<ModalProps & { content?: string; onToggleCallback: () => void; size?: string }> = (
   { content, isOpen: isOpenProps, onToggleCallback, size, ...props },
   { viewMode }
 ) => {
@@ -122,7 +121,7 @@ export const Default = Template.bind({});
  * @param props.size The size property set on controls
  * @param props.content.viewMode The storybook viewmode, whether it's on canvas or docs
  */
-const WithActionsTemplate: Story<ModalProps & { content?: string; onToggleCallback: () => void; size?: string }> = (
+const WithActionsTemplate: StoryFn<ModalProps & { content?: string; onToggleCallback: () => void; size?: string }> = (
   { content, isOpen: isOpenProps, onToggleCallback, size, ...props },
   { viewMode }
 ) => {

@@ -1,5 +1,4 @@
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Meta, Story } from '@storybook/react/types-6-0';
+import { Meta, StoryFn } from '@storybook/react';
 import React from 'react';
 import { Badge, BadgeProps } from '.';
 import { colorOptions } from '../../prebuiltTailwindTheme';
@@ -12,18 +11,20 @@ export default {
   component: Badge,
   argTypes: {
     content: {
-      defaultValue: 2,
       control: {
         type: 'number'
       }
     },
     color: {
-      defaultValue: 'pui-primary',
+      options: colorOptions,
       control: {
-        type: 'select',
-        options: colorOptions
+        type: 'select'
       }
     }
+  },
+  args: {
+    content: 2,
+    color: 'pui-primary'
   }
 } as Meta;
 
@@ -33,7 +34,7 @@ export default {
  * @param props the story props
  * @param props.color the color property set on controls
  */
-const Template: Story<BadgeProps & { color?: string }> = ({ color, ...props }) => (
+const Template: StoryFn<BadgeProps & { color?: string }> = ({ color, ...props }) => (
   <span className={classnames({ [puiColorClassnameMap[color || 'transparent']]: color !== 'pui-primary' })}>
     <Badge {...props}>
       <BellIcon />

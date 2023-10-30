@@ -1,5 +1,4 @@
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Meta, Story } from '@storybook/react/types-6-0';
+import { Meta, StoryFn } from '@storybook/react';
 import React from 'react';
 import { TextButtonInput, TextButtonInputProps } from './TextButtonInput';
 
@@ -55,7 +54,7 @@ export default {
  * @param props.content the content property set on controls
  * @param props.onButtonClick the onButtonClick action from storybook
  */
-const Template: Story<TextButtonInputProps & { content?: string; onButtonClick: () => void }> = ({
+const Template: StoryFn<TextButtonInputProps & { content?: string; onButtonClick: () => void }> = ({
   content,
   onButtonClick,
   ...props

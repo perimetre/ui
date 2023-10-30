@@ -1,6 +1,5 @@
 import React from 'react';
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Story, Meta } from '@storybook/react/types-6-0';
+import { StoryFn, Meta } from '@storybook/react';
 import { colorOptions, weightOptions } from '../../prebuiltTailwindTheme';
 import { StarIcon } from '../Icons';
 import classnames from 'classnames';
@@ -10,27 +9,24 @@ export default {
   title: 'Components/CardBadge',
   argTypes: {
     color: {
-      defaultValue: 'pui-primary',
+      options: colorOptions,
       control: {
-        type: 'select',
-        options: colorOptions
+        type: 'select'
       }
     },
     text: {
+      options: colorOptions,
       control: {
-        type: 'select',
-        options: colorOptions
+        type: 'select'
       }
     },
     weight: {
+      options: weightOptions,
       control: {
-        defaultValue: 'normal',
-        type: 'select',
-        options: weightOptions
+        type: 'select'
       }
     },
     content: {
-      defaultValue: 'Recommended',
       control: {
         type: 'text'
       }
@@ -40,6 +36,11 @@ export default {
         type: 'text'
       }
     }
+  },
+  args: {
+    color: 'pui-primary',
+    weight: 'normal',
+    content: 'Recommended'
   }
 } as Meta;
 
@@ -53,7 +54,7 @@ export default {
  * @param props.className the component classes
  * @param props.weight the weight property set on controls
  */
-const Template: Story = ({ color, content, text, weight, className, ...props }) => (
+const Template: StoryFn = ({ color, content, text, weight, className, ...props }) => (
   <div
     {...props}
     className={classnames(

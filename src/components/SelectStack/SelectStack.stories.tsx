@@ -1,5 +1,4 @@
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Meta, Story } from '@storybook/react/types-6-0';
+import { Meta, StoryFn } from '@storybook/react';
 import React, { useState } from 'react';
 import { SelectStack, SelectStackProps } from '.';
 
@@ -30,7 +29,7 @@ export default {
  * @param props the story props
  * @param props.onClick On click event handler
  */
-const Template: Story<SelectStackProps & { onClick?: () => void }> = ({ onClick, ...props }) => {
+const Template: StoryFn<SelectStackProps & { onClick?: () => void }> = ({ onClick, ...props }) => {
   const [activeItem, setActiveItem] = useState(items[0]);
 
   return (

@@ -1,5 +1,4 @@
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Meta, Story } from '@storybook/react/types-6-0';
+import { Meta, StoryFn } from '@storybook/react';
 import React, { useState } from 'react';
 import { ToggleButton, ToggleButtonProps } from '.';
 import { colorOptions } from '../../prebuiltTailwindTheme';
@@ -46,7 +45,7 @@ export default {
  * @param props the story props
  * @param props.color User selected color
  */
-const Template: Story<ToggleButtonProps & { color?: string }> = ({ color, ...props }) => {
+const Template: StoryFn<ToggleButtonProps & { color?: string }> = ({ color, ...props }) => {
   const [checked, setChecked] = useState(false);
 
   return (
