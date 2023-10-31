@@ -1,6 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Meta, Story } from '@storybook/react/types-6-0';
+import { Meta, StoryFn } from '@storybook/react';
 import React from 'react';
 import { colorOptions } from '../../prebuiltTailwindTheme';
 import classnames from 'classnames';
@@ -10,10 +9,9 @@ export default {
   title: 'Components/Link',
   argTypes: {
     color: {
-      defaultValue: 'pui-primary',
+      options: colorOptions,
       control: {
-        type: 'select',
-        options: colorOptions
+        type: 'select'
       }
     },
     className: {
@@ -21,17 +19,24 @@ export default {
         type: 'text'
       }
     }
+  },
+  args: {
+    color: 'pui-primary'
   }
 } as Meta;
 
+type StoryFnProps = Record<string, unknown> & {
+  color: keyof typeof puiColorClassnameMap;
+  className?: string;
+};
+
 /**
  * A story that displays a Spinner example
- *
  * @param props the story props
  * @param props.color the color property set on controls
  * @param props.className the component classes
  */
-const LinkTemplate: Story = ({ color, className }) => (
+const LinkTemplate: StoryFn<StoryFnProps> = ({ color, className }) => (
   <div>
     Please click{' '}
     <a
@@ -52,12 +57,11 @@ export const Link = LinkTemplate.bind({});
 
 /**
  * A story that displays a Spinner example
- *
  * @param props the story props
  * @param props.color the color property set on controls
  * @param props.className the component classes
  */
-const VisitedLinkTemplate: Story = ({ color, className }) => (
+const VisitedLinkTemplate: StoryFn<StoryFnProps> = ({ color, className }) => (
   <div>
     Please click{' '}
     <a

@@ -1,5 +1,4 @@
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Meta, Story } from '@storybook/react/types-6-0';
+import { Meta, StoryFn } from '@storybook/react';
 import React from 'react';
 import { TextAreaInput, TextAreaInputProps } from './TextAreaInput';
 
@@ -7,16 +6,12 @@ export default {
   title: 'Components/Inputs/Text Area',
   component: TextAreaInput,
   argTypes: {
-    id: { defaultValue: 'input-id' },
-    label: { defaultValue: 'Input' },
     placeholder: {
-      defaultValue: 'Type here...',
       control: {
         type: 'text'
       }
     },
     rows: {
-      defaultValue: 4,
       control: {
         type: 'number'
       }
@@ -44,15 +39,22 @@ export default {
     onChange: { action: 'onChange' },
     onBlur: { action: 'onBlur' },
     onFocus: { action: 'onFocus' }
+  },
+  args: {
+    id: 'input-id',
+    label: 'Input',
+    placeholder: 'Type here...',
+    defaultValue: '',
+    disabled: false,
+    readOnly: false
   }
 } as Meta;
 
 /**
  * A story that displays a TextAreaInput example
- *
  * @param props the story props
  */
-const Template: Story<TextAreaInputProps> = (props) => <TextAreaInput {...props} />;
+const Template: StoryFn<TextAreaInputProps> = (props) => <TextAreaInput {...props} />;
 
 export const TextArea = Template.bind({});
 

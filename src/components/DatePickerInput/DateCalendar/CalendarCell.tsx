@@ -28,7 +28,6 @@ type CalendarCellProps = {
 
 /**
  * Renders a single calendar cell
- *
  * @param props Props for the calendar cell
  * @param props.state The calendar state from `useCalendarState`
  * @param props.date The calendar date value

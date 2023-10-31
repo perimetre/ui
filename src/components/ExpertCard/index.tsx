@@ -4,73 +4,61 @@ import classnames from 'classnames';
 export type ExpertCardProps = {
   /**
    * Card Image url
-   *
    * @default string
    */
   imageUrl?: string;
   /**
    * Event tilte
-   *
    * @default string
    */
   title?: string;
   /**
    * Event description
-   *
    * @default string
    */
   content?: string;
   /**
    * Card button label
-   *
    * @default string
    */
   buttonContent?: string;
   /**
    * title for the advisor
-   *
    * @default string
    */
   advisorTitle?: string;
   /**
    * Advisor Name
-   *
    * @default string
    */
   advisorName?: string;
   /**
    * Advisor Name
-   *
    * @default string
    */
   advisorLastname?: string;
   /**
    * Advisor email
-   *
    * @default string
    */
   email?: string;
   /**
    * Extended classes
-   *
    * @default string
    */
   className?: string;
   /**
    * Gradient bar initial color value
-   *
    * @default string
    */
   gradientInitialColor?: string;
   /**
    * Gradient bar initial color value if needed
-   *
    * @default string
    */
   gradientMiddleColor?: string;
   /**
    * Gradient bar final color value
-   *
    * @default string
    */
   gradientFinalColor?: string;
@@ -78,7 +66,6 @@ export type ExpertCardProps = {
 
 /**
  * A Percentage Circle
- *
  * @param props The input props
  * @param props.imageUrl Set the advisor image
  * @param props.advisorName Set the advisor name

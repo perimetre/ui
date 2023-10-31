@@ -1,5 +1,4 @@
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Meta, Story } from '@storybook/react/types-6-0';
+import { Meta, StoryFn } from '@storybook/react';
 import React, { useState } from 'react';
 import { ToggleInput, ToggleInputProps } from '.';
 import { colorOptions } from '../../prebuiltTailwindTheme';
@@ -10,12 +9,10 @@ export default {
   title: 'Components/Inputs/ToggleInput',
   component: ToggleInput,
   argTypes: {
-    label: { defaultValue: 'Input' },
     color: {
-      defaultValue: 'pui-primary',
+      options: colorOptions,
       control: {
-        type: 'select',
-        options: colorOptions
+        type: 'select'
       }
     },
     defaultChecked: {
@@ -24,7 +21,6 @@ export default {
       }
     },
     placeholder: {
-      defaultValue: 'Type here...',
       control: {
         type: 'text'
       }
@@ -42,16 +38,20 @@ export default {
     onChange: { action: 'onChange' },
     onBlur: { action: 'onBlur' },
     onFocus: { action: 'onFocus' }
+  },
+  args: {
+    label: 'Input',
+    color: 'pui-primary',
+    placeholder: 'Type here...'
   }
 } as Meta;
 
 /**
  * A story that displays a ToggleInput example
- *
  * @param props the story props
  * @param props.color User selected color
  */
-const Template: Story<ToggleInputProps & { color?: string }> = ({ color, ...props }) => {
+const Template: StoryFn<ToggleInputProps & { color?: keyof typeof puiColorClassnameMap }> = ({ color, ...props }) => {
   const [checked, setChecked] = useState(false);
 
   return (

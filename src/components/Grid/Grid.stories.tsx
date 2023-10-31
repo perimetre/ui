@@ -1,5 +1,4 @@
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Meta, Story } from '@storybook/react/types-6-0';
+import { Meta, StoryFn } from '@storybook/react';
 import React from 'react';
 import classnames from 'classnames';
 import { gridColumnOptions, gridRowOptions } from '../../prebuiltTailwindTheme';
@@ -9,16 +8,15 @@ export default {
   title: 'Components/Grid',
   argTypes: {
     columns: {
-      defaultValue: '4',
+      options: gridColumnOptions,
       control: {
-        type: 'select',
-        options: gridColumnOptions
+        type: 'select'
       }
     },
     rows: {
+      options: gridRowOptions,
       control: {
-        type: 'select',
-        options: gridRowOptions
+        type: 'select'
       }
     },
     className: {
@@ -26,18 +24,27 @@ export default {
         type: 'text'
       }
     }
+  },
+  args: {
+    columns: '4',
+    rows: undefined
   }
 } as Meta;
 
 /**
  * A story that displays a Grid example
- *
  * @param props the story props
  * @param props.columns the columns property set on controls
  * @param props.rows the rows property set on controls
  * @param props.className the component classes
  */
-const Template: Story = ({ columns, rows, className }) => (
+const Template: StoryFn<
+  Record<string, unknown> & {
+    columns: keyof typeof gridColsClassnameMap;
+    rows: keyof typeof gridRowsClassnameMap;
+    className?: string;
+  }
+> = ({ columns, rows, className }) => (
   <div
     className={classnames(
       'pui-grid',

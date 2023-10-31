@@ -1,5 +1,4 @@
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Meta, Story } from '@storybook/react/types-6-0';
+import { Meta, StoryFn } from '@storybook/react';
 import React, { useRef, useState } from 'react';
 import { WYSIWYGInput, WYSIWYGInputProps, WYSIWYGInputRef } from '.';
 import { Button } from '../Button';
@@ -9,10 +8,7 @@ export default {
   title: 'Components/Inputs/WYSIWYG',
   component: WYSIWYGInput,
   argTypes: {
-    id: { defaultValue: 'input-id' },
-    label: { defaultValue: 'Input' },
     placeholder: {
-      defaultValue: 'Type here...',
       control: {
         type: 'text'
       }
@@ -41,17 +37,24 @@ export default {
     onHtmlChangeSlow: { action: 'onHtmlChangeSlow' },
     onBlur: { action: 'onBlur' },
     onFocus: { action: 'onFocus' }
+  },
+  args: {
+    id: 'input-id',
+    label: 'Input',
+    placeholder: 'Type here...',
+    disabled: false,
+    disableStickyToolbar: false,
+    readOnly: false
   }
 } as Meta;
 
 /**
  * A story that displays a WYSIWYGInput example
- *
  * @param props the story props
  * @param props.content  the content property set on controls
  * @param props.className the component classes
  */
-const Template: Story<WYSIWYGInputProps & { content?: string; className?: string }> = ({ ...props }) => (
+const Template: StoryFn<WYSIWYGInputProps & { content?: string; className?: string }> = ({ ...props }) => (
   <WYSIWYGInput {...props} />
 );
 
@@ -75,13 +78,12 @@ DefaultValue.args = {
 
 /**
  * A story that displays a WYSIWYGInput example
- *
  * @param props the story props
  * @param props.content  the content property set on controls
  * @param props.htmlValueSlow The html value to fill the input with
  * @param props.className the component classes
  */
-const ControlledValueTemplate: Story<WYSIWYGInputProps & { content?: string; className?: string }> = ({
+const ControlledValueTemplate: StoryFn<WYSIWYGInputProps & { content?: string; className?: string }> = ({
   htmlValueSlow,
   ...props
 }) => {
@@ -103,12 +105,11 @@ ControlledValue.args = {
 
 /**
  * A story that displays a WYSIWYGInput example
- *
  * @param props the story props
  * @param props.content  the content property set on controls
  * @param props.className the component classes
  */
-const HtmlTemplate: Story<WYSIWYGInputProps & { content?: string; className?: string }> = ({ ...props }) => {
+const HtmlTemplate: StoryFn<WYSIWYGInputProps & { content?: string; className?: string }> = ({ ...props }) => {
   const [htmlContent, setHtmlContent] = useState('');
   const inputRef = useRef<WYSIWYGInputRef | null>(null);
 

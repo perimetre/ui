@@ -1,5 +1,4 @@
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Meta, Story } from '@storybook/react/types-6-0';
+import { Meta, StoryFn } from '@storybook/react';
 import React from 'react';
 import { SelectInput, SelectInputProps } from '.';
 
@@ -7,12 +6,7 @@ export default {
   title: 'Components/Inputs/Select',
   component: SelectInput,
   argTypes: {
-    id: { defaultValue: 'input-id' },
-    label: {
-      defaultValue: 'Input'
-    },
     placeholder: {
-      defaultValue: 'Type here...',
       control: {
         type: 'text'
       }
@@ -45,15 +39,23 @@ export default {
     onChange: { action: 'onChange' },
     onBlur: { action: 'onBlur' },
     onFocus: { action: 'onFocus' }
+  },
+  args: {
+    id: 'input-id',
+    label: 'Input',
+    placeholder: 'Type here...',
+    defaultValue: '',
+    multiple: false,
+    disabled: false,
+    readOnly: false
   }
 } as Meta;
 
 /**
  * A story that displays a Select Input example
- *
  * @param props the story props
  */
-const Template: Story<SelectInputProps> = (props) => (
+const Template: StoryFn<SelectInputProps> = (props) => (
   <SelectInput {...props}>
     {Array(10)
       .fill(null)
@@ -84,10 +86,9 @@ Multiple.args = {
 
 /**
  * A story that displays a Select Input example
- *
  * @param props the story props
  */
-const OptionGroupTemplate: Story<SelectInputProps> = (props) => (
+const OptionGroupTemplate: StoryFn<SelectInputProps> = (props) => (
   <SelectInput {...props}>
     <optgroup label="First list">
       {Array(10)

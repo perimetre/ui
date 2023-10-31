@@ -1,5 +1,4 @@
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Meta, Story } from '@storybook/react/types-6-0';
+import { Meta, StoryFn } from '@storybook/react';
 import React from 'react';
 import { colorOptions } from '../../prebuiltTailwindTheme';
 import classnames from 'classnames';
@@ -9,10 +8,9 @@ export default {
   title: 'Components/Scrollbar',
   argTypes: {
     color: {
-      defaultValue: 'pui-primary',
+      options: colorOptions,
       control: {
-        type: 'select',
-        options: colorOptions
+        type: 'select'
       }
     },
     className: {
@@ -20,17 +18,24 @@ export default {
         type: 'text'
       }
     }
+  },
+  args: {
+    color: 'pui-primary'
   }
 } as Meta;
 
 /**
  * A story that displays a Spinner example
- *
  * @param props the story props
  * @param props.color the color property set on controls
  * @param props.className the component classes
  */
-const ScrollbarTemplate: Story = ({ color, className }) => (
+const ScrollbarTemplate: StoryFn<
+  Record<string, unknown> & {
+    color?: keyof typeof puiColorClassnameMap;
+    className?: string;
+  }
+> = ({ color, className }) => (
   <div
     className={classnames(
       'pui-scrollbar',

@@ -1,5 +1,4 @@
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Meta, Story } from '@storybook/react/types-6-0';
+import { Meta, StoryFn } from '@storybook/react';
 import React, { useMemo, useState } from 'react';
 import { AutocompleteInput, AutocompleteInputProps } from './index';
 
@@ -7,26 +6,25 @@ export default {
   title: 'Components/Inputs/Autocomplete',
   component: AutocompleteInput,
   argTypes: {
-    label: {
-      defaultValue: 'Autocomplete Input'
-    },
     disabled: {
-      defaultValue: false,
       control: {
         type: 'boolean'
       }
     },
     onItemToggle: { action: 'onItemToggle' },
     fetchMore: { action: 'fetchMore' }
+  },
+  args: {
+    label: 'Autocomplete Input',
+    disabled: false
   }
 } as Meta;
 
 /**
  * A story that displays an Autocomplete example
- *
  * @param props the story props
  */
-const Template: Story<AutocompleteInputProps<{ id: number; label: string }>> = (props) => {
+const Template: StoryFn<AutocompleteInputProps<{ id: number; label: string }>> = (props) => {
   const options = Array(10)
     .fill(null)
     .map((_, i) => ({
@@ -63,10 +61,9 @@ WithError.args = {
 
 /**
  * A story that displays an Autocomplete example
- *
  * @param props the story props
  */
-const ControlledTemplate: Story<AutocompleteInputProps<{ id: number; label: string }>> = (props) => {
+const ControlledTemplate: StoryFn<AutocompleteInputProps<{ id: number; label: string }>> = (props) => {
   const options = useMemo(
     () =>
       Array(10)

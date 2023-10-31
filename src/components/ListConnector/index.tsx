@@ -12,7 +12,6 @@ const bordersClassnameMap = {
 export type ListConnectorProps = {
   /**
    * Connector line borders
-   *
    * @default default
    */
   borders?: keyof typeof bordersClassnameMap;
@@ -24,7 +23,6 @@ export type ListConnectorProps = {
 
 /**
  * A List Connector
- *
  * @param props The input props
  * @param props.borders Set the borders in the connector bar
  * @param props.showIcon Show or hide the icon

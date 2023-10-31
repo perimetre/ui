@@ -17,19 +17,16 @@ const sizeClassnameMap = {
 export type ButtonProps = React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> & {
   /**
    * The size
-   *
    * @default medium
    */
   size?: keyof typeof sizeClassnameMap;
   /**
    * The button type variant
-   *
    * @default default
    */
   variant?: keyof typeof variantClassnameMap;
   /**
    * Whether or not this button should be a chip button
-   *
    * @default false
    */
   isChip?: boolean;
@@ -37,7 +34,6 @@ export type ButtonProps = React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTM
 
 /**
  * A button
- *
  * @param props The input props
  * @param props.size The size
  * @param props.variant The button type variant

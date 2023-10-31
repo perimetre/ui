@@ -1,5 +1,4 @@
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Meta, Story } from '@storybook/react/types-6-0';
+import { Meta, StoryFn } from '@storybook/react';
 import React, { useEffect, useState } from 'react';
 import { Expander, ExpanderProps } from '.';
 import classnames from 'classnames';
@@ -12,13 +11,12 @@ export default {
 
 /**
  * A story that displays a dropdown input example
- *
  * @param props The story props
  * @param props.isExpanded Whether or not it should be expanded
  * @param props.label The label property set on controls
  * @param props.open The open property set on controls
  */
-const Template: Story<ExpanderProps> = ({ isExpanded: isExpandedProps, ...props }) => {
+const Template: StoryFn<ExpanderProps> = ({ isExpanded: isExpandedProps, ...props }) => {
   const [isExpanded, setIsExpanded] = useState(isExpandedProps);
 
   useEffect(() => setIsExpanded(!!isExpandedProps), [isExpandedProps]);

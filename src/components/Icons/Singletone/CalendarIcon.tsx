@@ -3,7 +3,6 @@ import classnames from 'classnames';
 
 /**
  * Calendar icon to use with JSX
- *
  * @param props the icon props
  * @param props.className the icon classname value
  */

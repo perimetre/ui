@@ -44,7 +44,6 @@ export type HorizontalResizeablePanelProps = Omit<React.HTMLAttributes<HTMLDivEl
 
 /**
  * A panel with resize abilities on its left and right borders
- *
  * @param props The component props
  * @param props.resizeLeft Turn on or off the resizing behavior on the left border
  * @param props.resizeRight Turn on or off the resizing behavior on the right border
@@ -90,7 +89,6 @@ export const HorizontalResizeablePanel: React.FC<HorizontalResizeablePanelProps>
   useEffect(() => {
     /**
      * Handler for when the user is moving the mouse
-     *
      * @param e The mouse event
      */
     const onMouseMove = (e: MouseEvent) => {

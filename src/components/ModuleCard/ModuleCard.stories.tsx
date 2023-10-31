@@ -1,6 +1,5 @@
 import React from 'react';
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Story, Meta } from '@storybook/react/types-6-0';
+import { StoryFn, Meta } from '@storybook/react';
 import { colorOptions } from '../../prebuiltTailwindTheme';
 import { ModuleCard, ModuleCardProps } from '.';
 
@@ -9,10 +8,9 @@ export default {
   component: ModuleCard,
   argTypes: {
     color: {
-      defaultValue: 'pui-primary',
+      options: colorOptions,
       control: {
-        type: 'select',
-        options: colorOptions
+        type: 'select'
       }
     },
     className: {
@@ -21,7 +19,6 @@ export default {
       }
     },
     imageUrl: {
-      defaultValue: 'https://fakeimg.pl/370x110/',
       control: {
         type: 'text'
       }
@@ -33,29 +30,33 @@ export default {
       }
     },
     content: {
-      defaultValue: 'Here goes the content or description of the card',
       control: {
         type: 'text'
       }
     },
     buttonContent: {
-      defaultValue: 'View more CTA',
       control: {
         type: 'text'
       }
     }
+  },
+  args: {
+    color: 'pui-primary',
+    imageUrl: 'https://fakeimg.pl/370x110/',
+    title: 'This is a title',
+    content: 'Here goes the content or description of the card',
+    buttonContent: 'View more CTA'
   }
 } as Meta;
 
 /**
  * A story that displays a list connector
- *
  * @param props the story props
  * @param props.color the color property set on controls
  * @param props.className the classes for element
  * @param props.imageUrl the image url set on controls
  */
-const Template: Story<ModuleCardProps & { color?: string }> = ({ ...props }) => <ModuleCard {...props} />;
+const Template: StoryFn<ModuleCardProps & { color?: string }> = ({ ...props }) => <ModuleCard {...props} />;
 
 export const Default = Template.bind({});
 

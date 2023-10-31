@@ -1,5 +1,4 @@
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Meta, Story } from '@storybook/react/types-6-0';
+import { Meta, StoryFn } from '@storybook/react';
 import React from 'react';
 import { clampOptions } from '../../prebuiltTailwindTheme';
 import classnames from 'classnames';
@@ -9,10 +8,9 @@ export default {
   title: 'Components/LineClamp',
   argTypes: {
     lineClamp: {
-      defaultValue: '3',
+      options: clampOptions,
       control: {
-        type: 'select',
-        options: clampOptions
+        type: 'select'
       }
     },
     className: {
@@ -20,17 +18,24 @@ export default {
         type: 'text'
       }
     }
+  },
+  args: {
+    lineClamp: '3'
   }
 } as Meta;
 
 /**
  * A story that displays a Spinner example
- *
  * @param props the story props
  * @param props.lineClamp the lineClamp property set on controls
  * @param props.className the component classes
  */
-const LineClampTemplate: Story = ({ lineClamp, className, ...props }) => (
+const LineClampTemplate: StoryFn<
+  Record<string, unknown> & {
+    lineClamp: keyof typeof clampClassnameMap;
+    className?: string;
+  }
+> = ({ lineClamp, className, ...props }) => (
   <div {...props} className={classnames(clampClassnameMap[lineClamp || 'none'], className)}>
     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem explicabo facilis natus quo impedit reiciendis cum
     deleniti hic, nostrum blanditiis! Necessitatibus inventore blanditiis dolorum ea eum suscipit maxime temporibus

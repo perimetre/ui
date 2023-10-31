@@ -1,5 +1,4 @@
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Meta, Story } from '@storybook/react/types-6-0';
+import { Meta, StoryFn } from '@storybook/react';
 import React from 'react';
 import { colorOptions, widthHeightOptions } from '../../prebuiltTailwindTheme';
 import classnames from 'classnames';
@@ -9,17 +8,15 @@ export default {
   title: 'Components/Loaders/Spinner',
   argTypes: {
     size: {
-      defaultValue: '4',
+      options: widthHeightOptions,
       control: {
-        type: 'select',
-        options: widthHeightOptions
+        type: 'select'
       }
     },
     color: {
-      defaultValue: 'pui-primary',
+      options: colorOptions,
       control: {
-        type: 'select',
-        options: colorOptions
+        type: 'select'
       }
     },
     className: {
@@ -27,18 +24,27 @@ export default {
         type: 'text'
       }
     }
+  },
+  args: {
+    size: '4',
+    color: 'pui-primary'
   }
 } as Meta;
 
 /**
  * A story that displays a Spinner example
- *
  * @param props the story props
  * @param props.size the size property set on controls
  * @param props.color the color property set on controls
  * @param props.className the component classes
  */
-const SpinnerTemplate: Story = ({ size, color, className }) => (
+const SpinnerTemplate: StoryFn<
+  Record<string, unknown> & {
+    size: keyof typeof widthClassnameMap;
+    color: keyof typeof puiColorClassnameMap;
+    className?: string;
+  }
+> = ({ size, color, className }) => (
   <span
     className={classnames(
       'pui-spinner',

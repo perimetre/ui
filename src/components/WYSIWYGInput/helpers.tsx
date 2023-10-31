@@ -4,7 +4,6 @@ import DOMPurify from 'isomorphic-dompurify';
 
 /**
  * Returns a new editor state with the contents based off of a html value string
- *
  * @param htmlValue html value to set the editor state to
  * @param defaultDecorators the decorators setting to use if any
  * @param editorState an existing editor state to derive to, if any
@@ -40,7 +39,6 @@ export const getStateFromHtml = async (
 
 /**
  * Returns the html value for the provided editor state
- *
  * @param editorState the draftjs editor state to get the html value for
  * @param entityLinkTransform the function to use to transform entity links
  * @returns a purifyed html value
@@ -58,7 +56,6 @@ export const getSanitizedHtmlFromState = (
 
 /**
  * Returns a default empty editor state
- *
  * @param id an id to use for the editor state
  * @param defaultDecorators the decorators setting to use if any
  */

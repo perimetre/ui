@@ -1,5 +1,4 @@
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Meta, Story } from '@storybook/react/types-6-0';
+import { Meta, StoryFn } from '@storybook/react';
 import React from 'react';
 
 export default {
@@ -11,28 +10,29 @@ export default {
       }
     },
     label: {
-      defaultValue: 'Input',
       control: {
         type: 'text'
       }
     },
     placeholder: {
-      defaultValue: 'Type here...',
       control: {
         type: 'text'
       }
     }
+  },
+  args: {
+    label: 'Input',
+    placeholder: 'Type here...'
   }
 } as Meta;
 
 /**
  * A story that displays a dropdown input example
- *
  * @param props the story props
  * @param props.label the label property set on controls
  * @param props.open the open property set on controls
  */
-const Template: Story = ({ label, open, ...props }) => (
+const Template: StoryFn = ({ label, open, ...props }) => (
   <div>
     <label className="pui-label-input" htmlFor="input">
       {label}

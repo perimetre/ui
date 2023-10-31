@@ -22,20 +22,17 @@ export type AutocompleteSettings<T extends AutocompleteItemType = AutocompleteIt
   initialSelectedItems?: T[];
   /**
    * Whether or not the user is allowed to only select a single item or multiple items
-   *
    * @default false
    */
   isSingleSelect?: boolean;
   /**
    * Whether or not should always show the result list regardless if the user is searching or not.
-   *
    * @default false
    */
   displayRegardlessIfSearching?: boolean;
   /**
    * Whether or not should always show the result list regardless if the input is focused or not
    * (Only relevant when using TAB to focus the input)
-   *
    * @default true
    */
   displayRegardlessIfFocused?: boolean;
@@ -71,7 +68,6 @@ export type AutocompleteSettings<T extends AutocompleteItemType = AutocompleteIt
 
 /**
  * The logic wrapper for the autocomplete
- *
  * @param settings The hook parameters
  * @param settings.id The autocomplete input id
  * @param settings.options The options that should be displayed in the dropdown
@@ -137,13 +133,11 @@ export const useAutocompleteInput = <T extends AutocompleteItemType = Autocomple
     initialSelectedItems,
     /**
      * Returns a string representation for an item
-     *
      * @param item The item object
      */
     itemToString: (item) => `${item.id}`,
     /**
      * Overrides the default reducer for the multiple selection
-     *
      * @param _state The current reducer state
      * @param action The current reducer dispatched action
      * @param action.type The current reducer dispatched action type
@@ -188,7 +182,6 @@ export const useAutocompleteInput = <T extends AutocompleteItemType = Autocomple
 
   /**
    * A method used to filter the items based on the user's input
-   *
    * @param items The current list of items
    */
   const getFilteredItems = (items: T[]) => {
@@ -271,7 +264,6 @@ export const useAutocompleteInput = <T extends AutocompleteItemType = Autocomple
   } = useCombobox<T>({
     /**
      * Returns a string representation for an item
-     *
      * @param item The item object
      */
     itemToString: (item) => `${item?.id}`,
@@ -283,7 +275,6 @@ export const useAutocompleteInput = <T extends AutocompleteItemType = Autocomple
     items: filteredOptions,
     /**
      * The callback for when something is selected
-     *
      * @param changes The downshift combobox changes state
      * @param changes.inputValue The current value of the html input
      * @param changes.type The current change event type
@@ -359,7 +350,6 @@ export const useAutocompleteInput = <T extends AutocompleteItemType = Autocomple
     getRootProps,
     /**
      * Get the required props for the label
-     *
      * @param opts The method options
      * @param opts.className The classname that should be appended
      * @param opts.style The style property to be forwarded
@@ -368,7 +358,6 @@ export const useAutocompleteInput = <T extends AutocompleteItemType = Autocomple
       getLabelProps({ ...opts, id: `label-${id}`, htmlFor: id }),
     /**
      * Get the required props for the combobox container
-     *
      * @param opts The method options
      * @param opts.className The classname that should be appended
      * @param opts.style The style property to be forwarded
@@ -381,7 +370,6 @@ export const useAutocompleteInput = <T extends AutocompleteItemType = Autocomple
     getInputContainerProps,
     /**
      * Get the required props for the input
-     *
      * @param opts The method options
      * @param opts.className The classname that should be appended
      * @param opts.style The style property to be forwarded
@@ -400,7 +388,6 @@ export const useAutocompleteInput = <T extends AutocompleteItemType = Autocomple
           ),
           /**
            * The handler for when a key is pressed in the input
-           *
            * @param event the input event of the button press
            */
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -435,7 +422,6 @@ export const useAutocompleteInput = <T extends AutocompleteItemType = Autocomple
       ),
     /**
      * Get the required props for the result list container
-     *
      * @param opts The method options
      * @param opts.className The classname that should be appended
      * @param opts.style The style property to be forwarded
@@ -458,7 +444,6 @@ export const useAutocompleteInput = <T extends AutocompleteItemType = Autocomple
       }),
     /**
      * Get the required props for an item
-     *
      * @param opts The method options
      * @param opts.item the current item
      * @param opts.index the item's index
@@ -498,7 +483,6 @@ export const useAutocompleteInput = <T extends AutocompleteItemType = Autocomple
     getSelectedListProps,
     /**
      * Get the required props for a selected item
-     *
      * @param opts The method options
      * @param opts.selectedItem the current selected item
      * @param opts.index the item's index

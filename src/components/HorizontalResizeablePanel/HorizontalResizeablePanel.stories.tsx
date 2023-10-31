@@ -1,5 +1,4 @@
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Meta, Story } from '@storybook/react/types-6-0';
+import { Meta, StoryFn } from '@storybook/react';
 import classnames from 'classnames';
 import React from 'react';
 import { HorizontalResizeablePanel } from '.';
@@ -10,28 +9,22 @@ export default {
   title: 'Components/ResizeablePanel/Horizontal',
   component: HorizontalResizeablePanel,
   argTypes: {
-    resizeRight: {
-      defaultValue: true
-    },
     width: {
-      defaultValue: '1/4',
+      options: widthHeightOptions,
       control: {
-        type: 'select',
-        options: widthHeightOptions
+        type: 'select'
       }
     },
     height: {
-      defaultValue: 'screen',
+      options: widthHeightOptions,
       control: {
-        type: 'select',
-        options: widthHeightOptions
+        type: 'select'
       }
     },
     backgroundColor: {
-      defaultValue: 'pui-primary',
+      options: colorOptions,
       control: {
-        type: 'select',
-        options: colorOptions
+        type: 'select'
       }
     },
     className: {
@@ -41,19 +34,31 @@ export default {
     },
     onResize: { action: 'onResize' },
     onResizeChange: { action: 'onResizeChange' }
+  },
+  args: {
+    resizeRight: true,
+    width: '1/4',
+    height: 'screen',
+    backgroundColor: 'pui-primary'
   }
 } as Meta;
 
 /**
  * A story that displays a horizontal resizeable example
- *
  * @param props The story props
  * @param props.width The example width size
  * @param props.height The example height size
  * @param props.backgroundColor the example background color
  * @param props.className the classname to pass down if any
  */
-const Template: Story = ({ width, height, backgroundColor, className, ...props }) => {
+const Template: StoryFn<
+  Record<string, unknown> & {
+    width: keyof typeof widthClassnameMap;
+    height: keyof typeof heightClassnameMap;
+    backgroundColor: keyof typeof backgroundColorClassnameMap;
+    className?: string;
+  }
+> = ({ width, height, backgroundColor, className, ...props }) => {
   return (
     <div>
       <HorizontalResizeablePanel

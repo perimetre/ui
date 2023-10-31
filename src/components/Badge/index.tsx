@@ -21,7 +21,6 @@ export type BadgeProps = {
   content?: number | string;
   /**
    * The maximum number until the badge will add a "+" sign, only taken into consideration if `content` is of type number
-   *
    * @default 9
    */
   maxValue?: number;
@@ -31,13 +30,11 @@ export type BadgeProps = {
   pulse?: boolean;
   /**
    * The badge variant
-   *
    * @default default
    */
   variant?: keyof typeof variantClassnameMap;
   /**
    * The badge placement
-   *
    * @default top-right
    */
   placement?: keyof typeof placementClassnameMap;
@@ -45,7 +42,6 @@ export type BadgeProps = {
 
 /**
  * A badge
- *
  * @param props the component props
  * @param props.content The badge display number or text
  * @param props.maxValue The maximum number until the badge will add a "+" sign, only taken into consideration if `content` is of type number
@@ -72,7 +68,13 @@ export const Badge: React.FC<PropsWithChildren<BadgeProps>> = ({
     <div className="pui-badge">
       {children}
       {content && (
-        <span className={classnames(variantClassnameMap[variant], placementClassnameMap[placement], { pulse })}>
+        <span
+          className={classnames(
+            variantClassnameMap[variant],
+            placementClassnameMap[placement as keyof typeof placementClassnameMap],
+            { pulse }
+          )}
+        >
           {variant !== 'dot' && content}
         </span>
       )}

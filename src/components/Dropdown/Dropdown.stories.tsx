@@ -1,5 +1,4 @@
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Meta, Story } from '@storybook/react/types-6-0';
+import { Meta, StoryFn } from '@storybook/react';
 import React, { useCallback, useMemo } from 'react';
 import { Dropdown, DropdownProps, DropdownItem } from '.';
 import classnames from 'classnames';
@@ -10,46 +9,50 @@ export default {
   component: Dropdown,
   argTypes: {
     placement: {
-      defaultValue: 'bottom-start',
+      options: [
+        'top',
+        'top-start',
+        'top-end',
+        'right',
+        'right-start',
+        'right-end',
+        'bottom',
+        'bottom-start',
+        'bottom-end',
+        'left',
+        'left-start',
+        'left-end',
+        'auto',
+        'auto-start',
+        'auto-end'
+      ],
       control: {
-        type: 'select',
-        options: [
-          'top',
-          'top-start',
-          'top-end',
-          'right',
-          'right-start',
-          'right-end',
-          'bottom',
-          'bottom-start',
-          'bottom-end',
-          'left',
-          'left-start',
-          'left-end',
-          'auto',
-          'auto-start',
-          'auto-end'
-        ]
+        type: 'select'
       }
     },
     content: {
-      defaultValue: 'Open',
       control: {
         type: 'text'
       }
     }
+  },
+  args: {
+    placement: 'bottom-start',
+    content: 'Open'
   }
 } as Meta;
 
 /**
  * A story that displays a drp´dpwm example
- *
  * @param props the story props
  * @param props.text the text property set on controls
  * @param props.content the content property set on controls
  * @param props.text.viewMode The storybook's viewmode
  */
-const Template: Story<DropdownProps & { text?: string; content?: string }> = ({ content, ...props }, { viewMode }) => {
+const Template: StoryFn<DropdownProps & { text?: string; content?: string }> = (
+  { content, ...props },
+  { viewMode }
+) => {
   const dropdownContent = useMemo(
     () =>
       Array(6)
@@ -81,13 +84,12 @@ AttachRight.args = {
 
 /**
  * A story that displays a drp´dpwm example
- *
  * @param props the story props
  * @param props.text the text property set on controls
  * @param props.content the content property set on controls
  * @param props.text.viewMode The storybook's viewmode
  */
-const RichContentTemplate: Story<DropdownProps & { text?: string; content?: string }> = (
+const RichContentTemplate: StoryFn<DropdownProps & { text?: string; content?: string }> = (
   { content, ...props },
   { viewMode }
 ) => {
@@ -141,13 +143,12 @@ export const RichContent = RichContentTemplate.bind({});
 
 /**
  * A story that displays a drp´dpwm example
- *
  * @param props the story props
  * @param props.text the text property set on controls
  * @param props.content the content property set on controls
  * @param props.text.viewMode The storybook's viewmode
  */
-const RicherContentTemplate: Story<DropdownProps & { text?: string; content?: string }> = (
+const RicherContentTemplate: StoryFn<DropdownProps & { text?: string; content?: string }> = (
   { content, ...props },
   { viewMode }
 ) => {

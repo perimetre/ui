@@ -1,5 +1,4 @@
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Meta, Story } from '@storybook/react/types-6-0';
+import { Meta, StoryFn } from '@storybook/react';
 import React, { useCallback, useEffect, useState } from 'react';
 import { Modal, ModalProps } from '.';
 import { minWidthOptions } from '../../prebuiltTailwindTheme';
@@ -12,58 +11,62 @@ export default {
   component: Modal,
   parameters: { layout: 'fullscreen' },
   argTypes: {
-    isOpen: {
-      defaultValue: true
-    },
-    title: {
-      defaultValue: 'This is my modal'
-    },
     size: {
-      defaultValue: '2/5vw',
+      options: minWidthOptions,
       control: {
-        type: 'select',
-        options: minWidthOptions
+        type: 'select'
       }
     },
     position: {
-      defaultValue: 'default',
+      options: ['default', 'center'],
       control: {
-        type: 'select',
-        options: ['default', 'center']
+        type: 'select'
       }
     },
     isClosable: {
-      defaultValue: true,
       control: {
         type: 'boolean'
       }
     },
     removePadding: {
-      defaultValue: false,
       control: {
         type: 'boolean'
       }
     },
     variant: {
-      defaultValue: 'default',
+      options: ['default', 'new'],
       control: {
-        type: 'select',
-        options: ['default', 'new']
+        type: 'select'
       }
     },
     content: {
-      defaultValue: 'A modal content',
       control: {
         type: 'text'
       }
     },
     onToggleCallback: { action: 'onToggle' }
+  },
+  args: {
+    isOpen: true,
+    title: 'This is my modal',
+    size: '2/5vw',
+    position: 'default',
+    isClosable: true,
+    removePadding: false,
+    variant: 'default',
+    content: 'A modal content'
   }
 } as Meta;
 
+type StoryFnProps = ModalProps & {
+  size?: keyof typeof minWidthClassnameMap;
+  position?: keyof typeof minWidthClassnameMap;
+  content?: string;
+  onToggleCallback: () => void;
+};
+
 /**
  * A story that displays a modal example
- *
  * @param props the story props
  * @param props.content The content property set on controls
  * @param props.onToggle Callback to update the open state
@@ -72,7 +75,7 @@ export default {
  * @param props.size The size property set on controls
  * @param props.content.viewMode The storybook viewmode, whether it's on canvas or docs
  */
-const Template: Story<ModalProps & { content?: string; onToggleCallback: () => void; size?: string }> = (
+const Template: StoryFn<StoryFnProps> = (
   { content, isOpen: isOpenProps, onToggleCallback, size, ...props },
   { viewMode }
 ) => {
@@ -113,7 +116,6 @@ export const Default = Template.bind({});
 
 /**
  * A story that displays a modal example
- *
  * @param props the story props
  * @param props.content The content property set on controls
  * @param props.onToggle Callback to update the open state
@@ -122,7 +124,7 @@ export const Default = Template.bind({});
  * @param props.size The size property set on controls
  * @param props.content.viewMode The storybook viewmode, whether it's on canvas or docs
  */
-const WithActionsTemplate: Story<ModalProps & { content?: string; onToggleCallback: () => void; size?: string }> = (
+const WithActionsTemplate: StoryFn<StoryFnProps> = (
   { content, isOpen: isOpenProps, onToggleCallback, size, ...props },
   { viewMode }
 ) => {

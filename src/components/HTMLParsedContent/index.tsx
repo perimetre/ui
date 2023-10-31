@@ -20,7 +20,6 @@ export type HTMLParsedContentProps = React.DetailedHTMLProps<React.HTMLAttribute
 
 /**
  * A component that sanitizes then parses and styles a plain rich text/html content
- *
  * @param props The component props
  * @param props.content The content that should be parsed
  * @param props.parserOptions The options that are passed down to the parser

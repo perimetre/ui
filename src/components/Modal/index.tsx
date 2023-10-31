@@ -6,7 +6,6 @@ import { ReactPortal } from '../ReactPortal';
 export type ModalProps = {
   /**
    * Whether or not the modal should be open
-   *
    * @default false
    */
   isOpen?: boolean;
@@ -47,7 +46,6 @@ export type ModalProps = {
 
 /**
  * A Modal
- *
  * @param props The component props
  * @param props.isOpen Whether or not the modal should be open
  * @param props.onToggle Callback to update the isOpen state
@@ -91,7 +89,6 @@ export const Modal: React.FC<PropsWithChildren<ModalProps>> = ({
   useEffect(() => {
     /**
      * If pressing esc
-     *
      * @param e the event parameter provided by javascript
      */
     // eslint-disable-next-line @typescript-eslint/no-explicit-any

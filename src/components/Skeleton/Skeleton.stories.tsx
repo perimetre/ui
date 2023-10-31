@@ -1,5 +1,4 @@
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Meta, Story } from '@storybook/react/types-6-0';
+import { Meta, StoryFn } from '@storybook/react';
 import React from 'react';
 import { widthHeightOptions } from '../../prebuiltTailwindTheme';
 import classnames from 'classnames';
@@ -9,17 +8,15 @@ export default {
   title: 'Components/Loaders/Skeleton',
   argTypes: {
     width: {
-      defaultValue: '3/4',
+      options: widthHeightOptions,
       control: {
-        type: 'select',
-        options: widthHeightOptions
+        type: 'select'
       }
     },
     height: {
-      defaultValue: '4',
+      options: widthHeightOptions,
       control: {
-        type: 'select',
-        options: widthHeightOptions
+        type: 'select'
       }
     },
     className: {
@@ -27,18 +24,27 @@ export default {
         type: 'text'
       }
     }
+  },
+  args: {
+    width: '3/4',
+    height: '4'
   }
 } as Meta;
 
 /**
  * A story that displays a Skeleton example
- *
  * @param props the story props
  * @param props.width the width property set on controls
  * @param props.height the height property set on controls
  * @param props.className the component classes
  */
-const SkeletonTemplate: Story = ({ width, height, className }) => (
+const SkeletonTemplate: StoryFn<
+  Record<string, unknown> & {
+    width: keyof typeof widthClassnameMap;
+    height: keyof typeof heightClassnameMap;
+    className?: string;
+  }
+> = ({ width, height, className }) => (
   <div
     className={classnames(
       'pui-skeleton',
@@ -55,10 +61,9 @@ export const Skeleton = SkeletonTemplate.bind({});
 
 /**
  * A story that displays a MultiSkeleton example
- *
  * @param props the story props
  */
-const MultiSkeletonTemplate: Story = ({}) => (
+const MultiSkeletonTemplate: StoryFn = ({}) => (
   // creates a bordered "card" effect
   <div className="border border-gray-200 shadow pui-border-radius p-4 max-w-sm w-full mx-auto">
     {/* Makes a horizontal flex */}

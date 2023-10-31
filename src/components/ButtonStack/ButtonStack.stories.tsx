@@ -1,7 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Meta, Story } from '@storybook/react/types-6-0';
+import { Meta, StoryFn } from '@storybook/react';
 import classnames from 'classnames';
 import { ButtonStack, ButtonStackProps } from '.';
 import { colorOptions } from '../../prebuiltTailwindTheme';
@@ -13,14 +12,12 @@ export default {
   component: ButtonStack,
   argTypes: {
     color: {
-      defaultValue: 'pui-primary',
       control: {
-        type: 'select',
-        options: colorOptions
+        options: colorOptions,
+        type: 'select'
       }
     },
     disabled: {
-      defaultValue: false,
       control: {
         type: 'boolean'
       }
@@ -31,21 +28,26 @@ export default {
       }
     },
     onClick: { action: 'onClick' }
+  },
+  args: {
+    color: 'pui-primary',
+    disabled: false
   }
 } as Meta;
 
+type StoryFnProps = ButtonStackProps & {
+  border?: string;
+  color?: keyof typeof puiColorClassnameMap;
+  disabled?: boolean;
+};
+
 /**
  * A story that displays a button stack example
- *
  * @param props the story props
  * @param props.color the color property set on controls
  * @param props.disabled the disabled color set on controls
  */
-const WithTooltipTemplate: Story<ButtonStackProps & { border?: string; color?: string; disabled?: boolean }> = ({
-  color,
-  disabled,
-  ...props
-}) => {
+const WithTooltipTemplate: StoryFn<StoryFnProps> = ({ color, disabled, ...props }) => {
   const [activeKey, setActiveKey] = useState('button-1');
 
   const dropdownContentItems = Array(4)
@@ -81,16 +83,11 @@ export const WithTooltip = WithTooltipTemplate.bind({});
 
 /**
  * A story that displays a button stack example
- *
  * @param props the story props
  * @param props.color the color property set on controls
  * @param props.disabled the disabled color set on controls
  */
-const NoTooltipTemplate: Story<ButtonStackProps & { border?: string; color?: string; disabled?: boolean }> = ({
-  color,
-  disabled,
-  ...props
-}) => {
+const NoTooltipTemplate: StoryFn<StoryFnProps> = ({ color, disabled, ...props }) => {
   const [activeKey, setActiveKey] = useState('button-1');
 
   const dropdownContentItems = Array(4)

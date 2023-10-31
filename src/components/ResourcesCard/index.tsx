@@ -4,25 +4,21 @@ import classnames from 'classnames';
 export type ResourcesCardProps = {
   /**
    * Card Image url
-   *
    * @default string
    */
   imageUrl?: string;
   /**
    * Event tilte
-   *
    * @default string
    */
   title?: string;
   /**
    * Event description
-   *
    * @default string
    */
   content?: string;
   /**
    * Card button label
-   *
    * @default string
    */
   className?: string;
@@ -30,7 +26,6 @@ export type ResourcesCardProps = {
 
 /**
  * A Percentage Circle
- *
  * @param props The input props
  * @param props.title Set the event title
  * @param props.content Set the event text content

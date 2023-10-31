@@ -33,7 +33,6 @@ export type DropdownProps = Omit<TooltipProps, 'content'> & {
 
 /**
  * A dropdown
- *
  * @param props The component props
  * @param props.children The provided children
  * @param props.header The dropdown HA list of items or a function that returns a react component with what should be displayed in the dropdown's header

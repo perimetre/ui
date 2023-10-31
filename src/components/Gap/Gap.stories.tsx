@@ -1,5 +1,4 @@
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Meta, Story } from '@storybook/react/types-6-0';
+import { Meta, StoryFn } from '@storybook/react';
 import React from 'react';
 import { marginPaddingOptions } from '../../prebuiltTailwindTheme';
 import classnames from 'classnames';
@@ -9,20 +8,17 @@ export default {
   title: 'Components/Gap',
   argTypes: {
     size: {
-      defaultValue: '2',
+      options: marginPaddingOptions,
       control: {
-        type: 'select',
-        options: marginPaddingOptions
+        type: 'select'
       }
     },
     horizontal: {
-      defaultValue: false,
       control: {
         type: 'boolean'
       }
     },
     vertical: {
-      defaultValue: false,
       control: {
         type: 'boolean'
       }
@@ -32,19 +28,30 @@ export default {
         type: 'text'
       }
     }
+  },
+  args: {
+    size: '2',
+    horizontal: false,
+    vertical: false
   }
 } as Meta;
 
 /**
  * A story that displays a gap example
- *
  * @param props the story props
  * @param props.size the size property set on controls
  * @param props.horizontal the horizontal property set on controls
  * @param props.vertical the vertical property set on controls
  * @param props.className the component classes
  */
-const Template: Story = ({ size, horizontal, vertical, className, ...props }) => (
+const Template: StoryFn<
+  Record<string, unknown> & {
+    size: keyof typeof puiGapClassnameMap;
+    horizontal: boolean;
+    vertical: boolean;
+    className?: string;
+  }
+> = ({ size, horizontal, vertical, className, ...props }) => (
   <div>
     <div
       {...props}

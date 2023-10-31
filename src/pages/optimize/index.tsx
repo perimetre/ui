@@ -43,7 +43,6 @@ const CssIconDisplay = styled.div<{ height?: string; width: string; uri?: string
 
 /**
  * Index page container
- *
  * @returns The index page container
  */
 export default function Home() {

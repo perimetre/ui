@@ -1,5 +1,4 @@
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Meta, Story } from '@storybook/react/types-6-0';
+import { Meta, StoryFn } from '@storybook/react';
 import React from 'react';
 import classnames from 'classnames';
 import { DateRangePickerInput, DateRangePickerProps } from '.';
@@ -10,14 +9,10 @@ export default {
   title: 'Components/Inputs/DateRangePickerInput',
   component: DateRangePickerInput,
   argTypes: {
-    id: { defaultValue: 'input-id' },
-    label: { defaultValue: 'Input' },
-    locale: { defaultValue: 'en' },
     color: {
-      defaultValue: 'pui-primary',
+      options: colorOptions,
       control: {
-        type: 'select',
-        options: colorOptions
+        type: 'select'
       }
     },
     disabled: {
@@ -38,17 +33,26 @@ export default {
     onChange: { action: 'onChange' },
     onBlur: { action: 'onBlur' },
     onFocus: { action: 'onFocus' }
+  },
+  args: {
+    id: 'input-id',
+    label: 'Input',
+    locale: 'en',
+    color: 'pui-primary'
   }
 } as Meta;
 
 /**
  * A story that displays a DatePickerInput example
- *
  * @param props the story props
  * @param props.color the color property set on controls
  * @param props.className The input className
  */
-const Template: Story<DateRangePickerProps & { color?: string }> = ({ color, className, ...props }) => (
+const Template: StoryFn<DateRangePickerProps & { color?: keyof typeof puiColorClassnameMap }> = ({
+  color,
+  className,
+  ...props
+}) => (
   <DateRangePickerInput
     {...props}
     className={classnames(

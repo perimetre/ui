@@ -1,6 +1,5 @@
 import React from 'react';
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Story, Meta } from '@storybook/react/types-6-0';
+import { StoryFn, Meta } from '@storybook/react';
 import { colorOptions } from '../../prebuiltTailwindTheme';
 import classnames from 'classnames';
 import { puiColorClassnameMap } from '../../storybookMappers';
@@ -11,10 +10,9 @@ export default {
   component: PercentageCircle,
   argTypes: {
     color: {
-      defaultValue: 'pui-primary',
+      options: colorOptions,
       control: {
-        type: 'select',
-        options: colorOptions
+        type: 'select'
       }
     },
     className: {
@@ -23,26 +21,26 @@ export default {
       }
     },
     percentage: {
-      defaultValue: 50,
       control: {
         type: 'number'
       }
     }
+  },
+  args: {
+    color: 'pui-primary',
+    percentage: 50
   }
 } as Meta;
 
 /**
  * A story that displays a list connector
- *
  * @param props the story props
  * @param props.color the color property set on controls
  * @param props.className the classes for element
  */
-const Template: Story<PercentageCircleProps & { color?: string } & { className?: string }> = ({
-  color,
-  className,
-  ...props
-}) => (
+const Template: StoryFn<
+  PercentageCircleProps & { color?: keyof typeof puiColorClassnameMap } & { className?: string }
+> = ({ color, className, ...props }) => (
   <div
     className={classnames(
       'flex align-middle w-32 font-semibold text-pui-paragraph-900',

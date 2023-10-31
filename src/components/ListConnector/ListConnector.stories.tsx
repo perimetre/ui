@@ -1,6 +1,5 @@
 import React from 'react';
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Story, Meta } from '@storybook/react/types-6-0';
+import { StoryFn, Meta } from '@storybook/react';
 import { colorOptions } from '../../prebuiltTailwindTheme';
 import classnames from 'classnames';
 import { puiColorClassnameMap } from '../../storybookMappers';
@@ -10,10 +9,9 @@ export default {
   title: 'Components/ListConnector',
   argTypes: {
     color: {
-      defaultValue: 'pui-primary',
+      options: colorOptions,
       control: {
-        type: 'select',
-        options: colorOptions
+        type: 'select'
       }
     },
     className: {
@@ -21,21 +19,21 @@ export default {
         type: 'text'
       }
     }
+  },
+  args: {
+    color: 'pui-primary'
   }
 } as Meta;
 
 /**
  * A story that displays a list connector
- *
  * @param props the story props
  * @param props.color the color property set on controls
  * @param props.className the classes for element
  */
-const Template: Story<ListConnectorProps & { color?: string } & { className?: string }> = ({
-  color,
-  className,
-  ...props
-}) => (
+const Template: StoryFn<
+  ListConnectorProps & { color?: keyof typeof puiColorClassnameMap } & { className?: string }
+> = ({ color, className, ...props }) => (
   <div
     className={classnames(
       'flex align-middle w-full',
@@ -65,8 +63,8 @@ FlatBottom.args = {
   showIcon: true
 };
 
-export const noRounded = Template.bind({});
-noRounded.args = {
+export const NoRounded = Template.bind({});
+NoRounded.args = {
   borders: 'noRounded',
   showIcon: true
 };

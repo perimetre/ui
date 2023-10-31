@@ -1,5 +1,4 @@
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Meta, Story } from '@storybook/react/types-6-0';
+import { Meta, StoryFn } from '@storybook/react';
 import React from 'react';
 import { Tooltip, TooltipProps } from '.';
 import classnames from 'classnames';
@@ -10,30 +9,28 @@ export default {
   component: Tooltip,
   argTypes: {
     placement: {
-      defaultValue: 'top',
+      options: [
+        'top',
+        'top-start',
+        'top-end',
+        'right',
+        'right-start',
+        'right-end',
+        'bottom',
+        'bottom-start',
+        'bottom-end',
+        'left',
+        'left-start',
+        'left-end',
+        'auto',
+        'auto-start',
+        'auto-end'
+      ],
       control: {
-        type: 'select',
-        options: [
-          'top',
-          'top-start',
-          'top-end',
-          'right',
-          'right-start',
-          'right-end',
-          'bottom',
-          'bottom-start',
-          'bottom-end',
-          'left',
-          'left-start',
-          'left-end',
-          'auto',
-          'auto-start',
-          'auto-end'
-        ]
+        type: 'select'
       }
     },
     trigger: {
-      defaultValue: 'mouseenter focus',
       control: {
         type: 'select',
         options: ['mouseenter focus', 'click', 'focusin', 'mouseenter click']
@@ -50,29 +47,32 @@ export default {
       }
     },
     text: {
-      defaultValue: 'Open',
       control: {
         type: 'text'
       }
     },
     content: {
-      defaultValue: 'Tooltip!',
       control: {
         type: 'text'
       }
     }
+  },
+  args: {
+    placement: 'top',
+    trigger: 'mouseenter focus',
+    text: 'Open',
+    content: 'Tooltip!'
   }
 } as Meta;
 
 /**
  * A story that displays a tooltip example
- *
  * @param props the story props
  * @param props.text the text property set on controls
  * @param props.content the content property set on controls
  * @param props.text.viewMode The storybook's viewmode
  */
-const Template: Story<TooltipProps & { text?: string; content?: string }> = (
+const Template: StoryFn<TooltipProps & { text?: string; content?: string }> = (
   { text, content, ...props },
   { viewMode }
 ) => (

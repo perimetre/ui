@@ -173,7 +173,6 @@ export const WYSIWYGInput = forwardRef<WYSIWYGInputRef, WYSIWYGInputProps>(
 
     /**
      * Make an onChange callback
-     *
      * @param editorState the current editor state
      */
     const onChange = (editorState: EditorState) => {
@@ -207,7 +206,6 @@ export const WYSIWYGInput = forwardRef<WYSIWYGInputRef, WYSIWYGInputProps>(
       /**
        * An async wrapper with a dynamic import.
        * That will update the editor state based on the html value
-       *
        * @param htmlValue html value to set the editor state to
        */
       const updateFromHtml = async (htmlValue?: string) => {
@@ -233,7 +231,6 @@ export const WYSIWYGInput = forwardRef<WYSIWYGInputRef, WYSIWYGInputProps>(
       /**
        * An async wrapper with a dynamic import.
        * That will update the editor state based on the html value
-       *
        * @param htmlValue html value to set the editor state to
        */
       const updateFromHtml = async (htmlValue?: string) => {

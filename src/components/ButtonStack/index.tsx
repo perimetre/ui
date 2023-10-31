@@ -22,7 +22,6 @@ export type ButtonStackProps = {
 
 /**
  * A list of buttons besides each other
- *
  * @param props The component props
  * @param props.items The list of buttons that should be displayed
  * @param props.activeKey Which button key, from the list of provided `items` should be active

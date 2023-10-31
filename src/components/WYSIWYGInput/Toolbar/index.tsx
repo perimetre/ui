@@ -34,7 +34,6 @@ type ToolbarProps = {
 
 /**
  * The rich text editor toolbar
- *
  * @param props the component props
  * @param props.editorState The current editor state
  * @param props.onBlockToggle The toggle method for a block style

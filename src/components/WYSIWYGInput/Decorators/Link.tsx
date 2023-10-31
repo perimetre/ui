@@ -3,7 +3,6 @@ import { DraftDecorator, ContentState, ContentBlock, RawDraftEntity } from 'draf
 
 /**
  * The draft strategy to find link entities
- *
  * @param contentBlock a ContentBlock object provided by draft
  * @param callback a callback with start/end values corresponding to relevant matches in the document text.
  * @param contentState the content state provided by draft
@@ -32,7 +31,6 @@ type InternalLinkRenderProps = {
 
 /**
  * A component used to render the link inside the editor from the decorator
- *
  * @param props The component props
  * @param props.children The provided children
  * @param props.entityKey The entity key provided by draft
@@ -58,7 +56,6 @@ export const linkDecorator: DraftDecorator = {
 
 /**
  *  Transform all the links adding the target="_blank" and rel="noreferrer" attributes
- *
  * @param entity The current entity
  * @param text The current text
  * @returns The link tag as string with the new attributes

@@ -5,67 +5,56 @@ import { ArrowIcon, CalendarIcon, TagsIcon } from '..';
 export type EventCardProps = {
   /**
    * Card Image url
-   *
    * @default string
    */
   imageUrl?: string;
   /**
    * Event tilte
-   *
    * @default string
    */
   title?: string;
   /**
    * Event description
-   *
    * @default string
    */
   content?: string;
   /**
    * Card button label
-   *
    * @default string
    */
   buttonContent?: string;
   /**
    * Sponsor Image label
-   *
    * @default string
    */
   sponsorLabel?: string;
   /**
    * Event date
-   *
    * @default string
    */
   date?: string;
   /**
    * Extended classes
-   *
    * @default string
    */
   className?: string;
   /**
    * Extended classes for bar
-   *
    * @default string
    */
   classNameBar?: string;
   /**
    * Card button callback
-   *
    * @default void
    */
   onPressButton?: () => void;
   /**
    * Gradient bar initial color value
-   *
    * @default string
    */
   tags?: string;
   /**
    * Events Tags
-   *
    * @default string
    */
   tagsLabel?: string;
@@ -73,7 +62,6 @@ export type EventCardProps = {
 
 /**
  * A Percentage Circle
- *
  * @param props The input props
  * @param props.date The event date
  * @param props.title Set the event title

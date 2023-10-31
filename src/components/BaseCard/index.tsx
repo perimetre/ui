@@ -4,49 +4,41 @@ import classnames from 'classnames';
 export type BaseCardProps = {
   /**
    * Show gradient background for the card image
-   *
    * @default true
    */
   imageGradient?: boolean;
   /**
    * Show left gradient bar on the card
-   *
    * @default true
    */
   leftGradientBar?: boolean;
   /**
    * Card Image url
-   *
    * @default string
    */
   imageUrl?: string;
   /**
    * Card title
-   *
    * @default string
    */
   imageAlt?: string;
   /**
    * Extended classes
-   *
    * @default string
    */
   className?: string;
   /**
    * Extended classes for content
-   *
    * @default string;
    */
   classNameContent?: string;
   /**
    * Extended classes for filter
-   *
    * @default string
    */
   classNameGradientImage?: string;
   /**
    * Extended classes for hover state
-   *
    * @default false
    */
   hoverState?: boolean;
@@ -54,7 +46,6 @@ export type BaseCardProps = {
 
 /**
  * A Base Card
- *
  * @param props The input props
  * @param props.imageGradient The gradient background over the image
  * @param props.leftGradientBar The left gradient bar on the card

@@ -1,5 +1,4 @@
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Meta, Story } from '@storybook/react/types-6-0';
+import { Meta, StoryFn } from '@storybook/react';
 import React from 'react';
 import { DragFileUploadInput, DragFileUploadInputProps } from '.';
 
@@ -7,7 +6,6 @@ export default {
   title: 'Components/Inputs/DragFileUploadInput',
   component: DragFileUploadInput,
   argTypes: {
-    id: { defaultValue: 'input-id' },
     disabled: {
       control: {
         type: 'boolean'
@@ -15,15 +13,17 @@ export default {
     },
     onError: { action: 'onError' },
     onReset: { action: 'onReset' }
+  },
+  args: {
+    id: 'input-id'
   }
 } as Meta;
 
 /**
  * A story that displays a DragFileUploadInput example
- *
  * @param props the story props
  */
-const Template: Story<DragFileUploadInputProps> = (props) => <DragFileUploadInput {...props} />;
+const Template: StoryFn<DragFileUploadInputProps> = (props) => <DragFileUploadInput {...props} />;
 
 export const FileUpload = Template.bind({});
 

@@ -40,7 +40,6 @@ export type CheckboxRadioInputProps = React.DetailedHTMLProps<
 
 /**
  * A checkbox or radio input
- *
  * @param props The input props
  * @param props.type The input type
  * @param props.indeterminate Whether or not the checkbox is currently indeterminate
@@ -54,7 +53,7 @@ export const CheckboxRadioInput: React.FC<CheckboxRadioInputProps> = ({
   label,
   help,
   error,
-  size = 'medium',
+  size = 'medium' as const,
   className,
   indeterminate,
   type,

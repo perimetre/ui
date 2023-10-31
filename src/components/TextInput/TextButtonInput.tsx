@@ -41,7 +41,6 @@ export type TextButtonInputProps = React.DetailedHTMLProps<
 
 /**
  * A text button input
- *
  * @param props The input props
  * @param props.label If provided, displays a label above the input
  * @param props.help If provided, displays a help text under the input
