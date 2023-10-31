@@ -21,12 +21,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changes
 
-- Updated storybook libraries, and its dependencies
-- Updated ui lib code with breaking changes from new storybook version
-
 ### Added
 
 ### Fixed
+
+## [11.0.0] 2023-10-31
+
+### **Breaking changes**
+
+- Updated from node `16` to `18`
+- Some ui lib components had to add breaking changes due to new storybook version
+
+### Changes
+
+- Updated storybook libraries, and its dependencies
 
 ## [10.5.1] 2023-09-18
 
