@@ -23,7 +23,6 @@ export type ImageLoaderProps = React.DetailedHTMLProps<React.ImgHTMLAttributes<H
 
 /**
  * Wraps the image tag with a loader placeholder that shows up until the image is loaded
- *
  * @param props The image props
  * @param props.src The image src tag
  * @param props.observerOptions The options for the intersection observer

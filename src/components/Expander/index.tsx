@@ -4,7 +4,6 @@ import React, { PropsWithChildren, useMemo, useState } from 'react';
 export type ExpanderProps = {
   /**
    * Whether or not it should be expanded
-   *
    * @default true
    */
   isExpanded?: boolean;
@@ -12,7 +11,6 @@ export type ExpanderProps = {
 
 /**
  * An expander component
- *
  * @param props The component props
  * @param props.isExpanded Whether or not it should be expanded
  * @param props.children The provided children

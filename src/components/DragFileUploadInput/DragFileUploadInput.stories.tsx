@@ -21,7 +21,6 @@ export default {
 
 /**
  * A story that displays a DragFileUploadInput example
- *
  * @param props the story props
  */
 const Template: StoryFn<DragFileUploadInputProps> = (props) => <DragFileUploadInput {...props} />;

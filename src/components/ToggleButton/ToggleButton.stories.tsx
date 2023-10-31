@@ -43,11 +43,10 @@ export default {
 
 /**
  * A story that displays a ToggleButton example
- *
  * @param props the story props
  * @param props.color User selected color
  */
-const Template: StoryFn<ToggleButtonProps & { color?: string }> = ({ color, ...props }) => {
+const Template: StoryFn<ToggleButtonProps & { color?: keyof typeof puiColorClassnameMap }> = ({ color, ...props }) => {
   const [checked, setChecked] = useState(false);
 
   return (

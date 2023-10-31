@@ -58,9 +58,15 @@ export default {
   }
 } as Meta;
 
+type StoryFnProps = ModalProps & {
+  size?: keyof typeof minWidthClassnameMap;
+  position?: keyof typeof minWidthClassnameMap;
+  content?: string;
+  onToggleCallback: () => void;
+};
+
 /**
  * A story that displays a modal example
- *
  * @param props the story props
  * @param props.content The content property set on controls
  * @param props.onToggle Callback to update the open state
@@ -69,7 +75,7 @@ export default {
  * @param props.size The size property set on controls
  * @param props.content.viewMode The storybook viewmode, whether it's on canvas or docs
  */
-const Template: StoryFn<ModalProps & { content?: string; onToggleCallback: () => void; size?: string }> = (
+const Template: StoryFn<StoryFnProps> = (
   { content, isOpen: isOpenProps, onToggleCallback, size, ...props },
   { viewMode }
 ) => {
@@ -110,7 +116,6 @@ export const Default = Template.bind({});
 
 /**
  * A story that displays a modal example
- *
  * @param props the story props
  * @param props.content The content property set on controls
  * @param props.onToggle Callback to update the open state
@@ -119,7 +124,7 @@ export const Default = Template.bind({});
  * @param props.size The size property set on controls
  * @param props.content.viewMode The storybook viewmode, whether it's on canvas or docs
  */
-const WithActionsTemplate: StoryFn<ModalProps & { content?: string; onToggleCallback: () => void; size?: string }> = (
+const WithActionsTemplate: StoryFn<StoryFnProps> = (
   { content, isOpen: isOpenProps, onToggleCallback, size, ...props },
   { viewMode }
 ) => {

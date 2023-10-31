@@ -52,7 +52,6 @@ export default {
 
 /**
  * A story that displays a TextAreaInput example
- *
  * @param props the story props
  */
 const Template: StoryFn<TextAreaInputProps> = (props) => <TextAreaInput {...props} />;

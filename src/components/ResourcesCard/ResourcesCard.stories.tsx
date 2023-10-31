@@ -37,7 +37,6 @@ export default {
 
 /**
  * A story that displays a list connector
- *
  * @param props the story props
  * @param props.className the classes for element
  * @param props.imageUrl the image url for the sponsor logo

@@ -11,7 +11,6 @@ export default {
 
 /**
  * A story that displays a dropdown input example
- *
  * @param props The story props
  * @param props.isExpanded Whether or not it should be expanded
  * @param props.label The label property set on controls

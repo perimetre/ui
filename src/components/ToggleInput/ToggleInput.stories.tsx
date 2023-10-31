@@ -48,11 +48,10 @@ export default {
 
 /**
  * A story that displays a ToggleInput example
- *
  * @param props the story props
  * @param props.color User selected color
  */
-const Template: StoryFn<ToggleInputProps & { color?: string }> = ({ color, ...props }) => {
+const Template: StoryFn<ToggleInputProps & { color?: keyof typeof puiColorClassnameMap }> = ({ color, ...props }) => {
   const [checked, setChecked] = useState(false);
 
   return (

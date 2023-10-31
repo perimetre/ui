@@ -16,7 +16,6 @@ export default {
 
 /**
  * A story that displays a ImageLoader example
- *
  * @param props the story props
  */
 const Template: StoryFn<ImageLoaderProps> = (props) => <ImageLoader {...props} />;

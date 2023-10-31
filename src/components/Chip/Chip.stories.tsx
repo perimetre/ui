@@ -55,9 +55,17 @@ const variantClassnameMap = {
   bordered: 'pui-chip-bordered'
 };
 
+type StoryFnProps = Record<string, unknown> & {
+  variant?: keyof typeof variantClassnameMap;
+  border?: keyof typeof borderStyleClassnameMap;
+  color?: keyof typeof puiColorClassnameMap;
+  text?: keyof typeof textColorClassnameMap;
+  className?: string;
+  content?: React.ReactNode;
+};
+
 /**
  * A story that displays a chip example
- *
  * @param props the story props
  * @param props.variant the variant property set on controls
  * @param props.border the border property set on controls
@@ -66,7 +74,7 @@ const variantClassnameMap = {
  * @param props.text the text property set on controls
  * @param props.className the component classes
  */
-const Template: StoryFn = ({ variant, border, color, content, text, className, ...props }) => (
+const Template: StoryFn<StoryFnProps> = ({ variant, border, color, content, text, className, ...props }) => (
   <span
     {...props}
     className={classnames(
@@ -109,7 +117,6 @@ ColoredText.args = {
 
 /**
  * A story that displays a chip example
- *
  * @param props the story props
  * @param props.variant the variant property set on controls
  * @param props.border the border property set on controls
@@ -118,7 +125,7 @@ ColoredText.args = {
  * @param props.text the text property set on controls
  * @param props.className the component classes
  */
-const WithIconTemplate: StoryFn = ({ variant, border, color, content, text, className, ...props }) => (
+const WithIconTemplate: StoryFn<StoryFnProps> = ({ variant, border, color, content, text, className, ...props }) => (
   <span
     {...props}
     className={classnames(

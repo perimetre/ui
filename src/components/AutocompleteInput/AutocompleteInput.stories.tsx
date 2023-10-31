@@ -22,7 +22,6 @@ export default {
 
 /**
  * A story that displays an Autocomplete example
- *
  * @param props the story props
  */
 const Template: StoryFn<AutocompleteInputProps<{ id: number; label: string }>> = (props) => {
@@ -62,7 +61,6 @@ WithError.args = {
 
 /**
  * A story that displays an Autocomplete example
- *
  * @param props the story props
  */
 const ControlledTemplate: StoryFn<AutocompleteInputProps<{ id: number; label: string }>> = (props) => {

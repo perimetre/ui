@@ -19,7 +19,6 @@ type CalendarButtonProps = AriaButtonProps<'button'> & {
 
 /**
  * Renders a single button for the calendar
- *
  * @param props Button props
  * @param props.children Content for the button
  */
@@ -60,7 +59,6 @@ type DateCalendarProps<T extends DateValue = DateValue> = AriaCalendarProps<T> &
 
 /**
  * Calendar that renders the days in a grid for the date input
- *
  * @param props Calendar props for `useCalendar`
  * @param props.locale The current app locale
  * @param props.tippyInstance Instance for the tooltip component

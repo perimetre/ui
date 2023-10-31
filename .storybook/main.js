@@ -7,7 +7,6 @@ module.exports = {
     '@storybook/addon-essentials',
     'storybook-addon-jsx',
     '@storybook/addon-a11y',
-    '@whitespace/storybook-addon-html',
     '@storybook/addon-styling-webpack',
     {
       name: '@storybook/addon-styling-webpack',

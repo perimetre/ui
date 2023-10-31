@@ -27,7 +27,6 @@ export default {
 
 /**
  * A story that displays a SelectStack example
- *
  * @param props the story props
  * @param props.onClick On click event handler
  */

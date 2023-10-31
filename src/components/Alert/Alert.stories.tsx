@@ -44,9 +44,16 @@ export default {
   }
 } as Meta;
 
+type StoryFnProps = Record<string, unknown> & {
+  color: keyof typeof puiColorClassnameMap;
+  text: keyof typeof textColorClassnameMap;
+  weight: keyof typeof fontWeightClassnameMap;
+  className?: string;
+  content?: React.ReactNode;
+};
+
 /**
  * A story that displays an alert example
- *
  * @param props the story props
  * @param props.color the color property set on controls
  * @param props.text the text property set on controls
@@ -54,7 +61,7 @@ export default {
  * @param props.className the component classes
  * @param props.weight the weight property set on controls
  */
-const Template: StoryFn = ({ color, content, text, weight, className, ...props }) => (
+const Template: StoryFn<StoryFnProps> = ({ color, content, text, weight, className, ...props }) => (
   <div
     {...props}
     className={classnames(
@@ -86,7 +93,6 @@ Success.args = {
 
 /**
  * A story that displays an alert example
- *
  * @param props the story props
  * @param props.color the color property set on controls
  * @param props.text the text property set on controls
@@ -94,7 +100,7 @@ Success.args = {
  * @param props.className the component classes
  * @param props.weight the weight property set on controls
  */
-const WithIconTemplate: StoryFn = ({ color, content, text, weight, className, ...props }) => (
+const WithIconTemplate: StoryFn<StoryFnProps> = ({ color, content, text, weight, className, ...props }) => (
   <div
     {...props}
     className={classnames(

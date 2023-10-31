@@ -3,7 +3,6 @@ import React from 'react';
 
 /**
  * The justify draft.js block
- *
  * @param props EditorBlock props
  */
 export const Justify: React.FC = (props) => (

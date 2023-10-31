@@ -32,19 +32,24 @@ export default {
 
 /**
  * A story that displays an animation example
- *
  * @param props the story props
  * @param props.variant the variant property set on controls
  * @param props.content the content property set on co
  * @param props.className the component classes
  */
-const Template: StoryFn = ({ variant, content, className, ...props }) => (
+const Template: StoryFn<
+  Record<string, unknown> & {
+    variant: keyof typeof puiAnimateClassnameMap;
+    className?: string;
+    content?: React.ReactNode;
+  }
+> = ({ variant, content, className, ...props }) => (
   <div {...props} className={classnames(puiAnimateClassnameMap[variant], className)}>
     {content}
   </div>
 );
 
-export const fadeIn = Template.bind({});
+export const FadeIn = Template.bind({});
 
 export const FadeUp = Template.bind({});
 FadeUp.args = {
@@ -53,7 +58,6 @@ FadeUp.args = {
 
 /**
  * A story that displays a ScaleHover example
- *
  * @param props the story props
  * @param props.className the component classes
  */
@@ -67,7 +71,6 @@ export const ScaleHover = ScaleHoverTemplate.bind({});
 
 /**
  * A story that displays a ScaleHover example
- *
  * @param props the story props
  * @param props.className the component classes
  */

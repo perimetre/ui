@@ -28,7 +28,6 @@ export default {
 
 /**
  * A story that displays a dropdown input example
- *
  * @param props the story props
  * @param props.label the label property set on controls
  * @param props.open the open property set on controls

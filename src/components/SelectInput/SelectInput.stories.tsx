@@ -53,7 +53,6 @@ export default {
 
 /**
  * A story that displays a Select Input example
- *
  * @param props the story props
  */
 const Template: StoryFn<SelectInputProps> = (props) => (
@@ -87,7 +86,6 @@ Multiple.args = {
 
 /**
  * A story that displays a Select Input example
- *
  * @param props the story props
  */
 const OptionGroupTemplate: StoryFn<SelectInputProps> = (props) => (

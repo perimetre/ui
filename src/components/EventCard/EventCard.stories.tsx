@@ -89,7 +89,6 @@ export default {
 
 /**
  * A story that displays a Event card
- *
  * @param props the story props
  * @param props.color the color property set on controls
  * @param props.className the classes for element

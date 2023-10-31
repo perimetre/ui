@@ -4,7 +4,6 @@ export const defaultDragFileUploadTranslations = {
   dropConfirm: 'Drop to confirm',
   /**
    * A method to return the multiple files selected translation
-   *
    * @param count the current number of selected files
    */
   multipleFilesSelected: (count: number) => `${count} files selected`,

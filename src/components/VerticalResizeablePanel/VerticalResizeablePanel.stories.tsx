@@ -45,14 +45,20 @@ export default {
 
 /**
  * A story that displays a horizontal resizeable example
- *
  * @param props The story props
  * @param props.width The example width size
  * @param props.height The example height size
  * @param props.backgroundColor the example background color
  * @param props.className the classname to pass down if any
  */
-const Template: StoryFn = ({ width, height, backgroundColor, className, ...props }) => {
+const Template: StoryFn<
+  Record<string, unknown> & {
+    width: keyof typeof widthClassnameMap;
+    height: keyof typeof heightClassnameMap;
+    backgroundColor: keyof typeof backgroundColorClassnameMap;
+    className?: string;
+  }
+> = ({ width, height, backgroundColor, className, ...props }) => {
   return (
     <div>
       <VerticalResizeablePanel

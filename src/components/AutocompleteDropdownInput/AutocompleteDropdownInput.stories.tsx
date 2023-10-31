@@ -16,7 +16,6 @@ export default {
 
 /**
  * A story that displays an Autocomplete example
- *
  * @param props the story props
  */
 const Template: StoryFn<AutocompleteDropdownInputProps> = (props) => (
@@ -41,7 +40,6 @@ DropdownSingleSelect.args = {
 
 /**
  * A story that displays an Autocomplete example
- *
  * @param props the story props
  */
 const DropdownWithButtonsTemplate: StoryFn = (props) => (
@@ -70,7 +68,6 @@ export const DropdownWithButtons = DropdownWithButtonsTemplate.bind({});
 
 /**
  * A story that displays an Autocomplete example
- *
  * @param props the story props
  */
 const ChipsFullSizeTemplate: StoryFn<AutocompleteDropdownInputProps> = (props) => (

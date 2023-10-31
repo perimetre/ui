@@ -33,13 +33,18 @@ export default {
 
 /**
  * A story that displays a Spinner example
- *
  * @param props the story props
  * @param props.size the size property set on controls
  * @param props.color the color property set on controls
  * @param props.className the component classes
  */
-const SpinnerTemplate: StoryFn = ({ size, color, className }) => (
+const SpinnerTemplate: StoryFn<
+  Record<string, unknown> & {
+    size: keyof typeof widthClassnameMap;
+    color: keyof typeof puiColorClassnameMap;
+    className?: string;
+  }
+> = ({ size, color, className }) => (
   <span
     className={classnames(
       'pui-spinner',

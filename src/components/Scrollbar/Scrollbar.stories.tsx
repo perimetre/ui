@@ -26,12 +26,16 @@ export default {
 
 /**
  * A story that displays a Spinner example
- *
  * @param props the story props
  * @param props.color the color property set on controls
  * @param props.className the component classes
  */
-const ScrollbarTemplate: StoryFn = ({ color, className }) => (
+const ScrollbarTemplate: StoryFn<
+  Record<string, unknown> & {
+    color?: keyof typeof puiColorClassnameMap;
+    className?: string;
+  }
+> = ({ color, className }) => (
   <div
     className={classnames(
       'pui-scrollbar',

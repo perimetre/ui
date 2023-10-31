@@ -20,7 +20,6 @@ export type ToggleInputProps = Omit<
 
 /**
  * A toggle input component
- *
  * @param props the component props
  * @param props.label the label of the input
  * @param props.error the error message

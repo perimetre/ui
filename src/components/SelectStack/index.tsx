@@ -17,7 +17,6 @@ export type SelectStackProps = Omit<
 
 /**
  * A stack of selectable buttons
- *
  * @param props The component props
  * @param props.items The items to display
  * @param props.activeItem The active item

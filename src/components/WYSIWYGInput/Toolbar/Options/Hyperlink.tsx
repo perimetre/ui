@@ -37,7 +37,6 @@ type HyperlinkProps = {
 
 /**
  * A hyperlink toolbar button
- *
  * @param props The component props
  * @param props.translations The translation object
  * @param props.isActive Whether or not this item is active
@@ -125,7 +124,6 @@ export const Hyperlink: React.FC<HyperlinkProps> = ({ translations, isActive, ed
     },
     /**
      * Submission handler
-     *
      * @param values The formik values
      */
     onSubmit: (values) => {
@@ -166,7 +164,6 @@ export const Hyperlink: React.FC<HyperlinkProps> = ({ translations, isActive, ed
          * The on mouse down button callback.
          *
          * This callback is preventing the input to lose focus if the use clicks the button
-         *
          * @param e the button event prop
          */
         onMouseDown: (e) => e.preventDefault()

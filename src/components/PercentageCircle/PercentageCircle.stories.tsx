@@ -34,16 +34,13 @@ export default {
 
 /**
  * A story that displays a list connector
- *
  * @param props the story props
  * @param props.color the color property set on controls
  * @param props.className the classes for element
  */
-const Template: StoryFn<PercentageCircleProps & { color?: string } & { className?: string }> = ({
-  color,
-  className,
-  ...props
-}) => (
+const Template: StoryFn<
+  PercentageCircleProps & { color?: keyof typeof puiColorClassnameMap } & { className?: string }
+> = ({ color, className, ...props }) => (
   <div
     className={classnames(
       'flex align-middle w-32 font-semibold text-pui-paragraph-900',

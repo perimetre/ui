@@ -67,7 +67,6 @@ export default {
 
 /**
  * A story that displays a tooltip example
- *
  * @param props the story props
  * @param props.text the text property set on controls
  * @param props.content the content property set on controls

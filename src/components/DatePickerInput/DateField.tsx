@@ -17,7 +17,6 @@ type DateSegmentProps = {
 
 /**
  * Renders a single segment (day or month or year) of the date within the date field
- *
  * @param props The segment props
  * @param props.segment Segment provided by `useDateFieldState`
  * @param props.state State provided by `useDateFieldState`
@@ -69,7 +68,6 @@ type DateFieldProps<T extends DateValue = DateValue> = AriaDateFieldProps<T> & {
 
 /**
  * Renders all segments for a inner section of a date field
- *
  * @param props The props for the inner date field
  * @param props.locale The current app locale
  * @param props.format A string that defines the order of the segments
@@ -91,14 +89,17 @@ export const DateField: React.FC<DateFieldProps> = ({ locale, format, ...props }
       return segments;
     }
 
-    return segments.reduce((incoming, curr, index) => {
-      if (curr.type === 'literal') {
-        return replaceIntoArray(incoming, index, curr);
-      } else {
-        const foundIndex = order.findIndex((item) => item === curr.type);
-        return replaceIntoArray(incoming, foundIndex, curr);
-      }
-    }, Array(segments.length).fill(null) as DateSegmentType[]);
+    return segments.reduce(
+      (incoming, curr, index) => {
+        if (curr.type === 'literal') {
+          return replaceIntoArray(incoming, index, curr);
+        } else {
+          const foundIndex = order.findIndex((item) => item === curr.type);
+          return replaceIntoArray(incoming, foundIndex, curr);
+        }
+      },
+      Array(segments.length).fill(null) as DateSegmentType[]
+    );
   }, [segments, order]);
 
   return (

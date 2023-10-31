@@ -38,14 +38,20 @@ export default {
 
 /**
  * A story that displays a gap example
- *
  * @param props the story props
  * @param props.size the size property set on controls
  * @param props.horizontal the horizontal property set on controls
  * @param props.vertical the vertical property set on controls
  * @param props.className the component classes
  */
-const Template: StoryFn = ({ size, horizontal, vertical, className, ...props }) => (
+const Template: StoryFn<
+  Record<string, unknown> & {
+    size: keyof typeof puiGapClassnameMap;
+    horizontal: boolean;
+    vertical: boolean;
+    className?: string;
+  }
+> = ({ size, horizontal, vertical, className, ...props }) => (
   <div>
     <div
       {...props}

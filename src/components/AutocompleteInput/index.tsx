@@ -28,7 +28,6 @@ export type AutocompleteInputProps<Item> = Omit<
   selectedItem?: Item | null;
   /**
    * Whether or not should always show the result list regardless if the user is searching or not.
-   *
    * @default false
    */
   displayRegardlessIfSearching?: boolean;
@@ -51,7 +50,6 @@ export type AutocompleteInputProps<Item> = Omit<
   /**
    * Whether or not should always show the result list regardless if the input is focused or not
    * (Only relevant when using TAB to focus the input)
-   *
    * @default true
    */
   // displayRegardlessIfFocused?: boolean;
@@ -120,7 +118,6 @@ type DownshiftAutocompleteContentProps<Item> = ControllerStateAndHelpers<Item> &
 
 /**
  * A simple input with autocomplete capabilities
- *
  * @param props the react component props
  * @param props.options The options that should be displayed in the dropdown
  * @param props.initialSelectedItem The initial selected item
@@ -371,7 +368,6 @@ const DownshiftAutocompleteContent = <Item extends { id: string | number }>({
 
 /**
  * A simple input with autocomplete capabilities
- *
  * @param props the react component props
  * @param props.options The options that should be displayed in the dropdown
  * @param props.initialSelectedItem The initial selected item

@@ -113,7 +113,7 @@ export const DragFileUploadInput = forwardRef<DragFileUploadInputRef, DragFileUp
     const [isDragging, setIsDragging] = useState(false);
 
     const [filesDescription, setFilesDescription] = useState<string | undefined>(initialFilesDescription);
-    const [error, setError] = useState<string | undefined>();
+    const [error, setError] = useState<keyof typeof translations | undefined>();
 
     // Create a reference of the container element
     const labelRef = useRef<null | HTMLLabelElement>(null);
@@ -259,7 +259,6 @@ export const DragFileUploadInput = forwardRef<DragFileUploadInputRef, DragFileUp
       if (element && hasDragSupport) {
         /**
          * A function to prevent all default events
-         *
          * @param e the element event
          */
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -284,7 +283,6 @@ export const DragFileUploadInput = forwardRef<DragFileUploadInputRef, DragFileUp
 
         /**
          * The function to be used on drag leave events
-         *
          * @param e The drag event
          */
         const onDragComplete = (e: DragEvent) => {
@@ -374,7 +372,10 @@ export const DragFileUploadInput = forwardRef<DragFileUploadInputRef, DragFileUp
               {error ? (
                 <>
                   <AttentionIcon className="w-6 h-6 text-pui-error" />
-                  <p className="pui-drag-file-text text-pui-error pui-animate-fadeIn">{translations[error]}</p>
+                  <p className="pui-drag-file-text text-pui-error pui-animate-fadeIn">
+                    {/* We know that the error strings are not functions (it could break if one of them do become a function) */}
+                    {translations[error] as string}
+                  </p>
                 </>
               ) : filesDescription ? (
                 <>

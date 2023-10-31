@@ -3,7 +3,6 @@ import React from 'react';
 export type PercentageCircleProps = {
   /**
    * Percentage number
-   *
    * @default number
    */
   percentage?: number;
@@ -11,7 +10,6 @@ export type PercentageCircleProps = {
 
 /**
  * A Percentage Circle
- *
  * @param props The input props
  * @param props.percentage Set the porcentage number
  */

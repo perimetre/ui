@@ -44,7 +44,6 @@ export default {
 
 /**
  * A story that displays a drp´dpwm example
- *
  * @param props the story props
  * @param props.text the text property set on controls
  * @param props.content the content property set on controls
@@ -85,7 +84,6 @@ AttachRight.args = {
 
 /**
  * A story that displays a drp´dpwm example
- *
  * @param props the story props
  * @param props.text the text property set on controls
  * @param props.content the content property set on controls
@@ -145,7 +143,6 @@ export const RichContent = RichContentTemplate.bind({});
 
 /**
  * A story that displays a drp´dpwm example
- *
  * @param props the story props
  * @param props.text the text property set on controls
  * @param props.content the content property set on controls

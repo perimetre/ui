@@ -37,7 +37,6 @@ export default {
 
 /**
  * A story that displays a list connector
- *
  * @param props the story props
  * @param props.children the color property set on controls
  * @param props.className the classes for element

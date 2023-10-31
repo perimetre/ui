@@ -46,9 +46,14 @@ export default {
   }
 } as Meta;
 
+type StoryFnProps = ButtonProps & {
+  border?: keyof typeof borderStyleClassnameMap;
+  color?: keyof typeof puiColorClassnameMap;
+  content?: string;
+};
+
 /**
  * A story that displays a button example
- *
  * @param props the story props
  * @param props.border the border property set on controls
  * @param props.color the color property set on controls
@@ -56,7 +61,7 @@ export default {
  * @param props.className the component classes
  * @param props.ref grab the ref to fix the issue with forwardRef typing
  */
-const Template: StoryFn<ButtonProps & { border?: string; content?: string }> = ({
+const Template: StoryFn<StoryFnProps> = ({
   border,
   color,
   content,
@@ -115,14 +120,15 @@ Chip.args = {
 
 /**
  * A story that displays a button example
- *
  * @param props the story props
  * @param props.border the border property set on controls
  * @param props.color the color property set on controls
  * @param props.content the content property set on controls
  * @param props.className the component classes
+ * @param props.ref grab the ref to fix the issue with forwardRef typing
  */
-const SpinnerTemplate: StoryFn = ({ border, color, content, className, ...props }) => (
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const SpinnerTemplate: StoryFn<StoryFnProps> = ({ border, color, content, className, ref, ...props }) => (
   <Button
     {...props}
     className={classnames(
@@ -143,7 +149,6 @@ export const WithSpinner = SpinnerTemplate.bind({});
 
 /**
  * A story that displays a button example
- *
  * @param props the story props
  * @param props.border the border property set on controls
  * @param props.color the color property set on controls
@@ -152,7 +157,7 @@ export const WithSpinner = SpinnerTemplate.bind({});
  * @param props.ref grab the ref to fix the issue with forwardRef typing
  */
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const WithIconTemplate: StoryFn = ({ border, color, content, className, ref, ...props }) => (
+const WithIconTemplate: StoryFn<StoryFnProps> = ({ border, color, content, className, ref, ...props }) => (
   <Button
     {...props}
     className={classnames(
@@ -173,12 +178,13 @@ export const WithIcon = WithIconTemplate.bind({});
 
 /**
  * A story that displays an icon button example
- *
  * @param props the story props
  * @param props.color the color property set on controls
  * @param props.className the component classes
+ * @param props.ref grab the ref to fix the issue with forwardRef typing
  */
-const IconButtonTemplate: StoryFn = ({ color, className, ...props }) => (
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const IconButtonTemplate: StoryFn<StoryFnProps> = ({ color, className, ref, ...props }) => (
   <Button
     {...props}
     className={classnames(

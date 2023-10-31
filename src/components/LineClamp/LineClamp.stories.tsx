@@ -26,12 +26,16 @@ export default {
 
 /**
  * A story that displays a Spinner example
- *
  * @param props the story props
  * @param props.lineClamp the lineClamp property set on controls
  * @param props.className the component classes
  */
-const LineClampTemplate: StoryFn = ({ lineClamp, className, ...props }) => (
+const LineClampTemplate: StoryFn<
+  Record<string, unknown> & {
+    lineClamp: keyof typeof clampClassnameMap;
+    className?: string;
+  }
+> = ({ lineClamp, className, ...props }) => (
   <div {...props} className={classnames(clampClassnameMap[lineClamp || 'none'], className)}>
     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem explicabo facilis natus quo impedit reiciendis cum
     deleniti hic, nostrum blanditiis! Necessitatibus inventore blanditiis dolorum ea eum suscipit maxime temporibus

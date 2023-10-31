@@ -65,7 +65,6 @@ module.exports = {
       },
       /**
        * Returns the minWidth values
-       *
        * @param theme the provided tailwind theme
        */
       minWidth: (theme) => ({
@@ -109,7 +108,6 @@ module.exports = {
       }),
       /**
        * Returns the minHeight values
-       *
        * @param theme the provided tailwind theme
        */
       minHeight: (theme) => ({
@@ -121,7 +119,6 @@ module.exports = {
       },
       /**
        * Extends tailwind typography
-       *
        * @param theme the provided tailwind theme
        */
       typography: (theme) => ({

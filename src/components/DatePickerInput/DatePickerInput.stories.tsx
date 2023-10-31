@@ -43,14 +43,15 @@ export default {
   }
 } as Meta;
 
+type StoryFnProps = DatePickerProps & { color?: keyof typeof puiColorClassnameMap };
+
 /**
  * A story that displays a DatePickerInput example
- *
  * @param props the story props
  * @param props.color the color property set on controls
  * @param props.className The input className
  */
-const Template: StoryFn<DatePickerProps & { color?: string }> = ({ color, className, ...props }) => (
+const Template: StoryFn<StoryFnProps> = ({ color, className, ...props }) => (
   <DatePickerInput
     {...props}
     className={classnames(
@@ -97,12 +98,11 @@ Time24Hours.args = {
 
 /**
  * A story that displays a DatePickerInput example
- *
  * @param props the story props
  * @param props.color the color property set on controls
  * @param props.className The input className
  */
-const LocalTimezoneTemplate: StoryFn<DatePickerProps & { color?: string }> = ({ color, className, ...props }) => {
+const LocalTimezoneTemplate: StoryFn<StoryFnProps> = ({ color, className, ...props }) => {
   return (
     <DatePickerInput
       {...props}
@@ -122,12 +122,11 @@ export const LocalTimezone = LocalTimezoneTemplate.bind({});
 
 /**
  * A story that displays a DatePickerInput example
- *
  * @param props the story props
  * @param props.color the color property set on controls
  * @param props.className The input className
  */
-const OtherTimezoneTemplate: StoryFn<DatePickerProps & { color?: string }> = ({ color, className, ...props }) => {
+const OtherTimezoneTemplate: StoryFn<StoryFnProps> = ({ color, className, ...props }) => {
   return (
     <DatePickerInput
       {...props}

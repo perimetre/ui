@@ -5,67 +5,56 @@ import { ArrowIcon } from '..';
 export type WorkSessionCardProps = {
   /**
    * Card Image url
-   *
    * @default string
    */
   imageUrl?: string;
   /**
    * Event tilte
-   *
    * @default string
    */
   title?: string;
   /**
    * Event description
-   *
    * @default string
    */
   content?: string;
   /**
    * Card button label
-   *
    * @default string
    */
   buttonContent?: string;
   /**
    * title for the advisor
-   *
    * @default string
    */
   advisorTitle?: string;
   /**
    * Advisor Name
-   *
    * @default string
    */
   advisorName?: string;
   /**
    * pendind tasks number
-   *
    * @default string
    */
   counter?: string;
   /**
    * Extended classes
-   *
    * @default string
    */
   className?: string;
   /**
    * Gradient bar initial color value
-   *
    * @default string
    */
   gradientInitialColor?: string;
   /**
    * Gradient bar initial color value if needed
-   *
    * @default string
    */
   gradientMiddleColor?: string;
   /**
    * Gradient bar final color value
-   *
    * @default string
    */
   gradientFinalColor?: string;
@@ -73,7 +62,6 @@ export type WorkSessionCardProps = {
 
 /**
  * A Percentage Circle
- *
  * @param props The input props
  * @param props.counter The number of task per session
  * @param props.title Set the event title

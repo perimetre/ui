@@ -24,7 +24,6 @@ export type ToggleButtonProps = Omit<
 
 /**
  * A toggle input component
- *
  * @param props the component props
  * @param props.offLabel Label text for the button's off state
  * @param props.onLabel Label text for the button's on state

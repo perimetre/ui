@@ -39,7 +39,6 @@ type SectionItemsProps = {
 
 /**
  * A list of items in a section
- *
  * @param props The component props
  * @param props.display How this should be displayed
  * @param props.items The list of items
@@ -96,7 +95,6 @@ export const SectionItems: React.FC<SectionItemsProps> = ({
              * The on mouse down button callback.
              *
              * This callback is preventing the input to lose focus if the use clicks the button
-             *
              * @param e the button event prop
              */
             onMouseDown: (e) => e.preventDefault()

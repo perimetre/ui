@@ -2,7 +2,6 @@ import { EditorState } from 'draft-js';
 
 /**
  * A helper method to check whether this inline style should be active or not, from its type property
- *
  * @param editorState the current editor state
  * @param itemType the inline item type
  */
@@ -13,7 +12,6 @@ export const isInlineActiveByType = (editorState: EditorState, itemType: string)
 
 /**
  * A helper method to check whether this block style should be active or not, from its type property
- *
  * @param editorState the current editor state
  * @param itemType the inline item type
  */
@@ -24,7 +22,6 @@ export const isBlockActiveByType = (editorState: EditorState, itemType: string) 
 
 /**
  * A helper method to check whether this block style should be active or not, from its data property
- *
  * @param editorState the current editor state
  * @param dataKey the key in the data object
  * @param expectedValue the expected value for the data to be
@@ -38,7 +35,6 @@ export const isBlockActiveByData = (editorState: EditorState, dataKey: string, e
 
 /**
  * A method which will remove an object data if already exists, and add if it doesn't
- *
  * @param editorState The current editor state
  * @param data The provided block metadata
  */
@@ -51,7 +47,9 @@ export const toggleBlockData = async (
   const currentData = editorState.getCurrentContent().getBlockForKey(selection.getStartKey()).getData();
 
   // Create a new data object
-  const newData = {};
+  const newData: {
+    [key: string]: unknown;
+  } = {};
 
   // For each entry in the provided data object
   Object.entries(data || {}).forEach(([key, value]) => {
@@ -73,7 +71,6 @@ export const toggleBlockData = async (
 
 /**
  * A method which will return the url from the current selection if there is any
- *
  * @param editorState  The current editor state
  */
 export const getLinkIfAny = (editorState?: EditorState) => {

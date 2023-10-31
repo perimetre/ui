@@ -35,18 +35,19 @@ export default {
   }
 } as Meta;
 
+type StoryFnProps = ButtonStackProps & {
+  border?: string;
+  color?: keyof typeof puiColorClassnameMap;
+  disabled?: boolean;
+};
+
 /**
  * A story that displays a button stack example
- *
  * @param props the story props
  * @param props.color the color property set on controls
  * @param props.disabled the disabled color set on controls
  */
-const WithTooltipTemplate: StoryFn<ButtonStackProps & { border?: string; color?: string; disabled?: boolean }> = ({
-  color,
-  disabled,
-  ...props
-}) => {
+const WithTooltipTemplate: StoryFn<StoryFnProps> = ({ color, disabled, ...props }) => {
   const [activeKey, setActiveKey] = useState('button-1');
 
   const dropdownContentItems = Array(4)
@@ -82,16 +83,11 @@ export const WithTooltip = WithTooltipTemplate.bind({});
 
 /**
  * A story that displays a button stack example
- *
  * @param props the story props
  * @param props.color the color property set on controls
  * @param props.disabled the disabled color set on controls
  */
-const NoTooltipTemplate: StoryFn<ButtonStackProps & { border?: string; color?: string; disabled?: boolean }> = ({
-  color,
-  disabled,
-  ...props
-}) => {
+const NoTooltipTemplate: StoryFn<StoryFnProps> = ({ color, disabled, ...props }) => {
   const [activeKey, setActiveKey] = useState('button-1');
 
   const dropdownContentItems = Array(4)

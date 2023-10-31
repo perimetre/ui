@@ -44,7 +44,6 @@ export type VerticalResizeablePanelProps = Omit<React.HTMLAttributes<HTMLDivElem
 
 /**
  * A panel with resize abilities on its top and bottom borders
- *
  * @param props The component props
  * @param props.resizeTop Turn on or off the resizing behavior on the top border
  * @param props.resizeBottom Turn on or off the resizing behavior on the bottom border
@@ -90,7 +89,6 @@ export const VerticalResizeablePanel: React.FC<VerticalResizeablePanelProps> = (
   useEffect(() => {
     /**
      * Handler for when the user is moving the mouse
-     *
      * @param e The mouse event
      */
     const onMouseMove = (e: MouseEvent) => {

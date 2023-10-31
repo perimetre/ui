@@ -9,7 +9,6 @@ import { ServerStyleSheet } from 'styled-components';
 class MyDocument extends Document {
   /**
    * The method used to prepare server side data
-   *
    * @param ctx The next.js context
    */
   static async getInitialProps(ctx: DocumentContext) {
@@ -25,7 +24,6 @@ class MyDocument extends Document {
         originalRenderPage({
           /**
            * A wrapper of the original app render
-           *
            * @param App the original app component
            */
           enhanceApp: (App) => (props) => sheet.collectStyles(<App {...props} />)

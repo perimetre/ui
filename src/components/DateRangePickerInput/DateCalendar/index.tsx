@@ -23,7 +23,6 @@ type DateCalendarProps<T extends DateValue = DateValue> = AriaRangeCalendarProps
 
 /**
  * Calendar that renders the days in a grid for the date input
- *
  * @param props Calendar props for `useCalendar`
  * @param props.locale The current app locale
  * @param props.tippyInstance Instance for the tooltip component
@@ -58,7 +57,6 @@ const DateCalendar: React.FC<DateCalendarProps> = ({ locale, tippyInstance, elem
 
 /**
  * Calendar that renders the days in a grid for the date input
- *
  * @param props Calendar props for `useCalendar`
  * @param props.locale The current app locale
  * @param props.tippyInstance Instance for the tooltip component

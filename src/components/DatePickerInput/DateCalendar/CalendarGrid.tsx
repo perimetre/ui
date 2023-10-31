@@ -22,7 +22,6 @@ type CalendarGridProps = AriaCalendarGridProps & {
 
 /**
  * Renders the table with days in a grid for the date input
- *
  * @param props Props for the calendar grid
  * @param props.state The calendar state from `useCalendarState`
  * @param props.locale The current app locale

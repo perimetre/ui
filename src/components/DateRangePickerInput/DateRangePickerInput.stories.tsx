@@ -44,12 +44,15 @@ export default {
 
 /**
  * A story that displays a DatePickerInput example
- *
  * @param props the story props
  * @param props.color the color property set on controls
  * @param props.className The input className
  */
-const Template: StoryFn<DateRangePickerProps & { color?: string }> = ({ color, className, ...props }) => (
+const Template: StoryFn<DateRangePickerProps & { color?: keyof typeof puiColorClassnameMap }> = ({
+  color,
+  className,
+  ...props
+}) => (
   <DateRangePickerInput
     {...props}
     className={classnames(

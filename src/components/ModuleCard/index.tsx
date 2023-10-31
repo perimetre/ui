@@ -9,61 +9,51 @@ export const variantFilterap = {
 export type ModuleCardProps = {
   /**
    * The card filter variant
-   *
    * @default default
    */
   filter?: keyof typeof variantFilterap;
   /**
    * Card Image url
-   *
    * @default string
    */
   imageUrl?: string;
   /**
    * Card title
-   *
    * @default string
    */
   title?: string;
   /**
    * Card description
-   *
    * @default string
    */
   content?: string;
   /**
    * Card button label
-   *
    * @default string
    */
   buttonContent?: string;
   /**
    * Card button callback
-   *
    * @default void
    */
   onPressButton?: () => void;
   /**
    * Extended classes
-   *
    * @default string
    */
   className?: string;
   /**
    * Extended classes for title
-   *
    * @default string
    */
   classNameTitle?: string;
   /**
    * Extended classes for content
-   *
    * @default string
    */
   classNameContent?: string;
   /**
    * Extended classes for filter
-   *
    * @default string
    */
   classNameFilter?: string;
@@ -71,7 +61,6 @@ export type ModuleCardProps = {
 
 /**
  * A Percentage Circle
- *
  * @param props The input props
  * @param props.filter The filter variant
  * @param props.imageUrl Set the image for the card

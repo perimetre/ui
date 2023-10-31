@@ -3,7 +3,6 @@ import { nanoid } from 'nanoid';
 
 /**
  * Returns an instance of SVGO
- *
  * @param svgString The SVG to be optimized
  * @param datauri Output as Data URI string.
  * @param root1 The options setting

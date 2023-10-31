@@ -20,7 +20,6 @@ export type DateRangePickerState = ReturnType<typeof useDateRangePickerState>;
 export type DateRangePickerProps<T extends DateValue = DateValue> = AriaDateRangePickerProps<T> & {
   /**
    * The button type variant
-   *
    * @default default
    */
   variant?: keyof typeof buttonVariantClassnameMap;
@@ -76,7 +75,6 @@ export type DateRangePickerProps<T extends DateValue = DateValue> = AriaDateRang
 
 /**
  * An input that allows the user to select a date
- *
  * @param props The input props
  * @param props.variant The button type variant
  * @param props.id The input id

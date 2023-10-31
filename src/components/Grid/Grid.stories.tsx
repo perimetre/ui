@@ -33,13 +33,18 @@ export default {
 
 /**
  * A story that displays a Grid example
- *
  * @param props the story props
  * @param props.columns the columns property set on controls
  * @param props.rows the rows property set on controls
  * @param props.className the component classes
  */
-const Template: StoryFn = ({ columns, rows, className }) => (
+const Template: StoryFn<
+  Record<string, unknown> & {
+    columns: keyof typeof gridColsClassnameMap;
+    rows: keyof typeof gridRowsClassnameMap;
+    className?: string;
+  }
+> = ({ columns, rows, className }) => (
   <div
     className={classnames(
       'pui-grid',

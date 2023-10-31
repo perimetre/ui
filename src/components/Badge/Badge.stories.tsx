@@ -30,11 +30,10 @@ export default {
 
 /**
  * A story that displays a Badge example
- *
  * @param props the story props
  * @param props.color the color property set on controls
  */
-const Template: StoryFn<BadgeProps & { color?: string }> = ({ color, ...props }) => (
+const Template: StoryFn<BadgeProps & { color?: keyof typeof puiColorClassnameMap }> = ({ color, ...props }) => (
   <span className={classnames({ [puiColorClassnameMap[color || 'transparent']]: color !== 'pui-primary' })}>
     <Badge {...props}>
       <BellIcon />

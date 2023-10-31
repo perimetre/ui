@@ -23,7 +23,6 @@ export default {
 
 /**
  * A story that displays a drawer example
- *
  * @param props the story props
  * @param props.content The content property set on controls
  * @param props.onOpenCallback Callback to update the open state

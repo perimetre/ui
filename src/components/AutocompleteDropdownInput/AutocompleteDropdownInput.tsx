@@ -31,7 +31,6 @@ export type AutocompleteDropdownInputProps<T extends AutocompleteItemType = Auto
 
 /**
  * A dropdown with autocomplete capabilities
- *
  * @param props the react component props
  * @param props.options The options that should be displayed in the dropdown
  * @param props.initialSelectedItems The list of selected items to initialize the selected array

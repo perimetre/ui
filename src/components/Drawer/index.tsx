@@ -18,7 +18,6 @@ const overlayVariants = {
 export type DrawerWrapperProps = {
   /**
    * Whether or not the drawer should be open
-   *
    * @default false
    */
   isOpen: boolean;
@@ -32,7 +31,6 @@ export type DrawerWrapperProps = {
 
 /**
  * The logic wrapper for the drawer
- *
  * @param props The provided props
  * @param props.isOpen Whether or not the drawer should be open
  * @param props.onOpen Callback to update the open state
@@ -171,7 +169,6 @@ export const DrawerWrapper: React.FC<PropsWithChildren<DrawerWrapperProps>> = ({
 export type DrawerProps = DrawerWrapperProps & {
   /**
    * Sets the default width
-   *
    * @default 350
    */
   width?: number;
@@ -183,7 +180,6 @@ export type DrawerProps = DrawerWrapperProps & {
 
 /**
  * Displays a drawer
- *
  * @param props The provided props
  * @param props.width Sets the default width
  * @param props.onBack Callback when pressed the back button

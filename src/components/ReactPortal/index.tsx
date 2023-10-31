@@ -5,7 +5,6 @@ export type ReactPortalProps = { selector: string };
 
 /**
  * A wrapper around react portal logic
- *
  * @param props the component props
  * @param props.selector the selector in which the portal should attach to
  * @param props.children the content of the portal

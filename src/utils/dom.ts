@@ -2,7 +2,6 @@
 
 /**
  * A helper that adds the same event listener to multiple events in an element.
- *
  * @param element The dom element
  * @param events The list of events the listened should be appended to
  * @param listener The listener callback
@@ -20,7 +19,6 @@ export const addMultipleEventListeners = <T extends HTMLElement, K extends keyof
 
 /**
  * A helper that removes the same event listener to multiple events in an element.
- *
  * @param element The dom element
  * @param events The list of events the listened should be appended to
  * @param listener The listener callback

@@ -25,14 +25,18 @@ export default {
   }
 } as Meta;
 
+type StoryFnProps = Record<string, unknown> & {
+  color: keyof typeof puiColorClassnameMap;
+  className?: string;
+};
+
 /**
  * A story that displays a Spinner example
- *
  * @param props the story props
  * @param props.color the color property set on controls
  * @param props.className the component classes
  */
-const LinkTemplate: StoryFn = ({ color, className }) => (
+const LinkTemplate: StoryFn<StoryFnProps> = ({ color, className }) => (
   <div>
     Please click{' '}
     <a
@@ -53,12 +57,11 @@ export const Link = LinkTemplate.bind({});
 
 /**
  * A story that displays a Spinner example
- *
  * @param props the story props
  * @param props.color the color property set on controls
  * @param props.className the component classes
  */
-const VisitedLinkTemplate: StoryFn = ({ color, className }) => (
+const VisitedLinkTemplate: StoryFn<StoryFnProps> = ({ color, className }) => (
   <div>
     Please click{' '}
     <a

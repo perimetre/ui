@@ -67,12 +67,15 @@ export default {
 
 /**
  * A story that displays a WithLabel example
- *
  * @param props the story props
  * @param props.color the color property set on controls
  * @param props.className the component classes
  */
-const Template: StoryFn<CheckboxRadioInputProps> = ({ color, className, ...props }) => (
+const Template: StoryFn<
+  CheckboxRadioInputProps & {
+    color?: keyof typeof puiColorClassnameMap;
+  }
+> = ({ color, className, ...props }) => (
   <CheckboxRadioInput
     {...props}
     className={classnames({ [puiColorClassnameMap[color || 'transparent']]: color !== 'pui-primary' }, className)}

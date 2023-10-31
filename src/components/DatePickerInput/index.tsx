@@ -22,7 +22,6 @@ export type DateValue = CalendarDate | CalendarDateTime | ZonedDateTime;
 export type DatePickerProps<T extends DateValue = DateValue> = AriaDatePickerProps<T> & {
   /**
    * The button type variant
-   *
    * @default default
    */
   variant?: keyof typeof buttonVariantClassnameMap;
@@ -78,7 +77,6 @@ export type DatePickerProps<T extends DateValue = DateValue> = AriaDatePickerPro
 
 /**
  * An input that allows the user to select a date
- *
  * @param props The input props
  * @param props.variant The button type variant
  * @param props.id The input id

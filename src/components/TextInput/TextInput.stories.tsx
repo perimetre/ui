@@ -47,7 +47,6 @@ export default {
 
 /**
  * A story that displays a TextInput example
- *
  * @param props the story props
  * @param props.ref grab the ref to fix the issue with forwardRef typing
  */
@@ -90,7 +89,6 @@ WithIconLeft.args = {
 
 /**
  * A story that displays a TextInput example with datalist
- *
  * @param props the story props
  * @param props.ref grab the ref to fix the issue with forwardRef typing
  */

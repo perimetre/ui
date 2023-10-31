@@ -1152,6 +1152,7 @@ export const minWidthClassnameMap = {
   '9/12vw': 'min-w-9/12vw',
   '10/12vw': 'min-w-10/12vw',
   '11/12vw': 'min-w-11/12vw',
+  '100vw': 'min-w-100vw',
   'screen-90': 'min-w-screen-90',
   screen: 'min-w-screen',
   initial: 'min-w-initial'

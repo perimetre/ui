@@ -29,7 +29,6 @@ type BlockSectionProps = {
 
 /**
  * An block section
- *
  * @param props The component props
  * @param props.section The section object for the current section
  * @param props.editorState The current editor state
@@ -80,7 +79,6 @@ type InlineSectionProps = {
 
 /**
  * An inline section
- *
  * @param props The component props
  * @param props.section The section object for the current section
  * @param props.editorState The current editor state
@@ -135,7 +133,6 @@ type ToolbarSectionProps = {
 
 /**
  * A single toolbar section
- *
  * @param props the component props
  * @param props.section The section object for the current section
  * @param props.editorState The current editor state

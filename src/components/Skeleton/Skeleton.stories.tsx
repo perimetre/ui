@@ -33,13 +33,18 @@ export default {
 
 /**
  * A story that displays a Skeleton example
- *
  * @param props the story props
  * @param props.width the width property set on controls
  * @param props.height the height property set on controls
  * @param props.className the component classes
  */
-const SkeletonTemplate: StoryFn = ({ width, height, className }) => (
+const SkeletonTemplate: StoryFn<
+  Record<string, unknown> & {
+    width: keyof typeof widthClassnameMap;
+    height: keyof typeof heightClassnameMap;
+    className?: string;
+  }
+> = ({ width, height, className }) => (
   <div
     className={classnames(
       'pui-skeleton',
@@ -56,7 +61,6 @@ export const Skeleton = SkeletonTemplate.bind({});
 
 /**
  * A story that displays a MultiSkeleton example
- *
  * @param props the story props
  */
 const MultiSkeletonTemplate: StoryFn = ({}) => (

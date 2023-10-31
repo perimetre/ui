@@ -45,7 +45,6 @@ export default {
 
 /**
  * A story that displays an alert example
- *
  * @param props the story props
  * @param props.gradientInitialColor the initial gradient color property set on controls
  * @param props.gradientMiddleColor the middle gradient color property set on controls

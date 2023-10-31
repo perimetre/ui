@@ -3,7 +3,6 @@ import { getSvgo } from '../../utils/svgo';
 
 /**
  * Returns an optimized version of an svg input
- *
  * @param req the server request
  * @param res the server response
  */

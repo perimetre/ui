@@ -42,17 +42,23 @@ export default {
   }
 } as Meta;
 
+type StoryFnProps = Record<string, unknown> & {
+  icon: keyof typeof IconComponents;
+  size?: keyof typeof widthClassnameMap;
+  color?: keyof typeof textColorClassnameMap;
+  className?: string;
+};
+
 /**
  * A story that displays an icon example
- *
  * @param props the story props
  * @param props.icon the icon property set on controls
  * @param props.size the size property set on controls
  * @param props.color the color property set on controls
  * @param props.className the component classes
  */
-const Template: StoryFn = ({ icon, size, color, className, ...props }) => {
-  const CurrentIcon = IconComponents[icon];
+const Template: StoryFn<StoryFnProps> = ({ icon, size, color, className, ...props }) => {
+  const CurrentIcon = IconComponents[icon] as React.FC<{ className?: string }>;
   return (
     <CurrentIcon
       {...props}
@@ -71,15 +77,14 @@ export const Icons = Template.bind({});
 
 /**
  * A story that displays an buttonicon example
- *
  * @param props the story props
  * @param props.icon the icon property set on controls
  * @param props.size the size property set on controls
  * @param props.color the color property set on controls
  * @param props.className the component classes
  */
-const ButtonTemplate: StoryFn = ({ icon, size, color, className, ...props }) => {
-  const CurrentIcon = IconComponents[icon];
+const ButtonTemplate: StoryFn<StoryFnProps> = ({ icon, size, color, className, ...props }) => {
+  const CurrentIcon = IconComponents[icon] as React.FC<{ className?: string }>;
   return (
     <button type="button" className="pui-btn-icon">
       <CurrentIcon

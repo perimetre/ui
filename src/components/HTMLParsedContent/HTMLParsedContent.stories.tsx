@@ -60,7 +60,6 @@ export default {
 
 /**
  * A story that displays a HTMLParsedContent example
- *
  * @param props the story props
  * @param props.content the content property set on controls
  * @param props.className the component classes
