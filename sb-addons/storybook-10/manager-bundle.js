@@ -1,0 +1,3 @@
+try{
+var d=__STORYBOOKADDONS__,{addons:o,types:c,mockChannel:h}=__STORYBOOKADDONS__;var b=__STORYBOOKTHEMING__,{CacheProvider:f,ClassNames:S,Global:x,ThemeProvider:y,background:k,color:C,convert:N,create:a,createCache:R,createGlobal:B,createReset:D,css:G,darken:K,ensure:Y,ignoreSsrWarning:v,isPropValid:I,jsx:P,keyframes:A,lighten:E,styled:H,themes:M,typography:j,useTheme:w,withTheme:U}=__STORYBOOKTHEMING__;var i=a({base:"light",brandTitle:"@perimetre/ui Storybook",brandUrl:"https://github.com/perimetre/ui",brandImage:"/ui/perimetre_logo.png"});o.setConfig({theme:i});
+}catch(e){ console.error("[Storybook] One of your manager-entries failed: " + import.meta.url, e); }

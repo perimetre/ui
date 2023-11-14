@@ -1,0 +1,1 @@
+//! Do not destructure label from props since useDatePicker also expects it
