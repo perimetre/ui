@@ -25,6 +25,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [11.0.1] 2023-11-14
+
+### Fixed
+
+- Fixes expected peer dependencies versions
+- Removes Tailwind plugin `@tailwindcss/line-clamp`, since `line-clamp` utilities are now included in the framework by default and this plugin is no longer required
+
 ## [11.0.0] 2023-10-31
 
 ### **Breaking changes**
