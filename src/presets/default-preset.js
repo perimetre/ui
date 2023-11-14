@@ -181,7 +181,6 @@ module.exports = {
   },
   plugins: [
     require('@tailwindcss/typography'),
-    require('@tailwindcss/line-clamp'),
     require('../plugins/varPlaceholderColorPlugin'),
     require('../plugins/gapPlugin')
   ]
