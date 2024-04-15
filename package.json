@@ -1,7 +1,7 @@
 {
   "name": "@perimetre/ui",
   "description": "A component library made by @perimetre",
-  "version": "11.0.1",
+  "version": "11.0.2",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/perimetre/ui.git"
@@ -19,8 +19,7 @@
     "src"
   ],
   "engines": {
-    "node": "^18.18.2",
-    "npm": "^9"
+    "node": "18.x"
   },
   "scripts": {
     "prestart": "npm run check-commit",

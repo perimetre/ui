@@ -25,6 +25,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [11.0.2] 2024-04-15
+
+### Fixed
+
+- Fixes how node version is set in the package.json file
+
 ## [11.0.1] 2023-11-14
 
 ### Fixed
