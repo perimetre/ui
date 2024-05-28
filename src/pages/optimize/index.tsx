@@ -51,7 +51,7 @@ export default function Home() {
   const [uriSvg, setUriSvg] = useState<string>('');
   const [originalSvg, setOriginalSvg] = useState<string>('');
 
-  const optimize = useMemo(
+  const optimizeSvg = useMemo(
     () =>
       debounce((svgString: string) => {
         if (svgString) {
@@ -118,6 +118,63 @@ export default function Home() {
     []
   );
 
+  const optimizeUri = useMemo(
+    () =>
+      debounce((svgString: string) => {
+        if (svgString) {
+          // A separate call to grab the datauri version
+          fetch('/api/optimize', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              svgString,
+              prefixIds: (document?.getElementById('prefixIds') as HTMLInputElement)?.checked,
+              removeOffCanvasPaths: (document?.getElementById('removeOffCanvasPaths') as HTMLInputElement)?.checked,
+              removeRasterImages: (document?.getElementById('removeRasterImages') as HTMLInputElement)?.checked,
+              removeColors: (document?.getElementById('removeColors') as HTMLInputElement)?.checked,
+              // DO NOT ADD removeXMLNS
+              // Tells it needs to be a dataUri result
+              datauri: (document?.getElementById('base64') as HTMLInputElement)?.checked
+                ? 'base64'
+                : (document?.getElementById('encUri') as HTMLInputElement)?.checked
+                ? 'enc'
+                : 'unenc'
+            })
+          })
+            .then((response) => response.json())
+            .then((result) => {
+              if (result?.data) setUriSvg(`url('${result?.data}')`);
+              else setUriSvg('');
+            })
+            .catch((err) => {
+              console.error(err);
+              setUriSvg('');
+            });
+        } else {
+          setOptimizedSvg(undefined);
+          setOriginalSvg('');
+          setUriSvg('');
+        }
+      }, 300),
+    []
+  );
+
+  const optimize = useCallback(
+    (svgString: string) => {
+      if (svgString) {
+        optimizeSvg(svgString);
+        optimizeUri(svgString);
+      } else {
+        setOptimizedSvg(undefined);
+        setOriginalSvg('');
+        setUriSvg('');
+      }
+    },
+    [optimizeSvg, optimizeUri]
+  );
+
   const onType = useCallback(
     (event: React.ChangeEvent<HTMLTextAreaElement>) => optimize(event.target.value),
     [optimize]
@@ -125,6 +182,28 @@ export default function Home() {
 
   const onCheck = useCallback(
     () => optimize((document?.getElementById('svg') as HTMLTextAreaElement)?.value),
+    [optimize]
+  );
+
+  const onUpload = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      if (event.target.files && event.target.files[0]) {
+        const reader = new FileReader();
+        reader.readAsText(event.target.files[0], 'UTF-8');
+        /**
+         * When the file is read, set the innerHTML of the svg element to the result
+         * @param evt the event that was triggered
+         */
+        reader.onload = function (evt) {
+          if (document.getElementById('svg')) {
+            (document.getElementById('svg')! as HTMLInputElement).value = `${evt.target!.result}`;
+
+            optimize((document.getElementById('svg')! as HTMLInputElement).value);
+          }
+        };
+        reader.onerror = console.error;
+      }
+    },
     [optimize]
   );
 
@@ -226,13 +305,23 @@ export default function Home() {
           <label className="pui-label-input" htmlFor="svg">
             Paste SVG(Including svg tag)
           </label>
+          <input type="file" id="svg-upload" name="svg" accept="image/svg+xml" className="mb-2" onChange={onUpload} />
           <textarea rows={10} id="svg" placeholder="<svg>...</svg>" className="pui-text-input" onChange={onType} />
         </div>
         <div>
           <label className="pui-label-input" htmlFor="json">
             Optimized SVG
           </label>
-          <textarea readOnly rows={10} id="json" className="pui-text-input" value={optimizedSvg?.data || ''} />
+          <textarea
+            rows={10}
+            id="json"
+            className="pui-text-input"
+            value={optimizedSvg?.data || ''}
+            onChange={(e) => {
+              setOptimizedSvg((v) => ({ ...v, data: e.target.value }));
+              optimizeUri(e.target.value);
+            }}
+          />
         </div>
         <div>
           <label className="pui-label-input" htmlFor="css">
