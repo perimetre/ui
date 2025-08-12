@@ -1,7 +1,7 @@
 {
   "name": "@perimetre/ui",
   "description": "A component library made by @perimetre",
-  "version": "11.0.2",
+  "version": "12.0.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/perimetre/ui.git"
@@ -19,7 +19,7 @@
     "src"
   ],
   "engines": {
-    "node": "18.x"
+    "node": "22.x"
   },
   "scripts": {
     "prestart": "npm run check-commit",
@@ -57,7 +57,7 @@
     "@fortawesome/free-regular-svg-icons": "^6.4.2",
     "@fortawesome/free-solid-svg-icons": "^6.4.2",
     "@fortawesome/react-fontawesome": "^0.2.0",
-    "@perimetre/helpers": "^2.1.0",
+    "@perimetre/helpers": "^3.1.0",
     "@rollup/plugin-commonjs": "^25.0.7",
     "@rollup/plugin-json": "^6.0.1",
     "@rollup/plugin-node-resolve": "^15.2.3",
