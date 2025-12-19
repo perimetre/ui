@@ -3,8 +3,9 @@
   "description": "A component library made by @perimetre",
   "version": "12.0.0",
   "repository": {
+    "directory": "packages/ui",
     "type": "git",
-    "url": "git+https://github.com/perimetre/ui.git"
+    "url": "https://github.com/perimetre/framework.git"
   },
   "author": "Perimetre (https://perimetre.co/)",
   "license": "MIT",
